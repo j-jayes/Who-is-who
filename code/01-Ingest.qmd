@@ -1,0 +1,226 @@
+---
+title: "Ingest"
+format: html
+---
+
+## Purpose
+
+This notebook ingests the data from [Vem är Vem?](http://runeberg.org/vemarvem/).
+
+## Planning
+
+```{r}
+## Data Ingestion Plan
+
+library(tidyverse)
+library(gt)
+
+text <- c("1. **Identify the target website and content**: Determine the specific website(s) and pages that contain the biographies of notable Swedes. You may want to explore the website(s) and understand their structure to ensure you can efficiently extract the required data.
+
+2. **Inspect the website structure**: Using your web browser, inspect the HTML structure of the target pages to identify the relevant HTML tags and attributes associated with the biographical data. This will help you design your web scraper accordingly.
+
+3. **Choose a web scraping tool or library**: Select a suitable web scraping tool or library based on your preferred programming language. Some popular choices include Beautiful Soup or Scrapy for Python, Jsoup for Java, and Cheerio for JavaScript.
+
+4. **Create and test the web scraper**: Develop a web scraper that extracts the relevant biographical data from the target website(s). Start by testing the scraper on a small set of pages to ensure it correctly extracts the data. If possible, implement error handling and rate-limiting to prevent your scraper from being blocked by the website's server.
+
+5. **Store the extracted data**: As you collect the biographical data, you may want to store it in a structured format (e.g., JSON, CSV, or a database) for easier access and processing during later stages of the project.
+
+6. **Run the web scraper**: Once you have tested and refined the web scraper, run it on the complete set of target pages to collect the biographical data. This process may take some time depending on the number of pages and the rate at which you are scraping the data.
+
+7. **Verify and clean the data**: After the data ingestion is complete, review the extracted data to ensure its accuracy and completeness. If necessary, perform data cleaning tasks to remove duplicates, correct errors, or fill in missing information.")
+
+text %>%
+  as_tibble() %>%
+  separate_rows(value, sep = "[0-9]\\.") %>%
+  filter(value != "") %>%
+  mutate(step = row_number(),
+         value = str_squish(value)) %>% 
+  relocate(step, .before = value) %>% 
+  gt() %>% 
+  fmt_markdown(value) %>% 
+  tab_header(title = md("**Planning for scraping**")) %>% 
+  tab_options(column_labels.hidden = TRUE)
+
+```
+
+### Identify the target website and content
+
+[Vem är Vem?](http://runeberg.org/vemarvem/) holds data on a number of the volumes of the source. 
+
+I will begin with Stockholmsdelen 1945. The Stockholm section from 1945 was digitized in November 2009.
+
+Notes on the source:
+
+- Had to be alive during books production
+- TODO: Speak to Jakob about the source and who is included and why.
+
+### Inspect the structure of the website
+
+Structure of the web page:
+
+- There is an index with letters of the alphabet and surnames
+- The first page of data being at [this url](http://runeberg.org/vemarvem/sthlm45/0017.html)
+- The subsequent page of data is just one index along, /0018.html. Nice!
+
+Each data page contains:
+
+- Image of the scan. 
+
+    Two columns of biographies, name is bolded, followed by description of the person.
+    
+- OCR of the scan
+
+    This is pretty good, a few random punctuation marks here and there.
+    It gets the columns sequentually, rather than reading across the entire page which is important
+    NB, segmenting the entries will be a challenge.
+
+- Looking at the page source we see that the OCR begins with a <p> tag:
+
+    <p>This page has <b>never</b> been proofread. / Denna sida har <b>aldrig</b> korrekturlästs.<br><br><!-- mode=normal -->Aae, Valdemar, e. o. försäkringsråd,
+
+- Followed by breaks and raw text.
+
+Let's give it a gander
+
+```{r}
+library(rvest)
+
+url <- "http://runeberg.org/vemarvem/sthlm45/0017.html"
+
+html <- read_html(url)
+
+df <- html %>% 
+  html_nodes("p+ p") %>% 
+  html_text() %>% 
+  as_tibble() %>% 
+  separate_rows(value, sep = "\\\n") %>% 
+  filter(value != "") %>% 
+  mutate(value = str_squish(value))
+```
+
+```{r}
+df %>% 
+  mutate(name = str_extract(value, "^(?:\\p{Lu}+\\s*,\\s*)*\\p{L}+\\s*,\\s*\\p{L}+\\s*(?:\\p{L}+\\s*)*")) %>% view()
+```
+
+
+### Choose a web scraping tool or library
+
+bs4 in python
+
+```{python}
+#| eval: false
+
+import requests
+from bs4 import BeautifulSoup
+import re
+
+def extract_biographies(url):
+    response = requests.get(url)
+    response.raise_for_status()
+
+    soup = BeautifulSoup(response.text, 'html.parser')
+
+    # Find the <p> tag containing the biographical data
+    p_tag = soup.find('p')
+
+    # Split the text inside the <p> tag into lines
+    lines = p_tag.get_text(separator='\n').split('\n')
+
+    biographies = []
+    current_name = None
+    current_biography = []
+
+    # Define a simple regex pattern to identify names
+    name_pattern = re.compile(r'^[A-Za-z]+, [A-Za-z]+')
+
+    for line in lines:
+        # Check if the current line matches the name pattern
+        if name_pattern.match(line):
+            # If we have a current name and biography, add it to the biographies list
+            if current_name and current_biography:
+                biographies.append((current_name, ' '.join(current_biography)))
+
+            # Set the current name to the name found in the line
+            current_name = line.strip()
+            current_biography = []
+        else:
+            # If it's not a name, add the line to the current biography
+            current_biography.append(line.strip())
+
+    # Add the last name and biography to the biographies list
+    if current_name and current_biography:
+        biographies.append((current_name, ' '.join(current_biography)))
+
+    return biographies
+
+
+# Example usage:
+url = 'http://runeberg.org/vemarvem/sthlm45/0017.html'
+biographies = extract_biographies(url)
+
+for name, biography in biographies:
+    print(f'{name}: {biography}')
+
+
+```
+
+
+
+```{python}
+#| eval: false
+
+import openai
+import pandas as pd
+
+# set up OpenAI API key
+openai.api_key = "<YOUR_API_KEY>"
+
+# define function to extract names and biographies from text
+def extract_names_and_biographies(text):
+    # initialize pandas dataframe
+    df = pd.DataFrame(columns=["Name", "Biography"])
+    # split text into lines
+    lines = text.split("\n")
+    # loop over lines
+    for i in range(len(lines)):
+        # use OpenAI GPT to extract names and biographies
+        response = openai.Completion.create(
+          engine="text-davinci-002",
+          prompt=lines[i],
+          max_tokens=60,
+          n=1,
+          stop=None,
+          temperature=0.5,
+        )
+        name = response.choices[0].text.strip()
+        biography = response.choices[0].text.strip()
+        # add name and biography to dataframe
+        df.loc[i] = [name, biography]
+    return df
+
+# example usage
+text = "Aae, Valdemar, e. o. försäkringsråd,\nSthlm, f. 20/1/86 i Hjortsberga, Blek.\n1., av skogsförv. Erhard A. o. Thora\nHviid. Jur. kand. i Lund 10, not. i\nförsäkr:råd. 30, t. f. led. 31, sekr. 36,\n«e. o. försäkr :råd 36. RNO 40, RVO 33.\nAastrup, Philipp Josef, hovrättsråd,\nLidingö, f. 29/1/81 av pastor Philipp\nA. o. Agnes Schutz. G. 18 m. Eva\nErikson. Jur. utr. kand. Upps. 06, led.\n;av Sv :es adv :samf. 09, t. f. hovr rfisk.\ni Svea hovr. 14, assess. 16, t. f.\nrev:-sekr. 18, hovr:råd i Svea hovr. 22,\n•div :ordf. fr. 39, t.f. byråch, f. lagärend.\ni socrdep. 23-24, led. o. sekr. i 1919\nårs lappkomm. 19-23, kyrkofullm. i\nLidingö. KNO 37.\nAbard, Gustaf Sixten, direktör,\nSthlm, f. 6/8/90 i Örebro. Genomg.\n•Örebro prakt. Språk- o. Hand:sk.,\nmästarekurs f. boktryckare, olika\nan-ställn. i boktrycks- o. tidn :branschen\n03-20, ekon.-chef i Nya Norrl. 21-23,\nverkst, dir. i Sydöstra Sv res Dagbl.\n23-30, annonsen, i Social-Demokr.\nSO-SO, verkst, dir. i Morgontidn.\n"
+
+```
+
+```{r}
+
+```
+
+
+## Process for making pipeline
+
+Look at the following OCR text, please correct any errors that you see and remove the line breaks. It is a biography about a Swedish man:
+
+
+Now please translate the text to English
+
+Great, now make a JSON object with the text above:
+* Keep this translation as one part of the JSON file.
+* Extract from the biography the educational information; what the individual studied, where they studied, and the years when they studied, and keep this as one part of the JSON file.
+* Extract from the biography all of the occupational information; what the individual worked as, where they worked, and the years when they worked there and keep this as one part of the JSON file.
+
+If any information is missing, leave the entry as null.
+
+
