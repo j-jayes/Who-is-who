@@ -44,3 +44,13 @@ This project examines the extent to which individuals working in electricity-rel
 | Regression Analysis   |        |        |        |        | ###### | ###### | ###### |        |        |         |         |         |         |         |
 | Writing the Paper     |        |        |        |        |        |        | ###### | ###### | ###### | ####### | ####### |         |         |         |
 
+## Questions
+
+### How to do occupational classification correctly??
+
+Benchmark on a bunch that we know - from datasets that are hand labelled.
+
+Ask it to suggest many and then take the average? Ask it to do it multiple times and then take the most frequent?
+
+
+

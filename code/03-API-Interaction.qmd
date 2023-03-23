@@ -1,0 +1,102 @@
+---
+title: "API Interaction"
+format: html
+---
+
+## Purpose
+
+Interact with the OPENAI API.
+
+Step 1: translate the text.
+
+
+```{r}
+# Adapted from https://github.com/rasmusab/officialcocktails/blob/eb8f48ba2cd5c07f30bcd43262e967f4525a76de/01_regenerate-assets.R
+
+library(tidyverse)
+library(yaml)
+library(jsonlite)
+library(httr)
+library(glue)
+
+openai_api_key <- config::get("key")
+
+```
+
+
+```{r}
+# Create the biographies_list if it doesn't already exist
+# biographies <- read_yaml(here::here("data", "test_3.yaml"))
+
+if(!file.exists(here::here("data", "biographies_list.yaml"))) {
+  placeholder_biographies <- map(json, \(biography) {
+
+    c(biography, list(
+      translation = NULL
+      # schema = NULL,
+      # education = NULL,
+      # occupation = NULL
+      ))
+  }) 
+  write_yaml(placeholder_biographies, here::here("data", "biographies_list.yaml"))  
+}
+
+biographies_list <- read_yaml(here::here("data", "biographies_list.yaml"))
+```
+
+
+```{r}
+# Calls the ChatGPT API with the given prompt and returns the answer
+generate_text <- function(prompt) {
+  response <- RETRY(
+    "POST",
+    times = 3,
+    url = "https://api.openai.com/v1/chat/completions", 
+    add_headers(Authorization = paste("Bearer", openai_api_key)),
+    content_type_json(),
+    encode = "json",
+    body = list(
+      model = "gpt-3.5-turbo",
+      messages = list(list(
+        role = "user", 
+        content = prompt
+      ))
+    ),
+    timeout(seconds = 30)
+  )
+  str_trim(content(response)$choices[[1]]$message$content)
+}
+
+
+# A function that takes a prompt template and generates another function which 
+# takes a biography, as from biographies_list, completes the template and returns
+# a ChatGPT answer.
+gen_text_func <- function(...) {
+  function(biography) {
+    prompt <- glue(..., .envir = biography, .sep = "\n")
+    cat(glue("Generating text for: {prompt}"), "\n")
+    generate_text(prompt)
+  }
+}
+
+# A list of generator functions that can generate text/images for the corresponding
+# field, if missing.
+generators <- list( 
+  translation = gen_text_func("Translate the following historical biography into English. It includes many Swedish abbreviations: \n {biography}")
+)
+
+# Looping through the cocktail description and filling in all the blanks.
+# As both the text and image generating APIs errors out now and then
+# this loop saves every single response directly to cocktail-descriptions.yaml
+for(biography_i in seq_along(biographies_list)) {
+  biography <- biographies_list[[biography_i]]
+
+  items_to_fill <- biography |>  keep(is.null) |> names()
+  for(item in items_to_fill) {
+    biography[[item]] <- generators[[item]](biography)
+    biographies_list[[biography_i]] <- biography
+    write_yaml(biographies_list, "biographies_list.yaml") 
+  }
+}
+```
+

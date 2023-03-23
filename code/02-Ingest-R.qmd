@@ -1,0 +1,86 @@
+---
+title: "02-Ingest-R"
+format: html
+---
+
+## Purpose
+
+## Prompt
+
+### Planning
+
+3 parts:
+- translation
+- biographical information
+- classification for our question (education, occupation)
+
+#### Translation
+
+Translate the following historical biography into English. It includes many Swedish abbreviations:
+
+- Stored as string
+
+### Biographical information
+
+Convert this biography into schema.org/Person format.
+* Return the output in JSON
+* Include information on birthDate, birthPlace, education, occupation, family, parents. Return any other notable information in a field called "description" where possible.
+* Include startDate and endDate wherever possible.
+
+- Stored as JSON
+
+### Classification for our question
+
+Two further parts.
+
+Education: Based on the information above, estimate the number of years of education that the individual received. Return your answer in JSON format with two fields, education_years (integer), education_justification (text).
+
+Occupation: Based on the information above, Suggest 3 ISCO-08 occupational classifications and 3 O*NET occupational classifications. Return your answer in JSON format.
+
+## Convert excel to YAML
+
+```{r}
+text <- readxl::read_excel(here::here("data", "test_50.xlsx"))
+
+text <- text %>% 
+  mutate(biography = str_squish(biography),
+         id = row_number())
+```
+
+
+```{r}
+library(yaml)
+
+yaml <- text %>% as.yaml()
+
+yaml %>% 
+  write_yaml(here::here("data", "test_50.yaml"))
+```
+
+Test with 3
+
+```{r}
+yaml <- text %>% head(3) %>% as.yaml()
+
+yaml %>% 
+  write_yaml(here::here("data", "test_3.yaml"))
+```
+
+## Try with JSON instead
+
+```{r}
+text <- readxl::read_excel(here::here("data", "test_50.xlsx"))
+
+text <- text %>% 
+  mutate(biography = str_squish(biography),
+         id = row_number())
+
+json <- text %>%
+  head(3) %>% 
+  toJSON(pretty = TRUE)
+
+json %>% 
+  write_json(here::here("data", "test_3.json"))
+```
+
+

@@ -1,0 +1,33 @@
+---
+title: "API Interaction Python"
+format: html
+---
+
+## Purpose
+
+Just get the python API working
+
+```{python}
+import os
+import openai
+openai.api_key = os.getenv("OPENAI_API_KEY")
+
+import yaml
+
+with open("config.yml", "r") as ymlfile:
+    cfg = yaml.load(ymlfile)
+
+for section in cfg:
+    print(section)
+print(cfg["default"])
+
+completion = openai.ChatCompletion.create(
+  model="gpt-3.5-turbo",
+  messages=[
+    {"role": "user", "content": "Tell the world about the ChatGPT API in the style of a pirate."}
+  ]
+)
+
+print(completion.choices[0].message.content)
+```
+

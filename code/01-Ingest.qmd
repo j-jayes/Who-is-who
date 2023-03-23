@@ -167,43 +167,6 @@ for name, biography in biographies:
 
 
 
-```{python}
-#| eval: false
-
-import openai
-import pandas as pd
-
-# set up OpenAI API key
-openai.api_key = "<YOUR_API_KEY>"
-
-# define function to extract names and biographies from text
-def extract_names_and_biographies(text):
-    # initialize pandas dataframe
-    df = pd.DataFrame(columns=["Name", "Biography"])
-    # split text into lines
-    lines = text.split("\n")
-    # loop over lines
-    for i in range(len(lines)):
-        # use OpenAI GPT to extract names and biographies
-        response = openai.Completion.create(
-          engine="text-davinci-002",
-          prompt=lines[i],
-          max_tokens=60,
-          n=1,
-          stop=None,
-          temperature=0.5,
-        )
-        name = response.choices[0].text.strip()
-        biography = response.choices[0].text.strip()
-        # add name and biography to dataframe
-        df.loc[i] = [name, biography]
-    return df
-
-# example usage
-text = "Aae, Valdemar, e. o. försäkringsråd,\nSthlm, f. 20/1/86 i Hjortsberga, Blek.\n1., av skogsförv. Erhard A. o. Thora\nHviid. Jur. kand. i Lund 10, not. i\nförsäkr:råd. 30, t. f. led. 31, sekr. 36,\n«e. o. försäkr :råd 36. RNO 40, RVO 33.\nAastrup, Philipp Josef, hovrättsråd,\nLidingö, f. 29/1/81 av pastor Philipp\nA. o. Agnes Schutz. G. 18 m. Eva\nErikson. Jur. utr. kand. Upps. 06, led.\n;av Sv :es adv :samf. 09, t. f. hovr rfisk.\ni Svea hovr. 14, assess. 16, t. f.\nrev:-sekr. 18, hovr:råd i Svea hovr. 22,\n•div :ordf. fr. 39, t.f. byråch, f. lagärend.\ni socrdep. 23-24, led. o. sekr. i 1919\nårs lappkomm. 19-23, kyrkofullm. i\nLidingö. KNO 37.\nAbard, Gustaf Sixten, direktör,\nSthlm, f. 6/8/90 i Örebro. Genomg.\n•Örebro prakt. Språk- o. Hand:sk.,\nmästarekurs f. boktryckare, olika\nan-ställn. i boktrycks- o. tidn :branschen\n03-20, ekon.-chef i Nya Norrl. 21-23,\nverkst, dir. i Sydöstra Sv res Dagbl.\n23-30, annonsen, i Social-Demokr.\nSO-SO, verkst, dir. i Morgontidn.\n"
-
-```
-
 ```{r}
 
 ```
