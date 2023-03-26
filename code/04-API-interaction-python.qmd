@@ -7,27 +7,233 @@ format: html
 
 Just get the python API working
 
+### Setup
+
 ```{python}
 import os
 import openai
-openai.api_key = os.getenv("OPENAI_API_KEY")
-
+import pandas as pd
 import yaml
+import json
 
-with open("config.yml", "r") as ymlfile:
-    cfg = yaml.load(ymlfile)
+with open("config.yml", "r") as f:
+    config = yaml.safe_load(f)
 
-for section in cfg:
-    print(section)
-print(cfg["default"])
+openai.api_key = config["default"]["key"]
+
+```
+
+### Translation
+
+```{python}
+# biography = "Lundh, Asta Evilla, med. lic., leg. tandläkare, Sthlm, f. i Bunkeflo, Malmöh. l., av lär. Hans L. o. Hanna L. G. 31 m. Waldemar Samuelsson. Barn : Kjell f. 32. Stud:ex. i Malmö 13, med. kand. 19 i Lund, med. lic. 16 i Sthlm, tandlrex. i Sthlm 23. Prakt, läkare o. tandl. i Sthlm sed. 26, tandläkare v. Sthlms folksk. sed. 27."
+# 
+# translate_prompt = "Translate the following historical biography into English. It includes many Swedish abbreviations:"
+# 
+# prompt = f"{translate_prompt} \n {biography}"
+# 
+# completion = openai.ChatCompletion.create(
+#   model="gpt-3.5-turbo",
+#   messages=[
+#     {"role": "user", "content": prompt}
+#   ]
+# )
+# 
+# print(completion.choices[0].message.content)
+# 
+# # remove spaces with strip
+# biography_en = completion.choices[0].message.content.strip()
+```
+
+
+```{python}
+biography = "Lundh, Asta Evilla, med. lic., leg. tandläkare, Sthlm, f. i Bunkeflo, Malmöh. l., av lär. Hans L. o. Hanna L. G. 31 m. Waldemar Samuelsson. Barn : Kjell f. 32. Stud:ex. i Malmö 13, med. kand. 19 i Lund, med. lic. 16 i Sthlm, tandlrex. i Sthlm 23. Prakt, läkare o. tandl. i Sthlm sed. 26, tandläkare v. Sthlms folksk. sed. 27."
+
+translate_prompt = "Translate the following historical biography into English. It includes many Swedish abbreviations:"
+```
+
+
+```{python}
+def translate_text(text):
+  print("Going...\n")
+  translation = openai.ChatCompletion.create(
+    model="gpt-3.5-turbo",
+    messages=[
+      {"role": "user", "content": f"{translate_prompt}\n\n{text}\n"}
+    ]
+  ).choices[0].message.content.strip()
+  return translation
+
+
+```
+
+
+```{python}
+biographies = pd.read_excel("data/test_50.xlsx", nrows = 2)
+biographies['biography'] = biographies['biography'].replace('\n', ' ', regex=True)
+```
+
+```{python}
+biographies["biography_translated"] = biographies["biography"].apply(translate_text)
+
+biographies.to_excel("biographies_translated.xlsx", index=False)
+
+
+```
+
+
+### Augmentation
+
+schema.org/Person
+
+```{python}
+schema_prompt = "Convert this biography into schema.org/Person format.\n* Include information on birthDate, birthPlace, education, occupation, family, parents.\nReturn any other notable information in a field called 'description' where possible.\n* Include startDate and endDate wherever possible.\n* Only provide a  RFC8259 compliant JSON response"
+
+
+prompt = f"{schema_prompt} \n\n {biography_en}"
 
 completion = openai.ChatCompletion.create(
   model="gpt-3.5-turbo",
   messages=[
-    {"role": "user", "content": "Tell the world about the ChatGPT API in the style of a pirate."}
+    {"role": "system", "content": "You are an expert on Swedish family history."},
+
+    {"role": "user", "content": prompt}
   ]
 )
 
 print(completion.choices[0].message.content)
+
 ```
+
+```{python}
+schema_prompt = "Convert this biography into schema.org/Person format.\n* Return the output in a JSON codeblock\n* Include information on birthDate, birthPlace, education, occupation, family, parents.\nReturn any other notable information in a field called 'description' where possible.\n* Include startDate and endDate wherever possible."
+
+
+def augment_schema(text):
+  print(f"Augmenting {text[:100]}\n")
+  augmnetation = openai.ChatCompletion.create(
+    model="gpt-3.5-turbo",
+    messages=[
+      {"role": "user", "content": f"{schema_prompt}\n\n{text}\n"}
+    ]
+  ).choices[0].message.content
+  return augmnetation
+
+
+
+```
+
+
+```{python}
+biographies["biography_augmented"] = biographies["biography_translated"].apply(augment_schema)
+
+biographies.to_json("data/biographies.json", orient='records')
+
+print(biographies["biography_augmented"][1])
+
+```
+
+
+```{python}
+biographies['biography_augmented'] = biographies['biography_augmented'].replace('```json', ' ', regex=True)
+
+biographies['biography_augmented'] = biographies['biography_augmented'].replace('```', ' ', regex=True)
+
+biographies['biography_augmented_no_spaces'] = biographies['biography_augmented'].replace('\n', '', regex=True)
+
+
+biographies['biography_augmented_json'] = biographies['biography_augmented_no_spaces'].apply(lambda x: pd.read_json(x))
+
+```
+
+
+Occupation
+
+```{python}
+occupation_prompt = "Suggest 3 ISCO-08 occupational classifications and 3 O*NET occupational classifications for the indivial descrbied. Return your answer in a JSON codeblock"
+
+
+prompt = f"{occupation_prompt} \n\n {biography_en}"
+
+completion = openai.ChatCompletion.create(
+  model="gpt-3.5-turbo",
+  messages=[
+    {"role": "user", "content": prompt}
+  ]
+)
+
+print(completion.choices[0].message.content)
+
+```
+
+```{python}
+occupation_prompt = "Suggest 3 ISCO-08 occupational classifications and 3 O*NET occupational classifications for the indivial descrbied. Return your answer in a JSON codeblock"
+
+def augment_occupation(text):
+  print(f"Augmenting {text[:100]}\n")
+  augmnetation = openai.ChatCompletion.create(
+    model="gpt-3.5-turbo",
+    messages=[
+      {"role": "user", "content": f"{occupation_prompt}\n\n{text}\n"}
+    ]
+  ).choices[0].message.content
+  return augmnetation
+
+
+```
+
+
+```{python}
+biographies["occupation_augmented"] = biographies["biography_translated"].apply(augment_occupation)
+
+biographies.to_excel("biographies_translated.xlsx", index=False)
+
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+## New augmenter
+
+
+```{python}
+schema_prompt = "Convert this biography into schema.org/Person format.\n* Include information on birthDate, birthPlace, education, occupation, family, parents where possible.\n * Return any other notable information in a field called 'description' where possible.\n* Include startDate and endDate wherever possible.\n* Only provide a  RFC8259 compliant JSON response"
+
+def augment_biography(text):
+  print(f"Augmenting {text[:100]}\n")
+  augmnetation = openai.ChatCompletion.create(
+    model="gpt-3.5-turbo",
+    messages=[
+      {"role": "system", "content": "You are an expert on Swedish family history."},
+
+      {"role": "user", "content": f"{schema_prompt}\n\n{text}\n"}
+    ]
+  ).choices[0].message.content
+  return augmnetation
+
+
+```
+
+
+```{python}
+biography_en = "Lundahl, Karl Johan Theodor J:son, Director, Stockholm, born on November 8, 1877 in Vetlanda to Preacher Samuel Johansson and Amanda J. G. Married to Ruth Ekman for 19 years. After completing his studies at a secondary school, he graduated with distinction from Gothenburg's School of Commerce in 1894. He is a co-owner of John Bernström & Co. in Stockholm since 1908 and has been a director at A-B Ahlsell & Bernström in Stockholm since 1922. He was awarded the Royal Order of Vasa."
+
+
+test = augment_biography(biography_en)
+
+json.loads(test)
+
+```
+
+
 

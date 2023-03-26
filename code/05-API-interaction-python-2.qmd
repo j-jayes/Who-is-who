@@ -1,0 +1,103 @@
+---
+title: "Python interaction 2"
+format: html
+---
+
+## Purpose
+
+Translate and Augment biograpies
+
+### Setup
+
+```{python}
+import os
+import openai
+import pandas as pd
+import yaml
+import json
+
+with open("config.yml", "r") as f:
+    config = yaml.safe_load(f)
+
+openai.api_key = config["default"]["key"]
+```
+
+### Ingest
+
+```{python}
+biographies = pd.read_excel("data/test_50.xlsx", nrows = 5)
+biographies['biography'] = biographies['biography'].replace('\n', ' ', regex=True)
+```
+
+### Translate
+
+```{python}
+translate_prompt = "Translate the following historical biography into English. It includes many Swedish abbreviations:"
+
+def translate_biography(text):
+    print(f"Translating {text[:100]}\n")
+    translation = None
+
+    try:
+        response = openai.ChatCompletion.create(
+            model="gpt-3.5-turbo",
+            messages=[
+                {"role": "system", "content": "You are an expert on Swedish family history."},
+                {"role": "user", "content": f"{translate_prompt}\n\n{text}\n"}
+            ]
+        )
+    except openai.OpenAIError as e:
+        print(f"Error while creating translation: {e}")
+    else:
+        if response and response.choices and response.choices[0].message:
+            translation = response.choices[0].message.content
+        else:
+            print("Error: No translation was returned.")
+
+    return translation
+
+
+
+```
+
+```{python}
+biographies["biography_translated"] = biographies["biography"].apply(translate_biography)
+
+```
+
+
+### Augment
+
+```{python}
+schema_prompt = """Convert this biography into schema.org/Person format.
+* Include information on birthDate, birthPlace, education, occupation, family, parents where possible.
+* Return any other notable information in a field called 'description' where possible.
+* Include startDate and endDate wherever possible.
+* Only provide a  RFC8259 compliant JSON response"""
+
+def augment_biography(text):
+    print(f"Augmenting {text[:100]}\n")
+    try:
+        augmentation = openai.ChatCompletion.create(
+            model="gpt-3.5-turbo",
+            messages=[
+                {"role": "system", "content": "You are an expert on Swedish family history."},
+                {"role": "user", "content": f"{schema_prompt}\n\n{text}\n"}
+            ]
+        ).choices[0].message.content
+        
+        # Parse the response to a JSON object
+        json_obj = json.loads(augmentation)
+        
+        return json_obj
+    except Exception as e:
+        print(f"Error augmenting biography: {e}")
+        return None
+
+# Assuming your DataFrame is named `df`
+biographies['biography_en_augmented'] = biographies['biography_translated'].apply(augment_biography)
+
+
+pd.to_pickle(biographies, "data/biographies_augmented.pkl")
+```
+
