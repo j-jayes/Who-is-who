@@ -25,7 +25,7 @@ openai.api_key = config["default"]["key"]
 ### Ingest
 
 ```{python}
-biographies = pd.read_excel("data/test_50.xlsx", nrows = 5)
+biographies = pd.read_excel("data/test_50.xlsx")
 biographies['biography'] = biographies['biography'].replace('\n', ' ', regex=True)
 ```
 
@@ -63,6 +63,8 @@ def translate_biography(text):
 ```{python}
 biographies["biography_translated"] = biographies["biography"].apply(translate_biography)
 
+pd.to_pickle(biographies, "data/biographies_translated.pkl")
+
 ```
 
 
@@ -94,10 +96,131 @@ def augment_biography(text):
         print(f"Error augmenting biography: {e}")
         return None
 
-# Assuming your DataFrame is named `df`
-biographies['biography_en_augmented'] = biographies['biography_translated'].apply(augment_biography)
 
+```
+
+Apply the function
+
+```{python}
+# Assuming your DataFrame is named biographies
+biographies['biography_en_augmented'] = None  # Create a new column with None values
+
+# Iterate through the DataFrame rows using iterrows()
+for index, row in biographies.iterrows():
+    # Call the augment_biography function with the biography_translated value
+    augmented_biography = augment_biography(row['biography_translated'])
+    
+    # Update the biography_en_augmented value in the DataFrame
+    biographies.at[index, 'biography_en_augmented'] = augmented_biography
+    
 
 pd.to_pickle(biographies, "data/biographies_augmented.pkl")
+
+```
+
+### Augment education
+
+```{python}
+education_prompt = """Read this biography. 
+* Classify the highest level of education the individual recieved and the institution they recieved it from
+* Return it in JSON where there are two keys: highest_educ_level and educ_institution
+* Only provide a  RFC8259 compliant JSON response"""
+
+def augment_education(text):
+    print(f"Augmenting education for {text[:100]}\n")
+    try:
+        augmentation = openai.ChatCompletion.create(
+            model="gpt-3.5-turbo",
+            messages=[
+                {"role": "system", "content": "You are an expert on Swedish family history."},
+                {"role": "user", "content": f"{education_prompt}\n\n{text}\n"}
+            ]
+        ).choices[0].message.content
+        
+        # Parse the response to a JSON object
+        json_obj = json.loads(augmentation)
+        
+        return json_obj
+    except Exception as e:
+        print(f"Error augmenting education: {e}")
+        return None
+      
+
+```
+
+Apply the function
+
+```{python}
+# Assuming your DataFrame is named biographies
+biographies['education'] = None  # Create a new column with None values
+
+# Iterate through the DataFrame rows using iterrows()
+for index, row in biographies.iterrows():
+    # Call the augment_education function with the biography_translated value
+    augmented_education = augment_education(row['biography_translated'])
+    
+    # Update the education value in the DataFrame
+    biographies.at[index, 'education'] = augmented_education
+    
+pd.to_pickle(biographies, "data/biographies_with_educ_augmented.pkl")
+
+```
+
+
+### Augment occupation
+
+```{python}
+occupation_prompt = """Based on the biography
+* Suggest 3 ISCO-08 occupational classifications with a key for code and and a key for description
+* Suggest 3 O*NET occupational classifications with a key for code and and a key for description
+* Return your answer in JSON format
+* Only provide a  RFC8259 compliant JSON response"""
+
+def augment(text, prompt):
+    print(f"Augmenting {prompt.split()[0].lower()} for {text[:100]}\n")
+    try:
+        augmentation = openai.ChatCompletion.create(
+            model="gpt-3.5-turbo",
+            messages=[
+                {"role": "system", "content": "You are an expert on Swedish family history."},
+                {"role": "user", "content": f"{prompt}\n\n{text}\n"}
+            ]
+        ).choices[0].message.content
+        
+        # Parse the response to a JSON object
+        json_obj = json.loads(augmentation)
+        
+        return json_obj
+    except Exception as e:
+        print(f"Error augmenting {prompt.split()[0].lower()}: {e}")
+        return None
+
+
+```
+
+Apply the function
+
+```{python}
+# Assuming your DataFrame is named biographies
+biographies['occupation'] = None  # Create a new column with None values
+
+# Iterate through the DataFrame rows using iterrows()
+for index, row in biographies.iterrows():
+    # Call the augment_education function with the biography_translated value
+    augmented_occupation = augment(row['biography_translated'], occupation_prompt)
+    
+    # Update the occupation value in the DataFrame
+    biographies.at[index, 'occupation'] = augmented_occupation
+    print(f"Occupation for row {index}: {augmented_occupation}")
+
+pd.to_pickle(biographies, "data/biographies_with_educ_and_occupation_augmented.pkl")
+
+```
+
+## Export data
+
+```{python}
+biographies.to_excel("data/50_test_complete.xlsx")
+
 ```
 

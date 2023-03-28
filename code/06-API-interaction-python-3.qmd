@@ -1,0 +1,32 @@
+---
+title: "06-API interaction"
+format: html
+---
+
+
+```{python}
+def augment(text, prompt):
+    print(f"Augmenting {prompt.split()[0].lower()} for {text[:100]}\n")
+    try:
+        augmentation = openai.ChatCompletion.create(
+            model="gpt-3.5-turbo",
+            messages=[
+                {"role": "system", "content": "You are an expert on Swedish family history."},
+                {"role": "user", "content": f"{prompt}\n\n{text}\n"}
+            ]
+        ).choices[0].message.content
+        
+        # Parse the response to a JSON object
+        json_obj = json.loads(augmentation)
+        
+        return json_obj
+    except Exception as e:
+        print(f"Error augmenting {prompt.split()[0].lower()}: {e}")
+        return None
+
+# Then, you can call the function with the appropriate prompt
+biography_augmented = augment(text, schema_prompt)
+education_augmented = augment(text, education_prompt)
+
+```
+
