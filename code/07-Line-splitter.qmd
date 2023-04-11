@@ -1,0 +1,59 @@
+---
+title: "Splitting the text"
+format: html
+---
+
+## Purpose
+
+I need to split the text up that I scrape. 
+
+### Prompt
+
+Hello GPT-4. I am trying to solve a data science problem, can you give me a hand? I've heard that you're an expert strategic thinker and coder.
+
+I have scraped a series of biographies of individuals from a website. The problem I have is that the biographies are not broken up by any identifiable token. The data I have are lines of text and I want to group all of the lines of text that belong to the same biography together. There are multiple biographies per web page, between 4 and 8. The biographies are in alphabetical order. For instance, I have a biography for "Abrahamson, Ivar Magnus" followed by one for "Abramson, Ernst Leopold". I was thinking of trying to train an LSTM to identify breaks in my series of text just before a new name. Do you think this is the best way of doing this?
+
+## Response
+
+It suggests using regex. Probably good enough.
+
+```{python}
+import re
+
+def split_biographies(lines):
+    biographies = []
+    current_bio = []
+
+    # Regex pattern to match a name in the format "Lastname, Firstname(s) (additional information)"
+    name_pattern = re.compile(r'^[A-Za-z]+(?:-[A-Za-z]+)?,\s[A-Za-z]+(?:\s[A-Za-z]+)*(?:\s[A-Za-z.]+)*,')
+
+    for line in lines:
+        if name_pattern.match(line):
+            if current_bio:  # Save the previous biography if it's not empty
+                biographies.append(current_bio)
+                current_bio = []
+        current_bio.append(line)
+
+    # Save the last biography
+    if current_bio:
+        biographies.append(current_bio)
+
+    return biographies
+
+# Example usage
+lines = [
+    "Abrahamson, Ivar Magnus, prakt,",
+    "...",
+    "Acking, Carl-Axel, arkitekt, Sthlm,",
+    "...",
+]
+
+biographies = split_biographies(lines)
+
+```
+
+
+```{python}
+
+```
+
