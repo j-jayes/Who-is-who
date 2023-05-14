@@ -1,0 +1,3317 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_32afb712536328978ac4d31266f9583d {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_32afb712536328978ac4d31266f9583d" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_32afb712536328978ac4d31266f9583d = L.map(
+                "map_32afb712536328978ac4d31266f9583d",
+                {
+                    center: [62.198337, 17.551337],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 5,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_71cf6a9ed2870f5c31a23285c092f62e = L.tileLayer(
+                "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {"attribution": "Data by \u0026copy; \u003ca target=\"_blank\" href=\"http://openstreetmap.org\"\u003eOpenStreetMap\u003c/a\u003e, under \u003ca target=\"_blank\" href=\"http://www.openstreetmap.org/copyright\"\u003eODbL\u003c/a\u003e.", "detectRetina": false, "maxNativeZoom": 18, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            ).addTo(map_32afb712536328978ac4d31266f9583d);
+        
+    
+            var marker_84eb0ab4709c7dd10526c4e56d87f56e = L.marker(
+                [56.0348739, 12.6130073],
+                {}
+            ).addTo(map_32afb712536328978ac4d31266f9583d);
+        
+    
+        var popup_4f08049e568f8564a3bc1b58bcf53a39 = L.popup({"maxWidth": 250});
+
+        
+            
+                var html_031a474c1053a9921d7112dbb63c823e = $(`<div id="html_031a474c1053a9921d7112dbb63c823e" style="width: 100.0%; height: 100.0%;"><strong>Name:</strong> Wilhelm Duke Aagesen<br><strong>Job Title:</strong> Director<br><strong>Education:</strong> </div>`)[0];
+                popup_4f08049e568f8564a3bc1b58bcf53a39.setContent(html_031a474c1053a9921d7112dbb63c823e);
+            
+        
+
+        marker_84eb0ab4709c7dd10526c4e56d87f56e.bindPopup(popup_4f08049e568f8564a3bc1b58bcf53a39)
+        ;
+
+        
+    
+    
+            var marker_264b34a312cfd583a4f3d13d95700756 = L.marker(
+                [57.5406195, 14.141226],
+                {}
+            ).addTo(map_32afb712536328978ac4d31266f9583d);
+        
+    
+        var popup_32cb365c3d5eb73a45cf391cc4f6e12b = L.popup({"maxWidth": 250});
+
+        
+            
+                var html_a6ad7cf27aeb9236ae5f9c8b2ef29cff = $(`<div id="html_a6ad7cf27aeb9236ae5f9c8b2ef29cff" style="width: 100.0%; height: 100.0%;"><strong>Name:</strong> Eric Allring<br><strong>Job Title:</strong> Manager<br><strong>Education:</strong> </div>`)[0];
+                popup_32cb365c3d5eb73a45cf391cc4f6e12b.setContent(html_a6ad7cf27aeb9236ae5f9c8b2ef29cff);
+            
+        
+
+        marker_264b34a312cfd583a4f3d13d95700756.bindPopup(popup_32cb365c3d5eb73a45cf391cc4f6e12b)
+        ;
+
+        
+    
+    
+            var marker_33af93266cffa49c2ca2c7ad996ffee1 = L.marker(
+                [59.3113619, 14.11176],
+                {}
+            ).addTo(map_32afb712536328978ac4d31266f9583d);
+        
+    
+        var popup_53eea8f2d2ceed4676668440e2a75a7a = L.popup({"maxWidth": 250});
+
+        
+            
+                var html_86e2af16732af2607295892c72ad8904 = $(`<div id="html_86e2af16732af2607295892c72ad8904" style="width: 100.0%; height: 100.0%;"><strong>Name:</strong> Rudolf Oskar Stig Holger Allsing<br><strong>Job Title:</strong> other<br><strong>Education:</strong> </div>`)[0];
+                popup_53eea8f2d2ceed4676668440e2a75a7a.setContent(html_86e2af16732af2607295892c72ad8904);
+            
+        
+
+        marker_33af93266cffa49c2ca2c7ad996ffee1.bindPopup(popup_53eea8f2d2ceed4676668440e2a75a7a)
+        ;
+
+        
+    
+    
+            var marker_69a14a10edb4d9a896b286da675e24f7 = L.marker(
+                [57.4, 15.8],
+                {}
+            ).addTo(map_32afb712536328978ac4d31266f9583d);
+        
+    
+        var popup_68fcc742b8f0ada121e0289481983407 = L.popup({"maxWidth": 250});
+
+        
+            
+                var html_8fea0859f6e20d80d89ac5c2f8dd56dc = $(`<div id="html_8fea0859f6e20d80d89ac5c2f8dd56dc" style="width: 100.0%; height: 100.0%;"><strong>Name:</strong> Erik Gustav Hjalmar Alm<br><strong>Job Title:</strong> Manager<br><strong>Education:</strong> </div>`)[0];
+                popup_68fcc742b8f0ada121e0289481983407.setContent(html_8fea0859f6e20d80d89ac5c2f8dd56dc);
+            
+        
+
+        marker_69a14a10edb4d9a896b286da675e24f7.bindPopup(popup_68fcc742b8f0ada121e0289481983407)
+        ;
+
+        
+    
+    
+            var marker_6eed47784c1893143fbf104457cd0241 = L.marker(
+                [56.1621073, 15.5866422],
+                {}
+            ).addTo(map_32afb712536328978ac4d31266f9583d);
+        
+    
+        var popup_48f61a1528347bca58a52b6d689ce806 = L.popup({"maxWidth": 250});
+
+        
+            
+                var html_76598d8a6791b54c4280eaddcd1bd964 = $(`<div id="html_76598d8a6791b54c4280eaddcd1bd964" style="width: 100.0%; height: 100.0%;"><strong>Name:</strong> Folke Alm<br><strong>Job Title:</strong> other<br><strong>Education:</strong> </div>`)[0];
+                popup_48f61a1528347bca58a52b6d689ce806.setContent(html_76598d8a6791b54c4280eaddcd1bd964);
+            
+        
+
+        marker_6eed47784c1893143fbf104457cd0241.bindPopup(popup_48f61a1528347bca58a52b6d689ce806)
+        ;
+
+        
+    
+    
+            var marker_043eb7d672edfedabbc9ef50cda71738 = L.marker(
+                [57.025884899999994, 14.890187010644057],
+                {}
+            ).addTo(map_32afb712536328978ac4d31266f9583d);
+        
+    
+        var popup_17bc2bf2c44bca6912a7c1ac6d1c0d2e = L.popup({"maxWidth": 250});
+
+        
+            
+                var html_3ad1883f144b2e7e9f2cbcbebb37e840 = $(`<div id="html_3ad1883f144b2e7e9f2cbcbebb37e840" style="width: 100.0%; height: 100.0%;"><strong>Name:</strong> Gustav Alm<br><strong>Job Title:</strong> other<br><strong>Education:</strong> Stud:ex. Lund 19, Lantmät:ex. 24, Kulturtekn. ex. 28</div>`)[0];
+                popup_17bc2bf2c44bca6912a7c1ac6d1c0d2e.setContent(html_3ad1883f144b2e7e9f2cbcbebb37e840);
+            
+        
+
+        marker_043eb7d672edfedabbc9ef50cda71738.bindPopup(popup_17bc2bf2c44bca6912a7c1ac6d1c0d2e)
+        ;
+
+        
+    
+    
+            var marker_5b73aa2df001820607eaee154079dae8 = L.marker(
+                [59.1272047, 15.1435463],
+                {}
+            ).addTo(map_32afb712536328978ac4d31266f9583d);
+        
+    
+        var popup_0dad8c06838c4e5503d326df146e3722 = L.popup({"maxWidth": 250});
+
+        
+            
+                var html_8e720f6b67e0bb692013c27ff96a7006 = $(`<div id="html_8e720f6b67e0bb692013c27ff96a7006" style="width: 100.0%; height: 100.0%;"><strong>Name:</strong> Karl August Ivar Alm<br><strong>Job Title:</strong> other<br><strong>Education:</strong> Stud:ex. Uppsala University High School Diploma, Bachelor of Arts from Uppsala University, Bachelor of Theology, Ordained as priest in the Västerås diocese, Theological Licentiate Degree, Doctor of Theology Degree, Lecturer at Högre allmänna läroverket in Motala, Studied abroad in Zurich, Studied abroad in Germany, Studied abroad in England</div>`)[0];
+                popup_0dad8c06838c4e5503d326df146e3722.setContent(html_8e720f6b67e0bb692013c27ff96a7006);
+            
+        
+
+        marker_5b73aa2df001820607eaee154079dae8.bindPopup(popup_0dad8c06838c4e5503d326df146e3722)
+        ;
+
+        
+    
+    
+            var marker_646de7e0831b7046615e7b8c643becf7 = L.marker(
+                [57.066667, 16.416667],
+                {}
+            ).addTo(map_32afb712536328978ac4d31266f9583d);
+        
+    
+        var popup_87e99b4dcece9ccdd8f89cd2046487df = L.popup({"maxWidth": 250});
+
+        
+            
+                var html_6cd370eb1a87cdf183c7f76f20e2f826 = $(`<div id="html_6cd370eb1a87cdf183c7f76f20e2f826" style="width: 100.0%; height: 100.0%;"><strong>Name:</strong> Oscar Almbladh<br><strong>Job Title:</strong> other<br><strong>Education:</strong> </div>`)[0];
+                popup_87e99b4dcece9ccdd8f89cd2046487df.setContent(html_6cd370eb1a87cdf183c7f76f20e2f826);
+            
+        
+
+        marker_646de7e0831b7046615e7b8c643becf7.bindPopup(popup_87e99b4dcece9ccdd8f89cd2046487df)
+        ;
+
+        
+    
+    
+            var marker_0d1eb5cfa452a1abd2d8484de6207ad9 = L.marker(
+                [58.394297300000005, 15.980445547414547],
+                {}
+            ).addTo(map_32afb712536328978ac4d31266f9583d);
+        
+    
+        var popup_625e9e3b940ace9b0eee206a5506ec1e = L.popup({"maxWidth": 250});
+
+        
+            
+                var html_c04cda4983c7806e78c6a8ae1f024dc1 = $(`<div id="html_c04cda4983c7806e78c6a8ae1f024dc1" style="width: 100.0%; height: 100.0%;"><strong>Name:</strong> Arthur Gotthard Adell<br><strong>Job Title:</strong> other<br><strong>Education:</strong> </div>`)[0];
+                popup_625e9e3b940ace9b0eee206a5506ec1e.setContent(html_c04cda4983c7806e78c6a8ae1f024dc1);
+            
+        
+
+        marker_0d1eb5cfa452a1abd2d8484de6207ad9.bindPopup(popup_625e9e3b940ace9b0eee206a5506ec1e)
+        ;
+
+        
+    
+    
+            var marker_c312e23423ebf7a8fc5c0dbb1b5122d8 = L.marker(
+                [57.6530377, 14.6981554],
+                {}
+            ).addTo(map_32afb712536328978ac4d31266f9583d);
+        
+    
+        var popup_18d6821f9fa49ded918958e24ea8c33f = L.popup({"maxWidth": 250});
+
+        
+            
+                var html_e8f1c77c7fc03b8735c28ff30793b75c = $(`<div id="html_e8f1c77c7fc03b8735c28ff30793b75c" style="width: 100.0%; height: 100.0%;"><strong>Name:</strong> Bertil Alme<br><strong>Job Title:</strong> other<br><strong>Education:</strong> </div>`)[0];
+                popup_18d6821f9fa49ded918958e24ea8c33f.setContent(html_e8f1c77c7fc03b8735c28ff30793b75c);
+            
+        
+
+        marker_c312e23423ebf7a8fc5c0dbb1b5122d8.bindPopup(popup_18d6821f9fa49ded918958e24ea8c33f)
+        ;
+
+        
+    
+    
+            var marker_a5058b87829c0ba07520a2823538875c = L.marker(
+                [57.3856365, 14.6604994],
+                {}
+            ).addTo(map_32afb712536328978ac4d31266f9583d);
+        
+    
+        var popup_a50c74a97fdecb8c30e9787cdcb651f0 = L.popup({"maxWidth": 250});
+
+        
+            
+                var html_0ae91936ae4e3512795c8a633b48615d = $(`<div id="html_0ae91936ae4e3512795c8a633b48615d" style="width: 100.0%; height: 100.0%;"><strong>Name:</strong> Gustaf Wilhelm Almfeldt<br><strong>Job Title:</strong> other<br><strong>Education:</strong> </div>`)[0];
+                popup_a50c74a97fdecb8c30e9787cdcb651f0.setContent(html_0ae91936ae4e3512795c8a633b48615d);
+            
+        
+
+        marker_a5058b87829c0ba07520a2823538875c.bindPopup(popup_a50c74a97fdecb8c30e9787cdcb651f0)
+        ;
+
+        
+    
+    
+            var marker_070f308846829ffd503192182d9cbf76 = L.marker(
+                [61.8510454, 14.0683308],
+                {}
+            ).addTo(map_32afb712536328978ac4d31266f9583d);
+        
+    
+        var popup_56ee29d450b3a2933ff3f2c757c169b1 = L.popup({"maxWidth": 250});
+
+        
+            
+                var html_73a43d69d90a750447671d7ca0031d0a = $(`<div id="html_73a43d69d90a750447671d7ca0031d0a" style="width: 100.0%; height: 100.0%;"><strong>Name:</strong> Axel Emanuel Almqvist<br><strong>Job Title:</strong> other<br><strong>Education:</strong> </div>`)[0];
+                popup_56ee29d450b3a2933ff3f2c757c169b1.setContent(html_73a43d69d90a750447671d7ca0031d0a);
+            
+        
+
+        marker_070f308846829ffd503192182d9cbf76.bindPopup(popup_56ee29d450b3a2933ff3f2c757c169b1)
+        ;
+
+        
+    
+    
+            var marker_c8ef98016772aaa374f6ba4436755657 = L.marker(
+                [37.1232245, -78.4927721],
+                {}
+            ).addTo(map_32afb712536328978ac4d31266f9583d);
+        
+    
+        var popup_7f56f3a969403e25129472d2235b22ab = L.popup({"maxWidth": 250});
+
+        
+            
+                var html_0229bac28bacd92d73206b948b9b7904 = $(`<div id="html_0229bac28bacd92d73206b948b9b7904" style="width: 100.0%; height: 100.0%;"><strong>Name:</strong> Johannes Albin Gunnar Adell<br><strong>Job Title:</strong> other<br><strong>Education:</strong> Stud:ex., Med. kand., Med. lic.</div>`)[0];
+                popup_7f56f3a969403e25129472d2235b22ab.setContent(html_0229bac28bacd92d73206b948b9b7904);
+            
+        
+
+        marker_c8ef98016772aaa374f6ba4436755657.bindPopup(popup_7f56f3a969403e25129472d2235b22ab)
+        ;
+
+        
+    
+    
+            var marker_d6de737a37d62efed09b6bf803dc4081 = L.marker(
+                [59.1964289, 17.6271663],
+                {}
+            ).addTo(map_32afb712536328978ac4d31266f9583d);
+        
+    
+        var popup_32833f7493689094791ddaeee1a972e1 = L.popup({"maxWidth": 250});
+
+        
+            
+                var html_490cdff83d44a83012d7c5d08b24f6ea = $(`<div id="html_490cdff83d44a83012d7c5d08b24f6ea" style="width: 100.0%; height: 100.0%;"><strong>Name:</strong> Ernst Carl Henning Almquist<br><strong>Job Title:</strong> other<br><strong>Education:</strong> Stud:ex. v. nya eikm islk. i St’h’lm 15, avgiex. fr. KTH (’sikeppsbyggn.) 20</div>`)[0];
+                popup_32833f7493689094791ddaeee1a972e1.setContent(html_490cdff83d44a83012d7c5d08b24f6ea);
+            
+        
+
+        marker_d6de737a37d62efed09b6bf803dc4081.bindPopup(popup_32833f7493689094791ddaeee1a972e1)
+        ;
+
+        
+    
+    
+            var marker_0288d47cacb62e7f445f532a497348ce = L.marker(
+                [58.5420395, 15.041261],
+                {}
+            ).addTo(map_32afb712536328978ac4d31266f9583d);
+        
+    
+        var popup_71b7a64d8ebcfd172b573d522e759373 = L.popup({"maxWidth": 250});
+
+        
+            
+                var html_058aaddc5aa710a2894cd70def279c35 = $(`<div id="html_058aaddc5aa710a2894cd70def279c35" style="width: 100.0%; height: 100.0%;"><strong>Name:</strong> Ernst Olof Daniel Almqvist<br><strong>Job Title:</strong> other<br><strong>Education:</strong> Studiexamen, Civilingenjörsexamen</div>`)[0];
+                popup_71b7a64d8ebcfd172b573d522e759373.setContent(html_058aaddc5aa710a2894cd70def279c35);
+            
+        
+
+        marker_0288d47cacb62e7f445f532a497348ce.bindPopup(popup_71b7a64d8ebcfd172b573d522e759373)
+        ;
+
+        
+    
+    
+            var marker_7bd238f0fde4392a85b974552e05b623 = L.marker(
+                [57.7072326, 11.9670171],
+                {}
+            ).addTo(map_32afb712536328978ac4d31266f9583d);
+        
+    
+        var popup_cf96f7470bfe572345a8daf21b56eddf = L.popup({"maxWidth": 250});
+
+        
+            
+                var html_5de2fa4b63e16b8a1af687ca01ee5b91 = $(`<div id="html_5de2fa4b63e16b8a1af687ca01ee5b91" style="width: 100.0%; height: 100.0%;"><strong>Name:</strong> Karl-Gustaf Almquist<br><strong>Job Title:</strong> Unknown<br><strong>Education:</strong> Stud:ex. i Gbg 29, Fil. kand. 32, Teol. kand., Prakt, teol. prov, Prästv. f. Linköp. stift 37</div>`)[0];
+                popup_cf96f7470bfe572345a8daf21b56eddf.setContent(html_5de2fa4b63e16b8a1af687ca01ee5b91);
+            
+        
+
+        marker_7bd238f0fde4392a85b974552e05b623.bindPopup(popup_cf96f7470bfe572345a8daf21b56eddf)
+        ;
+
+        
+    
+    
+            var marker_6ab39db9a8f2517a8fc952af07a8a579 = L.marker(
+                [58.3811988, 12.3226877],
+                {}
+            ).addTo(map_32afb712536328978ac4d31266f9583d);
+        
+    
+        var popup_6bae7100e04f6798ea2935b2827c20ae = L.popup({"maxWidth": 250});
+
+        
+            
+                var html_7595d3b83d7ef04230097adc9693e154 = $(`<div id="html_7595d3b83d7ef04230097adc9693e154" style="width: 100.0%; height: 100.0%;"><strong>Name:</strong> Lars Erik Ludvig Almqvist<br><strong>Job Title:</strong> other<br><strong>Education:</strong> </div>`)[0];
+                popup_6bae7100e04f6798ea2935b2827c20ae.setContent(html_7595d3b83d7ef04230097adc9693e154);
+            
+        
+
+        marker_6ab39db9a8f2517a8fc952af07a8a579.bindPopup(popup_6bae7100e04f6798ea2935b2827c20ae)
+        ;
+
+        
+    
+    
+            var marker_58a406a78800c7b06827dc310b105477 = L.marker(
+                [59.3251172, 18.0710935],
+                {}
+            ).addTo(map_32afb712536328978ac4d31266f9583d);
+        
+    
+        var popup_51dc3e7e61ef08ac18f3c2942bb84a5a = L.popup({"maxWidth": 250});
+
+        
+            
+                var html_587eb56e509d4cb22f1fc9485eaa0408 = $(`<div id="html_587eb56e509d4cb22f1fc9485eaa0408" style="width: 100.0%; height: 100.0%;"><strong>Name:</strong> Gustaf Karl Almström<br><strong>Job Title:</strong> other<br><strong>Education:</strong> Uppsala University, Bachelor of Philosophy, Master of Philosophy, Doctorate of Philosophy, Germany, France</div>`)[0];
+                popup_51dc3e7e61ef08ac18f3c2942bb84a5a.setContent(html_587eb56e509d4cb22f1fc9485eaa0408);
+            
+        
+
+        marker_58a406a78800c7b06827dc310b105477.bindPopup(popup_51dc3e7e61ef08ac18f3c2942bb84a5a)
+        ;
+
+        
+    
+    
+            var marker_2b3117bdcf13e8b92cd3c5811ac429a2 = L.marker(
+                [57.7072326, 11.9670171],
+                {}
+            ).addTo(map_32afb712536328978ac4d31266f9583d);
+        
+    
+        var popup_b453071c3af308b296e18cdc94f718d9 = L.popup({"maxWidth": 250});
+
+        
+            
+                var html_e5caba0b560768a7ac941e1e78267e1a = $(`<div id="html_e5caba0b560768a7ac941e1e78267e1a" style="width: 100.0%; height: 100.0%;"><strong>Name:</strong> Evald Reinhold Alpman<br><strong>Job Title:</strong> other<br><strong>Education:</strong> Stud:ex. (High School diploma), Jur. kand. (Law degree)</div>`)[0];
+                popup_b453071c3af308b296e18cdc94f718d9.setContent(html_e5caba0b560768a7ac941e1e78267e1a);
+            
+        
+
+        marker_2b3117bdcf13e8b92cd3c5811ac429a2.bindPopup(popup_b453071c3af308b296e18cdc94f718d9)
+        ;
+
+        
+    
+    
+            var marker_c1619af3eedb9fa9cc687641311e5f3c = L.marker(
+                [56.1701723, 14.8631279],
+                {}
+            ).addTo(map_32afb712536328978ac4d31266f9583d);
+        
+    
+        var popup_ec75db315ad25da14834eabd31e7cd47 = L.popup({"maxWidth": 250});
+
+        
+            
+                var html_ee95ee552c33fd0e730ecacf46e18ddd = $(`<div id="html_ee95ee552c33fd0e730ecacf46e18ddd" style="width: 100.0%; height: 100.0%;"><strong>Name:</strong> Signe Maria Alverman<br><strong>Job Title:</strong> High School Teacher<br><strong>Education:</strong> </div>`)[0];
+                popup_ec75db315ad25da14834eabd31e7cd47.setContent(html_ee95ee552c33fd0e730ecacf46e18ddd);
+            
+        
+
+        marker_c1619af3eedb9fa9cc687641311e5f3c.bindPopup(popup_ec75db315ad25da14834eabd31e7cd47)
+        ;
+
+        
+    
+    
+            var marker_cfaae7fcf070a8820265cb2624ac8f00 = L.marker(
+                [58.5909124, 16.1903511],
+                {}
+            ).addTo(map_32afb712536328978ac4d31266f9583d);
+        
+    
+        var popup_d79fc3e49a50ddd7d48b0211feb0247e = L.popup({"maxWidth": 250});
+
+        
+            
+                var html_5b09591b8df7cd54b418e78c9acc547a = $(`<div id="html_5b09591b8df7cd54b418e78c9acc547a" style="width: 100.0%; height: 100.0%;"><strong>Name:</strong> Erik Gustaf Marcus Alvin<br><strong>Job Title:</strong> other<br><strong>Education:</strong> Stud:ex. (High School Diploma), Org:ex. (Organist Degree), Musiklär:- o. kyrkosångarex. (Music Teacher and Church Singer Degree), Stud:resa t. Frankr. (Study trip to France)</div>`)[0];
+                popup_d79fc3e49a50ddd7d48b0211feb0247e.setContent(html_5b09591b8df7cd54b418e78c9acc547a);
+            
+        
+
+        marker_cfaae7fcf070a8820265cb2624ac8f00.bindPopup(popup_d79fc3e49a50ddd7d48b0211feb0247e)
+        ;
+
+        
+    
+    
+            var marker_5f8f68eb764af6a201a2a86032ae0a27 = L.marker(
+                [58.4098135, 15.6245252],
+                {}
+            ).addTo(map_32afb712536328978ac4d31266f9583d);
+        
+    
+        var popup_0f06d859b397568cc3ad8b48d69f14b5 = L.popup({"maxWidth": 250});
+
+        
+            
+                var html_7f0a23247a3cd8520837d4327ba454ea = $(`<div id="html_7f0a23247a3cd8520837d4327ba454ea" style="width: 100.0%; height: 100.0%;"><strong>Name:</strong> Ragnar Oscar Reinhold Alvin<br><strong>Job Title:</strong> other<br><strong>Education:</strong> </div>`)[0];
+                popup_0f06d859b397568cc3ad8b48d69f14b5.setContent(html_7f0a23247a3cd8520837d4327ba454ea);
+            
+        
+
+        marker_5f8f68eb764af6a201a2a86032ae0a27.bindPopup(popup_0f06d859b397568cc3ad8b48d69f14b5)
+        ;
+
+        
+    
+    
+            var marker_d93dad922dc1a04753df7e3b089e27b7 = L.marker(
+                [56.954196, 16.3843861],
+                {}
+            ).addTo(map_32afb712536328978ac4d31266f9583d);
+        
+    
+        var popup_d9eb24867b1fe4abc7e190c23c6b4f95 = L.popup({"maxWidth": 250});
+
+        
+            
+                var html_70ac6c3f7b2bf208aa8826a1147e9afb = $(`<div id="html_70ac6c3f7b2bf208aa8826a1147e9afb" style="width: 100.0%; height: 100.0%;"><strong>Name:</strong> Bengt Harry Clarence Alvsten<br><strong>Job Title:</strong> other<br><strong>Education:</strong> Stud:ex. i Kalmar 13, Fil. kand. i Upps. 18, Jur. kand. i Sthlm 21</div>`)[0];
+                popup_d9eb24867b1fe4abc7e190c23c6b4f95.setContent(html_70ac6c3f7b2bf208aa8826a1147e9afb);
+            
+        
+
+        marker_d93dad922dc1a04753df7e3b089e27b7.bindPopup(popup_d9eb24867b1fe4abc7e190c23c6b4f95)
+        ;
+
+        
+    
+    
+            var marker_908501e35d5896179849b31d8ffc8e6d = L.marker(
+                [58.1146082, 11.8613813],
+                {}
+            ).addTo(map_32afb712536328978ac4d31266f9583d);
+        
+    
+        var popup_e4117bf5654d84f2f12130c996688bc5 = L.popup({"maxWidth": 250});
+
+        
+            
+                var html_b980d7a3de5361c07a10347d1ba1e1a1 = $(`<div id="html_b980d7a3de5361c07a10347d1ba1e1a1" style="width: 100.0%; height: 100.0%;"><strong>Name:</strong> John Artur Amundsson<br><strong>Job Title:</strong> other<br><strong>Education:</strong> </div>`)[0];
+                popup_e4117bf5654d84f2f12130c996688bc5.setContent(html_b980d7a3de5361c07a10347d1ba1e1a1);
+            
+        
+
+        marker_908501e35d5896179849b31d8ffc8e6d.bindPopup(popup_e4117bf5654d84f2f12130c996688bc5)
+        ;
+
+        
+    
+    
+            var marker_777e0781a9cc127cf5ef51d7492b05c8 = L.marker(
+                [57.7072326, 11.9670171],
+                {}
+            ).addTo(map_32afb712536328978ac4d31266f9583d);
+        
+    
+        var popup_700f7e2de77891e496214fde9e0b37c7 = L.popup({"maxWidth": 250});
+
+        
+            
+                var html_eb897b79864695e9f5746487b94c5c24 = $(`<div id="html_eb897b79864695e9f5746487b94c5c24" style="width: 100.0%; height: 100.0%;"><strong>Name:</strong> Max Oscar Fredrik Andiell<br><strong>Job Title:</strong> Unknown<br><strong>Education:</strong> Studentexamen, Gothenburg's School of Business, Officer's training, Course at Gothenburg's University</div>`)[0];
+                popup_700f7e2de77891e496214fde9e0b37c7.setContent(html_eb897b79864695e9f5746487b94c5c24);
+            
+        
+
+        marker_777e0781a9cc127cf5ef51d7492b05c8.bindPopup(popup_700f7e2de77891e496214fde9e0b37c7)
+        ;
+
+        
+    
+    
+            var marker_5f23d249242476962ee007a1747eba68 = L.marker(
+                [57.7210839, 12.9407407],
+                {}
+            ).addTo(map_32afb712536328978ac4d31266f9583d);
+        
+    
+        var popup_a89cc4596f0e243b174e731181054c69 = L.popup({"maxWidth": 250});
+
+        
+            
+                var html_36d9a45766f4e225b9db594b35fe82f0 = $(`<div id="html_36d9a45766f4e225b9db594b35fe82f0" style="width: 100.0%; height: 100.0%;"><strong>Name:</strong> Ignar Anden<br><strong>Job Title:</strong> other<br><strong>Education:</strong> Stud:ex. i Borås, Gbgs hand:inst., John Len-nings vävsk., språkstud. i Engl. o. Franikr.</div>`)[0];
+                popup_a89cc4596f0e243b174e731181054c69.setContent(html_36d9a45766f4e225b9db594b35fe82f0);
+            
+        
+
+        marker_5f23d249242476962ee007a1747eba68.bindPopup(popup_a89cc4596f0e243b174e731181054c69)
+        ;
+
+        
+    
+    
+            var marker_1f29d58017892c76b9a986839317a15a = L.marker(
+                [37.1232245, -78.4927721],
+                {}
+            ).addTo(map_32afb712536328978ac4d31266f9583d);
+        
+    
+        var popup_6ac73c9b92edba0385d95d18f6a0e391 = L.popup({"maxWidth": 250});
+
+        
+            
+                var html_207a08a56de5e7f38dd49410a2aa6748 = $(`<div id="html_207a08a56de5e7f38dd49410a2aa6748" style="width: 100.0%; height: 100.0%;"><strong>Name:</strong> Nils Johan Anton Anderberg<br><strong>Job Title:</strong> other<br><strong>Education:</strong> </div>`)[0];
+                popup_6ac73c9b92edba0385d95d18f6a0e391.setContent(html_207a08a56de5e7f38dd49410a2aa6748);
+            
+        
+
+        marker_1f29d58017892c76b9a986839317a15a.bindPopup(popup_6ac73c9b92edba0385d95d18f6a0e391)
+        ;
+
+        
+    
+    
+            var marker_8987df895dd7c0560ac80346932fba72 = L.marker(
+                [59.3251172, 18.0710935],
+                {}
+            ).addTo(map_32afb712536328978ac4d31266f9583d);
+        
+    
+        var popup_8fcfa3b098c19c4b6b935a15af8ada03 = L.popup({"maxWidth": 250});
+
+        
+            
+                var html_d068feb47c537b67b06ffb998c28ff7d = $(`<div id="html_d068feb47c537b67b06ffb998c28ff7d" style="width: 100.0%; height: 100.0%;"><strong>Name:</strong> Karin Ingeborg Anderberg<br><strong>Job Title:</strong> other<br><strong>Education:</strong> </div>`)[0];
+                popup_8fcfa3b098c19c4b6b935a15af8ada03.setContent(html_d068feb47c537b67b06ffb998c28ff7d);
+            
+        
+
+        marker_8987df895dd7c0560ac80346932fba72.bindPopup(popup_8fcfa3b098c19c4b6b935a15af8ada03)
+        ;
+
+        
+    
+    
+            var marker_8332c9989c2db81600ad1b6851233967 = L.marker(
+                [59.3251172, 18.0710935],
+                {}
+            ).addTo(map_32afb712536328978ac4d31266f9583d);
+        
+    
+        var popup_dc7a1df976df9c5b00c466c1af9fcf6e = L.popup({"maxWidth": 250});
+
+        
+            
+                var html_77cc7f235c062c48477ba7b2c8f2bd8d = $(`<div id="html_77cc7f235c062c48477ba7b2c8f2bd8d" style="width: 100.0%; height: 100.0%;"><strong>Name:</strong> Jan Erik Anderbjörk<br><strong>Job Title:</strong> other<br><strong>Education:</strong> </div>`)[0];
+                popup_dc7a1df976df9c5b00c466c1af9fcf6e.setContent(html_77cc7f235c062c48477ba7b2c8f2bd8d);
+            
+        
+
+        marker_8332c9989c2db81600ad1b6851233967.bindPopup(popup_dc7a1df976df9c5b00c466c1af9fcf6e)
+        ;
+
+        
+    
+    
+            var marker_e23612119ab256e7be3396b04dde6d8e = L.marker(
+                [57.7210839, 12.9407407],
+                {}
+            ).addTo(map_32afb712536328978ac4d31266f9583d);
+        
+    
+        var popup_fd36fcd8e747080efe8902b13c9ec2d2 = L.popup({"maxWidth": 250});
+
+        
+            
+                var html_e02f427f68d244d5b8e3cca235f98385 = $(`<div id="html_e02f427f68d244d5b8e3cca235f98385" style="width: 100.0%; height: 100.0%;"><strong>Name:</strong> Alvar Leonard Anderson<br><strong>Job Title:</strong> other<br><strong>Education:</strong> </div>`)[0];
+                popup_fd36fcd8e747080efe8902b13c9ec2d2.setContent(html_e02f427f68d244d5b8e3cca235f98385);
+            
+        
+
+        marker_e23612119ab256e7be3396b04dde6d8e.bindPopup(popup_fd36fcd8e747080efe8902b13c9ec2d2)
+        ;
+
+        
+    
+    
+            var marker_57c1bc4c919f7e464a8ec1f851e4803b = L.marker(
+                [58.3846075, 13.4397675],
+                {}
+            ).addTo(map_32afb712536328978ac4d31266f9583d);
+        
+    
+        var popup_d34fcd81ba6a8a9789b435acec5c1ded = L.popup({"maxWidth": 250});
+
+        
+            
+                var html_403c0331062fb3bc86f88a0ea0842cd8 = $(`<div id="html_403c0331062fb3bc86f88a0ea0842cd8" style="width: 100.0%; height: 100.0%;"><strong>Name:</strong> Carl Axel Arthur Anderson<br><strong>Job Title:</strong> Director<br><strong>Education:</strong> Skara School, Gothenburg's School of Commerce</div>`)[0];
+                popup_d34fcd81ba6a8a9789b435acec5c1ded.setContent(html_403c0331062fb3bc86f88a0ea0842cd8);
+            
+        
+
+        marker_57c1bc4c919f7e464a8ec1f851e4803b.bindPopup(popup_d34fcd81ba6a8a9789b435acec5c1ded)
+        ;
+
+        
+    
+    
+            var marker_aef4798baa011dcc27ed8496bc696c3e = L.marker(
+                [57.7210839, 12.9407407],
+                {}
+            ).addTo(map_32afb712536328978ac4d31266f9583d);
+        
+    
+        var popup_1bb5abaaca49925478cf4969f8e096fa = L.popup({"maxWidth": 250});
+
+        
+            
+                var html_6e9846c7c6bb9ef9a496a6b55309c5dd = $(`<div id="html_6e9846c7c6bb9ef9a496a6b55309c5dd" style="width: 100.0%; height: 100.0%;"><strong>Name:</strong> Åke Adlarson<br><strong>Job Title:</strong> Manager<br><strong>Education:</strong> Realgymnasiet, Handelsgymnasiet</div>`)[0];
+                popup_1bb5abaaca49925478cf4969f8e096fa.setContent(html_6e9846c7c6bb9ef9a496a6b55309c5dd);
+            
+        
+
+        marker_aef4798baa011dcc27ed8496bc696c3e.bindPopup(popup_1bb5abaaca49925478cf4969f8e096fa)
+        ;
+
+        
+    
+    
+            var marker_78559a7d9723b64d7b1f128ca4ede58e = L.marker(
+                [58.2, 13.933333],
+                {}
+            ).addTo(map_32afb712536328978ac4d31266f9583d);
+        
+    
+        var popup_10c5e15449a2de52675c0586f5c1a23c = L.popup({"maxWidth": 250});
+
+        
+            
+                var html_7ec84e1b567578a6cf6e6b2c77acf95c = $(`<div id="html_7ec84e1b567578a6cf6e6b2c77acf95c" style="width: 100.0%; height: 100.0%;"><strong>Name:</strong> Axel Samuel Anderson<br><strong>Job Title:</strong> Unknown<br><strong>Education:</strong> </div>`)[0];
+                popup_10c5e15449a2de52675c0586f5c1a23c.setContent(html_7ec84e1b567578a6cf6e6b2c77acf95c);
+            
+        
+
+        marker_78559a7d9723b64d7b1f128ca4ede58e.bindPopup(popup_10c5e15449a2de52675c0586f5c1a23c)
+        ;
+
+        
+    
+    
+            var marker_01d20eae8b3a4eaf9fb29ab285cb5899 = L.marker(
+                [58.2, 13.933333],
+                {}
+            ).addTo(map_32afb712536328978ac4d31266f9583d);
+        
+    
+        var popup_5b312861c103892e7cd68a8915dc87bc = L.popup({"maxWidth": 250});
+
+        
+            
+                var html_b25af45163dc413a54404465b57d13c8 = $(`<div id="html_b25af45163dc413a54404465b57d13c8" style="width: 100.0%; height: 100.0%;"><strong>Name:</strong> Axel Gustaf Birger Andersson<br><strong>Job Title:</strong> Unknown<br><strong>Education:</strong> Brunnsviks Folk High School</div>`)[0];
+                popup_5b312861c103892e7cd68a8915dc87bc.setContent(html_b25af45163dc413a54404465b57d13c8);
+            
+        
+
+        marker_01d20eae8b3a4eaf9fb29ab285cb5899.bindPopup(popup_5b312861c103892e7cd68a8915dc87bc)
+        ;
+
+        
+    
+    
+            var marker_36f1e2ef84d2b1f6659df879f906db12 = L.marker(
+                [55.4748918, 13.874225],
+                {}
+            ).addTo(map_32afb712536328978ac4d31266f9583d);
+        
+    
+        var popup_656e2c71bc00c1369ae6a9248d2745bb = L.popup({"maxWidth": 250});
+
+        
+            
+                var html_3f95bef082c919a9462e8650ad0171e8 = $(`<div id="html_3f95bef082c919a9462e8650ad0171e8" style="width: 100.0%; height: 100.0%;"><strong>Name:</strong> Bror Oscar Ludvig Andersson<br><strong>Job Title:</strong> other<br><strong>Education:</strong> </div>`)[0];
+                popup_656e2c71bc00c1369ae6a9248d2745bb.setContent(html_3f95bef082c919a9462e8650ad0171e8);
+            
+        
+
+        marker_36f1e2ef84d2b1f6659df879f906db12.bindPopup(popup_656e2c71bc00c1369ae6a9248d2745bb)
+        ;
+
+        
+    
+    
+            var marker_d0a2b56531c4b50f39d455a0d24214b7 = L.marker(
+                [57.7210839, 12.9407407],
+                {}
+            ).addTo(map_32afb712536328978ac4d31266f9583d);
+        
+    
+        var popup_31fc2fd9583f03488b8236a7f5b3e0a6 = L.popup({"maxWidth": 250});
+
+        
+            
+                var html_c887b1a79aed82586150d7902f4057ea = $(`<div id="html_c887b1a79aed82586150d7902f4057ea" style="width: 100.0%; height: 100.0%;"><strong>Name:</strong> Curt Herman Anderson<br><strong>Job Title:</strong> other<br><strong>Education:</strong> Practical Theological Exam, Ordination</div>`)[0];
+                popup_31fc2fd9583f03488b8236a7f5b3e0a6.setContent(html_c887b1a79aed82586150d7902f4057ea);
+            
+        
+
+        marker_d0a2b56531c4b50f39d455a0d24214b7.bindPopup(popup_31fc2fd9583f03488b8236a7f5b3e0a6)
+        ;
+
+        
+    
+    
+            var marker_d89cb8ae16740abca18bfb4b36b12571 = L.marker(
+                [57.7072326, 11.9670171],
+                {}
+            ).addTo(map_32afb712536328978ac4d31266f9583d);
+        
+    
+        var popup_a078d42c9987d51237fee4bd7b1a2a6e = L.popup({"maxWidth": 250});
+
+        
+            
+                var html_8aaae7c48fb15f10585c8b87f7f7f7af = $(`<div id="html_8aaae7c48fb15f10585c8b87f7f7f7af" style="width: 100.0%; height: 100.0%;"><strong>Name:</strong> Douglas Sigfrid Eberhard Anderson<br><strong>Job Title:</strong> Director<br><strong>Education:</strong> Gothenburg's Slöjdförening School, Handwriting School, Private language studies</div>`)[0];
+                popup_a078d42c9987d51237fee4bd7b1a2a6e.setContent(html_8aaae7c48fb15f10585c8b87f7f7f7af);
+            
+        
+
+        marker_d89cb8ae16740abca18bfb4b36b12571.bindPopup(popup_a078d42c9987d51237fee4bd7b1a2a6e)
+        ;
+
+        
+    
+    
+            var marker_1885e70a398556ced4448935de8677c3 = L.marker(
+                [56.6739826, 12.8574827],
+                {}
+            ).addTo(map_32afb712536328978ac4d31266f9583d);
+        
+    
+        var popup_20f7e0b104b9a1457dd944b588a3226a = L.popup({"maxWidth": 250});
+
+        
+            
+                var html_84ad1c2c2bbadcc0f36c543e693bf0e8 = $(`<div id="html_84ad1c2c2bbadcc0f36c543e693bf0e8" style="width: 100.0%; height: 100.0%;"><strong>Name:</strong> Carl Erik Andersson<br><strong>Job Title:</strong> other<br><strong>Education:</strong> Gothenburg's business school</div>`)[0];
+                popup_20f7e0b104b9a1457dd944b588a3226a.setContent(html_84ad1c2c2bbadcc0f36c543e693bf0e8);
+            
+        
+
+        marker_1885e70a398556ced4448935de8677c3.bindPopup(popup_20f7e0b104b9a1457dd944b588a3226a)
+        ;
+
+        
+    
+    
+            var marker_f7c0bd38d41d52ca151fb336df42a851 = L.marker(
+                [58.4676327, 15.1272083],
+                {}
+            ).addTo(map_32afb712536328978ac4d31266f9583d);
+        
+    
+        var popup_461e0c80753ca9d503a134c401d284b5 = L.popup({"maxWidth": 250});
+
+        
+            
+                var html_e2dd0ff066dbf5dde36da57a7335c828 = $(`<div id="html_e2dd0ff066dbf5dde36da57a7335c828" style="width: 100.0%; height: 100.0%;"><strong>Name:</strong> Folke Edvard Andersson<br><strong>Job Title:</strong> other<br><strong>Education:</strong> Stud:ex., Juris Doctor</div>`)[0];
+                popup_461e0c80753ca9d503a134c401d284b5.setContent(html_e2dd0ff066dbf5dde36da57a7335c828);
+            
+        
+
+        marker_f7c0bd38d41d52ca151fb336df42a851.bindPopup(popup_461e0c80753ca9d503a134c401d284b5)
+        ;
+
+        
+    
+    
+            var marker_068ec094951f2b87a56f8268849b5879 = L.marker(
+                [57.7825634, 14.165719],
+                {}
+            ).addTo(map_32afb712536328978ac4d31266f9583d);
+        
+    
+        var popup_c358a21cdbe21fa8ab6ad81e1924c834 = L.popup({"maxWidth": 250});
+
+        
+            
+                var html_1a664d7970f192ea19f71e5d28bb2c76 = $(`<div id="html_1a664d7970f192ea19f71e5d28bb2c76" style="width: 100.0%; height: 100.0%;"><strong>Name:</strong> Herbert Gustaf-Adolf Adler<br><strong>Job Title:</strong> other<br><strong>Education:</strong> </div>`)[0];
+                popup_c358a21cdbe21fa8ab6ad81e1924c834.setContent(html_1a664d7970f192ea19f71e5d28bb2c76);
+            
+        
+
+        marker_068ec094951f2b87a56f8268849b5879.bindPopup(popup_c358a21cdbe21fa8ab6ad81e1924c834)
+        ;
+
+        
+    
+    
+            var marker_ff066ef2743321b3940d1428874f6efa = L.marker(
+                [59.3251172, 18.0710935],
+                {}
+            ).addTo(map_32afb712536328978ac4d31266f9583d);
+        
+    
+        var popup_e3dd401033ae9ed1aa5e6a552f6a32f4 = L.popup({"maxWidth": 250});
+
+        
+            
+                var html_af02d6e6bd04460748fcafa0ba667134 = $(`<div id="html_af02d6e6bd04460748fcafa0ba667134" style="width: 100.0%; height: 100.0%;"><strong>Name:</strong> Georg Gustav Andersson<br><strong>Job Title:</strong> Unknown<br><strong>Education:</strong> </div>`)[0];
+                popup_e3dd401033ae9ed1aa5e6a552f6a32f4.setContent(html_af02d6e6bd04460748fcafa0ba667134);
+            
+        
+
+        marker_ff066ef2743321b3940d1428874f6efa.bindPopup(popup_e3dd401033ae9ed1aa5e6a552f6a32f4)
+        ;
+
+        
+    
+    
+            var marker_8f8f24eb75a46f07e42f6f922bc5497a = L.marker(
+                [46.5600724, 24.7218877],
+                {}
+            ).addTo(map_32afb712536328978ac4d31266f9583d);
+        
+    
+        var popup_5f088c3a093f372bb44425b2d31f7d92 = L.popup({"maxWidth": 250});
+
+        
+            
+                var html_cfa80f61362feab365a3071ba0d75927 = $(`<div id="html_cfa80f61362feab365a3071ba0d75927" style="width: 100.0%; height: 100.0%;"><strong>Name:</strong> Nils Gunnar Anderson<br><strong>Job Title:</strong> other<br><strong>Education:</strong> </div>`)[0];
+                popup_5f088c3a093f372bb44425b2d31f7d92.setContent(html_cfa80f61362feab365a3071ba0d75927);
+            
+        
+
+        marker_8f8f24eb75a46f07e42f6f922bc5497a.bindPopup(popup_5f088c3a093f372bb44425b2d31f7d92)
+        ;
+
+        
+    
+    
+            var marker_429bf6a624c44d67f4ba58596cb2c413 = L.marker(
+                [56.2429224, 12.8619375],
+                {}
+            ).addTo(map_32afb712536328978ac4d31266f9583d);
+        
+    
+        var popup_25edeade1ade1753c98613948e5a0a6a = L.popup({"maxWidth": 250});
+
+        
+            
+                var html_537e16676904b3c6827946344b1e399c = $(`<div id="html_537e16676904b3c6827946344b1e399c" style="width: 100.0%; height: 100.0%;"><strong>Name:</strong> Hedvig Ulrika Charlotta Adlercreutz<br><strong>Job Title:</strong> other<br><strong>Education:</strong> Studied in Hälsingborg, Passed the medical exam in Lund, Became a licensed physician in Lund</div>`)[0];
+                popup_25edeade1ade1753c98613948e5a0a6a.setContent(html_537e16676904b3c6827946344b1e399c);
+            
+        
+
+        marker_429bf6a624c44d67f4ba58596cb2c413.bindPopup(popup_25edeade1ade1753c98613948e5a0a6a)
+        ;
+
+        
+    
+    
+            var marker_2dc703f8449b65ac98c1860c3f70fb22 = L.marker(
+                [58.6767955, 15.843554],
+                {}
+            ).addTo(map_32afb712536328978ac4d31266f9583d);
+        
+    
+        var popup_4adf2197cea19c8e5d335214cb75a537 = L.popup({"maxWidth": 250});
+
+        
+            
+                var html_bb63e5a15c3d373bd70aa899b0149ea0 = $(`<div id="html_bb63e5a15c3d373bd70aa899b0149ea0" style="width: 100.0%; height: 100.0%;"><strong>Name:</strong> Karl Emil Andersson<br><strong>Job Title:</strong> other<br><strong>Education:</strong> Folk High School, Karlskoga's Practical School</div>`)[0];
+                popup_4adf2197cea19c8e5d335214cb75a537.setContent(html_bb63e5a15c3d373bd70aa899b0149ea0);
+            
+        
+
+        marker_2dc703f8449b65ac98c1860c3f70fb22.bindPopup(popup_4adf2197cea19c8e5d335214cb75a537)
+        ;
+
+        
+    
+    
+            var marker_d082f90a9f5d479ccc5706b84a279625 = L.marker(
+                [55.6052931, 13.0001566],
+                {}
+            ).addTo(map_32afb712536328978ac4d31266f9583d);
+        
+    
+        var popup_3c8cdd3df4c2eac57d00f62cee6a6902 = L.popup({"maxWidth": 250});
+
+        
+            
+                var html_dc778ff699ffdd8658ce40ffd8657d2a = $(`<div id="html_dc778ff699ffdd8658ce40ffd8657d2a" style="width: 100.0%; height: 100.0%;"><strong>Name:</strong> Kurt Heige Andersson<br><strong>Job Title:</strong> other<br><strong>Education:</strong> </div>`)[0];
+                popup_3c8cdd3df4c2eac57d00f62cee6a6902.setContent(html_dc778ff699ffdd8658ce40ffd8657d2a);
+            
+        
+
+        marker_d082f90a9f5d479ccc5706b84a279625.bindPopup(popup_3c8cdd3df4c2eac57d00f62cee6a6902)
+        ;
+
+        
+    
+    
+            var marker_20dd73d2603cdb485e7ff0e65b0ae9fe = L.marker(
+                [57.0413621, 12.3991052],
+                {}
+            ).addTo(map_32afb712536328978ac4d31266f9583d);
+        
+    
+        var popup_2c8e7cbb32182659d9fc9bafe85c1a14 = L.popup({"maxWidth": 250});
+
+        
+            
+                var html_452ab5433964ca9f4b1a2566dfb86cbb = $(`<div id="html_452ab5433964ca9f4b1a2566dfb86cbb" style="width: 100.0%; height: 100.0%;"><strong>Name:</strong> Lars Albin Andersson<br><strong>Job Title:</strong> other<br><strong>Education:</strong> Alnarp</div>`)[0];
+                popup_2c8e7cbb32182659d9fc9bafe85c1a14.setContent(html_452ab5433964ca9f4b1a2566dfb86cbb);
+            
+        
+
+        marker_20dd73d2603cdb485e7ff0e65b0ae9fe.bindPopup(popup_2c8e7cbb32182659d9fc9bafe85c1a14)
+        ;
+
+        
+    
+    
+            var marker_f9bdb2b742710416d08ea6892c0f273a = L.marker(
+                [59.6749712, 14.5208584],
+                {}
+            ).addTo(map_32afb712536328978ac4d31266f9583d);
+        
+    
+        var popup_254df17e81ed8bab57f4ffeb732bb516 = L.popup({"maxWidth": 250});
+
+        
+            
+                var html_325e56fdee0db5e4f1cd3309259804c6 = $(`<div id="html_325e56fdee0db5e4f1cd3309259804c6" style="width: 100.0%; height: 100.0%;"><strong>Name:</strong> Nils August Anderzon<br><strong>Job Title:</strong> other<br><strong>Education:</strong> Mog, Royal Institute of Technology</div>`)[0];
+                popup_254df17e81ed8bab57f4ffeb732bb516.setContent(html_325e56fdee0db5e4f1cd3309259804c6);
+            
+        
+
+        marker_f9bdb2b742710416d08ea6892c0f273a.bindPopup(popup_254df17e81ed8bab57f4ffeb732bb516)
+        ;
+
+        
+    
+    
+            var marker_67bef5770babbc9db3bebd2046772094 = L.marker(
+                [56.21720455, 15.67491695],
+                {}
+            ).addTo(map_32afb712536328978ac4d31266f9583d);
+        
+    
+        var popup_89652431df00f2dfdaf3436fe23578b7 = L.popup({"maxWidth": 250});
+
+        
+            
+                var html_0f25c46edf482783de4d6c392b7a7581 = $(`<div id="html_0f25c46edf482783de4d6c392b7a7581" style="width: 100.0%; height: 100.0%;"><strong>Name:</strong> Olle Laurentius Andersson<br><strong>Job Title:</strong> other<br><strong>Education:</strong> High School Exams, Bachelor of Arts, Bachelor of Theology, Ordination</div>`)[0];
+                popup_89652431df00f2dfdaf3436fe23578b7.setContent(html_0f25c46edf482783de4d6c392b7a7581);
+            
+        
+
+        marker_67bef5770babbc9db3bebd2046772094.bindPopup(popup_89652431df00f2dfdaf3436fe23578b7)
+        ;
+
+        
+    
+    
+            var marker_cc26b36b002b8ec0cc0b00d0c45a1440 = L.marker(
+                [59.926366, 18.5813874],
+                {}
+            ).addTo(map_32afb712536328978ac4d31266f9583d);
+        
+    
+        var popup_477c4182a13e7f5ed92279840cf0c6e2 = L.popup({"maxWidth": 250});
+
+        
+            
+                var html_373f48e80451c1f5fa3da837970eec13 = $(`<div id="html_373f48e80451c1f5fa3da837970eec13" style="width: 100.0%; height: 100.0%;"><strong>Name:</strong> Bror Olof Zachæus Anderzon<br><strong>Job Title:</strong> other<br><strong>Education:</strong> </div>`)[0];
+                popup_477c4182a13e7f5ed92279840cf0c6e2.setContent(html_373f48e80451c1f5fa3da837970eec13);
+            
+        
+
+        marker_cc26b36b002b8ec0cc0b00d0c45a1440.bindPopup(popup_477c4182a13e7f5ed92279840cf0c6e2)
+        ;
+
+        
+    
+    
+            var marker_3f1b2b076b6534008cbeeda12b715959 = L.marker(
+                [58.4098135, 15.6245252],
+                {}
+            ).addTo(map_32afb712536328978ac4d31266f9583d);
+        
+    
+        var popup_36c385959d20637cdb394547a5248d90 = L.popup({"maxWidth": 250});
+
+        
+            
+                var html_4c04a4b918bc21ac9ee04640a25c6e11 = $(`<div id="html_4c04a4b918bc21ac9ee04640a25c6e11" style="width: 100.0%; height: 100.0%;"><strong>Name:</strong> Oskar Harry Adlerskog<br><strong>Job Title:</strong> Dentist<br><strong>Education:</strong> Dental degree, Additional dental training</div>`)[0];
+                popup_36c385959d20637cdb394547a5248d90.setContent(html_4c04a4b918bc21ac9ee04640a25c6e11);
+            
+        
+
+        marker_3f1b2b076b6534008cbeeda12b715959.bindPopup(popup_36c385959d20637cdb394547a5248d90)
+        ;
+
+        
+    
+    
+            var marker_cb3fb77f74dfe6a8300c45cbbbff3b89 = L.marker(
+                [59.3251172, 18.0710935],
+                {}
+            ).addTo(map_32afb712536328978ac4d31266f9583d);
+        
+    
+        var popup_cffdb6160740b7fd81497ad9de926f99 = L.popup({"maxWidth": 250});
+
+        
+            
+                var html_2013dbb9b35528e096fe853e6b0e05d7 = $(`<div id="html_2013dbb9b35528e096fe853e6b0e05d7" style="width: 100.0%; height: 100.0%;"><strong>Name:</strong> Bror Oscar Charles Andersson<br><strong>Job Title:</strong> High School Teacher<br><strong>Education:</strong> Bachelor's Degree, Master's Degree</div>`)[0];
+                popup_cffdb6160740b7fd81497ad9de926f99.setContent(html_2013dbb9b35528e096fe853e6b0e05d7);
+            
+        
+
+        marker_cb3fb77f74dfe6a8300c45cbbbff3b89.bindPopup(popup_cffdb6160740b7fd81497ad9de926f99)
+        ;
+
+        
+    
+    
+            var marker_963078dc2f9f2629ceaf35ef5306e828 = L.marker(
+                [58.1582642, 12.3048591],
+                {}
+            ).addTo(map_32afb712536328978ac4d31266f9583d);
+        
+    
+        var popup_a16fdd6e32b0b9fb77b56948b55e9730 = L.popup({"maxWidth": 250});
+
+        
+            
+                var html_2d6a0cd521c1b8f2fe4df12daf9a9b19 = $(`<div id="html_2d6a0cd521c1b8f2fe4df12daf9a9b19" style="width: 100.0%; height: 100.0%;"><strong>Name:</strong> Sven Arvid Andersson<br><strong>Job Title:</strong> other<br><strong>Education:</strong> </div>`)[0];
+                popup_a16fdd6e32b0b9fb77b56948b55e9730.setContent(html_2d6a0cd521c1b8f2fe4df12daf9a9b19);
+            
+        
+
+        marker_963078dc2f9f2629ceaf35ef5306e828.bindPopup(popup_a16fdd6e32b0b9fb77b56948b55e9730)
+        ;
+
+        
+    
+    
+            var marker_7f698aa28d8512ccdacfed67bfed1982 = L.marker(
+                [57.7210839, 12.9407407],
+                {}
+            ).addTo(map_32afb712536328978ac4d31266f9583d);
+        
+    
+        var popup_7e3cbc4179175f1cedcf2bab2f34c4da = L.popup({"maxWidth": 250});
+
+        
+            
+                var html_f72bad274f1071aa932b8dd1992854e0 = $(`<div id="html_f72bad274f1071aa932b8dd1992854e0" style="width: 100.0%; height: 100.0%;"><strong>Name:</strong> Sven Arvid Andersson<br><strong>Job Title:</strong> other<br><strong>Education:</strong> Stud:ex., Gbgs hand:inst.</div>`)[0];
+                popup_7e3cbc4179175f1cedcf2bab2f34c4da.setContent(html_f72bad274f1071aa932b8dd1992854e0);
+            
+        
+
+        marker_7f698aa28d8512ccdacfed67bfed1982.bindPopup(popup_7e3cbc4179175f1cedcf2bab2f34c4da)
+        ;
+
+        
+    
+    
+            var marker_cbe0929f5df7675b8f19bdb5b0928fd0 = L.marker(
+                [57.7210839, 12.9407407],
+                {}
+            ).addTo(map_32afb712536328978ac4d31266f9583d);
+        
+    
+        var popup_72896855b18643106c8fd7f5fe1de84e = L.popup({"maxWidth": 250});
+
+        
+            
+                var html_c5a848f61592fc79b6acc3e5c1dc319c = $(`<div id="html_c5a848f61592fc79b6acc3e5c1dc319c" style="width: 100.0%; height: 100.0%;"><strong>Name:</strong> Sven Ivar Anderson<br><strong>Job Title:</strong> other<br><strong>Education:</strong> Borås Secondary School, Borås Technical Weaving School, Textile Production Studies in the USA, Textile Production Studies in the USA</div>`)[0];
+                popup_72896855b18643106c8fd7f5fe1de84e.setContent(html_c5a848f61592fc79b6acc3e5c1dc319c);
+            
+        
+
+        marker_cbe0929f5df7675b8f19bdb5b0928fd0.bindPopup(popup_72896855b18643106c8fd7f5fe1de84e)
+        ;
+
+        
+    
+    
+            var marker_adaf9e3641fbe2eb33cb3aad2dc75104 = L.marker(
+                [58.5037196, 13.1576427],
+                {}
+            ).addTo(map_32afb712536328978ac4d31266f9583d);
+        
+    
+        var popup_e0a24e06606851e8acdc968d63adf163 = L.popup({"maxWidth": 250});
+
+        
+            
+                var html_cf96f77820df0e464bf2586568cd767c = $(`<div id="html_cf96f77820df0e464bf2586568cd767c" style="width: 100.0%; height: 100.0%;"><strong>Name:</strong> Sven Torsten Andersson<br><strong>Job Title:</strong> other<br><strong>Education:</strong> </div>`)[0];
+                popup_e0a24e06606851e8acdc968d63adf163.setContent(html_cf96f77820df0e464bf2586568cd767c);
+            
+        
+
+        marker_adaf9e3641fbe2eb33cb3aad2dc75104.bindPopup(popup_e0a24e06606851e8acdc968d63adf163)
+        ;
+
+        
+    
+    
+            var marker_5f46416da03330efcbd9cd6359b393a4 = L.marker(
+                [58.5361573, 15.6905627],
+                {}
+            ).addTo(map_32afb712536328978ac4d31266f9583d);
+        
+    
+        var popup_25efa3db1f806d770a14df94581a64b4 = L.popup({"maxWidth": 250});
+
+        
+            
+                var html_fa18290254edd6a16e7f2a039ac0367f = $(`<div id="html_fa18290254edd6a16e7f2a039ac0367f" style="width: 100.0%; height: 100.0%;"><strong>Name:</strong> Sven-Åke Gustaf Andersson<br><strong>Job Title:</strong> Editor<br><strong>Education:</strong> </div>`)[0];
+                popup_25efa3db1f806d770a14df94581a64b4.setContent(html_fa18290254edd6a16e7f2a039ac0367f);
+            
+        
+
+        marker_5f46416da03330efcbd9cd6359b393a4.bindPopup(popup_25efa3db1f806d770a14df94581a64b4)
+        ;
+
+        
+    
+    
+            var marker_ce00622fab9a371c018d4c435f810224 = L.marker(
+                [57.7210839, 12.9407407],
+                {}
+            ).addTo(map_32afb712536328978ac4d31266f9583d);
+        
+    
+        var popup_74cbe4723bcfc7d6f9ae863efe55d812 = L.popup({"maxWidth": 250});
+
+        
+            
+                var html_a14f06317f5885e545e6ed00fca23c13 = $(`<div id="html_a14f06317f5885e545e6ed00fca23c13" style="width: 100.0%; height: 100.0%;"><strong>Name:</strong> Torsten Andersson<br><strong>Job Title:</strong> Editor<br><strong>Education:</strong> </div>`)[0];
+                popup_74cbe4723bcfc7d6f9ae863efe55d812.setContent(html_a14f06317f5885e545e6ed00fca23c13);
+            
+        
+
+        marker_ce00622fab9a371c018d4c435f810224.bindPopup(popup_74cbe4723bcfc7d6f9ae863efe55d812)
+        ;
+
+        
+    
+    
+            var marker_e589311ba357e8310fede83359891e0a = L.marker(
+                [57.7072326, 11.9670171],
+                {}
+            ).addTo(map_32afb712536328978ac4d31266f9583d);
+        
+    
+        var popup_40b86198334923178fe1f0e7a3e9bb73 = L.popup({"maxWidth": 250});
+
+        
+            
+                var html_6e83bb5dca846f3bfbab72ed1551d07c = $(`<div id="html_6e83bb5dca846f3bfbab72ed1551d07c" style="width: 100.0%; height: 100.0%;"><strong>Name:</strong> Ture Vilhelm Andersson<br><strong>Job Title:</strong> Unknown<br><strong>Education:</strong> Stella Polytechnic, Gothenburg High School</div>`)[0];
+                popup_40b86198334923178fe1f0e7a3e9bb73.setContent(html_6e83bb5dca846f3bfbab72ed1551d07c);
+            
+        
+
+        marker_e589311ba357e8310fede83359891e0a.bindPopup(popup_40b86198334923178fe1f0e7a3e9bb73)
+        ;
+
+        
+    
+    
+            var marker_75a90677527b0a917de611c265a282af = L.marker(
+                [59.666667, 15.25],
+                {}
+            ).addTo(map_32afb712536328978ac4d31266f9583d);
+        
+    
+        var popup_ce2a23c517308f5dddabe9587df725d8 = L.popup({"maxWidth": 250});
+
+        
+            
+                var html_26b2f5efb739ee4910b5b3031e9f1081 = $(`<div id="html_26b2f5efb739ee4910b5b3031e9f1081" style="width: 100.0%; height: 100.0%;"><strong>Name:</strong> Sven Andolf<br><strong>Job Title:</strong> other<br><strong>Education:</strong> Studentexamen, Baccalauréat, Fil. Mag., Fil. Lic., Fil. Dr.</div>`)[0];
+                popup_ce2a23c517308f5dddabe9587df725d8.setContent(html_26b2f5efb739ee4910b5b3031e9f1081);
+            
+        
+
+        marker_75a90677527b0a917de611c265a282af.bindPopup(popup_ce2a23c517308f5dddabe9587df725d8)
+        ;
+
+        
+    
+    
+            var marker_3965b90229dce11911cd6748dd38a65a = L.marker(
+                [58.5909124, 16.1903511],
+                {}
+            ).addTo(map_32afb712536328978ac4d31266f9583d);
+        
+    
+        var popup_e12f81c197c1a4a6aad78248b9029bd2 = L.popup({"maxWidth": 250});
+
+        
+            
+                var html_2be06fd6144e81e511dfb6f8c291853e = $(`<div id="html_2be06fd6144e81e511dfb6f8c291853e" style="width: 100.0%; height: 100.0%;"><strong>Name:</strong> Ragnar Emil Andreas Andreen<br><strong>Job Title:</strong> other<br><strong>Education:</strong> </div>`)[0];
+                popup_e12f81c197c1a4a6aad78248b9029bd2.setContent(html_2be06fd6144e81e511dfb6f8c291853e);
+            
+        
+
+        marker_3965b90229dce11911cd6748dd38a65a.bindPopup(popup_e12f81c197c1a4a6aad78248b9029bd2)
+        ;
+
+        
+    
+    
+            var marker_bec8c82699ad71f604f74b4362aa3181 = L.marker(
+                [56.6721831, 12.9130759],
+                {}
+            ).addTo(map_32afb712536328978ac4d31266f9583d);
+        
+    
+        var popup_5bebdaeacef5fda399dec90cf3b3a65a = L.popup({"maxWidth": 250});
+
+        
+            
+                var html_e727d7444d0ca269d2e4f39c947ed7a5 = $(`<div id="html_e727d7444d0ca269d2e4f39c947ed7a5" style="width: 100.0%; height: 100.0%;"><strong>Name:</strong> Nils Emil Andreas Andrup<br><strong>Job Title:</strong> High School Teacher<br><strong>Education:</strong> </div>`)[0];
+                popup_5bebdaeacef5fda399dec90cf3b3a65a.setContent(html_e727d7444d0ca269d2e4f39c947ed7a5);
+            
+        
+
+        marker_bec8c82699ad71f604f74b4362aa3181.bindPopup(popup_5bebdaeacef5fda399dec90cf3b3a65a)
+        ;
+
+        
+    
+    
+            var marker_fe8feb69b08097a325f88ddf473cde67 = L.marker(
+                [57.8, 13.383333],
+                {}
+            ).addTo(map_32afb712536328978ac4d31266f9583d);
+        
+    
+        var popup_ce731fa29901fea5676eab426b82c633 = L.popup({"maxWidth": 250});
+
+        
+            
+                var html_185ade9966267c4beac832e04e970a76 = $(`<div id="html_185ade9966267c4beac832e04e970a76" style="width: 100.0%; height: 100.0%;"><strong>Name:</strong> Gustaf-Adolf (Gösta) Mauritz Anell<br><strong>Job Title:</strong> Unknown<br><strong>Education:</strong> Realskolan Skövde, Göteborgs handelsinstitut</div>`)[0];
+                popup_ce731fa29901fea5676eab426b82c633.setContent(html_185ade9966267c4beac832e04e970a76);
+            
+        
+
+        marker_fe8feb69b08097a325f88ddf473cde67.bindPopup(popup_ce731fa29901fea5676eab426b82c633)
+        ;
+
+        
+    
+    
+            var marker_da6b0cef72391e975ac9b22e8797522e = L.marker(
+                [59.3251172, 18.0710935],
+                {}
+            ).addTo(map_32afb712536328978ac4d31266f9583d);
+        
+    
+        var popup_efe0de604d734fd76fe4e290e69dda94 = L.popup({"maxWidth": 250});
+
+        
+            
+                var html_71dc9fc82bb7f6796d6051b3fcbcf61c = $(`<div id="html_71dc9fc82bb7f6796d6051b3fcbcf61c" style="width: 100.0%; height: 100.0%;"><strong>Name:</strong> Sten Gustav Anton Anjou<br><strong>Job Title:</strong> other<br><strong>Education:</strong> </div>`)[0];
+                popup_efe0de604d734fd76fe4e290e69dda94.setContent(html_71dc9fc82bb7f6796d6051b3fcbcf61c);
+            
+        
+
+        marker_da6b0cef72391e975ac9b22e8797522e.bindPopup(popup_efe0de604d734fd76fe4e290e69dda94)
+        ;
+
+        
+    
+    
+            var marker_e7971ff5762d3cbead489ab2fb958374 = L.marker(
+                [58.1051802, 15.771985710051952],
+                {}
+            ).addTo(map_32afb712536328978ac4d31266f9583d);
+        
+    
+        var popup_ecbaa7fdc1f60ba2f9a8d77986b64bd0 = L.popup({"maxWidth": 250});
+
+        
+            
+                var html_d4f546142b847e97f22e1e99808364ce = $(`<div id="html_d4f546142b847e97f22e1e99808364ce" style="width: 100.0%; height: 100.0%;"><strong>Name:</strong> Karl Sten Emanuel Ankarberg<br><strong>Job Title:</strong> High School Teacher<br><strong>Education:</strong> </div>`)[0];
+                popup_ecbaa7fdc1f60ba2f9a8d77986b64bd0.setContent(html_d4f546142b847e97f22e1e99808364ce);
+            
+        
+
+        marker_e7971ff5762d3cbead489ab2fb958374.bindPopup(popup_ecbaa7fdc1f60ba2f9a8d77986b64bd0)
+        ;
+
+        
+    
+    
+            var marker_06172d60d4ac1561a633a193e239b189 = L.marker(
+                [57.6674439, 14.9735595],
+                {}
+            ).addTo(map_32afb712536328978ac4d31266f9583d);
+        
+    
+        var popup_343be19a3373baff1d0c52d71ecf4b46 = L.popup({"maxWidth": 250});
+
+        
+            
+                var html_6164d499c53e3d87a3da00f955e9b0bf = $(`<div id="html_6164d499c53e3d87a3da00f955e9b0bf" style="width: 100.0%; height: 100.0%;"><strong>Name:</strong> Carl Gösta Adolfson<br><strong>Job Title:</strong> Dentist<br><strong>Education:</strong> </div>`)[0];
+                popup_343be19a3373baff1d0c52d71ecf4b46.setContent(html_6164d499c53e3d87a3da00f955e9b0bf);
+            
+        
+
+        marker_06172d60d4ac1561a633a193e239b189.bindPopup(popup_343be19a3373baff1d0c52d71ecf4b46)
+        ;
+
+        
+    
+    
+            var marker_10c0bb9a43eb47bc670a086a308ffc20 = L.marker(
+                [57.02784235, 16.575102000807693],
+                {}
+            ).addTo(map_32afb712536328978ac4d31266f9583d);
+        
+    
+        var popup_c9567c33661da1d5049f8e4f21b9793b = L.popup({"maxWidth": 250});
+
+        
+            
+                var html_b82bd602fb38d1125df7033f45572b75 = $(`<div id="html_b82bd602fb38d1125df7033f45572b75" style="width: 100.0%; height: 100.0%;"><strong>Name:</strong> Lars Edvin Annerstedt<br><strong>Job Title:</strong> other<br><strong>Education:</strong> Stud:ex., Civ:ing:ex.</div>`)[0];
+                popup_c9567c33661da1d5049f8e4f21b9793b.setContent(html_b82bd602fb38d1125df7033f45572b75);
+            
+        
+
+        marker_10c0bb9a43eb47bc670a086a308ffc20.bindPopup(popup_c9567c33661da1d5049f8e4f21b9793b)
+        ;
+
+        
+    
+    
+            var marker_c033d7246fe226aa1c781f8d47484d87 = L.marker(
+                [56.6302659, 15.5366179],
+                {}
+            ).addTo(map_32afb712536328978ac4d31266f9583d);
+        
+    
+        var popup_4363e0cf7174e1773869f533796b2172 = L.popup({"maxWidth": 250});
+
+        
+            
+                var html_33834ba78daf1bd18b87d11900e7a767 = $(`<div id="html_33834ba78daf1bd18b87d11900e7a767" style="width: 100.0%; height: 100.0%;"><strong>Name:</strong> Nils Theodor Annerstedt<br><strong>Job Title:</strong> other<br><strong>Education:</strong> Stud :ex. i Kalmar 21, Jur. kand. i Upps. 28</div>`)[0];
+                popup_4363e0cf7174e1773869f533796b2172.setContent(html_33834ba78daf1bd18b87d11900e7a767);
+            
+        
+
+        marker_c033d7246fe226aa1c781f8d47484d87.bindPopup(popup_4363e0cf7174e1773869f533796b2172)
+        ;
+
+        
+    
+    
+            var marker_3ab0cfdc2fa5c5e63a662c150b32f789 = L.marker(
+                [49.8851869, 8.6736295],
+                {}
+            ).addTo(map_32afb712536328978ac4d31266f9583d);
+        
+    
+        var popup_bbe06a69b7f9b530aaf17799e0974cb5 = L.popup({"maxWidth": 250});
+
+        
+            
+                var html_7fde5cb42aa68d31ef3ba2019fedf7d8 = $(`<div id="html_7fde5cb42aa68d31ef3ba2019fedf7d8" style="width: 100.0%; height: 100.0%;"><strong>Name:</strong> Richard Anspach<br><strong>Job Title:</strong> other<br><strong>Education:</strong> Latin school in Siegburg, University of Bonn</div>`)[0];
+                popup_bbe06a69b7f9b530aaf17799e0974cb5.setContent(html_7fde5cb42aa68d31ef3ba2019fedf7d8);
+            
+        
+
+        marker_3ab0cfdc2fa5c5e63a662c150b32f789.bindPopup(popup_bbe06a69b7f9b530aaf17799e0974cb5)
+        ;
+
+        
+    
+    
+            var marker_5336bc621c3fbf9413f7843813e4b1a0 = L.marker(
+                [56.8787183, 14.8094385],
+                {}
+            ).addTo(map_32afb712536328978ac4d31266f9583d);
+        
+    
+        var popup_1ca9619fa46b7d633292c14de35c3214 = L.popup({"maxWidth": 250});
+
+        
+            
+                var html_164caadab8fd90b3df859c68b1c2c443 = $(`<div id="html_164caadab8fd90b3df859c68b1c2c443" style="width: 100.0%; height: 100.0%;"><strong>Name:</strong> Adolf Anzelius<br><strong>Job Title:</strong> other<br><strong>Education:</strong> </div>`)[0];
+                popup_1ca9619fa46b7d633292c14de35c3214.setContent(html_164caadab8fd90b3df859c68b1c2c443);
+            
+        
+
+        marker_5336bc621c3fbf9413f7843813e4b1a0.bindPopup(popup_1ca9619fa46b7d633292c14de35c3214)
+        ;
+
+        
+    
+    
+            var marker_9703cacbb16af1b847e56d8c6d99e3cc = L.marker(
+                [57.2210454, 18.2361766],
+                {}
+            ).addTo(map_32afb712536328978ac4d31266f9583d);
+        
+    
+        var popup_118043c8da6afedd4c8dd43e77065ad3 = L.popup({"maxWidth": 250});
+
+        
+            
+                var html_9f409e46edd848b90e28ec67f0d015fc = $(`<div id="html_9f409e46edd848b90e28ec67f0d015fc" style="width: 100.0%; height: 100.0%;"><strong>Name:</strong> Emil Sigurd William Appelquist<br><strong>Job Title:</strong> Director<br><strong>Education:</strong> </div>`)[0];
+                popup_118043c8da6afedd4c8dd43e77065ad3.setContent(html_9f409e46edd848b90e28ec67f0d015fc);
+            
+        
+
+        marker_9703cacbb16af1b847e56d8c6d99e3cc.bindPopup(popup_118043c8da6afedd4c8dd43e77065ad3)
+        ;
+
+        
+    
+    
+            var marker_c46b4cc5bcd257f7fbd9271f2e016864 = L.marker(
+                [55.7614388, 13.0293849],
+                {}
+            ).addTo(map_32afb712536328978ac4d31266f9583d);
+        
+    
+        var popup_1e93f750de4c8097a870104bd3371468 = L.popup({"maxWidth": 250});
+
+        
+            
+                var html_2764d7ab1af72f6cba3e5c61acf9361a = $(`<div id="html_2764d7ab1af72f6cba3e5c61acf9361a" style="width: 100.0%; height: 100.0%;"><strong>Name:</strong> Stefan Gustav Daniel Adolfsson<br><strong>Job Title:</strong> Dentist<br><strong>Education:</strong> </div>`)[0];
+                popup_1e93f750de4c8097a870104bd3371468.setContent(html_2764d7ab1af72f6cba3e5c61acf9361a);
+            
+        
+
+        marker_c46b4cc5bcd257f7fbd9271f2e016864.bindPopup(popup_1e93f750de4c8097a870104bd3371468)
+        ;
+
+        
+    
+    
+            var marker_cf8da0e784e08c8f3d23a08776cd0545 = L.marker(
+                [57.7072326, 11.9670171],
+                {}
+            ).addTo(map_32afb712536328978ac4d31266f9583d);
+        
+    
+        var popup_af45b607e2f2f7b2e5165ed0f4a33b0c = L.popup({"maxWidth": 250});
+
+        
+            
+                var html_ef5c6935a278a735959fd5c7b7c5e78f = $(`<div id="html_ef5c6935a278a735959fd5c7b7c5e78f" style="width: 100.0%; height: 100.0%;"><strong>Name:</strong> Gösta Alvar Appeltofft<br><strong>Job Title:</strong> other<br><strong>Education:</strong> Stud:ex. (Secondary school), Shooting course, Mill management course, Driving course</div>`)[0];
+                popup_af45b607e2f2f7b2e5165ed0f4a33b0c.setContent(html_ef5c6935a278a735959fd5c7b7c5e78f);
+            
+        
+
+        marker_cf8da0e784e08c8f3d23a08776cd0545.bindPopup(popup_af45b607e2f2f7b2e5165ed0f4a33b0c)
+        ;
+
+        
+    
+    
+            var marker_5b61c7b262236d2aeae06aa6a8459f11 = L.marker(
+                [57.2683906, 16.4024162],
+                {}
+            ).addTo(map_32afb712536328978ac4d31266f9583d);
+        
+    
+        var popup_e104df8c26e972df498052b40b8938b7 = L.popup({"maxWidth": 250});
+
+        
+            
+                var html_0a660b4a17c8efb99d22725927c6df7d = $(`<div id="html_0a660b4a17c8efb99d22725927c6df7d" style="width: 100.0%; height: 100.0%;"><strong>Name:</strong> Gunnar Engelbert Arbman<br><strong>Job Title:</strong> other<br><strong>Education:</strong> </div>`)[0];
+                popup_e104df8c26e972df498052b40b8938b7.setContent(html_0a660b4a17c8efb99d22725927c6df7d);
+            
+        
+
+        marker_5b61c7b262236d2aeae06aa6a8459f11.bindPopup(popup_e104df8c26e972df498052b40b8938b7)
+        ;
+
+        
+    
+    
+            var marker_3a2ca19f8bdd95a734690a21cdbecf45 = L.marker(
+                [58.7545409, 17.0120656],
+                {}
+            ).addTo(map_32afb712536328978ac4d31266f9583d);
+        
+    
+        var popup_2b52dbb7411a40169056f00de8ba06c7 = L.popup({"maxWidth": 250});
+
+        
+            
+                var html_311908ab08ed2c935ae07f5d2b958e92 = $(`<div id="html_311908ab08ed2c935ae07f5d2b958e92" style="width: 100.0%; height: 100.0%;"><strong>Name:</strong> Ingeborg Natasha Arborelius<br><strong>Job Title:</strong> Dentist<br><strong>Education:</strong> </div>`)[0];
+                popup_2b52dbb7411a40169056f00de8ba06c7.setContent(html_311908ab08ed2c935ae07f5d2b958e92);
+            
+        
+
+        marker_3a2ca19f8bdd95a734690a21cdbecf45.bindPopup(popup_2b52dbb7411a40169056f00de8ba06c7)
+        ;
+
+        
+    
+    
+            var marker_37beae342408f2884b894dff09c00b85 = L.marker(
+                [59.3251172, 18.0710935],
+                {}
+            ).addTo(map_32afb712536328978ac4d31266f9583d);
+        
+    
+        var popup_79ba1dabd7736f24f95107542e47df46 = L.popup({"maxWidth": 250});
+
+        
+            
+                var html_1c44999cd1f3737c804ca64d0ad6fe2b = $(`<div id="html_1c44999cd1f3737c804ca64d0ad6fe2b" style="width: 100.0%; height: 100.0%;"><strong>Name:</strong> Måns Olof Arborelius<br><strong>Job Title:</strong> other<br><strong>Education:</strong> </div>`)[0];
+                popup_79ba1dabd7736f24f95107542e47df46.setContent(html_1c44999cd1f3737c804ca64d0ad6fe2b);
+            
+        
+
+        marker_37beae342408f2884b894dff09c00b85.bindPopup(popup_79ba1dabd7736f24f95107542e47df46)
+        ;
+
+        
+    
+    
+            var marker_43e6e6e289bf57795894db3318cffacc = L.marker(
+                [58.5909124, 16.1903511],
+                {}
+            ).addTo(map_32afb712536328978ac4d31266f9583d);
+        
+    
+        var popup_c2f25c6d53671279d91abd6915ff82d0 = L.popup({"maxWidth": 250});
+
+        
+            
+                var html_33fdb5cd9e272b45a476db30354267fb = $(`<div id="html_33fdb5cd9e272b45a476db30354267fb" style="width: 100.0%; height: 100.0%;"><strong>Name:</strong> Gustav Ingvar Aren<br><strong>Job Title:</strong> other<br><strong>Education:</strong> </div>`)[0];
+                popup_c2f25c6d53671279d91abd6915ff82d0.setContent(html_33fdb5cd9e272b45a476db30354267fb);
+            
+        
+
+        marker_43e6e6e289bf57795894db3318cffacc.bindPopup(popup_c2f25c6d53671279d91abd6915ff82d0)
+        ;
+
+        
+    
+    
+            var marker_e40a1c4d1314c9e4fa7bce9b0a395b9e = L.marker(
+                [58.5909124, 16.1903511],
+                {}
+            ).addTo(map_32afb712536328978ac4d31266f9583d);
+        
+    
+        var popup_03250c2ee8986aeaf5afb7950c5113dc = L.popup({"maxWidth": 250});
+
+        
+            
+                var html_bacd81a48b1c4b1f6adfe7c79b5959d2 = $(`<div id="html_bacd81a48b1c4b1f6adfe7c79b5959d2" style="width: 100.0%; height: 100.0%;"><strong>Name:</strong> Sven Emanuel Aren<br><strong>Job Title:</strong> other<br><strong>Education:</strong> </div>`)[0];
+                popup_03250c2ee8986aeaf5afb7950c5113dc.setContent(html_bacd81a48b1c4b1f6adfe7c79b5959d2);
+            
+        
+
+        marker_e40a1c4d1314c9e4fa7bce9b0a395b9e.bindPopup(popup_03250c2ee8986aeaf5afb7950c5113dc)
+        ;
+
+        
+    
+    
+            var marker_b6b76d04c40a1b653272f40838f8f3f9 = L.marker(
+                [56.954196, 16.3843861],
+                {}
+            ).addTo(map_32afb712536328978ac4d31266f9583d);
+        
+    
+        var popup_1347a236164db625e21db938d0a2f6da = L.popup({"maxWidth": 250});
+
+        
+            
+                var html_b30898fecd204a11892dac7551dfdd68 = $(`<div id="html_b30898fecd204a11892dac7551dfdd68" style="width: 100.0%; height: 100.0%;"><strong>Name:</strong> Nils Otto Areskog<br><strong>Job Title:</strong> Dentist<br><strong>Education:</strong> Kalmar Secondary School, Dental School</div>`)[0];
+                popup_1347a236164db625e21db938d0a2f6da.setContent(html_b30898fecd204a11892dac7551dfdd68);
+            
+        
+
+        marker_b6b76d04c40a1b653272f40838f8f3f9.bindPopup(popup_1347a236164db625e21db938d0a2f6da)
+        ;
+
+        
+    
+    
+            var marker_cdddef5a68823e59e24d0ede7b7d6e06 = L.marker(
+                [55.6052931, 13.0001566],
+                {}
+            ).addTo(map_32afb712536328978ac4d31266f9583d);
+        
+    
+        var popup_f08f1814b4f44f7fd3021110269d4926 = L.popup({"maxWidth": 250});
+
+        
+            
+                var html_e6b952d68f8e54351bd6ccd5a7d54c60 = $(`<div id="html_e6b952d68f8e54351bd6ccd5a7d54c60" style="width: 100.0%; height: 100.0%;"><strong>Name:</strong> Sven Olof Ador<br><strong>Job Title:</strong> other<br><strong>Education:</strong> </div>`)[0];
+                popup_f08f1814b4f44f7fd3021110269d4926.setContent(html_e6b952d68f8e54351bd6ccd5a7d54c60);
+            
+        
+
+        marker_cdddef5a68823e59e24d0ede7b7d6e06.bindPopup(popup_f08f1814b4f44f7fd3021110269d4926)
+        ;
+
+        
+    
+    
+            var marker_8edd1919805c47da036ca9a9bbfa477b = L.marker(
+                [56.0293778, 14.1566859],
+                {}
+            ).addTo(map_32afb712536328978ac4d31266f9583d);
+        
+    
+        var popup_59e0c07944bad865b6d9fb60d290f355 = L.popup({"maxWidth": 250});
+
+        
+            
+                var html_5d4b3c71f797bb97c4f352bd60e5f993 = $(`<div id="html_5d4b3c71f797bb97c4f352bd60e5f993" style="width: 100.0%; height: 100.0%;"><strong>Name:</strong> Sigvard Carl Holger Areskoug<br><strong>Job Title:</strong> other<br><strong>Education:</strong> Graduated, Military Reserve Officer Exam, Civil Engineer Exam</div>`)[0];
+                popup_59e0c07944bad865b6d9fb60d290f355.setContent(html_5d4b3c71f797bb97c4f352bd60e5f993);
+            
+        
+
+        marker_8edd1919805c47da036ca9a9bbfa477b.bindPopup(popup_59e0c07944bad865b6d9fb60d290f355)
+        ;
+
+        
+    
+    
+            var marker_1d27a21b05d994a50d1a0d65da79ae8c = L.marker(
+                [59.3251172, 18.0710935],
+                {}
+            ).addTo(map_32afb712536328978ac4d31266f9583d);
+        
+    
+        var popup_ef251e05458477add0e6cc06fdec77a8 = L.popup({"maxWidth": 250});
+
+        
+            
+                var html_514cbc87edb745cd289340c27ce9206b = $(`<div id="html_514cbc87edb745cd289340c27ce9206b" style="width: 100.0%; height: 100.0%;"><strong>Name:</strong> John Edvard Arfwedson<br><strong>Job Title:</strong> other<br><strong>Education:</strong> Mog:ex, Med. Kand., Med. Lic.</div>`)[0];
+                popup_ef251e05458477add0e6cc06fdec77a8.setContent(html_514cbc87edb745cd289340c27ce9206b);
+            
+        
+
+        marker_1d27a21b05d994a50d1a0d65da79ae8c.bindPopup(popup_ef251e05458477add0e6cc06fdec77a8)
+        ;
+
+        
+    
+    
+            var marker_f3ed3875cce49521c980f478085fee00 = L.marker(
+                [59.5137434, 15.9970475],
+                {}
+            ).addTo(map_32afb712536328978ac4d31266f9583d);
+        
+    
+        var popup_8137c1387f26872cc8c89edc5b49714a = L.popup({"maxWidth": 250});
+
+        
+            
+                var html_496bf919459c9608d047a52ab4258b48 = $(`<div id="html_496bf919459c9608d047a52ab4258b48" style="width: 100.0%; height: 100.0%;"><strong>Name:</strong> Anders Edvard Magnus Arhusiander<br><strong>Job Title:</strong> other<br><strong>Education:</strong> </div>`)[0];
+                popup_8137c1387f26872cc8c89edc5b49714a.setContent(html_496bf919459c9608d047a52ab4258b48);
+            
+        
+
+        marker_f3ed3875cce49521c980f478085fee00.bindPopup(popup_8137c1387f26872cc8c89edc5b49714a)
+        ;
+
+        
+    
+    
+            var marker_a44acaa9d2ae8c03fd05c21b27c2368c = L.marker(
+                [57.894226, 11.9501102],
+                {}
+            ).addTo(map_32afb712536328978ac4d31266f9583d);
+        
+    
+        var popup_7cc298dbaec930432c8f10c8e6d084e1 = L.popup({"maxWidth": 250});
+
+        
+            
+                var html_2aafc370a83ed2c8a23e550973a73b76 = $(`<div id="html_2aafc370a83ed2c8a23e550973a73b76" style="width: 100.0%; height: 100.0%;"><strong>Name:</strong> Carl Lars Samuel Adrian<br><strong>Job Title:</strong> Unknown<br><strong>Education:</strong> Malmö Secondary School, Theology, Theology, Practical Theology, Ordination</div>`)[0];
+                popup_7cc298dbaec930432c8f10c8e6d084e1.setContent(html_2aafc370a83ed2c8a23e550973a73b76);
+            
+        
+
+        marker_a44acaa9d2ae8c03fd05c21b27c2368c.bindPopup(popup_7cc298dbaec930432c8f10c8e6d084e1)
+        ;
+
+        
+    
+    
+            var marker_a2b1a5d3f81744d66a1274bd7d582197 = L.marker(
+                [59.3251172, 18.0710935],
+                {}
+            ).addTo(map_32afb712536328978ac4d31266f9583d);
+        
+    
+        var popup_898265f16562f80982fb285226708fde = L.popup({"maxWidth": 250});
+
+        
+            
+                var html_6e67e7d92331efcdd36ea91ff284e707 = $(`<div id="html_6e67e7d92331efcdd36ea91ff284e707" style="width: 100.0%; height: 100.0%;"><strong>Name:</strong> Arild Uno A:son<br><strong>Job Title:</strong> other<br><strong>Education:</strong> Norrmalm High School, Royal Institute of Technology</div>`)[0];
+                popup_898265f16562f80982fb285226708fde.setContent(html_6e67e7d92331efcdd36ea91ff284e707);
+            
+        
+
+        marker_a2b1a5d3f81744d66a1274bd7d582197.bindPopup(popup_898265f16562f80982fb285226708fde)
+        ;
+
+        
+    
+    
+            var marker_6d450c8197b736f973ec57914c013a3f = L.marker(
+                [57.6530377, 14.6981554],
+                {}
+            ).addTo(map_32afb712536328978ac4d31266f9583d);
+        
+    
+        var popup_731eac38f2fae4362657a4e0bbba69f5 = L.popup({"maxWidth": 250});
+
+        
+            
+                var html_3bc16cec6d3a14153685e699b6511a04 = $(`<div id="html_3bc16cec6d3a14153685e699b6511a04" style="width: 100.0%; height: 100.0%;"><strong>Name:</strong> Anders Karl Arne Arin<br><strong>Job Title:</strong> other<br><strong>Education:</strong> </div>`)[0];
+                popup_731eac38f2fae4362657a4e0bbba69f5.setContent(html_3bc16cec6d3a14153685e699b6511a04);
+            
+        
+
+        marker_6d450c8197b736f973ec57914c013a3f.bindPopup(popup_731eac38f2fae4362657a4e0bbba69f5)
+        ;
+
+        
+    
+    
+            var marker_8a5a021c810e1354b24d68b3226784af = L.marker(
+                [57.7072326, 11.9670171],
+                {}
+            ).addTo(map_32afb712536328978ac4d31266f9583d);
+        
+    
+        var popup_26d5c58137f1549be44ac5768302b913 = L.popup({"maxWidth": 250});
+
+        
+            
+                var html_1da6752e83fb44ecf2247240dfc5fe29 = $(`<div id="html_1da6752e83fb44ecf2247240dfc5fe29" style="width: 100.0%; height: 100.0%;"><strong>Name:</strong> Sven Al'f Idor Arlid<br><strong>Job Title:</strong> other<br><strong>Education:</strong> Fjedd-Steidtiska School, Lund University</div>`)[0];
+                popup_26d5c58137f1549be44ac5768302b913.setContent(html_1da6752e83fb44ecf2247240dfc5fe29);
+            
+        
+
+        marker_8a5a021c810e1354b24d68b3226784af.bindPopup(popup_26d5c58137f1549be44ac5768302b913)
+        ;
+
+        
+    
+    
+            var marker_4d78720f86683a63fc498c03dda2a673 = L.marker(
+                [59.3251172, 18.0710935],
+                {}
+            ).addTo(map_32afb712536328978ac4d31266f9583d);
+        
+    
+        var popup_5a5a41b0aefd19482b9e58b58f349387 = L.popup({"maxWidth": 250});
+
+        
+            
+                var html_d94fe20c0b0e2a0d659dc94cc7a84251 = $(`<div id="html_d94fe20c0b0e2a0d659dc94cc7a84251" style="width: 100.0%; height: 100.0%;"><strong>Name:</strong> Carl Gustaf Armfelt<br><strong>Job Title:</strong> other<br><strong>Education:</strong> </div>`)[0];
+                popup_5a5a41b0aefd19482b9e58b58f349387.setContent(html_d94fe20c0b0e2a0d659dc94cc7a84251);
+            
+        
+
+        marker_4d78720f86683a63fc498c03dda2a673.bindPopup(popup_5a5a41b0aefd19482b9e58b58f349387)
+        ;
+
+        
+    
+    
+            var marker_bc1648f6195398a482e728ec5f22ea98 = L.marker(
+                [57.7072326, 11.9670171],
+                {}
+            ).addTo(map_32afb712536328978ac4d31266f9583d);
+        
+    
+        var popup_58d54c849fac0f4230d911338dd68154 = L.popup({"maxWidth": 250});
+
+        
+            
+                var html_58ac4d227cb5db89a5d2d6bff2b9ae9a = $(`<div id="html_58ac4d227cb5db89a5d2d6bff2b9ae9a" style="width: 100.0%; height: 100.0%;"><strong>Name:</strong> Harry Armini<br><strong>Job Title:</strong> other<br><strong>Education:</strong> </div>`)[0];
+                popup_58d54c849fac0f4230d911338dd68154.setContent(html_58ac4d227cb5db89a5d2d6bff2b9ae9a);
+            
+        
+
+        marker_bc1648f6195398a482e728ec5f22ea98.bindPopup(popup_58d54c849fac0f4230d911338dd68154)
+        ;
+
+        
+    
+    
+            var marker_7fc9927b4dfe7e0a37213fbc3356bf53 = L.marker(
+                [58.3965726, 11.4196339],
+                {}
+            ).addTo(map_32afb712536328978ac4d31266f9583d);
+        
+    
+        var popup_b27b790d3bfd2b2afceaa02310c6566f = L.popup({"maxWidth": 250});
+
+        
+            
+                var html_56a3fe801bd38eef85156992209cf5a6 = $(`<div id="html_56a3fe801bd38eef85156992209cf5a6" style="width: 100.0%; height: 100.0%;"><strong>Name:</strong> Curt Henry Armstedt<br><strong>Job Title:</strong> Manager<br><strong>Education:</strong> </div>`)[0];
+                popup_b27b790d3bfd2b2afceaa02310c6566f.setContent(html_56a3fe801bd38eef85156992209cf5a6);
+            
+        
+
+        marker_7fc9927b4dfe7e0a37213fbc3356bf53.bindPopup(popup_b27b790d3bfd2b2afceaa02310c6566f)
+        ;
+
+        
+    
+    
+            var marker_0b663cd80fe75c1124eec63c80b8d136 = L.marker(
+                [58.4098135, 15.6245252],
+                {}
+            ).addTo(map_32afb712536328978ac4d31266f9583d);
+        
+    
+        var popup_83af66243a585c871fcd3fad1c612f21 = L.popup({"maxWidth": 250});
+
+        
+            
+                var html_4642dba4d16534b05d6868dc15ee522a = $(`<div id="html_4642dba4d16534b05d6868dc15ee522a" style="width: 100.0%; height: 100.0%;"><strong>Name:</strong> Per Arnander<br><strong>Job Title:</strong> other<br><strong>Education:</strong> Studentexamen, Bachelor of Medicine, Medical Licentiate</div>`)[0];
+                popup_83af66243a585c871fcd3fad1c612f21.setContent(html_4642dba4d16534b05d6868dc15ee522a);
+            
+        
+
+        marker_0b663cd80fe75c1124eec63c80b8d136.bindPopup(popup_83af66243a585c871fcd3fad1c612f21)
+        ;
+
+        
+    
+    
+            var marker_3b75df0037eb8aff78d9cd8fde53b053 = L.marker(
+                [59.0143842, 17.8210502],
+                {}
+            ).addTo(map_32afb712536328978ac4d31266f9583d);
+        
+    
+        var popup_3bb9145652ae4337e274310037b869aa = L.popup({"maxWidth": 250});
+
+        
+            
+                var html_248428e268fcab5c37104bf4df6c5d7d = $(`<div id="html_248428e268fcab5c37104bf4df6c5d7d" style="width: 100.0%; height: 100.0%;"><strong>Name:</strong> Karl Gunnar Theodor Arnberg<br><strong>Job Title:</strong> other<br><strong>Education:</strong> </div>`)[0];
+                popup_3bb9145652ae4337e274310037b869aa.setContent(html_248428e268fcab5c37104bf4df6c5d7d);
+            
+        
+
+        marker_3b75df0037eb8aff78d9cd8fde53b053.bindPopup(popup_3bb9145652ae4337e274310037b869aa)
+        ;
+
+        
+    
+    
+            var marker_6e2a1cac02a82feb8b265fe0ff404087 = L.marker(
+                [56.6739826, 12.8574827],
+                {}
+            ).addTo(map_32afb712536328978ac4d31266f9583d);
+        
+    
+        var popup_660eec18e638bd96f8b5e3069cbe2b04 = L.popup({"maxWidth": 250});
+
+        
+            
+                var html_38318ab5ed47a27de7341b13acf436cf = $(`<div id="html_38318ab5ed47a27de7341b13acf436cf" style="width: 100.0%; height: 100.0%;"><strong>Name:</strong> Johan Alfred Arnborg<br><strong>Job Title:</strong> Unknown<br><strong>Education:</strong> </div>`)[0];
+                popup_660eec18e638bd96f8b5e3069cbe2b04.setContent(html_38318ab5ed47a27de7341b13acf436cf);
+            
+        
+
+        marker_6e2a1cac02a82feb8b265fe0ff404087.bindPopup(popup_660eec18e638bd96f8b5e3069cbe2b04)
+        ;
+
+        
+    
+    
+            var marker_a8422ffaa0ee0e95ae6ca57b0a10fa05 = L.marker(
+                [57.7072326, 11.9670171],
+                {}
+            ).addTo(map_32afb712536328978ac4d31266f9583d);
+        
+    
+        var popup_c854b8a73c9b5af8650ff6895d919580 = L.popup({"maxWidth": 250});
+
+        
+            
+                var html_edc5e58e23b33f777b9b1af96359c499 = $(`<div id="html_edc5e58e23b33f777b9b1af96359c499" style="width: 100.0%; height: 100.0%;"><strong>Name:</strong> Alf Daniel Sigfrid Arnell<br><strong>Job Title:</strong> Unknown<br><strong>Education:</strong> </div>`)[0];
+                popup_c854b8a73c9b5af8650ff6895d919580.setContent(html_edc5e58e23b33f777b9b1af96359c499);
+            
+        
+
+        marker_a8422ffaa0ee0e95ae6ca57b0a10fa05.bindPopup(popup_c854b8a73c9b5af8650ff6895d919580)
+        ;
+
+        
+    
+    
+            var marker_484d6b6e5294e54cab0b5af79662681c = L.marker(
+                [56.6739826, 12.8574827],
+                {}
+            ).addTo(map_32afb712536328978ac4d31266f9583d);
+        
+    
+        var popup_79b6968703cede417407b07917b60783 = L.popup({"maxWidth": 250});
+
+        
+            
+                var html_30f8aaf54efaf0eb75cbb3c9968a3e9a = $(`<div id="html_30f8aaf54efaf0eb75cbb3c9968a3e9a" style="width: 100.0%; height: 100.0%;"><strong>Name:</strong> Gösta Wilhelm Mortimer Agardh<br><strong>Job Title:</strong> other<br><strong>Education:</strong> Halmstad Upper Secondary School, Military Academy, IOS, KHS, RS, SS</div>`)[0];
+                popup_79b6968703cede417407b07917b60783.setContent(html_30f8aaf54efaf0eb75cbb3c9968a3e9a);
+            
+        
+
+        marker_484d6b6e5294e54cab0b5af79662681c.bindPopup(popup_79b6968703cede417407b07917b60783)
+        ;
+
+        
+    
+    
+            var marker_b8d3513ea4d0584badeb225fb303f9ee = L.marker(
+                [57.7072326, 11.9670171],
+                {}
+            ).addTo(map_32afb712536328978ac4d31266f9583d);
+        
+    
+        var popup_f51314b12d5ad537c2e9c46107562f2d = L.popup({"maxWidth": 250});
+
+        
+            
+                var html_a6da6b7eeb8745e652c23fb6dab8bfe1 = $(`<div id="html_a6da6b7eeb8745e652c23fb6dab8bfe1" style="width: 100.0%; height: 100.0%;"><strong>Name:</strong> Helge Theodor Arnell<br><strong>Job Title:</strong> other<br><strong>Education:</strong> </div>`)[0];
+                popup_f51314b12d5ad537c2e9c46107562f2d.setContent(html_a6da6b7eeb8745e652c23fb6dab8bfe1);
+            
+        
+
+        marker_b8d3513ea4d0584badeb225fb303f9ee.bindPopup(popup_f51314b12d5ad537c2e9c46107562f2d)
+        ;
+
+        
+    
+    
+            var marker_2e527dec283c20cfaf564d2e77e49ef1 = L.marker(
+                [56.0293778, 14.1566859],
+                {}
+            ).addTo(map_32afb712536328978ac4d31266f9583d);
+        
+    
+        var popup_f831b4f06cc6dc66192cabff04234dc0 = L.popup({"maxWidth": 250});
+
+        
+            
+                var html_9097dd9279332050d146270892735e6d = $(`<div id="html_9097dd9279332050d146270892735e6d" style="width: 100.0%; height: 100.0%;"><strong>Name:</strong> Knut Arning<br><strong>Job Title:</strong> other<br><strong>Education:</strong> </div>`)[0];
+                popup_f831b4f06cc6dc66192cabff04234dc0.setContent(html_9097dd9279332050d146270892735e6d);
+            
+        
+
+        marker_2e527dec283c20cfaf564d2e77e49ef1.bindPopup(popup_f831b4f06cc6dc66192cabff04234dc0)
+        ;
+
+        
+    
+    
+            var marker_0d3e4ae32134523b4804f89a82242b3f = L.marker(
+                [57.02784235, 16.575102000807693],
+                {}
+            ).addTo(map_32afb712536328978ac4d31266f9583d);
+        
+    
+        var popup_efad3a551dc6ebe8f050b7557805268d = L.popup({"maxWidth": 250});
+
+        
+            
+                var html_f3e924c377a29062ff1229be2100ad4d = $(`<div id="html_f3e924c377a29062ff1229be2100ad4d" style="width: 100.0%; height: 100.0%;"><strong>Name:</strong> Gustaf Ossian Hjalmar Ageberg<br><strong>Job Title:</strong> other<br><strong>Education:</strong> </div>`)[0];
+                popup_efad3a551dc6ebe8f050b7557805268d.setContent(html_f3e924c377a29062ff1229be2100ad4d);
+            
+        
+
+        marker_0d3e4ae32134523b4804f89a82242b3f.bindPopup(popup_efad3a551dc6ebe8f050b7557805268d)
+        ;
+
+        
+    
+    
+            var marker_27c4d3539a7b956d86141df91c2d09c7 = L.marker(
+                [58.4823802, 16.3216224],
+                {}
+            ).addTo(map_32afb712536328978ac4d31266f9583d);
+        
+    
+        var popup_6990142f1f805f18bcc842a7681e52dd = L.popup({"maxWidth": 250});
+
+        
+            
+                var html_0d50ca5793a2e6cf63d3f5935cfe27e2 = $(`<div id="html_0d50ca5793a2e6cf63d3f5935cfe27e2" style="width: 100.0%; height: 100.0%;"><strong>Name:</strong> Karl Gösta Valentin Arnwald<br><strong>Job Title:</strong> other<br><strong>Education:</strong> Linköping University, Uppsala University, Stockholm University</div>`)[0];
+                popup_6990142f1f805f18bcc842a7681e52dd.setContent(html_0d50ca5793a2e6cf63d3f5935cfe27e2);
+            
+        
+
+        marker_27c4d3539a7b956d86141df91c2d09c7.bindPopup(popup_6990142f1f805f18bcc842a7681e52dd)
+        ;
+
+        
+    
+    
+            var marker_a2865b56931c9b29bd8ccc083e36b09b = L.marker(
+                [57.7072326, 11.9670171],
+                {}
+            ).addTo(map_32afb712536328978ac4d31266f9583d);
+        
+    
+        var popup_28df6f644485cabccd1b8f17ea255a24 = L.popup({"maxWidth": 250});
+
+        
+            
+                var html_05a2815607409371d020d9715e614ac3 = $(`<div id="html_05a2815607409371d020d9715e614ac3" style="width: 100.0%; height: 100.0%;"><strong>Name:</strong> Sven Gunnar Aronius<br><strong>Job Title:</strong> other<br><strong>Education:</strong> Stud:ex., Teol. fil. ex., Teol. kand. o. prakt, teol. ex.</div>`)[0];
+                popup_28df6f644485cabccd1b8f17ea255a24.setContent(html_05a2815607409371d020d9715e614ac3);
+            
+        
+
+        marker_a2865b56931c9b29bd8ccc083e36b09b.bindPopup(popup_28df6f644485cabccd1b8f17ea255a24)
+        ;
+
+        
+    
+    
+            var marker_f9911958c9674b468a1b2f989a03e784 = L.marker(
+                [57.7072326, 11.9670171],
+                {}
+            ).addTo(map_32afb712536328978ac4d31266f9583d);
+        
+    
+        var popup_6feddcb3b49a6de540f59cf3e376aa89 = L.popup({"maxWidth": 250});
+
+        
+            
+                var html_29f240807c50343326afaf0e920dc122 = $(`<div id="html_29f240807c50343326afaf0e920dc122" style="width: 100.0%; height: 100.0%;"><strong>Name:</strong> Aron Meyer Aronson<br><strong>Job Title:</strong> other<br><strong>Education:</strong> Stud:ex, Bachelor's degree in Medicine, Doctor of Medicine degree</div>`)[0];
+                popup_6feddcb3b49a6de540f59cf3e376aa89.setContent(html_29f240807c50343326afaf0e920dc122);
+            
+        
+
+        marker_f9911958c9674b468a1b2f989a03e784.bindPopup(popup_6feddcb3b49a6de540f59cf3e376aa89)
+        ;
+
+        
+    
+    
+            var marker_4bc776174117b81687137322eabe6b99 = L.marker(
+                [58.089821, 12.8305139],
+                {}
+            ).addTo(map_32afb712536328978ac4d31266f9583d);
+        
+    
+        var popup_6c1981f552d3238532ceb95c530f1ccf = L.popup({"maxWidth": 250});
+
+        
+            
+                var html_d7313f2e6e50f66230057c377344b3ae = $(`<div id="html_d7313f2e6e50f66230057c377344b3ae" style="width: 100.0%; height: 100.0%;"><strong>Name:</strong> Kari Valter Aronsson<br><strong>Job Title:</strong> Dentist<br><strong>Education:</strong> </div>`)[0];
+                popup_6c1981f552d3238532ceb95c530f1ccf.setContent(html_d7313f2e6e50f66230057c377344b3ae);
+            
+        
+
+        marker_4bc776174117b81687137322eabe6b99.bindPopup(popup_6c1981f552d3238532ceb95c530f1ccf)
+        ;
+
+        
+    
+    
+            var marker_34b8645efbeed9e460db38f68104fef3 = L.marker(
+                [59.65818075, 17.089143424661334],
+                {}
+            ).addTo(map_32afb712536328978ac4d31266f9583d);
+        
+    
+        var popup_b815e36391c627d7d6b24afc7e8dccf8 = L.popup({"maxWidth": 250});
+
+        
+            
+                var html_e8d7ead9047204d7bb81290fbf6a8273 = $(`<div id="html_e8d7ead9047204d7bb81290fbf6a8273" style="width: 100.0%; height: 100.0%;"><strong>Name:</strong> Carl Fredrik Arosenius<br><strong>Job Title:</strong> other<br><strong>Education:</strong> </div>`)[0];
+                popup_b815e36391c627d7d6b24afc7e8dccf8.setContent(html_e8d7ead9047204d7bb81290fbf6a8273);
+            
+        
+
+        marker_34b8645efbeed9e460db38f68104fef3.bindPopup(popup_b815e36391c627d7d6b24afc7e8dccf8)
+        ;
+
+        
+    
+    
+            var marker_d0198a6d37f08f3100639a866cdcd1f5 = L.marker(
+                [57.4393808, 15.4210684],
+                {}
+            ).addTo(map_32afb712536328978ac4d31266f9583d);
+        
+    
+        var popup_7418df8ec1fd1e51f3224f621555a54c = L.popup({"maxWidth": 250});
+
+        
+            
+                var html_50848e6b7f2f75cf14f96ffa6c85af2d = $(`<div id="html_50848e6b7f2f75cf14f96ffa6c85af2d" style="width: 100.0%; height: 100.0%;"><strong>Name:</strong> Karl Axel Helge Arrander<br><strong>Job Title:</strong> other<br><strong>Education:</strong> Studied medicine at Eksjö, Graduated as medical candidate in Lund, Received medical license in Lund, Bachelor of Philosophy at Uppsala University, Doctorate in Philosophy, Master of Philosophy at Stockholm University</div>`)[0];
+                popup_7418df8ec1fd1e51f3224f621555a54c.setContent(html_50848e6b7f2f75cf14f96ffa6c85af2d);
+            
+        
+
+        marker_d0198a6d37f08f3100639a866cdcd1f5.bindPopup(popup_7418df8ec1fd1e51f3224f621555a54c)
+        ;
+
+        
+    
+    
+            var marker_6a0aacab71e460ecac43c7fbf6c539a7 = L.marker(
+                [59.8586126, 17.6387436],
+                {}
+            ).addTo(map_32afb712536328978ac4d31266f9583d);
+        
+    
+        var popup_22a878b1f46050ac05fe52068ca65e4e = L.popup({"maxWidth": 250});
+
+        
+            
+                var html_d0df49db01847c22f7dd7b60701c1c20 = $(`<div id="html_d0df49db01847c22f7dd7b60701c1c20" style="width: 100.0%; height: 100.0%;"><strong>Name:</strong> Andersson<br><strong>Job Title:</strong> other<br><strong>Education:</strong> </div>`)[0];
+                popup_22a878b1f46050ac05fe52068ca65e4e.setContent(html_d0df49db01847c22f7dd7b60701c1c20);
+            
+        
+
+        marker_6a0aacab71e460ecac43c7fbf6c539a7.bindPopup(popup_22a878b1f46050ac05fe52068ca65e4e)
+        ;
+
+        
+    
+    
+            var marker_c674d49eedd00229b1a13240b9f2c632 = L.marker(
+                [55.6052931, 13.0001566],
+                {}
+            ).addTo(map_32afb712536328978ac4d31266f9583d);
+        
+    
+        var popup_a23a86e444631e4791e27220514827f0 = L.popup({"maxWidth": 250});
+
+        
+            
+                var html_a2b78f3c59882a4bbcfd7598d571ff0c = $(`<div id="html_a2b78f3c59882a4bbcfd7598d571ff0c" style="width: 100.0%; height: 100.0%;"><strong>Name:</strong> Carl Gustaf Arsell<br><strong>Job Title:</strong> other<br><strong>Education:</strong> </div>`)[0];
+                popup_a23a86e444631e4791e27220514827f0.setContent(html_a2b78f3c59882a4bbcfd7598d571ff0c);
+            
+        
+
+        marker_c674d49eedd00229b1a13240b9f2c632.bindPopup(popup_a23a86e444631e4791e27220514827f0)
+        ;
+
+        
+    
+    
+            var marker_7402cc8c94859fbb66ea5815aa864ef5 = L.marker(
+                [57.7072326, 11.9670171],
+                {}
+            ).addTo(map_32afb712536328978ac4d31266f9583d);
+        
+    
+        var popup_2d9b3d498de7540bd479de1c08e118de = L.popup({"maxWidth": 250});
+
+        
+            
+                var html_d0c8395d769670ef7f59bf2f0c5d634e = $(`<div id="html_d0c8395d769670ef7f59bf2f0c5d634e" style="width: 100.0%; height: 100.0%;"><strong>Name:</strong> Charles Harry Arvall<br><strong>Job Title:</strong> other<br><strong>Education:</strong> </div>`)[0];
+                popup_2d9b3d498de7540bd479de1c08e118de.setContent(html_d0c8395d769670ef7f59bf2f0c5d634e);
+            
+        
+
+        marker_7402cc8c94859fbb66ea5815aa864ef5.bindPopup(popup_2d9b3d498de7540bd479de1c08e118de)
+        ;
+
+        
+    
+    
+            var marker_937add0dec45df1f3fb182f9fd3555e6 = L.marker(
+                [59.6110992, 16.5463679],
+                {}
+            ).addTo(map_32afb712536328978ac4d31266f9583d);
+        
+    
+        var popup_d25909ef7edf80660bba1099f65e1a34 = L.popup({"maxWidth": 250});
+
+        
+            
+                var html_ab1b402d959c6584164de97638b38042 = $(`<div id="html_ab1b402d959c6584164de97638b38042" style="width: 100.0%; height: 100.0%;"><strong>Name:</strong> Tomas Fredrik Arvedson<br><strong>Job Title:</strong> other<br><strong>Education:</strong> </div>`)[0];
+                popup_d25909ef7edf80660bba1099f65e1a34.setContent(html_ab1b402d959c6584164de97638b38042);
+            
+        
+
+        marker_937add0dec45df1f3fb182f9fd3555e6.bindPopup(popup_d25909ef7edf80660bba1099f65e1a34)
+        ;
+
+        
+    
+    
+            var marker_aea24f0ad560e8eaa1624af9006d9277 = L.marker(
+                [57.7825634, 14.165719],
+                {}
+            ).addTo(map_32afb712536328978ac4d31266f9583d);
+        
+    
+        var popup_d004edab6953c9ed582c29ad1318d4ed = L.popup({"maxWidth": 250});
+
+        
+            
+                var html_a0774ea2e47e5ded1428b24892a0ba61 = $(`<div id="html_a0774ea2e47e5ded1428b24892a0ba61" style="width: 100.0%; height: 100.0%;"><strong>Name:</strong> David Olof Alfred Arven<br><strong>Job Title:</strong> other<br><strong>Education:</strong> </div>`)[0];
+                popup_d004edab6953c9ed582c29ad1318d4ed.setContent(html_a0774ea2e47e5ded1428b24892a0ba61);
+            
+        
+
+        marker_aea24f0ad560e8eaa1624af9006d9277.bindPopup(popup_d004edab6953c9ed582c29ad1318d4ed)
+        ;
+
+        
+    
+    
+            var marker_36a5b5b1d3d3df6c6ae982673618def4 = L.marker(
+                [58.4497516, 15.81409160036499],
+                {}
+            ).addTo(map_32afb712536328978ac4d31266f9583d);
+        
+    
+        var popup_0236bfbbc1cb0fffd8662d2ba3d61236 = L.popup({"maxWidth": 250});
+
+        
+            
+                var html_dc7d4d6421341223e1244db6cdf164c1 = $(`<div id="html_dc7d4d6421341223e1244db6cdf164c1" style="width: 100.0%; height: 100.0%;"><strong>Name:</strong> Albert Andreas Arvidsson<br><strong>Job Title:</strong> High School Teacher<br><strong>Education:</strong> </div>`)[0];
+                popup_0236bfbbc1cb0fffd8662d2ba3d61236.setContent(html_dc7d4d6421341223e1244db6cdf164c1);
+            
+        
+
+        marker_36a5b5b1d3d3df6c6ae982673618def4.bindPopup(popup_0236bfbbc1cb0fffd8662d2ba3d61236)
+        ;
+
+        
+    
+    
+            var marker_2991223b6b9d58bd078f7d3debae33b7 = L.marker(
+                [56.446032, 16.0706166],
+                {}
+            ).addTo(map_32afb712536328978ac4d31266f9583d);
+        
+    
+        var popup_e8a598abfd34b9fb6d0a48f2f16d7d7d = L.popup({"maxWidth": 250});
+
+        
+            
+                var html_d18358c7d0c95e2644968b1fc0e31e7b = $(`<div id="html_d18358c7d0c95e2644968b1fc0e31e7b" style="width: 100.0%; height: 100.0%;"><strong>Name:</strong> Albin Ferdinand Arvidson<br><strong>Job Title:</strong> other<br><strong>Education:</strong> Studied in Kalmar</div>`)[0];
+                popup_e8a598abfd34b9fb6d0a48f2f16d7d7d.setContent(html_d18358c7d0c95e2644968b1fc0e31e7b);
+            
+        
+
+        marker_2991223b6b9d58bd078f7d3debae33b7.bindPopup(popup_e8a598abfd34b9fb6d0a48f2f16d7d7d)
+        ;
+
+        
+    
+    
+            var marker_bec10a0f2af1f44cee0f7449cefa1462 = L.marker(
+                [59.8586126, 17.6387436],
+                {}
+            ).addTo(map_32afb712536328978ac4d31266f9583d);
+        
+    
+        var popup_df6d924672d474aa3f7403c193de3c19 = L.popup({"maxWidth": 250});
+
+        
+            
+                var html_1e2e9fd309ea7f6cc85016742e68c22c = $(`<div id="html_1e2e9fd309ea7f6cc85016742e68c22c" style="width: 100.0%; height: 100.0%;"><strong>Name:</strong> Greta Arwidsson<br><strong>Job Title:</strong> other<br><strong>Education:</strong> Stud:ex., Fil. kand., Fil. mag., Fil. lic., Fil. dr</div>`)[0];
+                popup_df6d924672d474aa3f7403c193de3c19.setContent(html_1e2e9fd309ea7f6cc85016742e68c22c);
+            
+        
+
+        marker_bec10a0f2af1f44cee0f7449cefa1462.bindPopup(popup_df6d924672d474aa3f7403c193de3c19)
+        ;
+
+        
+    
+    
+            var marker_229dc48ee3db7292e4df75b8b3077833 = L.marker(
+                [57.9160149, 14.0527108],
+                {}
+            ).addTo(map_32afb712536328978ac4d31266f9583d);
+        
+    
+        var popup_6fe7a14302cacdea189773b4037b6a7d = L.popup({"maxWidth": 250});
+
+        
+            
+                var html_6759de61ed05091b4057db96726fdc2b = $(`<div id="html_6759de61ed05091b4057db96726fdc2b" style="width: 100.0%; height: 100.0%;"><strong>Name:</strong> Olof Herbert Folke Arvidsson<br><strong>Job Title:</strong> other<br><strong>Education:</strong> Jönköping Tax Office</div>`)[0];
+                popup_6fe7a14302cacdea189773b4037b6a7d.setContent(html_6759de61ed05091b4057db96726fdc2b);
+            
+        
+
+        marker_229dc48ee3db7292e4df75b8b3077833.bindPopup(popup_6fe7a14302cacdea189773b4037b6a7d)
+        ;
+
+        
+    
+    
+            var marker_a0ed439027f0bb416ef6eaf151a26e78 = L.marker(
+                [58.3795699, 14.710021720605189],
+                {}
+            ).addTo(map_32afb712536328978ac4d31266f9583d);
+        
+    
+        var popup_64a04a17160fc17dbe9280c892afab73 = L.popup({"maxWidth": 250});
+
+        
+            
+                var html_4b4080cfe321de57c509f98741981819 = $(`<div id="html_4b4080cfe321de57c509f98741981819" style="width: 100.0%; height: 100.0%;"><strong>Name:</strong> Karl Erik Gustav Arvidsson<br><strong>Job Title:</strong> Dentist<br><strong>Education:</strong> </div>`)[0];
+                popup_64a04a17160fc17dbe9280c892afab73.setContent(html_4b4080cfe321de57c509f98741981819);
+            
+        
+
+        marker_a0ed439027f0bb416ef6eaf151a26e78.bindPopup(popup_64a04a17160fc17dbe9280c892afab73)
+        ;
+
+        
+    
+    
+            var marker_d2a3e50dbda1c6d869e33c40dcc7b5b6 = L.marker(
+                [57.9299658, 12.5329678],
+                {}
+            ).addTo(map_32afb712536328978ac4d31266f9583d);
+        
+    
+        var popup_7a53c9e8467986af9226e833d851e18b = L.popup({"maxWidth": 250});
+
+        
+            
+                var html_b09aa1d418a2dc3fc42267a62f1bb783 = $(`<div id="html_b09aa1d418a2dc3fc42267a62f1bb783" style="width: 100.0%; height: 100.0%;"><strong>Name:</strong> Olof Natanael Arvidsson<br><strong>Job Title:</strong> Dentist<br><strong>Education:</strong> </div>`)[0];
+                popup_7a53c9e8467986af9226e833d851e18b.setContent(html_b09aa1d418a2dc3fc42267a62f1bb783);
+            
+        
+
+        marker_d2a3e50dbda1c6d869e33c40dcc7b5b6.bindPopup(popup_7a53c9e8467986af9226e833d851e18b)
+        ;
+
+        
+    
+    
+            var marker_d8d3ed96ce955585614856a6bb966ad7 = L.marker(
+                [59.2747287, 15.2151181],
+                {}
+            ).addTo(map_32afb712536328978ac4d31266f9583d);
+        
+    
+        var popup_051c57dba5ad9fde2d0192d235360918 = L.popup({"maxWidth": 250});
+
+        
+            
+                var html_b615cb786417502901f1ce0abdfffd8f = $(`<div id="html_b615cb786417502901f1ce0abdfffd8f" style="width: 100.0%; height: 100.0%;"><strong>Name:</strong> Sten Erik Rune Arvidsson<br><strong>Job Title:</strong> other<br><strong>Education:</strong> </div>`)[0];
+                popup_051c57dba5ad9fde2d0192d235360918.setContent(html_b615cb786417502901f1ce0abdfffd8f);
+            
+        
+
+        marker_d8d3ed96ce955585614856a6bb966ad7.bindPopup(popup_051c57dba5ad9fde2d0192d235360918)
+        ;
+
+        
+    
+    
+            var marker_1f20299c1a03ee12a59f21602cf25742 = L.marker(
+                [56.853736, 14.6215957],
+                {}
+            ).addTo(map_32afb712536328978ac4d31266f9583d);
+        
+    
+        var popup_4e419220490028c899529e5ae020f394 = L.popup({"maxWidth": 250});
+
+        
+            
+                var html_56e3ea8c9c5d5c92981e984b85e159c8 = $(`<div id="html_56e3ea8c9c5d5c92981e984b85e159c8" style="width: 100.0%; height: 100.0%;"><strong>Name:</strong> Carl Henning Wilhelm Aschan<br><strong>Job Title:</strong> other<br><strong>Education:</strong> </div>`)[0];
+                popup_4e419220490028c899529e5ae020f394.setContent(html_56e3ea8c9c5d5c92981e984b85e159c8);
+            
+        
+
+        marker_1f20299c1a03ee12a59f21602cf25742.bindPopup(popup_4e419220490028c899529e5ae020f394)
+        ;
+
+        
+    
+    
+            var marker_483d2dd13563f361cb07388a31054558 = L.marker(
+                [57.7072326, 11.9670171],
+                {}
+            ).addTo(map_32afb712536328978ac4d31266f9583d);
+        
+    
+        var popup_63b172a1d23241868b4c48189aa7e5c9 = L.popup({"maxWidth": 250});
+
+        
+            
+                var html_136b09624090863f0136ddc8c87e1665 = $(`<div id="html_136b09624090863f0136ddc8c87e1665" style="width: 100.0%; height: 100.0%;"><strong>Name:</strong> John Asklund<br><strong>Job Title:</strong> other<br><strong>Education:</strong> Gothenburg higher secondary school, Reservist officer examination, Dental school</div>`)[0];
+                popup_63b172a1d23241868b4c48189aa7e5c9.setContent(html_136b09624090863f0136ddc8c87e1665);
+            
+        
+
+        marker_483d2dd13563f361cb07388a31054558.bindPopup(popup_63b172a1d23241868b4c48189aa7e5c9)
+        ;
+
+        
+    
+    
+            var marker_7f16c3e50e0e28ebd5f210b4bc81738d = L.marker(
+                [57.5580985, 15.9375862],
+                {}
+            ).addTo(map_32afb712536328978ac4d31266f9583d);
+        
+    
+        var popup_a191b3af27aa42091355e1233f290d4a = L.popup({"maxWidth": 250});
+
+        
+            
+                var html_7a2c934815b439b03c57f266a8ae4ec3 = $(`<div id="html_7a2c934815b439b03c57f266a8ae4ec3" style="width: 100.0%; height: 100.0%;"><strong>Name:</strong> Seth Oskar Asklund<br><strong>Job Title:</strong> other<br><strong>Education:</strong> High School Degree, Bachelor of Arts in Theology, Bachelor of Theology, Practical Theological Examination, Priesthood</div>`)[0];
+                popup_a191b3af27aa42091355e1233f290d4a.setContent(html_7a2c934815b439b03c57f266a8ae4ec3);
+            
+        
+
+        marker_7f16c3e50e0e28ebd5f210b4bc81738d.bindPopup(popup_a191b3af27aa42091355e1233f290d4a)
+        ;
+
+        
+    
+    
+            var marker_3cfd8640082bc24be19cbc9088d9eed0 = L.marker(
+                [58.5243333, 15.0741961],
+                {}
+            ).addTo(map_32afb712536328978ac4d31266f9583d);
+        
+    
+        var popup_654d4fdc761f10fc90e1d0fcb99aa83e = L.popup({"maxWidth": 250});
+
+        
+            
+                var html_6f7ad720bfe97ca0cafe776fc0626afc = $(`<div id="html_6f7ad720bfe97ca0cafe776fc0626afc" style="width: 100.0%; height: 100.0%;"><strong>Name:</strong> Erik Wilhelm Asp<br><strong>Job Title:</strong> other<br><strong>Education:</strong> </div>`)[0];
+                popup_654d4fdc761f10fc90e1d0fcb99aa83e.setContent(html_6f7ad720bfe97ca0cafe776fc0626afc);
+            
+        
+
+        marker_3cfd8640082bc24be19cbc9088d9eed0.bindPopup(popup_654d4fdc761f10fc90e1d0fcb99aa83e)
+        ;
+
+        
+    
+    
+            var marker_4807bd7b9786ad9d918bc678ffa466e3 = L.marker(
+                [60.8884705, 14.5580977],
+                {}
+            ).addTo(map_32afb712536328978ac4d31266f9583d);
+        
+    
+        var popup_b8dec40192b99b76f9bf9e1864dd8931 = L.popup({"maxWidth": 250});
+
+        
+            
+                var html_63a4999a8d9eb22dc1a9653cd6e84faf = $(`<div id="html_63a4999a8d9eb22dc1a9653cd6e84faf" style="width: 100.0%; height: 100.0%;"><strong>Name:</strong> Per Algot Aspelin<br><strong>Job Title:</strong> other<br><strong>Education:</strong> </div>`)[0];
+                popup_b8dec40192b99b76f9bf9e1864dd8931.setContent(html_63a4999a8d9eb22dc1a9653cd6e84faf);
+            
+        
+
+        marker_4807bd7b9786ad9d918bc678ffa466e3.bindPopup(popup_b8dec40192b99b76f9bf9e1864dd8931)
+        ;
+
+        
+    
+    
+            var marker_9e990c709d59b191b39591130cd00f63 = L.marker(
+                [58.5909124, 16.1903511],
+                {}
+            ).addTo(map_32afb712536328978ac4d31266f9583d);
+        
+    
+        var popup_f00f78b071df44471461698fa944801d = L.popup({"maxWidth": 250});
+
+        
+            
+                var html_fa8d8d42797bac058d3b8e9c98803370 = $(`<div id="html_fa8d8d42797bac058d3b8e9c98803370" style="width: 100.0%; height: 100.0%;"><strong>Name:</strong> Bror Ansgar Asplind<br><strong>Job Title:</strong> Unknown<br><strong>Education:</strong> </div>`)[0];
+                popup_f00f78b071df44471461698fa944801d.setContent(html_fa8d8d42797bac058d3b8e9c98803370);
+            
+        
+
+        marker_9e990c709d59b191b39591130cd00f63.bindPopup(popup_f00f78b071df44471461698fa944801d)
+        ;
+
+        
+    
+    
+            var marker_1718ed000ef7f2142705f775f3c11c50 = L.marker(
+                [57.7072326, 11.9670171],
+                {}
+            ).addTo(map_32afb712536328978ac4d31266f9583d);
+        
+    
+        var popup_39a32db3051999d51ae9bf9f26928008 = L.popup({"maxWidth": 250});
+
+        
+            
+                var html_8b61e4b4454f77066fbfb62fd9aa793b = $(`<div id="html_8b61e4b4454f77066fbfb62fd9aa793b" style="width: 100.0%; height: 100.0%;"><strong>Name:</strong> Per Harald Asplund<br><strong>Job Title:</strong> other<br><strong>Education:</strong> </div>`)[0];
+                popup_39a32db3051999d51ae9bf9f26928008.setContent(html_8b61e4b4454f77066fbfb62fd9aa793b);
+            
+        
+
+        marker_1718ed000ef7f2142705f775f3c11c50.bindPopup(popup_39a32db3051999d51ae9bf9f26928008)
+        ;
+
+        
+    
+    
+            var marker_17ef8d8890dc87b537bc78807330da5a = L.marker(
+                [57.7072326, 11.9670171],
+                {}
+            ).addTo(map_32afb712536328978ac4d31266f9583d);
+        
+    
+        var popup_ceb5db70e917f21874d6414b446c2fc7 = L.popup({"maxWidth": 250});
+
+        
+            
+                var html_6a694946f805209f5fd0ec6b9c7fbf48 = $(`<div id="html_6a694946f805209f5fd0ec6b9c7fbf48" style="width: 100.0%; height: 100.0%;"><strong>Name:</strong> Uno Mauritz Asplund<br><strong>Job Title:</strong> Editor<br><strong>Education:</strong> </div>`)[0];
+                popup_ceb5db70e917f21874d6414b446c2fc7.setContent(html_6a694946f805209f5fd0ec6b9c7fbf48);
+            
+        
+
+        marker_17ef8d8890dc87b537bc78807330da5a.bindPopup(popup_ceb5db70e917f21874d6414b446c2fc7)
+        ;
+
+        
+    
+    
+            var marker_3235366c937b17a48a6b655376cc9060 = L.marker(
+                [58.166667, 15.0],
+                {}
+            ).addTo(map_32afb712536328978ac4d31266f9583d);
+        
+    
+        var popup_ef00cf67d2179f06738cf2e7f858d660 = L.popup({"maxWidth": 250});
+
+        
+            
+                var html_b0ccfdb61be114250bd7a1b3b4886157 = $(`<div id="html_b0ccfdb61be114250bd7a1b3b4886157" style="width: 100.0%; height: 100.0%;"><strong>Name:</strong> William Agging<br><strong>Job Title:</strong> Dentist<br><strong>Education:</strong> Stud:ex. Linköping, Cand. med. dent. Bonn, German dental degree Bonn, Swedish dental degree</div>`)[0];
+                popup_ef00cf67d2179f06738cf2e7f858d660.setContent(html_b0ccfdb61be114250bd7a1b3b4886157);
+            
+        
+
+        marker_3235366c937b17a48a6b655376cc9060.bindPopup(popup_ef00cf67d2179f06738cf2e7f858d660)
+        ;
+
+        
+    
+    
+            var marker_23117b9ae67164ecab239920635af832 = L.marker(
+                [59.8769734, 14.3233025],
+                {}
+            ).addTo(map_32afb712536328978ac4d31266f9583d);
+        
+    
+        var popup_6efba9d8366591dac332e9d2764a7ccd = L.popup({"maxWidth": 250});
+
+        
+            
+                var html_f06e28fa6e0381c70ecf4ad6f9e1f7b7 = $(`<div id="html_f06e28fa6e0381c70ecf4ad6f9e1f7b7" style="width: 100.0%; height: 100.0%;"><strong>Name:</strong> Herman Natanael Asplöf<br><strong>Job Title:</strong> other<br><strong>Education:</strong> </div>`)[0];
+                popup_6efba9d8366591dac332e9d2764a7ccd.setContent(html_f06e28fa6e0381c70ecf4ad6f9e1f7b7);
+            
+        
+
+        marker_23117b9ae67164ecab239920635af832.bindPopup(popup_6efba9d8366591dac332e9d2764a7ccd)
+        ;
+
+        
+    
+    
+            var marker_92bc2288cc358d265478a3f5ee02666a = L.marker(
+                [57.7072326, 11.9670171],
+                {}
+            ).addTo(map_32afb712536328978ac4d31266f9583d);
+        
+    
+        var popup_55aa84df88b0d1703246c756f97187f3 = L.popup({"maxWidth": 250});
+
+        
+            
+                var html_b21536a3ef267c49b3f2fce983a0e09f = $(`<div id="html_b21536a3ef267c49b3f2fce983a0e09f" style="width: 100.0%; height: 100.0%;"><strong>Name:</strong> Per Gunnar Assmundson<br><strong>Job Title:</strong> Dentist<br><strong>Education:</strong> Stud:ex. Gbgs h. latinlärov., Tandl:kand., Tandläkare</div>`)[0];
+                popup_55aa84df88b0d1703246c756f97187f3.setContent(html_b21536a3ef267c49b3f2fce983a0e09f);
+            
+        
+
+        marker_92bc2288cc358d265478a3f5ee02666a.bindPopup(popup_55aa84df88b0d1703246c756f97187f3)
+        ;
+
+        
+    
+    
+            var marker_294e708fb3762c2a76cc625c0e340ed3 = L.marker(
+                [57.7072326, 11.9670171],
+                {}
+            ).addTo(map_32afb712536328978ac4d31266f9583d);
+        
+    
+        var popup_501a22a6ad15150eca3645f3b3451cb5 = L.popup({"maxWidth": 250});
+
+        
+            
+                var html_a1c10659eed8723ef40b4d7169d4f41c = $(`<div id="html_a1c10659eed8723ef40b4d7169d4f41c" style="width: 100.0%; height: 100.0%;"><strong>Name:</strong> Per-Olof Atlestam<br><strong>Job Title:</strong> other<br><strong>Education:</strong> </div>`)[0];
+                popup_501a22a6ad15150eca3645f3b3451cb5.setContent(html_a1c10659eed8723ef40b4d7169d4f41c);
+            
+        
+
+        marker_294e708fb3762c2a76cc625c0e340ed3.bindPopup(popup_501a22a6ad15150eca3645f3b3451cb5)
+        ;
+
+        
+    
+    
+            var marker_5c37ce44cbafd025aab483778b41cdd8 = L.marker(
+                [57.7072326, 11.9670171],
+                {}
+            ).addTo(map_32afb712536328978ac4d31266f9583d);
+        
+    
+        var popup_189530e7336d00792eac111886e3ded2 = L.popup({"maxWidth": 250});
+
+        
+            
+                var html_a273aade9634c3b60d656964e3b3862b = $(`<div id="html_a273aade9634c3b60d656964e3b3862b" style="width: 100.0%; height: 100.0%;"><strong>Name:</strong> Knut Albert Atterfelt<br><strong>Job Title:</strong> Dentist<br><strong>Education:</strong> </div>`)[0];
+                popup_189530e7336d00792eac111886e3ded2.setContent(html_a273aade9634c3b60d656964e3b3862b);
+            
+        
+
+        marker_5c37ce44cbafd025aab483778b41cdd8.bindPopup(popup_189530e7336d00792eac111886e3ded2)
+        ;
+
+        
+    
+    
+            var marker_121d5cae3d91d9cd7f27e1f9bdd79474 = L.marker(
+                [59.3251172, 18.0710935],
+                {}
+            ).addTo(map_32afb712536328978ac4d31266f9583d);
+        
+    
+        var popup_44467900c39444835cad9bc47a37bb8b = L.popup({"maxWidth": 250});
+
+        
+            
+                var html_d03517364c966aaa8940f4e3f92e0968 = $(`<div id="html_d03517364c966aaa8940f4e3f92e0968" style="width: 100.0%; height: 100.0%;"><strong>Name:</strong> Ester Fanny Atterfelt<br><strong>Job Title:</strong> Dentist<br><strong>Education:</strong> Stud:ex., Tandl:kand., Tandl.</div>`)[0];
+                popup_44467900c39444835cad9bc47a37bb8b.setContent(html_d03517364c966aaa8940f4e3f92e0968);
+            
+        
+
+        marker_121d5cae3d91d9cd7f27e1f9bdd79474.bindPopup(popup_44467900c39444835cad9bc47a37bb8b)
+        ;
+
+        
+    
+    
+            var marker_6a81eb613e6104efcf913938ebca1048 = L.marker(
+                [59.3251172, 18.0710935],
+                {}
+            ).addTo(map_32afb712536328978ac4d31266f9583d);
+        
+    
+        var popup_bd7e78ddfdfc4585c37bd7e4567f65ca = L.popup({"maxWidth": 250});
+
+        
+            
+                var html_3fa87462e9fc141b0502f17565caaacd = $(`<div id="html_3fa87462e9fc141b0502f17565caaacd" style="width: 100.0%; height: 100.0%;"><strong>Name:</strong> Karl Gustaf Efraim Agnemar<br><strong>Job Title:</strong> Unknown<br><strong>Education:</strong> Moig:ex., Fil. mag., Studied for PhD, Teaching internship</div>`)[0];
+                popup_bd7e78ddfdfc4585c37bd7e4567f65ca.setContent(html_3fa87462e9fc141b0502f17565caaacd);
+            
+        
+
+        marker_6a81eb613e6104efcf913938ebca1048.bindPopup(popup_bd7e78ddfdfc4585c37bd7e4567f65ca)
+        ;
+
+        
+    
+    
+            var marker_a377c19e43be15d0ea2a7b7141c97e71 = L.marker(
+                [57.7072326, 11.9670171],
+                {}
+            ).addTo(map_32afb712536328978ac4d31266f9583d);
+        
+    
+        var popup_2bf3179b3f3f8cf8e327a3c752f89158 = L.popup({"maxWidth": 250});
+
+        
+            
+                var html_c6548ce6c24f6703b18b1d626679989c = $(`<div id="html_c6548ce6c24f6703b18b1d626679989c" style="width: 100.0%; height: 100.0%;"><strong>Name:</strong> Oscar Augzell<br><strong>Job Title:</strong> other<br><strong>Education:</strong> Primary School Teacher Exam</div>`)[0];
+                popup_2bf3179b3f3f8cf8e327a3c752f89158.setContent(html_c6548ce6c24f6703b18b1d626679989c);
+            
+        
+
+        marker_a377c19e43be15d0ea2a7b7141c97e71.bindPopup(popup_2bf3179b3f3f8cf8e327a3c752f89158)
+        ;
+
+        
+    
+    
+            var marker_4ddc4afe692105ebab05ce8890a6cfad = L.marker(
+                [63.8256568, 20.2630745],
+                {}
+            ).addTo(map_32afb712536328978ac4d31266f9583d);
+        
+    
+        var popup_6f3798c6c0d406bbb67e2f6b520ec5d8 = L.popup({"maxWidth": 250});
+
+        
+            
+                var html_820f2fb1089f81dfd83c6562868beab5 = $(`<div id="html_820f2fb1089f81dfd83c6562868beab5" style="width: 100.0%; height: 100.0%;"><strong>Name:</strong> Bengt Anton Edvard Aurelius<br><strong>Job Title:</strong> other<br><strong>Education:</strong> </div>`)[0];
+                popup_6f3798c6c0d406bbb67e2f6b520ec5d8.setContent(html_820f2fb1089f81dfd83c6562868beab5);
+            
+        
+
+        marker_4ddc4afe692105ebab05ce8890a6cfad.bindPopup(popup_6f3798c6c0d406bbb67e2f6b520ec5d8)
+        ;
+
+        
+    
+    
+            var marker_1ec24f65b08a2c4dd120e5a1f9c51c12 = L.marker(
+                [59.916667, 15.0],
+                {}
+            ).addTo(map_32afb712536328978ac4d31266f9583d);
+        
+    
+        var popup_81484f98d43117783bd7100f55fe8480 = L.popup({"maxWidth": 250});
+
+        
+            
+                var html_b66d1ec73ad07252b029fd7fc4c5022d = $(`<div id="html_b66d1ec73ad07252b029fd7fc4c5022d" style="width: 100.0%; height: 100.0%;"><strong>Name:</strong> Folke Adolf Axell<br><strong>Job Title:</strong> other<br><strong>Education:</strong> </div>`)[0];
+                popup_81484f98d43117783bd7100f55fe8480.setContent(html_b66d1ec73ad07252b029fd7fc4c5022d);
+            
+        
+
+        marker_1ec24f65b08a2c4dd120e5a1f9c51c12.bindPopup(popup_81484f98d43117783bd7100f55fe8480)
+        ;
+
+        
+    
+    
+            var marker_39eb7ccc9f83b4ee9bd15fe73c2a54ed = L.marker(
+                [59.3251172, 18.0710935],
+                {}
+            ).addTo(map_32afb712536328978ac4d31266f9583d);
+        
+    
+        var popup_751a70fc3fc7f67f5770c71f4b3ac7fa = L.popup({"maxWidth": 250});
+
+        
+            
+                var html_46e98bed02b0b8abcd20724e32acab24 = $(`<div id="html_46e98bed02b0b8abcd20724e32acab24" style="width: 100.0%; height: 100.0%;"><strong>Name:</strong> Karl Axel Arne Axelson<br><strong>Job Title:</strong> other<br><strong>Education:</strong> </div>`)[0];
+                popup_751a70fc3fc7f67f5770c71f4b3ac7fa.setContent(html_46e98bed02b0b8abcd20724e32acab24);
+            
+        
+
+        marker_39eb7ccc9f83b4ee9bd15fe73c2a54ed.bindPopup(popup_751a70fc3fc7f67f5770c71f4b3ac7fa)
+        ;
+
+        
+    
+    
+            var marker_d84831c60ebe42e37c6cd46f369858bb = L.marker(
+                [19.4525824, -99.179464],
+                {}
+            ).addTo(map_32afb712536328978ac4d31266f9583d);
+        
+    
+        var popup_6fc017d128d9563fb78da35df634a938 = L.popup({"maxWidth": 250});
+
+        
+            
+                var html_dc224d5f9335156b8baad217f15f6854 = $(`<div id="html_dc224d5f9335156b8baad217f15f6854" style="width: 100.0%; height: 100.0%;"><strong>Name:</strong> Edvin Florentin Alexis Axelsson<br><strong>Job Title:</strong> other<br><strong>Education:</strong> Mog.-ex., teoT. fil. ex., teol. kand., Folkskol-lär. ex., Practical Theological Exam, Prästv.</div>`)[0];
+                popup_6fc017d128d9563fb78da35df634a938.setContent(html_dc224d5f9335156b8baad217f15f6854);
+            
+        
+
+        marker_d84831c60ebe42e37c6cd46f369858bb.bindPopup(popup_6fc017d128d9563fb78da35df634a938)
+        ;
+
+        
+    
+    
+            var marker_888aba6ae9abb31494a9a6f72afc918b = L.marker(
+                [58.7545409, 17.0120656],
+                {}
+            ).addTo(map_32afb712536328978ac4d31266f9583d);
+        
+    
+        var popup_4dae909a438a19d0e4b69a90e5a746f3 = L.popup({"maxWidth": 250});
+
+        
+            
+                var html_ce7edb1241db9a9525025ca6f8c3e64d = $(`<div id="html_ce7edb1241db9a9525025ca6f8c3e64d" style="width: 100.0%; height: 100.0%;"><strong>Name:</strong> Erik Axel Axelson<br><strong>Job Title:</strong> other<br><strong>Education:</strong> </div>`)[0];
+                popup_4dae909a438a19d0e4b69a90e5a746f3.setContent(html_ce7edb1241db9a9525025ca6f8c3e64d);
+            
+        
+
+        marker_888aba6ae9abb31494a9a6f72afc918b.bindPopup(popup_4dae909a438a19d0e4b69a90e5a746f3)
+        ;
+
+        
+    
+    
+            var marker_d0d3ab04a5505a43dc20b21c0141f3f0 = L.marker(
+                [57.7825634, 14.165719],
+                {}
+            ).addTo(map_32afb712536328978ac4d31266f9583d);
+        
+    
+        var popup_ecacf2ce07ee02200d6c2b3c0d8db4ce = L.popup({"maxWidth": 250});
+
+        
+            
+                var html_e51b694946ca540c8276af1f7302fd4a = $(`<div id="html_e51b694946ca540c8276af1f7302fd4a" style="width: 100.0%; height: 100.0%;"><strong>Name:</strong> Carl Ove Alphons Axelson<br><strong>Job Title:</strong> Editor<br><strong>Education:</strong> </div>`)[0];
+                popup_ecacf2ce07ee02200d6c2b3c0d8db4ce.setContent(html_e51b694946ca540c8276af1f7302fd4a);
+            
+        
+
+        marker_d0d3ab04a5505a43dc20b21c0141f3f0.bindPopup(popup_ecacf2ce07ee02200d6c2b3c0d8db4ce)
+        ;
+
+        
+    
+    
+            var marker_fa163212f75a8c9d326cbbb5f623b8fe = L.marker(
+                [61.2998501, 17.0607599],
+                {}
+            ).addTo(map_32afb712536328978ac4d31266f9583d);
+        
+    
+        var popup_3d97081427a1bff4510f8c795e789755 = L.popup({"maxWidth": 250});
+
+        
+            
+                var html_1c225522c42e538670d7bc8c62554dda = $(`<div id="html_1c225522c42e538670d7bc8c62554dda" style="width: 100.0%; height: 100.0%;"><strong>Name:</strong> Axen, Axel Bertil<br><strong>Job Title:</strong> other<br><strong>Education:</strong> </div>`)[0];
+                popup_3d97081427a1bff4510f8c795e789755.setContent(html_1c225522c42e538670d7bc8c62554dda);
+            
+        
+
+        marker_fa163212f75a8c9d326cbbb5f623b8fe.bindPopup(popup_3d97081427a1bff4510f8c795e789755)
+        ;
+
+        
+    
+    
+            var marker_318c9bf36a72a78d3df16e866794336d = L.marker(
+                [58.2632474, 15.2492305],
+                {}
+            ).addTo(map_32afb712536328978ac4d31266f9583d);
+        
+    
+        var popup_0c09c4894fa32b8ccaeedcf78a1f2db4 = L.popup({"maxWidth": 250});
+
+        
+            
+                var html_01cbc42de04f594b8e0a818034b68d83 = $(`<div id="html_01cbc42de04f594b8e0a818034b68d83" style="width: 100.0%; height: 100.0%;"><strong>Name:</strong> Gösta Fritz Henry Agrell<br><strong>Job Title:</strong> other<br><strong>Education:</strong> </div>`)[0];
+                popup_0c09c4894fa32b8ccaeedcf78a1f2db4.setContent(html_01cbc42de04f594b8e0a818034b68d83);
+            
+        
+
+        marker_318c9bf36a72a78d3df16e866794336d.bindPopup(popup_0c09c4894fa32b8ccaeedcf78a1f2db4)
+        ;
+
+        
+    
+    
+            var marker_76d84a7a8400e77ee88a9aa293219dd2 = L.marker(
+                [55.8577006, 13.1835778],
+                {}
+            ).addTo(map_32afb712536328978ac4d31266f9583d);
+        
+    
+        var popup_6b4eb7d62c6021bc214a9938986a7181 = L.popup({"maxWidth": 250});
+
+        
+            
+                var html_7cc480e664636ff3b1f1c48fb2a452e8 = $(`<div id="html_7cc480e664636ff3b1f1c48fb2a452e8" style="width: 100.0%; height: 100.0%;"><strong>Name:</strong> Axel Evald Ahlbeck<br><strong>Job Title:</strong> other<br><strong>Education:</strong> </div>`)[0];
+                popup_6b4eb7d62c6021bc214a9938986a7181.setContent(html_7cc480e664636ff3b1f1c48fb2a452e8);
+            
+        
+
+        marker_76d84a7a8400e77ee88a9aa293219dd2.bindPopup(popup_6b4eb7d62c6021bc214a9938986a7181)
+        ;
+
+        
+    
+    
+            var marker_82593663fad2a0ba7634fc1a726b1da4 = L.marker(
+                [57.7072326, 11.9670171],
+                {}
+            ).addTo(map_32afb712536328978ac4d31266f9583d);
+        
+    
+        var popup_391e780f46e0b675a6766f350af71698 = L.popup({"maxWidth": 250});
+
+        
+            
+                var html_fadef190100fbbe64a17576f600a3bb7 = $(`<div id="html_fadef190100fbbe64a17576f600a3bb7" style="width: 100.0%; height: 100.0%;"><strong>Name:</strong> Nils Adolf Ahlberg<br><strong>Job Title:</strong> Unknown<br><strong>Education:</strong> Gothenburg High School, Uppsala University, Stockholm University</div>`)[0];
+                popup_391e780f46e0b675a6766f350af71698.setContent(html_fadef190100fbbe64a17576f600a3bb7);
+            
+        
+
+        marker_82593663fad2a0ba7634fc1a726b1da4.bindPopup(popup_391e780f46e0b675a6766f350af71698)
+        ;
+
+        
+    
+    
+            var marker_ef261d62f56521baf11556e32ea34506 = L.marker(
+                [56.6739826, 12.8574827],
+                {}
+            ).addTo(map_32afb712536328978ac4d31266f9583d);
+        
+    
+        var popup_3cec6d11aa355ee2377918310310c067 = L.popup({"maxWidth": 250});
+
+        
+            
+                var html_9db2c15b12eadd189c39892a2e552889 = $(`<div id="html_9db2c15b12eadd189c39892a2e552889" style="width: 100.0%; height: 100.0%;"><strong>Name:</strong> Bengt Magnus Ahlberg<br><strong>Job Title:</strong> Dentist<br><strong>Education:</strong> Halmstad, Halmstad</div>`)[0];
+                popup_3cec6d11aa355ee2377918310310c067.setContent(html_9db2c15b12eadd189c39892a2e552889);
+            
+        
+
+        marker_ef261d62f56521baf11556e32ea34506.bindPopup(popup_3cec6d11aa355ee2377918310310c067)
+        ;
+
+        
+    
+    
+            var marker_2f5dd94646f15951a197a2162a5e5e9c = L.marker(
+                [56.9919391, 12.5878814],
+                {}
+            ).addTo(map_32afb712536328978ac4d31266f9583d);
+        
+    
+        var popup_ac8effc3537007ed9a8b4ad6df31da58 = L.popup({"maxWidth": 250});
+
+        
+            
+                var html_5b8adfd27b20b5704e0c5aa6e2b65fc4 = $(`<div id="html_5b8adfd27b20b5704e0c5aa6e2b65fc4" style="width: 100.0%; height: 100.0%;"><strong>Name:</strong> Gustaf Sigfrid Ahlberg<br><strong>Job Title:</strong> other<br><strong>Education:</strong> Stud:ex., Teol.fil.ex., Teol.kand., Prakt. teol. prov, Prästv.</div>`)[0];
+                popup_ac8effc3537007ed9a8b4ad6df31da58.setContent(html_5b8adfd27b20b5704e0c5aa6e2b65fc4);
+            
+        
+
+        marker_2f5dd94646f15951a197a2162a5e5e9c.bindPopup(popup_ac8effc3537007ed9a8b4ad6df31da58)
+        ;
+
+        
+    
+    
+            var marker_97cd9a5f12a2fb0073c349ef6d14289b = L.marker(
+                [56.8787183, 14.8094385],
+                {}
+            ).addTo(map_32afb712536328978ac4d31266f9583d);
+        
+    
+        var popup_46b40c783c56c26bd97c5de98606690e = L.popup({"maxWidth": 250});
+
+        
+            
+                var html_6ac081c40c913052c3b9a934f986b43f = $(`<div id="html_6ac081c40c913052c3b9a934f986b43f" style="width: 100.0%; height: 100.0%;"><strong>Name:</strong> Josef Alfred Herman Ahlberg<br><strong>Job Title:</strong> Unknown<br><strong>Education:</strong> Stud:ex, univ:stud., res:-off:ex., Gbgs hand :inst.</div>`)[0];
+                popup_46b40c783c56c26bd97c5de98606690e.setContent(html_6ac081c40c913052c3b9a934f986b43f);
+            
+        
+
+        marker_97cd9a5f12a2fb0073c349ef6d14289b.bindPopup(popup_46b40c783c56c26bd97c5de98606690e)
+        ;
+
+        
+    
+    
+            var marker_013d89f380c562d423b1d7a345785055 = L.marker(
+                [57.7072326, 11.9670171],
+                {}
+            ).addTo(map_32afb712536328978ac4d31266f9583d);
+        
+    
+        var popup_c7bef902bc391d609af2ac459f356da0 = L.popup({"maxWidth": 250});
+
+        
+            
+                var html_74985227bba8367157ed788c597e261d = $(`<div id="html_74985227bba8367157ed788c597e261d" style="width: 100.0%; height: 100.0%;"><strong>Name:</strong> Julius Ahlberg<br><strong>Job Title:</strong> other<br><strong>Education:</strong> </div>`)[0];
+                popup_c7bef902bc391d609af2ac459f356da0.setContent(html_74985227bba8367157ed788c597e261d);
+            
+        
+
+        marker_013d89f380c562d423b1d7a345785055.bindPopup(popup_c7bef902bc391d609af2ac459f356da0)
+        ;
+
+        
+    
+    
+            var marker_fd5e4942c24a55f756c02d6ffbfbd6f4 = L.marker(
+                [59.3251172, 18.0710935],
+                {}
+            ).addTo(map_32afb712536328978ac4d31266f9583d);
+        
+    
+        var popup_e1ae7da29d8e365e7bab3e5d01b09214 = L.popup({"maxWidth": 250});
+
+        
+            
+                var html_d2435c8377f7db038bbf0ad52a51b7a2 = $(`<div id="html_d2435c8377f7db038bbf0ad52a51b7a2" style="width: 100.0%; height: 100.0%;"><strong>Name:</strong> Sven Adolf Vilhelm Ahlbom<br><strong>Job Title:</strong> other<br><strong>Education:</strong> Stockholm high school diploma, Pharmacy degree, Pharmacist license</div>`)[0];
+                popup_e1ae7da29d8e365e7bab3e5d01b09214.setContent(html_d2435c8377f7db038bbf0ad52a51b7a2);
+            
+        
+
+        marker_fd5e4942c24a55f756c02d6ffbfbd6f4.bindPopup(popup_e1ae7da29d8e365e7bab3e5d01b09214)
+        ;
+
+        
+    
+    
+            var marker_44eb45321f964f46dc947f785bc04de0 = L.marker(
+                [59.3251172, 18.0710935],
+                {}
+            ).addTo(map_32afb712536328978ac4d31266f9583d);
+        
+    
+        var popup_adb9123dbf6f27bec66c2490cd971306 = L.popup({"maxWidth": 250});
+
+        
+            
+                var html_d3378f67d9e3c198b36099403dbce6e4 = $(`<div id="html_d3378f67d9e3c198b36099403dbce6e4" style="width: 100.0%; height: 100.0%;"><strong>Name:</strong> Erik Gunnar Ahlborn<br><strong>Job Title:</strong> other<br><strong>Education:</strong> </div>`)[0];
+                popup_adb9123dbf6f27bec66c2490cd971306.setContent(html_d3378f67d9e3c198b36099403dbce6e4);
+            
+        
+
+        marker_44eb45321f964f46dc947f785bc04de0.bindPopup(popup_adb9123dbf6f27bec66c2490cd971306)
+        ;
+
+        
+    
+    
+            var marker_12708cbc110d199e5aeff7dece3bbc90 = L.marker(
+                [55.6052931, 13.0001566],
+                {}
+            ).addTo(map_32afb712536328978ac4d31266f9583d);
+        
+    
+        var popup_bdef369baf482aaf5e245d764c0cbeab = L.popup({"maxWidth": 250});
+
+        
+            
+                var html_c4a56deb5f59fa8b697893fd2a1728de = $(`<div id="html_c4a56deb5f59fa8b697893fd2a1728de" style="width: 100.0%; height: 100.0%;"><strong>Name:</strong> Carl Adolf Ahlgren<br><strong>Job Title:</strong> other<br><strong>Education:</strong> </div>`)[0];
+                popup_bdef369baf482aaf5e245d764c0cbeab.setContent(html_c4a56deb5f59fa8b697893fd2a1728de);
+            
+        
+
+        marker_12708cbc110d199e5aeff7dece3bbc90.bindPopup(popup_bdef369baf482aaf5e245d764c0cbeab)
+        ;
+
+        
+    
+    
+            var marker_d8ced9fba1d7ca3ff75a290f89768097 = L.marker(
+                [59.3251172, 18.0710935],
+                {}
+            ).addTo(map_32afb712536328978ac4d31266f9583d);
+        
+    
+        var popup_54612063a510663b6f29e693d4e8ddaf = L.popup({"maxWidth": 250});
+
+        
+            
+                var html_23206108d670950d483cb1afde35ec16 = $(`<div id="html_23206108d670950d483cb1afde35ec16" style="width: 100.0%; height: 100.0%;"><strong>Name:</strong> Torsten Christian Cornelius Ahlgren<br><strong>Job Title:</strong> other<br><strong>Education:</strong> </div>`)[0];
+                popup_54612063a510663b6f29e693d4e8ddaf.setContent(html_23206108d670950d483cb1afde35ec16);
+            
+        
+
+        marker_d8ced9fba1d7ca3ff75a290f89768097.bindPopup(popup_54612063a510663b6f29e693d4e8ddaf)
+        ;
+
+        
+    
+    
+            var marker_2eb7224340a7a1d95a4f0b559d80c8ff = L.marker(
+                [55.4329849, 13.8196555],
+                {}
+            ).addTo(map_32afb712536328978ac4d31266f9583d);
+        
+    
+        var popup_7e5efde050bce3aeb4ee7f2ecaf4e45f = L.popup({"maxWidth": 250});
+
+        
+            
+                var html_4a6e707a42f2115b8c09f18b5676ec43 = $(`<div id="html_4a6e707a42f2115b8c09f18b5676ec43" style="width: 100.0%; height: 100.0%;"><strong>Name:</strong> Carl Christian Israel Ahlin<br><strong>Job Title:</strong> other<br><strong>Education:</strong> </div>`)[0];
+                popup_7e5efde050bce3aeb4ee7f2ecaf4e45f.setContent(html_4a6e707a42f2115b8c09f18b5676ec43);
+            
+        
+
+        marker_2eb7224340a7a1d95a4f0b559d80c8ff.bindPopup(popup_7e5efde050bce3aeb4ee7f2ecaf4e45f)
+        ;
+
+        
+    
+    
+            var marker_56bc6b400473fe0f8207433bfaf93abc = L.marker(
+                [58.433333, 14.783333],
+                {}
+            ).addTo(map_32afb712536328978ac4d31266f9583d);
+        
+    
+        var popup_a5e7dfd509ea998ca07aeaf34d15f353 = L.popup({"maxWidth": 250});
+
+        
+            
+                var html_339a5d549cdc1ea0fb7ed3c39e2d3d4a = $(`<div id="html_339a5d549cdc1ea0fb7ed3c39e2d3d4a" style="width: 100.0%; height: 100.0%;"><strong>Name:</strong> Erik Folke Ahlin<br><strong>Job Title:</strong> Dentist<br><strong>Education:</strong> </div>`)[0];
+                popup_a5e7dfd509ea998ca07aeaf34d15f353.setContent(html_339a5d549cdc1ea0fb7ed3c39e2d3d4a);
+            
+        
+
+        marker_56bc6b400473fe0f8207433bfaf93abc.bindPopup(popup_a5e7dfd509ea998ca07aeaf34d15f353)
+        ;
+
+        
+    
+    
+            var marker_678cd30898d73563164c67e5192acc3a = L.marker(
+                [62.3907552, 17.3071024],
+                {}
+            ).addTo(map_32afb712536328978ac4d31266f9583d);
+        
+    
+        var popup_d8a696c8e5b419e3924c98377e796934 = L.popup({"maxWidth": 250});
+
+        
+            
+                var html_41eaae736caeb36cef207a80351e8897 = $(`<div id="html_41eaae736caeb36cef207a80351e8897" style="width: 100.0%; height: 100.0%;"><strong>Name:</strong> Karl Harry Ahlin<br><strong>Job Title:</strong> other<br><strong>Education:</strong> </div>`)[0];
+                popup_d8a696c8e5b419e3924c98377e796934.setContent(html_41eaae736caeb36cef207a80351e8897);
+            
+        
+
+        marker_678cd30898d73563164c67e5192acc3a.bindPopup(popup_d8a696c8e5b419e3924c98377e796934)
+        ;
+
+        
+    
+    
+            var feature_group_0669ea5d28ccb1584973584183d10d0d = L.featureGroup(
+                {}
+            ).addTo(map_32afb712536328978ac4d31266f9583d);
+        
+    
+            var feature_group_467fc2e54e7f369355310fb8417feb87 = L.featureGroup(
+                {}
+            ).addTo(map_32afb712536328978ac4d31266f9583d);
+        
+    
+            var feature_group_087b9396e09978ee2376d248d0321b7c = L.featureGroup(
+                {}
+            ).addTo(map_32afb712536328978ac4d31266f9583d);
+        
+    
+            var feature_group_edf579c7117b383ccf1abd00952e06a0 = L.featureGroup(
+                {}
+            ).addTo(map_32afb712536328978ac4d31266f9583d);
+        
+    
+            var feature_group_d77f5d3b4134008ee8be5d2424aaf46a = L.featureGroup(
+                {}
+            ).addTo(map_32afb712536328978ac4d31266f9583d);
+        
+    
+            var feature_group_da3deec960b6f6a373f1fa8cbef19a22 = L.featureGroup(
+                {}
+            ).addTo(map_32afb712536328978ac4d31266f9583d);
+        
+    
+            var feature_group_55bbe6f1694a3e16bb4b0db1de2a28b4 = L.featureGroup(
+                {}
+            ).addTo(map_32afb712536328978ac4d31266f9583d);
+        
+    
+            var layer_control_8a7c2158392584e5897ca19d4a4d62c5 = {
+                base_layers : {
+                    "openstreetmap" : tile_layer_71cf6a9ed2870f5c31a23285c092f62e,
+                },
+                overlays :  {
+                    "other" : feature_group_0669ea5d28ccb1584973584183d10d0d,
+                    "High School Teacher" : feature_group_467fc2e54e7f369355310fb8417feb87,
+                    "Dentist" : feature_group_087b9396e09978ee2376d248d0321b7c,
+                    "Unknown" : feature_group_edf579c7117b383ccf1abd00952e06a0,
+                    "Manager" : feature_group_d77f5d3b4134008ee8be5d2424aaf46a,
+                    "Editor" : feature_group_da3deec960b6f6a373f1fa8cbef19a22,
+                    "Director" : feature_group_55bbe6f1694a3e16bb4b0db1de2a28b4,
+                },
+            };
+            L.control.layers(
+                layer_control_8a7c2158392584e5897ca19d4a4d62c5.base_layers,
+                layer_control_8a7c2158392584e5897ca19d4a4d62c5.overlays,
+                {"autoZIndex": true, "collapsed": false, "position": "topright"}
+            ).addTo(map_32afb712536328978ac4d31266f9583d);
+        
+</script>
+</html>

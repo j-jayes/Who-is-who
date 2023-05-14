@@ -1,0 +1,8 @@
+## Notes for VS code
+
+F11 gets you to full screen.
+
+Search tab - searching for variable definitions and doing find and replace.
+
+Zoom in and zoom out. ctrl and minus.
+
