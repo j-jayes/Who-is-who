@@ -12,6 +12,7 @@ format:
     fig-align: center
     default-image-extension: svg
     footer: "[{{< fa house >}}](https://j-jayes.github.io/Data-Visualization-in-R-Lund/)"
+    slide-number: c
 image: "preview_img/03-coordinate-systems-and-axes.jfif"
 favicon: html/favicon.ico
 ---
@@ -94,7 +95,7 @@ favicon: html/favicon.ico
 
 ## Who is who?
 
-::: {.columns}
+:::: {.columns}
 
 ::: {.column width="70%"}
 
@@ -102,22 +103,23 @@ Vem är Vem? is a **Swedish biographical encyclopedia** that was published in tw
 
 The intention was, according to the publishers, to draw attention **to people who were at the height of their activities**, even if they were younger in influential or otherwise noted positions in different areas.
 
-We get biographies and career trajectories of 69448 individuals!
+- Biographies and career trajectories of ~ 69,448 individuals!
 
-8 of the 10 volumes are digitized by librarians in Uppsala – thank you <3
-
-:::
-
-::: {.column width="10%"}
+- 8 of the 10 volumes are digitized by librarians in Uppsala – thank you <3
 
 :::
 
-::: {.column width="20%"}
+::: {.column width="5%"}
+
+:::
+
+::: {.column width="25%"}
 
 ![](assets/vem_cover.png){fig-align="center" width=100%}
 
 :::
 
+::::
 
 ## Vem är Vem?
 
@@ -173,6 +175,217 @@ Traveled to Germany in 1921, 1923, 1930, and 1936, Denmark, Czechoslovakia in 19
 ## Vem är Karl Lund?
 
 Traveled to [Germany]{style="background-color: #e6e6fa"} in 1921, 1923, 1930, and 1936, [Denmark]{style="background-color: #e6e6fa"}, [Czechoslovakia]{style="background-color: #e6e6fa"} in 1921, 1922, and 1923, [Austria]{style="background-color: #e6e6fa"} in 1921, and the [USA]{style="background-color: #e6e6fa"} from 1923 to 1929. Writings: "Some fundamental factors for obtaining sharp thermal curves" (Transactions of the American Society for Steel Treating, co-authored with C. Benedicks and W. H. Dearden, 1925), "Contemporary production of saw blades, circular saws, and machine knives" (Timber Industry, 1931). Hobbies: [hunting]{style="background-color: #ffd700"} and [fishing]{style="background-color: #ffd700"}.
+
+##
+
+![](assets/tidy.jpg)
+
+## 
+
+🧑
+📝
+🗑️
+
+Arrow
+
+💻🧹
+
+Arrow
+
+📚
+🎓
+💼
+
+## NLP challenges
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+<br>
+
+- Many abbreviations
+
+- Similar structure for each entry but not exactly the same information in the same order
+
+
+:::
+
+::: {.column width="50%"}
+
+<br>
+
+![](assets/Karl_Lund_crop.png){fig-align="center"}
+
+:::
+
+::::
+
+## 1. Translate
+
+```{css}
+code.sourceCode {
+  font-size: 1.3em;
+  /* or try font-size: xx-large; */
+}
+```
+
+```{python}
+#| eval: false
+#| echo: true
+
+def translate_and_structure_text(swedish_text):
+    try:
+        # Translate the Swedish text to English
+        translate_prompt = f"Translate the following abbreviated Swedish biography to English: {swedish_text}"
+        translation_response = openai.ChatCompletion.create(
+            model="gpt-3.5-turbo",
+            messages=[
+                {"role": "system", "content": "You are an expert on Swedish family history."},
+                {"role": "user", "content": f"{translate_prompt}"}
+            ]
+        )
+
+```
+
+
+## 2. Structure
+
+```{python, eval=FALSE, echo=TRUE}
+
+structure_prompt = f"Given the original Swedish biography: {swedish_text}\nAnd its English translation: {english_text}, Structure the biography in Schema.org/Person format as a JSON object. Include dates wherever possible. Only provide a  RFC8259 compliant JSON response."
+
+structure_response = openai.ChatCompletion.create(
+    model="gpt-3.5-turbo",
+    messages=[
+        {"role": "system", "content": "You are an expert on Swedish family history and the Schema.org/Person format."},
+        {"role": "user", "content": f"{structure_prompt}"}
+    ]
+)
+```
+
+## 3. Augment
+
+```{python, eval=FALSE, echo=TRUE}
+
+def geocode_birthplace(birthplace, geolocator, geocoded_cache):
+    if isinstance(birthplace, dict):
+        if "name" in birthplace:
+            birthplace_name = birthplace["name"]
+        elif "address" in birthplace and "addressLocality" in birthplace["address"]:
+            birthplace_name = birthplace["address"]["addressLocality"]
+        else:
+            print(f"Invalid birthplace data: {birthplace}")
+            return None
+    elif isinstance(birthplace, str):
+        birthplace_name = birthplace
+    else:
+        print(f"Invalid birthplace data: {birthplace}")
+        return None
+
+    if birthplace_name not in geocoded_cache:
+        try:
+            location = geolocator.geocode(birthplace_name)
+            if location:
+                geocoded_cache[birthplace_name] = {
+                    "latitude": location.latitude,
+                    "longitude": location.longitude
+                }
+            time.sleep(1)  # Add a 1-second delay between geocoding requests
+        except Exception as e:
+            print(f"Error geocoding birthplace {birthplace_name}: {e}")
+
+    return geocoded_cache.get(birthplace_name)
+```
+
+
+## Output
+
+```{python, eval=FALSE, echo=TRUE}
+{
+    "original": "Axell, Folke Adolf, civilingenjör, Norrköping, f. 4/12/08 i Ljusnarsberg, Örebro 1. G. 36 m. Marianne Hammarberg. Barn: Anita f. 37, Peter 42. — Avg:ex. fr. tekn. gymn. i Örebro 28, civ:ing:ex. v. KTH 34. Ing:assist. v. telegr :v. i Nässjö 35, linjeing. v. te-legr :v. i Norrköp. sed. 46. Led. av Sv. tekn :fören. sed. 35.",
+    "translated": "Axell, Folke Adolf, engineer, from Norrköping, born on December 4th, 1908 in Ljusnarsberg, Örebro 1. Married in 1936 to Marianne Hammarberg. Children: Anita born in 1937, Peter born in 1942. He graduated from the Technical Gymnasium in Örebro in 1928, received his engineering degree from KTH in 1934. Worked as an engineering assistant at the telegraph station in Nässjö in 1935, and as a line engineer at the telegraph station in Norrköping since 1946. Member of the Swedish Technical Association since 1935.",
+    "structured": {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Folke Adolf Axell",
+        "birthDate": "1908-12-04",
+        "birthPlace": {
+            "name": "Ljusnarsberg, Örebro",
+            "latitude": 59.916667,
+            "longitude": 15.0
+        },
+        "jobTitle": "Engineer",
+        "memberOf": {
+            "@type": "Organization",
+            "name": "Swedish Technical Association"
+        },
+        "children": [
+            {
+                "@type": "Person",
+                "name": "Anita",
+                "birthDate": "1937"
+            },
+            {
+                "@type": "Person",
+                "name": "Peter",
+                "birthDate": "1942"
+            }
+        ],
+        "spouse": {
+            "@type": "Person",
+            "name": "Marianne Hammarberg",
+            "marriageDate": "1936"
+        },
+        "education": [
+            {
+                "@type": "EducationalOccupationalCredential",
+                "credentialCategory": "Vocational",
+                "issuer": {
+                    "@type": "Organization",
+                    "name": "Technical Gymnasium in Örebro"
+                },
+                "endDate": "1928"
+            },
+            {
+                "@type": "EducationalOccupationalCredential",
+                "credentialCategory": "Degree",
+                "issuer": {
+                    "@type": "Organization",
+                    "name": "KTH"
+                },
+                "endDate": "1934"
+            }
+        ],
+        "worksFor": {
+            "@type": "Organization",
+            "name": "Telegraph station in Norrköping",
+            "startDate": "1946"
+        },
+        "hasOccupation": [
+            {
+                "@type": "Occupation",
+                "name": "Engineering assistant",
+                "employer": {
+                    "@type": "Organization",
+                    "name": "Telegraph station in Nässjö"
+                },
+                "startDate": "1935",
+                "endDate": "1935"
+            },
+            {
+                "@type": "Occupation",
+                "name": "Line engineer",
+                "employer": {
+                    "@type": "Organization",
+                    "name": "Telegraph station in Norrköping"
+                },
+                "startDate": "1946"
+            }
+        ]
+    }
+}
+```
 
 ## Birthplaces mapped
 
