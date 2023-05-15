@@ -111,7 +111,7 @@ favicon: html/favicon.ico
 
 Vem är Vem? is a **Swedish biographical encyclopedia** that was published in two editions of five volumes each in 1945–1950 and 1962–1968 by Bokförlaget Vem är Vem.
 
-The intention was, according to the publishers, to draw attention **to people who were at the height of their activities**, even if they were younger in influential or otherwise noted positions in different areas.
+The intention was, according to the publishers, to draw attention **to people who were at the height of their activities**, even if they were younger, in influential or otherwise noted positions in different areas.
 
 - Biographies and career trajectories of ~ 69,448 individuals!
 
@@ -130,6 +130,10 @@ The intention was, according to the publishers, to draw attention **to people wh
 :::
 
 ::::
+
+## Vem är Vem? Example page
+
+![](assets/vem_page.png){fig-align="center" width=100%}
 
 ## Vem är Vem?
 
@@ -166,7 +170,7 @@ ggplot(books, aes(x = records, y = name, fill = factor(volume))) +
 ```
 
 
-## Vem är Vem? Example
+## Vem är Vem? Example biography
 
 ![](assets/Karl_Lund.png)
 
