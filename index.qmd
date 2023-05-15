@@ -7,6 +7,7 @@ title-slide-attributes:
   data-background-size: "30%"
   data-background-opacity: "0.6"
 format: 
+
   revealjs:
     code-overflow: wrap
     width: 1600
@@ -91,6 +92,10 @@ favicon: html/favicon.ico
 ## Income was shared more equally in areas that electrified first
 
 ![](assets/dot_plot.jpeg){fig-align="center"} 
+
+## What were the mechanisms behind these effects?
+
+![](assets/job_share_plot.jpeg){fig-align="center"} 
 
 ## Now we want to ask:
 
