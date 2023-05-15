@@ -174,11 +174,11 @@ ggplot(books, aes(x = records, y = name, fill = factor(volume))) +
 
 ![](assets/Karl_Lund.png)
 
-## Vem är Karl Lund?
+## Vem är Karl Lund? {visibility="uncounted"}
 
 Lund, Karl Gustaf, chief engineer, Varberg, born on July 22, 1893, in Hille, Gävle County, Sweden, son of factory worker Ferdinand L. and Maria Andersson. Married in 1936 to Sigrid Johansson. Children: Ingvar (born 1938), Lennart (born 1942). — Graduated from Bergsskolan in Filipstad in 1917, specialized studies at the Royal Institute of Technology (KTH) from 1920 to 1922, studied at the Institute of Metallurgy and Stockholm University in 1921-1922. Chemist at Strömsnäs Järnverks A-B in Degerfors from 1918 to 1920, metallurgist and chemist at Westinghouse Electric & Manufacturing Co. in East Pittsburgh, PA, USA, from 1923 to 1926 and 1928 to 1929, chief metallurgist at Laclede Steel Co. in Alton, Illinois, USA, in 1927, furnace and steelworks engineer at A-B Iggesunds Bruk from 1929 to 1931, site manager at Gunnebo Bruks Nya A-B, Varbergsverket, since 1931. Member of the municipal executive committee, deputy chairman of the economic department, deputy member of the board of the power plant, chairman of Varbergs Sparbank, employer representative in the district council of the county labor board, member of the board of Varbergs Luftskyddsförening (Varberg Air Protection Association), secretary of Varbergs Högerförening (Varberg Conservative Association), chairman of the railway sick fund, and Plant Society for Small Bird Friends. 
 
-## Vem är Karl Lund?
+## Vem är Karl Lund? {visibility="uncounted"}
 
 Traveled to Germany in 1921, 1923, 1930, and 1936, Denmark, Czechoslovakia in 1921, 1922, and 1923, Austria in 1921, and the USA from 1923 to 1929. Writings: "Some fundamental factors for obtaining sharp thermal curves" (Transactions of the American Society for Steel Treating, co-authored with C. Benedicks and W. H. Dearden, 1925), "Contemporary production of saw blades, circular saws, and machine knives" (Timber Industry, 1931). Hobbies: hunting and fishing.
 
@@ -511,13 +511,22 @@ knitr::include_url("assets/sweden_map_checkboxes.html", height = "800")
 1. What is an innovator in this context?
 
 2. How should I classify the publications?
-    - "Contemporary production of saw blades, circular saws, and machine knives" in the example of Karl Lund?
+    - e.g. "Contemporary production of saw blades, circular saws, and machine knives" in the example of Karl Lund?
 
-## How were NLP tasks hard before?
+## How were NLP tasks hard before? {visibility="uncounted"}
 
-In your case when you use patent data, a lot of the research on historical questions is done just with the title of the patent and relationships between patent holders. It was difficult to get more information from the text of the patent. 
+In the case when you use patent data, a lot of the research on historical questions is done just with the title of the patent and relationships between patent holders. It was difficult to get more information from the text of the patent. 
 
 ### How are they easy now?
 
 Now we can use OCR / NLP to get a lot of information from the text of the patent.
 
+## Tips for working with the OpenAI API {visibility="uncounted"}
+
+### Ask for exactly what you want
+
+"Structure the biography in Schema.org/Person format as a JSON object. Include dates wherever possible. Only provide a  RFC8259 compliant JSON response."
+
+### Use GPT-4 to generate code to communicate with the API / visualize your data
+
+"Great, thank you, Now I want to draw a map of these locations. What I want to do is create a dictionary with name, birthPlace (and coordinates) and jobTitle from the files in data/biographies_augmented, and then draw a map that I can export as jpeg. The map should have dots for birth place"

@@ -515,11 +515,11 @@ Jonathan Jayes - Lund University
 <h2>Vem är Vem? Example biography</h2>
 
 <img data-src="assets/Karl_Lund.png" class="r-stretch"></section>
-<section id="vem-är-karl-lund" class="slide level2">
+<section id="vem-är-karl-lund" class="slide level2" data-visibility="uncounted">
 <h2>Vem är Karl Lund?</h2>
 <p>Lund, Karl Gustaf, chief engineer, Varberg, born on July 22, 1893, in Hille, Gävle County, Sweden, son of factory worker Ferdinand L. and Maria Andersson. Married in 1936 to Sigrid Johansson. Children: Ingvar (born 1938), Lennart (born 1942). — Graduated from Bergsskolan in Filipstad in 1917, specialized studies at the Royal Institute of Technology (KTH) from 1920 to 1922, studied at the Institute of Metallurgy and Stockholm University in 1921-1922. Chemist at Strömsnäs Järnverks A-B in Degerfors from 1918 to 1920, metallurgist and chemist at Westinghouse Electric &amp; Manufacturing Co.&nbsp;in East Pittsburgh, PA, USA, from 1923 to 1926 and 1928 to 1929, chief metallurgist at Laclede Steel Co.&nbsp;in Alton, Illinois, USA, in 1927, furnace and steelworks engineer at A-B Iggesunds Bruk from 1929 to 1931, site manager at Gunnebo Bruks Nya A-B, Varbergsverket, since 1931. Member of the municipal executive committee, deputy chairman of the economic department, deputy member of the board of the power plant, chairman of Varbergs Sparbank, employer representative in the district council of the county labor board, member of the board of Varbergs Luftskyddsförening (Varberg Air Protection Association), secretary of Varbergs Högerförening (Varberg Conservative Association), chairman of the railway sick fund, and Plant Society for Small Bird Friends.</p>
 </section>
-<section id="vem-är-karl-lund-1" class="slide level2">
+<section id="vem-är-karl-lund-1" class="slide level2" data-visibility="uncounted">
 <h2>Vem är Karl Lund?</h2>
 <p>Traveled to Germany in 1921, 1923, 1930, and 1936, Denmark, Czechoslovakia in 1921, 1922, and 1923, Austria in 1921, and the USA from 1923 to 1929. Writings: “Some fundamental factors for obtaining sharp thermal curves” (Transactions of the American Society for Steel Treating, co-authored with C. Benedicks and W. H. Dearden, 1925), “Contemporary production of saw blades, circular saws, and machine knives” (Timber Industry, 1931). Hobbies: hunting and fishing.</p>
 </section>
@@ -792,15 +792,22 @@ Jonathan Jayes - Lund University
 <li><p>What is an innovator in this context?</p></li>
 <li><p>How should I classify the publications?</p>
 <ul>
-<li>“Contemporary production of saw blades, circular saws, and machine knives” in the example of Karl Lund?</li>
+<li>e.g.&nbsp;“Contemporary production of saw blades, circular saws, and machine knives” in the example of Karl Lund?</li>
 </ul></li>
 </ol>
 </section>
-<section id="how-were-nlp-tasks-hard-before" class="slide level2">
+<section id="how-were-nlp-tasks-hard-before" class="slide level2" data-visibility="uncounted">
 <h2>How were NLP tasks hard before?</h2>
-<p>In your case when you use patent data, a lot of the research on historical questions is done just with the title of the patent and relationships between patent holders. It was difficult to get more information from the text of the patent.</p>
+<p>In the case when you use patent data, a lot of the research on historical questions is done just with the title of the patent and relationships between patent holders. It was difficult to get more information from the text of the patent.</p>
 <h3 id="how-are-they-easy-now">How are they easy now?</h3>
 <p>Now we can use OCR / NLP to get a lot of information from the text of the patent.</p>
+</section>
+<section id="tips-for-working-with-the-openai-api" class="slide level2" data-visibility="uncounted">
+<h2>Tips for working with the OpenAI API</h2>
+<h3 id="ask-for-exactly-what-you-want">Ask for exactly what you want</h3>
+<p>“Structure the biography in Schema.org/Person format as a JSON object. Include dates wherever possible. Only provide a RFC8259 compliant JSON response.”</p>
+<h3 id="use-gpt-4-to-generate-code-to-communicate-with-the-api-visualize-your-data">Use GPT-4 to generate code to communicate with the API / visualize your data</h3>
+<p>“Great, thank you, Now I want to draw a map of these locations. What I want to do is create a dictionary with name, birthPlace (and coordinates) and jobTitle from the files in data/biographies_augmented, and then draw a map that I can export as jpeg. The map should have dots for birth place”</p>
 <div class="footer footer-default">
 <p><a href="https://j-jayes.github.io/Data-Visualization-in-R-Lund/"></a></p>
 </div>
