@@ -399,15 +399,15 @@
 <li><p>Electrification is a cannonical example of a <strong>General Purpose Technology (GPT)</strong></p></li>
 <li><p>When this new technology was adopted in Sweden:</p>
 <ul>
-<li>It made individuals richer</li>
-<li>It lowered inequality</li>
-<li>It allowed structural change on the labour market</li>
+<li>It made individuals richer 💰🔋</li>
+<li>It lowered inequality 📉🤝</li>
+<li>It allowed structural change on the labor market 🔧💼</li>
 </ul></li>
 <li><p>What we want to know next:</p>
 <ul>
-<li>Who were the innovators or adopters?</li>
-<li>Did they move to opportunity?</li>
-<li>How much training did they have in the new technology?</li>
+<li>Who were the innovators or adopters? 🤔🚀</li>
+<li>Did they move to opportunity? 🏃‍♀️💼</li>
+<li>How much training did they have in the new technology? 🎓⚡️</li>
 </ul></li>
 </ol>
 </section>
@@ -466,9 +466,9 @@
 <section id="now-we-want-to-ask" class="slide level2">
 <h2>Now we want to ask:</h2>
 <ul>
-<li>Who were the innovators or adopters?</li>
-<li>Did they move to opportunity?</li>
-<li>How much training did they have in the new technology?</li>
+<li>Who were the innovators or adopters? 🤔🚀</li>
+<li>Did they move to opportunity? 🏃‍♀️💼</li>
+<li>How much training did they have in the new technology? 🎓⚡️</li>
 </ul>
 </section>
 <section id="who-is-who" class="slide level2">
@@ -520,13 +520,55 @@
 <h2></h2>
 
 <img data-src="assets/tidy.jpg" class="r-stretch"></section>
-<section id="section-3" class="slide level2">
-<h2></h2>
-<p>🧑 📝 🗑️</p>
-<p>Arrow</p>
-<p>💻🧹</p>
-<p>Arrow</p>
-<p>📚 🎓 💼</p>
+<section id="data-pipeline" class="slide level2">
+<h2>Data pipeline</h2>
+<p><br></p>
+<table>
+<colgroup>
+<col style="width: 9%">
+<col style="width: 69%">
+<col style="width: 20%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Step</th>
+<th>Process</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>Scrape book data from website</td>
+<td>🌐➡️📚</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>Split biographies on each page of a book</td>
+<td>📚➡️📄</td>
+</tr>
+<tr class="odd">
+<td><strong>3</strong></td>
+<td><strong>Translate biographies</strong></td>
+<td>📄🔄📄</td>
+</tr>
+<tr class="even">
+<td><strong>4</strong></td>
+<td><strong>Structure biographies using Schema.org</strong></td>
+<td>📄➡️🔗</td>
+</tr>
+<tr class="odd">
+<td><strong>5</strong></td>
+<td><strong>Augment data</strong></td>
+<td>🔗🔍🌍🎓📚</td>
+</tr>
+<tr class="even">
+<td>6</td>
+<td>Store data</td>
+<td>🔗📚📂</td>
+</tr>
+</tbody>
+</table>
 </section>
 <section id="nlp-challenges" class="slide level2">
 <h2>NLP challenges</h2>
@@ -534,8 +576,12 @@
 <div class="column" style="width:50%;">
 <p><br></p>
 <ul>
-<li><p>Many abbreviations</p></li>
-<li><p>Similar structure for each entry but not exactly the same information in the same order</p></li>
+<li>Many abbreviations and contractions
+<ul>
+<li>DOB: “f.\s*(\d{2})\/(\d{2})/(\d{2})”</li>
+<li>Gävleborg County: “Gävleb. l.”</li>
+</ul></li>
+<li>Similar structure for each entry but not exactly the same information in the same order</li>
 </ul>
 </div><div class="column" style="width:50%;">
 <p><br></p>
@@ -548,7 +594,11 @@
 </div>
 </section>
 <section id="translate" class="slide level2">
-<h2>1. Translate</h2>
+<h2>1. Translate 🤖</h2>
+<h3 id="using-openais-gpt-3.5-chat-api">Using OpenAI’s GPT-3.5 chat API:</h3>
+<p>We tell the system “You are an expert in Swedish family history”</p>
+<p>Then we ask it to translate the Swedish text to English</p>
+<p><br></p>
 <div class="cell">
 <style type="text/css">
 code.sourceCode {
@@ -572,7 +622,15 @@ code.sourceCode {
 </div>
 </section>
 <section id="structure" class="slide level2">
-<h2>2. Structure</h2>
+<h2>2. Structure 🤖</h2>
+
+<img data-src="assets/schema.png" class="r-stretch"></section>
+<section id="structure-1" class="slide level2">
+<h2>2. Structure 🤖</h2>
+<h3 id="using-openais-gpt-3.5-chat-api-1">Using OpenAI’s GPT-3.5 chat API:</h3>
+<p>We tell the system “You are an expert in Swedish family history and the Schema.org/Person format”</p>
+<p>We provide it the original Swedish and English translation, and ask it to structure the biography in Schema.org/Person format as a JSON object</p>
+<p><br></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a>structure_prompt <span class="op">=</span> <span class="ss">f"Given the original Swedish biography: </span><span class="sc">{</span>swedish_text<span class="sc">}</span><span class="ch">\n</span><span class="ss">And its English translation: </span><span class="sc">{</span>english_text<span class="sc">}</span><span class="ss">, Structure the biography in Schema.org/Person format as a JSON object. Include dates wherever possible. Only provide a  RFC8259 compliant JSON response."</span></span>
 <span id="cb2-2"><a href="#cb2-2"></a></span>
@@ -586,7 +644,10 @@ code.sourceCode {
 </div>
 </section>
 <section id="augment" class="slide level2">
-<h2>3. Augment</h2>
+<h2>3. Augment 🤖</h2>
+<h3 id="using-openais-gpt-4-chat-api">Using OpenAI’s GPT-4 chat API:</h3>
+<p>We create python code to geocode any addresses in the biography (in this example), as well as flagging the highest level of education, and extract any mention of patents or inventions in the biography.</p>
+<p><br></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="kw">def</span> geocode_birthplace(birthplace, geolocator, geocoded_cache):</span>
 <span id="cb3-2"><a href="#cb3-2"></a>    <span class="cf">if</span> <span class="bu">isinstance</span>(birthplace, <span class="bu">dict</span>):</span>
@@ -620,6 +681,7 @@ code.sourceCode {
 </section>
 <section id="output" class="slide level2">
 <h2>Output</h2>
+<p>TODO: fix names</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a>{</span>
 <span id="cb4-2"><a href="#cb4-2"></a>    <span class="st">"original"</span>: <span class="st">"Axell, Folke Adolf, civilingenjör, Norrköping, f. 4/12/08 i Ljusnarsberg, Örebro 1. G. 36 m. Marianne Hammarberg. Barn: Anita f. 37, Peter 42. — Avg:ex. fr. tekn. gymn. i Örebro 28, civ:ing:ex. v. KTH 34. Ing:assist. v. telegr :v. i Nässjö 35, linjeing. v. te-legr :v. i Norrköp. sed. 46. Led. av Sv. tekn :fören. sed. 35."</span>,</span>
@@ -706,8 +768,13 @@ code.sourceCode {
 <span id="cb4-83"><a href="#cb4-83"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
+<section id="output-1" class="slide level2">
+<h2>Output</h2>
+
+<img data-src="index_files/figure-revealjs/unnamed-chunk-7-1.png" width="960" class="r-stretch"></section>
 <section id="birthplaces-mapped" class="slide level2">
 <h2>Birthplaces mapped</h2>
+<p>Sample of birthplaces of individuals with surnames beginning with A in Götaland 1948:</p>
 <div class="cell">
 <iframe src="assets/sweden_map_checkboxes.html" width="960" height="800" data-external="1">
 </iframe>
@@ -716,10 +783,8 @@ code.sourceCode {
 <section id="how-were-nlp-tasks-hard-before" class="slide level2">
 <h2>How were NLP tasks hard before?</h2>
 <p>In your case when you use patent data, a lot of the research on historical questions is done just with the title of the patent and relationships between patent holders. It was difficult to get more information from the text of the patent.</p>
-</section>
-<section id="how-are-they-easy-now" class="slide level2">
-<h2>How are they easy now?</h2>
-<p>Now we can use the OCR / NLP OpenAI API to get a lot of information from the text of the patent.</p>
+<h3 id="how-are-they-easy-now">How are they easy now?</h3>
+<p>Now we can use OCR / NLP to get a lot of information from the text of the patent.</p>
 <div class="footer footer-default">
 <p><a href="https://j-jayes.github.io/Data-Visualization-in-R-Lund/"></a></p>
 </div>

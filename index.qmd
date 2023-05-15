@@ -13,6 +13,8 @@ format:
     default-image-extension: svg
     footer: "[{{< fa house >}}](https://j-jayes.github.io/Data-Visualization-in-R-Lund/)"
     slide-number: c
+    code-block-bg: true
+    code-block-border-left: "#31BAE9"
 image: "preview_img/03-coordinate-systems-and-axes.jfif"
 favicon: html/favicon.ico
 ---
@@ -23,15 +25,16 @@ favicon: html/favicon.ico
 
 2. When this new technology was adopted in Sweden:
 
-    - It made individuals richer
-    - It lowered inequality
-    - It allowed structural change on the labour market 
+    - It made individuals richer 💰🔋
+    - It lowered inequality 📉🤝
+    - It allowed structural change on the labor market 🔧💼
+
 
 2. What we want to know next:
 
-    - Who were the innovators or adopters?
-    - Did they move to opportunity?
-    - How much training did they have in the new technology?
+    - Who were the innovators or adopters? 🤔🚀
+    - Did they move to opportunity? 🏃‍♀️💼
+    - How much training did they have in the new technology? 🎓⚡️
 
 ## What I want you to take away from today as researchers
 
@@ -89,9 +92,9 @@ favicon: html/favicon.ico
 
 ## Now we want to ask:
 
-- Who were the innovators or adopters?
-- Did they move to opportunity?
-- How much training did they have in the new technology?
+- Who were the innovators or adopters? 🤔🚀
+- Did they move to opportunity? 🏃‍♀️💼
+- How much training did they have in the new technology? 🎓⚡️
 
 ## Who is who?
 
@@ -180,21 +183,18 @@ Traveled to [Germany]{style="background-color: #e6e6fa"} in 1921, 1923, 1930, an
 
 ![](assets/tidy.jpg)
 
-## 
+## Data pipeline
 
-🧑
-📝
-🗑️
+<br>
 
-Arrow
-
-💻🧹
-
-Arrow
-
-📚
-🎓
-💼
+| Step | Process                                   |        | Description                                                           |
+|------|-------------------------------------------|-------------|
+| 1    | Scrape book data from website             | 🌐➡️📚       | 
+| 2    | Split biographies on each page of a book  | 📚➡️📄       | 
+| **3**    | **Translate biographies**                     | 📄🔄📄       | 
+| **4**    | **Structure biographies using Schema.org**    | 📄➡️🔗       | 
+| **5**    | **Augment data**                              | 🔗🔍🌍🎓📚   |
+| 6    | Store data                                | 🔗📚📂       | 
 
 ## NLP challenges
 
@@ -204,7 +204,9 @@ Arrow
 
 <br>
 
-- Many abbreviations
+- Many abbreviations and contractions
+    - DOB: "f\.\\s*(\\d{2})\\/(\\d{2})/(\\d{2})"
+    - Gävleborg County: "Gävleb. l."
 
 - Similar structure for each entry but not exactly the same information in the same order
 
@@ -221,7 +223,15 @@ Arrow
 
 ::::
 
-## 1. Translate
+## 1. Translate 🤖
+
+### Using OpenAI's GPT-3.5 chat API:
+
+We tell the system "You are an expert in Swedish family history"
+
+Then we ask it to translate the Swedish text to English
+
+<br>
 
 ```{css}
 code.sourceCode {
@@ -249,7 +259,20 @@ def translate_and_structure_text(swedish_text):
 ```
 
 
-## 2. Structure
+## 2. Structure 🤖
+
+![](assets/schema.png)
+
+## 2. Structure 🤖
+
+### Using OpenAI's GPT-3.5 chat API:
+
+We tell the system "You are an expert in Swedish family history and the Schema.org/Person format" 
+
+We provide it the original Swedish and English translation, and ask it to structure the biography in Schema.org/Person format as a JSON object
+
+<br>
+
 
 ```{python, eval=FALSE, echo=TRUE}
 
@@ -264,7 +287,14 @@ structure_response = openai.ChatCompletion.create(
 )
 ```
 
-## 3. Augment
+## 3. Augment 🤖
+
+### Using OpenAI's GPT-4 chat API:
+
+We create python code to geocode any addresses in the biography (in this example), as well as flagging the highest level of education, and extract any mention of patents or inventions in the biography.
+
+<br>
+
 
 ```{python, eval=FALSE, echo=TRUE}
 
@@ -300,6 +330,8 @@ def geocode_birthplace(birthplace, geolocator, geocoded_cache):
 
 
 ## Output
+
+TODO: fix names
 
 ```{python, eval=FALSE, echo=TRUE}
 {
@@ -387,8 +419,83 @@ def geocode_birthplace(birthplace, geolocator, geocoded_cache):
 }
 ```
 
+## Output
+
+```{r}
+library(ggtext)
+library(showtext)
+font_add_google("IBM Plex Mono", "ibm")
+showtext_auto(enable = TRUE)
+
+timeline <- tibble(
+  event = c("Birth", "Graduated from Bergsskolan in Filipstad", 
+            "Specialized studies at the Royal Institute of Technology (KTH)",
+            "Studied at the Institute of Metallurgy and Stockholm University",
+            "Marriage to Sigrid Johansson",
+            "Birth of Ingvar", "Birth of Lennart",
+            "Chemist at Strömsnäs Järnverks A-B in Degerfors",
+            "Metallurgist and chemist at Westinghouse Electric & Manufacturing Co.",
+            "Chief metallurgist at Laclede Steel Co. in Alton, Illinois, USA",
+            "Furnace and steelworks engineer at A-B Iggesunds Bruk",
+            "Site manager at Gunnebo Bruks Nya A-B, Varbergsverket",
+            "Member of the municipal executive committee",
+            "Deputy chairman of the economic department",
+            "Deputy member of the board of the power plant",
+            "Chairman of Varbergs Sparbank",
+            "Employer representative in the district council of the county labor board",
+            "Member of the board of Varbergs Luftskyddsförening",
+            "Secretary of Varbergs Högerförening",
+            "Chairman of the railway sick fund",
+            "Plant Society for Small Bird Friends",
+            "Traveled to Germany",
+            "Traveled to Denmark and Czechoslovakia",
+            "Traveled to Austria",
+            "Traveled to the USA",
+            "*Wrote 'Some fundamental factors for obtaining sharp thermal curves'",
+            "*Wrote 'Contemporary production of saw blades, circular saws, and machine knives'",
+            "Hobbies: hunting and fishing"
+  ),
+  start_year = c(1893, 1917, 1920, 1921, 1936, 1938, 1942, 1918, 1923, 1927, 1929,
+                 1931, NA, NA, NA, NA, NA, NA, NA, NA, NA, 1921, 1921, 1921, 1923, 1925, 1931, NA),
+  end_year = c(1893, 1917, 1922, 1922, NA, NA, NA, 1920, 1929, 1927, 1931,
+               NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, 1923, 1923, 1921, 1929, NA, NA, NA)
+)
+
+timeline %>%
+    filter(!is.na(start_year)) %>%
+  arrange(start_year) %>%
+  mutate(end_year_imputed = case_when(
+    is.na(end_year) ~ lead(start_year),
+    is.na(lead(start_year)) ~ start_year,
+    TRUE ~ end_year
+  )) %>%
+  mutate(
+    event = fct_reorder(event, start_year, .desc = TRUE)
+  ) %>%
+  # pivot_longer(c(start_year, end_year_imputed)) %>%
+  # ggplot(aes(value, english_occupation, colour = name)) +
+  ggplot(aes(xmin = start_year, xmax = end_year_imputed, y = event)) +
+  geom_linerange(colour = "gray50", size = 2) +
+  geom_point(aes(x = end_year_imputed), colour = "#be5d2b", size = 4) +
+  geom_point(aes(x = start_year), colour = "#2B8CBE", size = 4) +
+  labs(
+    title = "Karl Lund's life course",
+    subtitle = "Showing <span style = 'color:#2B8CBE;'>start dates</span> and <span style = 'color:#be5d2b;'>end dates</span> for his various roles and life events",
+    x = NULL,
+    y = NULL
+  ) +
+  theme(
+    legend.position = "none",
+    plot.subtitle = element_markdown(),
+    plot.title.position = "plot",
+    text = element_text(family = "ibm", size = 28)
+  )
+
+```
+
 ## Birthplaces mapped
 
+Sample of birthplaces of individuals with surnames beginning with A in Götaland 1948:
 
 ```{r}
 knitr::include_url("assets/sweden_map_checkboxes.html", height = "800")
@@ -399,7 +506,7 @@ knitr::include_url("assets/sweden_map_checkboxes.html", height = "800")
 
 In your case when you use patent data, a lot of the research on historical questions is done just with the title of the patent and relationships between patent holders. It was difficult to get more information from the text of the patent. 
 
-## How are they easy now?
+### How are they easy now?
 
-Now we can use the OCR / NLP OpenAI API to get a lot of information from the text of the patent.
+Now we can use OCR / NLP to get a lot of information from the text of the patent.
 
