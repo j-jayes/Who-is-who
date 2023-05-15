@@ -154,7 +154,7 @@ ggplot(books, aes(x = records, y = name, fill = factor(volume))) +
   title = "Number of biographies in Vem är Vem?",
   fill = "Edition") +
   scale_x_continuous(labels = scales::number_format()) +
-  scale_fill_manual(values = c("#00AFBB", "#E7B800")) 
+  scale_fill_manual(values = c("#2B8CBE", "#be5d2b")) 
 
 ```
 
@@ -457,7 +457,7 @@ timeline <- tibble(
   ),
   start_year = c(1893, 1917, 1920, 1921, 1936, 1938, 1942, 1918, 1923, 1927, 1929,
                  1931, NA, NA, NA, NA, NA, NA, NA, NA, NA, 1921, 1921, 1921, 1923, 1925, 1931, NA),
-  end_year = c(1893, 1917, 1922, 1922, NA, NA, NA, 1920, 1929, 1927, 1931,
+  end_year = c(1893, 1917, 1922, 1922, 1936, 1938, 1942, 1920, 1929, 1927, 1931,
                NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, 1923, 1923, 1921, 1929, NA, NA, NA)
 )
 
