@@ -510,7 +510,8 @@ knitr::include_url("assets/sweden_map_checkboxes.html", height = "800")
 
 1. What is an innovator in this context?
 
-2. 
+2. How should I classify the publications?
+    - "Contemporary production of saw blades, circular saws, and machine knives" in the example of Karl Lund?
 
 ## How were NLP tasks hard before?
 
