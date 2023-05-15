@@ -9,6 +9,7 @@
 <link href="index_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.2.313">
 
+  <meta name="author" content="Jonathan Jayes - Lund University">
   <title>Wired for Success: Sweden’s Electrical Innovators in the Age of Industrial Transformation</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -388,8 +389,14 @@
 
 <section id="title-slide" data-background-image="assets/preview.png" data-background-opacity="0.6" data-background-size="30%" class="quarto-title-block center">
   <h1 class="title">Wired for Success: Sweden’s Electrical Innovators in the Age of Industrial Transformation</h1>
+  <p class="subtitle">CBS Department of Strategy and Innovation Graduate Seminar</p>
 
 <div class="quarto-title-authors">
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
+Jonathan Jayes - Lund University 
+</div>
+</div>
 </div>
 
 </section>
@@ -600,14 +607,6 @@
 <p>Then we ask it to translate the Swedish text to English</p>
 <p><br></p>
 <div class="cell">
-<style type="text/css">
-code.sourceCode {
-  font-size: 1.3em;
-  /* or try font-size: xx-large; */
-}
-</style>
-</div>
-<div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="kw">def</span> translate_and_structure_text(swedish_text):</span>
 <span id="cb1-2"><a href="#cb1-2"></a>    <span class="cf">try</span>:</span>
 <span id="cb1-3"><a href="#cb1-3"></a>        <span class="co"># Translate the Swedish text to English</span></span>
@@ -681,22 +680,21 @@ code.sourceCode {
 </section>
 <section id="output" class="slide level2">
 <h2>Output</h2>
-<p>TODO: fix names</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a>{</span>
-<span id="cb4-2"><a href="#cb4-2"></a>    <span class="st">"original"</span>: <span class="st">"Axell, Folke Adolf, civilingenjör, Norrköping, f. 4/12/08 i Ljusnarsberg, Örebro 1. G. 36 m. Marianne Hammarberg. Barn: Anita f. 37, Peter 42. — Avg:ex. fr. tekn. gymn. i Örebro 28, civ:ing:ex. v. KTH 34. Ing:assist. v. telegr :v. i Nässjö 35, linjeing. v. te-legr :v. i Norrköp. sed. 46. Led. av Sv. tekn :fören. sed. 35."</span>,</span>
-<span id="cb4-3"><a href="#cb4-3"></a>    <span class="st">"translated"</span>: <span class="st">"Axell, Folke Adolf, engineer, from Norrköping, born on December 4th, 1908 in Ljusnarsberg, Örebro 1. Married in 1936 to Marianne Hammarberg. Children: Anita born in 1937, Peter born in 1942. He graduated from the Technical Gymnasium in Örebro in 1928, received his engineering degree from KTH in 1934. Worked as an engineering assistant at the telegraph station in Nässjö in 1935, and as a line engineer at the telegraph station in Norrköping since 1946. Member of the Swedish Technical Association since 1935."</span>,</span>
+<div class="sourceCode cell-code" id="cb4" data-code-line-numbers="6-14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a>{</span>
+<span id="cb4-2"><a href="#cb4-2"></a>    <span class="st">"original"</span>: <span class="st">"Lund, Karl Gustaf, överingenjör, Varberg, f. 22/7/93 i Hille, Gävleb. 1., av brukstj :m. Ferdinand L. o. Maria Andersson. G. 36 m. Sigrid Johansson. Barn: Ingvar f. 38, Lennart 42. — Ex. v. bergssk. i Filipstad 17, spec:-stud. v. KTH (B) 20-22, stud. v. me-tallogr. inst. o. Sthlms högsk. 21-22. Kemist v. Strömsnäs Järnverks A-B, Degerfors, 18-20, metallurg o. kemist v. Westinghouse Electric &amp; Manuf. Co., East Pittsburgh, Pa, USA, 23-26 o. 28-29, chefsmetallurg v. Laclede Steel^Co., Ahon, 111., USA, 27, hytt-o. stålv.ing. v. A-B Iggesunds Bruk 29-31, platschef v. Gunnebo Bruks Nya A-B, Varbergsverket, sed. 31. Led. av drätselkamm., v. ordf. v. ekonomi-avd., suppl. i styr. f. elverket, huv:-man i Varbergs Sparbank, arb :giv. repr. i länsarb:ndns kretsråd, led. av styr. f. Varbergs luftsk ifören., sekr. i Varbergs högerfören., ordfs i järnv. sjukkassa o. Plant :sällsk. Småfågl. Vänner. Res. t. Tyskl. 21, 2^ 23, 30 o. 36, Danm., Tjeckoslov. 21, 22, 23, Österr. 21, USA 23-29. Skr.: Some fundamental factors for obtaining sharp thermal curves (Träns. Am. Soc. for Steel Treating, tills. m. C. Benedicks o. W. H. Dearden 25), Nutida fabrikation av sågblad, sågklingor o. maskinknivar (Trävaruind. 31). Hob-bies: jakt o. fiske."</span>,</span>
+<span id="cb4-3"><a href="#cb4-3"></a>    <span class="st">"translated"</span>: <span class="st">"Lund, Karl Gustaf, chief engineer, Varberg, born on July 22, 1893, in Hille, Gävle County, Sweden, son of factory worker Ferdinand L. and Maria Andersson. Married in 1936 to Sigrid Johansson. Children: Ingvar (born 1938), Lennart (born 1942). — Graduated from Bergsskolan in Filipstad in 1917, specialized studies at the Royal Institute of Technology (KTH) from 1920 to 1922, studied at the Institute of Metallurgy and Stockholm University in 1921-1922. Chemist at Strömsnäs Järnverks A-B in Degerfors from 1918 to 1920."</span>,</span>
 <span id="cb4-4"><a href="#cb4-4"></a>    <span class="st">"structured"</span>: {</span>
 <span id="cb4-5"><a href="#cb4-5"></a>        <span class="st">"@context"</span>: <span class="st">"https://schema.org"</span>,</span>
 <span id="cb4-6"><a href="#cb4-6"></a>        <span class="st">"@type"</span>: <span class="st">"Person"</span>,</span>
-<span id="cb4-7"><a href="#cb4-7"></a>        <span class="st">"name"</span>: <span class="st">"Folke Adolf Axell"</span>,</span>
-<span id="cb4-8"><a href="#cb4-8"></a>        <span class="st">"birthDate"</span>: <span class="st">"1908-12-04"</span>,</span>
+<span id="cb4-7"><a href="#cb4-7"></a>        <span class="st">"name"</span>: <span class="st">"Karl Gustaf Lund"</span>,</span>
+<span id="cb4-8"><a href="#cb4-8"></a>        <span class="st">"birthDate"</span>: <span class="st">"1893-07-22"</span>,</span>
 <span id="cb4-9"><a href="#cb4-9"></a>        <span class="st">"birthPlace"</span>: {</span>
-<span id="cb4-10"><a href="#cb4-10"></a>            <span class="st">"name"</span>: <span class="st">"Ljusnarsberg, Örebro"</span>,</span>
+<span id="cb4-10"><a href="#cb4-10"></a>            <span class="st">"name"</span>: <span class="st">"Hille, Gävle County, Sweden"</span>,</span>
 <span id="cb4-11"><a href="#cb4-11"></a>            <span class="st">"latitude"</span>: <span class="fl">59.916667</span>,</span>
 <span id="cb4-12"><a href="#cb4-12"></a>            <span class="st">"longitude"</span>: <span class="fl">15.0</span></span>
 <span id="cb4-13"><a href="#cb4-13"></a>        },</span>
-<span id="cb4-14"><a href="#cb4-14"></a>        <span class="st">"jobTitle"</span>: <span class="st">"Engineer"</span>,</span>
+<span id="cb4-14"><a href="#cb4-14"></a>        <span class="st">"jobTitle"</span>: <span class="st">"Chief Engineer"</span>,</span>
 <span id="cb4-15"><a href="#cb4-15"></a>        <span class="st">"memberOf"</span>: {</span>
 <span id="cb4-16"><a href="#cb4-16"></a>            <span class="st">"@type"</span>: <span class="st">"Organization"</span>,</span>
 <span id="cb4-17"><a href="#cb4-17"></a>            <span class="st">"name"</span>: <span class="st">"Swedish Technical Association"</span></span>
@@ -771,7 +769,7 @@ code.sourceCode {
 <section id="output-1" class="slide level2">
 <h2>Output</h2>
 
-<img data-src="index_files/figure-revealjs/unnamed-chunk-7-1.png" width="960" class="r-stretch"></section>
+<img data-src="index_files/figure-revealjs/unnamed-chunk-6-1.png" width="960" class="r-stretch"></section>
 <section id="birthplaces-mapped" class="slide level2">
 <h2>Birthplaces mapped</h2>
 <p>Sample of birthplaces of individuals with surnames beginning with A in Götaland 1948:</p>
@@ -779,6 +777,13 @@ code.sourceCode {
 <iframe src="assets/sweden_map_checkboxes.html" width="960" height="800" data-external="1">
 </iframe>
 </div>
+</section>
+<section id="questions-i-need-to-answer" class="slide level2">
+<h2>Questions I need to answer</h2>
+<ol type="1">
+<li><p>What is an innovator in this context?</p></li>
+<li></li>
+</ol>
 </section>
 <section id="how-were-nlp-tasks-hard-before" class="slide level2">
 <h2>How were NLP tasks hard before?</h2>
