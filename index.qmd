@@ -1,13 +1,12 @@
 ---
 title: "Wired for Success: Sweden's Electrical Innovators in the Age of Industrial Transformation"
-subtitle: "CBS Department of Strategy and Innovation Graduate Seminar"
+subtitle: "SEHM 2023: The application of cutting edge technology to economic history research"
 author: "Jonathan Jayes  - Lund University"
 title-slide-attributes:
   data-background-image: "assets/preview.png"
   data-background-size: "30%"
   data-background-opacity: "0.6"
 format: 
-
   revealjs:
     code-overflow: wrap
     width: 1600
@@ -38,6 +37,11 @@ favicon: html/favicon.ico
     - Who were the innovators or adopters? 🤔🚀
     - Did they move to opportunity? 🏃‍♀️💼
     - How much training did they have in the new technology? 🎓⚡️
+    - Were did they get this training? 🏫🔌
+
+# Research question{background-color="#1C9E77"}
+
+How important was **migration and skill adoption** for the **electricity adjascent technology development** in Sweden?
 
 ## What I want you to take away from today as researchers
 
@@ -48,7 +52,7 @@ favicon: html/favicon.ico
 
 2. We can use the OpenAI API to structure data from free text at very low cost.
 
-3. It is a General Purpose Technology that can both process data and also inform our workflow as researchers.
+3. It is a **General Purpose Technology** that can both process data and also inform our workflow as researchers.
 
 :::
 
@@ -61,47 +65,6 @@ favicon: html/favicon.ico
 
 ::::
 
-## Why do we care about the second industrial revolution?
-
-![](assets/factory.png){fig-align="center"}
-
-## 
-
-![](assets/2IR_1.JPG){fig-align="center"}
-
-## 
-
-![](assets/2IR_2.JPG){fig-align="center"}
-
-## New technology with rapid adoption in Sweden
-
-![](assets/schon-energy-share.jpeg){fig-align="center"}
-
-## What happened to early electrifiers in Sweden?
-
-![](assets/grid_rollout.jpg){fig-align="center"}
-
-## No large unemployment effects in areas who electrified first
-
-![](assets/employment_share.jpeg){fig-align="center"}
-
-## Incomes were markedly higher in areas that electrified first
-
-![](assets/coef_plot.jpeg){fig-align="center"}
-
-## Income was shared more equally in areas that electrified first
-
-![](assets/dot_plot.jpeg){fig-align="center"} 
-
-## What were the mechanisms behind these effects?
-
-![](assets/job_share_plot.jpeg){fig-align="center"} 
-
-## Now we want to ask:
-
-- Who were the innovators or adopters? 🤔🚀
-- Did they move to opportunity? 🏃‍♀️💼
-- How much training did they have in the new technology? 🎓⚡️
 
 ## Who is who?
 
@@ -113,9 +76,9 @@ Vem är Vem? is a **Swedish biographical encyclopedia** that was published in tw
 
 The intention was, according to the publishers, to draw attention **to people who were at the height of their activities**, even if they were younger, in influential or otherwise noted positions in different areas.
 
-- Biographies and career trajectories of ~ 69,448 individuals!
+- Biographies and career trajectories of ~ 75,000 individuals!
 
-- 8 of the 10 volumes are digitized by librarians in Uppsala – thank you <3
+- 9 of the 11 volumes are digitized by librarians in Uppsala – thank you <3
 
 :::
 
@@ -143,17 +106,21 @@ theme_set(theme_light())
 
 # Create a tibble from the JSON data
 books <- tibble(
-  book_name = c("Skåne", "Stockholm", "Svealand", "The Götaland region except Skåne", "Skåne", "Norrland", "Stockholm", "The Götaland region except Skåne"),
-  year = c(1948, 1962, 1964, 1965, 1966, 1968, 1945, 1948),
-  pages = c(624, 1498, 945, 1203, 952, 1340, 1044, 1075),
-  volume = c(1, 2, 2, 2, 2, 2, 1, 1)
+  book_name = c("Skåne", "Stockholm", "Svealand", "The Götaland region except Skåne", "Skåne", "Norrland", "Stockholm", "The Götaland region except Skåne", "Who is who in indsutry and business?"),
+  year = c(1948, 1962, 1964, 1965, 1966, 1968, 1945, 1948, 1945),
+  pages = c(624, 1498, 945, 1203, 952, 1340, 1044, 1075, 625),
+  volume = c(1, 2, 2, 2, 2, 2, 1, 1, 3)
 ) 
 
 books <- books %>%
-    mutate( name = str_c(book_name, " - ", year),
+    mutate(name = str_c(book_name, " - ", year),
             name = fct_reorder(name, pages),
             records = pages * 8) %>%
-            mutate(volume = if_else(volume == 1, "1945–1950", "1962–1968")) %>%
+            mutate(volume = case_when(
+                volume == 1 ~ "1945–1950", 
+                volume == 2 ~"1962–1968",
+                TRUE ~ "Who is who in indsutry and business?")
+            ) %>%
     select(name, records, volume) 
 
 # books %>% summarise(records = sum(records))
@@ -165,7 +132,7 @@ ggplot(books, aes(x = records, y = name, fill = factor(volume))) +
   title = "Number of biographies in Vem är Vem?",
   fill = "Edition") +
   scale_x_continuous(labels = scales::number_format()) +
-  scale_fill_manual(values = c("#2B8CBE", "#be5d2b")) 
+  scale_fill_manual(values = c("#2B8CBE", "#be5d2b", "midnightblue")) 
 
 ```
 
@@ -174,17 +141,9 @@ ggplot(books, aes(x = records, y = name, fill = factor(volume))) +
 
 ![](assets/Karl_Lund.png)
 
-## Vem är Karl Lund? {visibility="uncounted"}
-
-Lund, Karl Gustaf, chief engineer, Varberg, born on July 22, 1893, in Hille, Gävle County, Sweden, son of factory worker Ferdinand L. and Maria Andersson. Married in 1936 to Sigrid Johansson. Children: Ingvar (born 1938), Lennart (born 1942). — Graduated from Bergsskolan in Filipstad in 1917, specialized studies at the Royal Institute of Technology (KTH) from 1920 to 1922, studied at the Institute of Metallurgy and Stockholm University in 1921-1922. Chemist at Strömsnäs Järnverks A-B in Degerfors from 1918 to 1920, metallurgist and chemist at Westinghouse Electric & Manufacturing Co. in East Pittsburgh, PA, USA, from 1923 to 1926 and 1928 to 1929, chief metallurgist at Laclede Steel Co. in Alton, Illinois, USA, in 1927, furnace and steelworks engineer at A-B Iggesunds Bruk from 1929 to 1931, site manager at Gunnebo Bruks Nya A-B, Varbergsverket, since 1931. Member of the municipal executive committee, deputy chairman of the economic department, deputy member of the board of the power plant, chairman of Varbergs Sparbank, employer representative in the district council of the county labor board, member of the board of Varbergs Luftskyddsförening (Varberg Air Protection Association), secretary of Varbergs Högerförening (Varberg Conservative Association), chairman of the railway sick fund, and Plant Society for Small Bird Friends. 
-
-## Vem är Karl Lund? {visibility="uncounted"}
-
-Traveled to Germany in 1921, 1923, 1930, and 1936, Denmark, Czechoslovakia in 1921, 1922, and 1923, Austria in 1921, and the USA from 1923 to 1929. Writings: "Some fundamental factors for obtaining sharp thermal curves" (Transactions of the American Society for Steel Treating, co-authored with C. Benedicks and W. H. Dearden, 1925), "Contemporary production of saw blades, circular saws, and machine knives" (Timber Industry, 1931). Hobbies: hunting and fishing.
-
 ## Vem är Karl Lund?
 
-[Lund, Karl Gustaf]{style="background-color: #b0c4de"}, [chief engineer]{style="background-color: #d2b48c"}, [born on July 22, 1893]{style="background-color: #ff8c69"}, [in Hille, Gävle County]{style="background-color: #90ee90"}, Sweden, son of [factory worker Ferdinand L. and Maria Andersson]{style="background-color: #9370db"}. Married in 1936 to [Sigrid Johansson]{style="background-color: #ffadc1"}. Children: [Ingvar (born 1938)]{style="background-color: #ffdead"}, [Lennart (born 1942)]{style="background-color: #ffdead"}. — Graduated from [Bergsskolan]{style="background-color: #afeeee"} in Filipstad in 1917, specialized studies at the [Royal Institute of Technology (KTH)]{style="background-color: #afeeee"} from 1920 to 1922, studied at the [Institute of Metallurgy]{style="background-color: #afeeee"} and [Stockholm University]{style="background-color: #afeeee"} in 1921-1922. Chemist at [Strömsnäs Järnverks A-B]{style="background-color: #98fb98"} in Degerfors from 1918 to 1920, metallurgist and chemist at [Westinghouse Electric & Manufacturing Co.]{style="background-color: #98fb98"} in East Pittsburgh, PA, USA, from 1923 to 1926 and 1928 to 1929, chief metallurgist at [Laclede Steel Co.]{style="background-color: #98fb98"} in Alton, Illinois, USA, in 1927, furnace and steelworks engineer at [A-B Iggesunds Bruk]{style="background-color: #98fb98"} from 1929 to 1931, site manager at [Gunnebo Bruks Nya A-B, Varbergsverket]{style="background-color: #98fb98"}, since 1931. Member of the municipal executive committee, deputy chairman of the economic department, deputy member of the board of the power plant, chairman of [Varbergs Sparbank]{style="background-color: #ffdab9"}, employer representative in the district council of the county labor board, member of the board of [Varbergs Luftskyddsförening (Varberg Air Protection Association)]{style="background-color: #ffdab9"}, secretary of [Varbergs Högerförening (Varberg Conservative Association)]{style="background-color: #ffdab9"}, chairman of the railway sick fund, and [Plant Society for Small Bird Friends]{style="background-color: #ffdab9"}. 
+[Lund, Karl Gustaf]{style="background-color: #b0c4de"}, [chief engineer]{style="background-color: #d2b48c"}, [born on July 22, 1893]{style="background-color: #ff8c69"}, [in Hille, Gävleborgs län]{style="background-color: #90ee90"}, Sweden, son of [factory worker Ferdinand L. and Maria Andersson]{style="background-color: #9370db"}. Married in 1936 to [Sigrid Johansson]{style="background-color: #ffadc1"}. Children: [Ingvar (born 1938)]{style="background-color: #ffdead"}, [Lennart (born 1942)]{style="background-color: #ffdead"}. — Graduated from [Bergsskolan]{style="background-color: #afeeee"} in Filipstad in 1917, specialized studies at the [Royal Institute of Technology (KTH)]{style="background-color: #afeeee"} from 1920 to 1922, studied at the [Institute of Metallurgy]{style="background-color: #afeeee"} and [Stockholm University]{style="background-color: #afeeee"} in 1921-1922. Chemist at [Strömsnäs Järnverks A-B]{style="background-color: #98fb98"} in Degerfors from 1918 to 1920, metallurgist and chemist at [Westinghouse Electric & Manufacturing Co.]{style="background-color: #98fb98"} in East Pittsburgh, PA, USA, from 1923 to 1926 and 1928 to 1929, chief metallurgist at [Laclede Steel Co.]{style="background-color: #98fb98"} in Alton, Illinois, USA, in 1927, furnace and steelworks engineer at [A-B Iggesunds Bruk]{style="background-color: #98fb98"} from 1929 to 1931, site manager at [Gunnebo Bruks Nya A-B, Varbergsverket]{style="background-color: #98fb98"}, since 1931. Member of the municipal executive committee, deputy chairman of the economic department, deputy member of the board of the power plant, chairman of [Varbergs Sparbank]{style="background-color: #ffdab9"}, employer representative in the district council of the county labor board, member of the board of [Varbergs Luftskyddsförening (Varberg Air Protection Association)]{style="background-color: #ffdab9"}, secretary of [Varbergs Högerförening (Varberg Conservative Association)]{style="background-color: #ffdab9"}, chairman of the railway sick fund, and [Plant Society for Small Bird Friends]{style="background-color: #ffdab9"}. 
 
 ## Vem är Karl Lund?
 
@@ -337,89 +296,154 @@ def geocode_birthplace(birthplace, geolocator, geocoded_cache):
 
 
 ```{python, eval=FALSE, echo=TRUE}
-#| code-line-numbers: "6-14"
 
 {
     "original": "Lund, Karl Gustaf, överingenjör, Varberg, f. 22/7/93 i Hille, Gävleb. 1., av brukstj :m. Ferdinand L. o. Maria Andersson. G. 36 m. Sigrid Johansson. Barn: Ingvar f. 38, Lennart 42. — Ex. v. bergssk. i Filipstad 17, spec:-stud. v. KTH (B) 20-22, stud. v. me-tallogr. inst. o. Sthlms högsk. 21-22. Kemist v. Strömsnäs Järnverks A-B, Degerfors, 18-20, metallurg o. kemist v. Westinghouse Electric & Manuf. Co., East Pittsburgh, Pa, USA, 23-26 o. 28-29, chefsmetallurg v. Laclede Steel^Co., Ahon, 111., USA, 27, hytt-o. stålv.ing. v. A-B Iggesunds Bruk 29-31, platschef v. Gunnebo Bruks Nya A-B, Varbergsverket, sed. 31. Led. av drätselkamm., v. ordf. v. ekonomi-avd., suppl. i styr. f. elverket, huv:-man i Varbergs Sparbank, arb :giv. repr. i länsarb:ndns kretsråd, led. av styr. f. Varbergs luftsk ifören., sekr. i Varbergs högerfören., ordfs i järnv. sjukkassa o. Plant :sällsk. Småfågl. Vänner. Res. t. Tyskl. 21, 2^ 23, 30 o. 36, Danm., Tjeckoslov. 21, 22, 23, Österr. 21, USA 23-29. Skr.: Some fundamental factors for obtaining sharp thermal curves (Träns. Am. Soc. for Steel Treating, tills. m. C. Benedicks o. W. H. Dearden 25), Nutida fabrikation av sågblad, sågklingor o. maskinknivar (Trävaruind. 31). Hob-bies: jakt o. fiske.",
-    "translated": "Lund, Karl Gustaf, chief engineer, Varberg, born on July 22, 1893, in Hille, Gävle County, Sweden, son of factory worker Ferdinand L. and Maria Andersson. Married in 1936 to Sigrid Johansson. Children: Ingvar (born 1938), Lennart (born 1942). — Graduated from Bergsskolan in Filipstad in 1917, specialized studies at the Royal Institute of Technology (KTH) from 1920 to 1922, studied at the Institute of Metallurgy and Stockholm University in 1921-1922. Chemist at Strömsnäs Järnverks A-B in Degerfors from 1918 to 1920.",
+    "translated": "Lund, Karl Gustaf, chief engineer, Varberg, born on July 22, 1893, in Hille, Gävleborgs län, Sweden, son of factory worker Ferdinand L. and Maria Andersson. Married in 1936 to Sigrid Johansson. Children: Ingvar (born 1938), Lennart (born 1942). — Graduated from Bergsskolan in Filipstad in 1917, specialized studies at the Royal Institute of Technology (KTH) from 1920 to 1922, studied at the Institute of Metallurgy and Stockholm University in 1921-1922. Chemist at Strömsnäs Järnverks A-B in Degerfors from 1918 to 1920.",
     "structured": {
-        "@context": "https://schema.org",
-        "@type": "Person",
-        "name": "Karl Gustaf Lund",
-        "birthDate": "1893-07-22",
-        "birthPlace": {
-            "name": "Hille, Gävle County, Sweden",
-            "latitude": 59.916667,
-            "longitude": 15.0
-        },
-        "jobTitle": "Chief Engineer",
-        "memberOf": {
-            "@type": "Organization",
-            "name": "Swedish Technical Association"
-        },
-        "children": [
-            {
-                "@type": "Person",
-                "name": "Anita",
-                "birthDate": "1937"
-            },
-            {
-                "@type": "Person",
-                "name": "Peter",
-                "birthDate": "1942"
-            }
-        ],
-        "spouse": {
+            "@context": "http://schema.org",
             "@type": "Person",
-            "name": "Marianne Hammarberg",
-            "marriageDate": "1936"
-        },
-        "education": [
-            {
-                "@type": "EducationalOccupationalCredential",
-                "credentialCategory": "Vocational",
-                "issuer": {
-                    "@type": "Organization",
-                    "name": "Technical Gymnasium in Örebro"
-                },
-                "endDate": "1928"
+            "name": "Karl Gustaf Lund",
+            "givenName": "Karl Gustaf",
+            "familyName": "Lund",
+            "gender": "Male",
+            "birthDate": "1893-07-22",
+            "birthPlace": {
+                "@type": "Place",
+                "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Hille",
+                "addressRegion": "Gävleborgs län",
+                "addressCountry": "Sweden"
+                }
             },
-            {
-                "@type": "EducationalOccupationalCredential",
-                "credentialCategory": "Degree",
-                "issuer": {
-                    "@type": "Organization",
-                    "name": "KTH"
+            "nationality": "Swedish",
+            "parent": [
+                {
+                "@type": "Person",
+                "name": "Ferdinand L.",
+                "jobTitle": "Factory Worker"
                 },
-                "endDate": "1934"
-            }
-        ],
-        "worksFor": {
-            "@type": "Organization",
-            "name": "Telegraph station in Norrköping",
-            "startDate": "1946"
-        },
-        "hasOccupation": [
-            {
-                "@type": "Occupation",
-                "name": "Engineering assistant",
-                "employer": {
-                    "@type": "Organization",
-                    "name": "Telegraph station in Nässjö"
-                },
-                "startDate": "1935",
-                "endDate": "1935"
+                {
+                "@type": "Person",
+                "name": "Maria Andersson"
+                }
+            ],
+            "spouse": {
+                "@type": "Person",
+                "name": "Sigrid Johansson",
+                "marriageDate": "1936"
             },
-            {
-                "@type": "Occupation",
-                "name": "Line engineer",
-                "employer": {
-                    "@type": "Organization",
-                    "name": "Telegraph station in Norrköping"
+            "children": [
+                {
+                "@type": "Person",
+                "name": "Ingvar",
+                "birthDate": "1938"
                 },
-                "startDate": "1946"
-            }
-        ]
+                {
+                "@type": "Person",
+                "name": "Lennart",
+                "birthDate": "1942"
+                }
+            ],
+            "alumniOf": [
+                {
+                "@type": "EducationalOrganization",
+                "name": "Bergsskolan in Filipstad",
+                "graduationDate": "1917"
+                },
+                {
+                "@type": "EducationalOrganization",
+                "name": "Royal Institute of Technology (KTH)",
+                "attendancePeriod": "1920-1922"
+                },
+                {
+                "@type": "EducationalOrganization",
+                "name": "Institute of Metallurgy and Stockholm University",
+                "attendancePeriod": "1921-1922"
+                }
+            ],
+            "worksFor": [
+                {
+                "@type": "Organization",
+                "name": "Strömsnäs Järnverks A-B",
+                "jobTitle": "Chemist",
+                "employmentPeriod": "1918-1920"
+                },
+                {
+                "@type": "Organization",
+                "name": "Westinghouse Electric & Manufacturing Co.",
+                "jobTitle": "Metallurgist and Chemist",
+                "employmentPeriod": "1923-1926, 1928-1929",
+                "location": "East Pittsburgh, PA, USA"
+                },
+                {
+                "@type": "Organization",
+                "name": "Laclede Steel Co.",
+                "jobTitle": "Chief Metallurgist",
+                "employmentPeriod": "1927",
+                "location": "Alton, Illinois, USA"
+                },
+                {
+                "@type": "Organization",
+                "name": "A-B Iggesunds Bruk",
+                "jobTitle": "Furnace and Steelworks Engineer",
+                "employmentPeriod": "1929-1931"
+                },
+                {
+                "@type": "Organization",
+                "name": "Gunnebo Bruks Nya A-B, Varbergsverket",
+                "jobTitle": "Site Manager",
+                "employmentPeriod": "1931-present"
+                }
+            ],
+            "memberOf": [
+                {
+                "@type": "Organization",
+                "name": "Municipal Executive Committee"
+                },
+                {
+                "@type": "Organization",
+                "name": "Varbergs Sparbank",
+                "position": "Chairman"
+                },
+                {
+                "@type": "Organization",
+                "name": "Varbergs Luftskyddsförening",
+                "position": "Member of the Board"
+                },
+                {
+                "@type": "Organization",
+                "name": "Varbergs Högerförening",
+                "position": "Secretary"
+                }
+            ],
+            "hasOccupation": {
+                "@type": "Occupation",
+                "name": "Chief Engineer"
+            },
+            "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Varberg",
+                "addressCountry": "Sweden"
+            },
+            "author": [
+                {
+                "@type": "CreativeWork",
+                "name": "Some fundamental factors for obtaining sharp thermal curves",
+                "publisher": "Transactions of the American Society for Steel Treating",
+                "author": ["Karl Gustaf Lund", "C. Benedicks", "W. H. Dearden"],
+                "datePublished": "1925"
+                },
+                {
+                "@type": "CreativeWork",
+                "name": "Contemporary production of saw blades, circular saws, and machine knives",
+                "publisher": "Timber Industry",
+                "author": "Karl Gustaf Lund",
+                "datePublished": "1931"
+                }
+            ],
+            "interests": "Hunting and Fishing"
     }
 }
 ```
@@ -506,27 +530,158 @@ Sample of birthplaces of individuals with surnames beginning with A in Götaland
 knitr::include_url("assets/sweden_map_checkboxes.html", height = "800")
 ```
 
-## Questions I need to answer
+## How to measure career progression
 
-1. What is an innovator in this context?
+```{python, eval=FALSE, echo=TRUE}
+#| code-line-numbers: "10-14"
+{
+  "career": [
+    {
+      "occupational_title": "Chemist",
+      "workplace": "Strömsnäs Järnverks A-B",
+      "industry": "Metallurgy",
+      "start_date": "1918"
+    },
+    {
+      "occupational_title": "Metallurgist and Chemist",
+      "workplace": "Westinghouse Electric & Manufacturing Co.",
+      "industry": "Manufacturing",
+      "start_date": "1923"
+    },
+    {
+      "occupational_title": "Chief Metallurgist",
+      "workplace": "Laclede Steel Co.",
+      "industry": "Steel Production",
+      "start_date": "1927"
+    },
+    {
+      "occupational_title": "Furnace and Steelworks Engineer",
+      "workplace": "A-B Iggesunds Bruk",
+      "industry": "Metallurgy",
+      "start_date": "1929"
+    },
+    {
+      "occupational_title": "Site Manager",
+      "workplace": "Gunnebo Bruks Nya A-B, Varbergsverket",
+      "industry": "Metallurgy",
+      "start_date": "1931"
+    }
+  ]
+}
 
-2. How should I classify the publications?
-    - e.g. "Contemporary production of saw blades, circular saws, and machine knives" in the example of Karl Lund?
+```
 
-## How were NLP tasks hard before? {visibility="uncounted"}
+## Assign HISCOs: process
 
-In the case when you use patent data, a lot of the research on historical questions is done just with the title of the patent and relationships between patent holders. It was difficult to get more information from the text of the patent. 
+```{mermaid}
+graph TB
+    A[Collect HISCO Codes<br>and Descriptions] -->|Use OpenAI API| B[Convert HISCO Titles<br>and Descriptions to Vectors]
+    C[Receive Occupational<br>Strings] -->|Use OpenAI API| D[Convert Occupational<br>Strings to Vectors]
+    B --> E[Compare Vectors in<br>Vector Space]
+    D --> E
+    E --> F[Assign HISCO Code to<br>Occupational String<br>using Cosine Distance]
+    style A fill:#2B8CBE
+    style B fill:#be5d2b
+    style C fill:#2B8CBE
+    style D fill:#be5d2b
+    style E fill:#6f6fbf
+    style F fill:#F4FA58
 
-### How are they easy now?
 
-Now we can use OCR / NLP to get a lot of information from the text of the patent.
+```
 
-## Tips for working with the OpenAI API {visibility="uncounted"}
+## What is an embedding?
 
-### Ask for exactly what you want
+![](assets/word2vec-king-queen-vectors.png){fig-align="center" width=100%}
 
-"Structure the biography in Schema.org/Person format as a JSON object. Include dates wherever possible. Only provide a  RFC8259 compliant JSON response."
+## What is an embedding?{.unnumbered}
 
-### Use GPT-4 to generate code to communicate with the API / visualize your data
+![](assets/word2vec-king-queen-composition.png){fig-align="center" width=100%}
 
-"Great, thank you, Now I want to draw a map of these locations. What I want to do is create a dictionary with name, birthPlace (and coordinates) and jobTitle from the files in data/biographies_augmented, and then draw a map that I can export as jpeg. The map should have dots for birth place"
+## Assign HISCOs: example
+
+### 026 Metallurgists
+
+Workers in this unit group advise on metallurgical problems and develop and control processes for the extraction of metals from their ores, study the properties and engineering characteristics of metals and develop new alloys, and develop and supervise metal manufacturing processes for making finished metal products.
+
+### Karl Lund in 1923
+
+Metallurgist and Chemist at Westinghouse Electric & Manufacturing Co.
+
+## Assign HISCOs: codes projected from 1536 dimensions to 2 with UMAP
+
+```{r}
+knitr::include_url("assets/interactive_umap_plot.html", height = "800")
+```
+
+## Assign HISCOs: Watchmaker Apprentice
+
+<br>
+
+```{r}
+library(gt)
+
+# Create a tibble with the provided data
+watchmaker_data <- tibble(
+  Rank = c(1, 2, 3, 4, 5),
+  HISCO_CODE = c(842, 830, 810, 811, 839),
+  Occupational_Description = c("Watch, Clock and Precision Instrument Makers",
+                               "Blacksmiths, Toolmakers and Machine-Tool Operators",
+                               "Woodworkers",
+                               "Cabinetmakers",
+                               "Blacksmiths, Toolmakers and Machine-Tool Operators")
+)
+
+# Create a gt table from the tibble
+watchmaker_table <- watchmaker_data %>%
+  gt() %>%
+  tab_header(
+    title = md("**Closest HISCO codes** to Watchmaker Apprentice")
+  ) %>%
+  cols_label(
+    Rank = "Rank",
+    HISCO_CODE = "HISCO CODE",
+    Occupational_Description = "Occupational Description"
+  )
+
+watchmaker_table
+```
+
+## Assign HISCOs: Shipyard Assistant Engineer
+
+<br>
+
+```{r}
+
+# Create a tibble with the provided data
+occupation_data <- tibble(
+  Rank = c(1, 2, 3, 4, 5),
+  HISCO_CODE = c(43, 24, 982, 42, 959),
+  Occupational_Description = c("Ships' Engineers",
+                               "Mechanical Engineer",
+                               "Ships' Engine-Room Workers",
+                               "Ships' Deck Officers and Pilots",
+                               "Construction Workers")
+)
+
+# Create a gt table from the tibble
+occupation_table <- occupation_data %>%
+  gt() %>%
+  tab_header(
+    title = md("**Closest HISCO Codes** to 'Shipyard Assistant Engineer'")
+  ) %>%
+  cols_label(
+    Rank = "Rank",
+    HISCO_CODE = "HISCO CODE",
+    Occupational_Description = "Occupational Description"
+  )
+
+occupation_table
+
+```
+
+## You can do it too!
+
+![](assets/code.png){fig-align="center" width=100%}
+
+[GitHub repo](https://github.com/j-jayes/who-is-who-in-industry)
