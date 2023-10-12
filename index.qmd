@@ -1,6 +1,6 @@
 ---
 title: "Wired for Success: Sweden's Electrical Innovators in the Age of Industrial Transformation"
-subtitle: "SEHM 2023: The application of cutting edge technology to economic history research"
+subtitle: "Presentation at SDU for the group working on Human Capital in the Nordic Countries"
 author: "Jonathan Jayes  - Lund University"
 title-slide-attributes:
   data-background-image: "assets/preview.png"
@@ -13,7 +13,7 @@ format:
     height: 900
     fig-align: center
     default-image-extension: svg
-    footer: "[{{< fa house >}}](https://j-jayes.github.io/Data-Visualization-in-R-Lund/)"
+    footer: "[{{< fa house >}}](https://interludeone.com)"
     slide-number: c
     code-block-bg: true
     code-block-border-left: "#31BAE9"
