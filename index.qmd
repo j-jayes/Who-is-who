@@ -1,6 +1,6 @@
 ---
 title: "Wired for Success: Sweden's Electrical Innovators in the Age of Industrial Transformation"
-subtitle: "Presentation at SDU for the group working on Human Capital in the Nordic Countries"
+subtitle: "Presentation on Social Mobility - Wicksell 30/10/2023"
 author: "Jonathan Jayes  - Lund University"
 title-slide-attributes:
   data-background-image: "assets/preview.png"
@@ -679,6 +679,37 @@ occupation_table <- occupation_data %>%
 occupation_table
 
 ```
+
+## Matricies of HISCO codes
+
+```{python}
+import plotly.express as px
+import numpy as np
+
+# Generate random transition matrix
+np.random.seed(42)
+num_classes = 7
+transition_matrix = np.random.randint(0, 100, (num_classes, num_classes))
+
+# Define class labels
+class_labels = [f"HISCLASS {i+1}" for i in range(num_classes)]
+
+# Create heatmap
+fig = px.imshow(
+    transition_matrix,
+    labels=dict(x="From", y="To", color="Count"),
+    x=class_labels,
+    y=class_labels,
+    color_continuous_scale='Viridis',
+    title="Transition Counts between HISCLASS"
+)
+
+# Show heatmap
+fig.show()
+
+```
+
+
 
 ## You can do it too!
 
