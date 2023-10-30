@@ -682,30 +682,9 @@ occupation_table
 
 ## Matricies of HISCO codes
 
-```{python}
-import plotly.express as px
-import numpy as np
+```{r}
+knitr::include_url("assets/heatmap.html", height = "800")
 
-# Generate random transition matrix
-np.random.seed(42)
-num_classes = 7
-transition_matrix = np.random.randint(0, 100, (num_classes, num_classes))
-
-# Define class labels
-class_labels = [f"HISCLASS {i+1}" for i in range(num_classes)]
-
-# Create heatmap
-fig = px.imshow(
-    transition_matrix,
-    labels=dict(x="From", y="To", color="Count"),
-    x=class_labels,
-    y=class_labels,
-    color_continuous_scale='Viridis',
-    title="Transition Counts between HISCLASS"
-)
-
-# Show heatmap
-fig.show()
 
 ```
 
