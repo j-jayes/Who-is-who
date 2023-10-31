@@ -40,7 +40,7 @@ favicon: html/favicon.ico
     - How much training did they have in the new technology? 🎓⚡️
     - Were did they get this training? 🏫🔌
 
-## Motivation
+## Motivation
 
 1. **Background: Return Migrants and Occupational Mobility in Sweden** 🌍➡️🇸🇪
     - Return migrants brought back financial capital, often invested locally, but didn't show much occupational upgrading on average.
