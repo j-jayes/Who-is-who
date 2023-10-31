@@ -1,6 +1,7 @@
 ---
 title: "Wired for Success: Sweden's Electrical Innovators in the Age of Industrial Transformation"
-subtitle: "Presentation on Social Mobility - Wicksell 30/10/2023"
+subtitle: "Presentation at SDU for the group working on Human Capital in the Nordics"
+date: today
 author: "Jonathan Jayes  - Lund University"
 title-slide-attributes:
   data-background-image: "assets/preview.png"
@@ -39,6 +40,15 @@ favicon: html/favicon.ico
     - How much training did they have in the new technology? 🎓⚡️
     - Were did they get this training? 🏫🔌
 
+## Motivation
+
+1. **Background: Return Migrants and Occupational Mobility in Sweden** 🌍➡️🇸🇪
+    - Return migrants brought back financial capital, often invested locally, but didn't show much occupational upgrading on average.
+
+2. **How are the individuals at the top of the skill distribution different from those who returned to farm?** 
+    - Where did they move back to, how did their education change?
+
+
 # Research question{background-color="#1C9E77"}
 
 How important was **migration and skill adoption** for the **electricity adjascent technology development** in Sweden?
@@ -60,10 +70,12 @@ How important was **migration and skill adoption** for the **electricity adjasce
 :::
 
 ::: {.column width="50%"}
-![](assets/robot.png){fig-align="center" width=60%}
+![](assets/world_champtions.jpeg){fig-align="center" width=60%}
 :::
 
 ::::
+
+# Structuring biographies{background-color="#1C9E77"}
 
 
 ## Who is who?
@@ -517,7 +529,7 @@ timeline %>%
     legend.position = "none",
     plot.subtitle = element_markdown(),
     plot.title.position = "plot",
-    text = element_text(family = "ibm", size = 28)
+    text = element_text(family = "ibm", size = 13)
   )
 
 ```
@@ -526,9 +538,29 @@ timeline %>%
 
 Sample of birthplaces of individuals with surnames beginning with A in Götaland 1948:
 
+<div style="text-align: center">
+
+
 ```{r}
 knitr::include_url("assets/sweden_map_checkboxes.html", height = "800")
 ```
+
+</div>
+
+## Birthplaces mapped
+
+Birthplaces of individuals who studied at Royal Tehcnical Institute (KTH) in *Who is Who in Industry and Business*
+
+<div style="text-align: center">
+
+
+```{r}
+knitr::include_url("assets/kth_birthplace_map.html", height = "800")
+```
+
+</div>
+
+# Classifying occupations{background-color="#1C9E77"}
 
 ## How to measure career progression
 
@@ -644,7 +676,8 @@ watchmaker_table <- watchmaker_data %>%
     Occupational_Description = "Occupational Description"
   )
 
-watchmaker_table
+watchmaker_table %>% 
+  tab_options(table.font.size = 40)
 ```
 
 ## Assign HISCOs: Shipyard Assistant Engineer
@@ -676,15 +709,21 @@ occupation_table <- occupation_data %>%
     Occupational_Description = "Occupational Description"
   )
 
-occupation_table
+occupation_table %>% 
+  tab_options(table.font.size = 40)
 
 ```
+
+## Can we score how successful this is?
+
+We can use a crosswalk from one schema to another as a test set, e.g. O * Net to ISCO:
+
+![](assets/scoring_assignement.png){fig-align="center" width=100%}
 
 ## Matricies of HISCO codes
 
 ```{r}
 knitr::include_url("assets/heatmap.html", height = "800")
-
 
 ```
 
