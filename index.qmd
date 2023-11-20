@@ -8,7 +8,6 @@ title-slide-attributes:
   data-background-size: "30%"
   data-background-opacity: "0.2"
   data-background-position: "right"
-  data-background-repeat: "repeat"
 format:
   clean-revealjs:
     code-overflow: wrap
@@ -646,7 +645,7 @@ skills_table <- skills_table %>%
     )
 
 skills_table %>%
-    tab_options(table.font.size = 40)
+    tab_options(table.font.size = 32)
 ```
 
 
@@ -700,24 +699,36 @@ skills_table %>%
 ### Many possible groups makes classification challenging for traditional ML models
 - HISCO schema has 1,600 unit groups.
 
-I spent months doing this last year to classify occupations to HISCLASS groups, hand labelling data and optimizing a support vector machine model.
+### Building one labelled classification scheme manually does not generalize easily
+- If you code all of your occupations to HISCO and then want to move to SSYK, you have to redo all of the codings or try and find a crosswalk.
 
-**It did not work**
+:::: {.columns}
+
+::: {.column width="40%"}
+I spent months doing this last year to classify occupations to HISCLASS groups, hand labelling data and optimizing a support vector machine model.
+:::
+
+::: {.column width="60%"}
 
 <div style="text-align: center">
 
+**It did not work**
 
 ```{r}
 knitr::include_graphics("assets/svm.png")
 ```
-
 </div>
+:::
+
+::::
+
 
 ## Why is classification easier now?
 
 ### We make use of pre-trained large language models
 - Benefit from semantic similarity
 - Text embeddings mean we can have an arbitrary number of classes
+- Switch out classification target schema easily!
 
 <div style="text-align: center">
 
@@ -739,16 +750,44 @@ knitr::include_graphics("assets/sustainable-planning.png")
 
 ## Use embeddings to cluster skills
 
-<div style="text-align: center">
+- Here we do not say which skills are green or brown, we just use the `kmeans` algorithm to create two groups based on the embeddings:
 
+![](assets/umap_1.png){fig-align="center" width=100%}
 
-```{r}
-knitr::include_graphics("assets/umap_1.png")
+## Use clusters to classify new skills into the groups
+
+```{python}
+#| eval: false
+#| echo: true
+
+# New terms to classify
+new_terms = ["Sustainable textile recycling", "Coal burning technology"]
+
+# Encode the new terms using the same model
+new_embeddings = model.encode(new_terms)
+
+# Transform the new embeddings using the already fit UMAP model
+new_embeddings_umap = umap_model.transform(new_embeddings)
+
+# Use the trained KMeans model to predict the cluster for the new embeddings
+new_clusters = kmeans.predict(new_embeddings_umap)
+
+# Mapping clusters to groups for readability
+group_mapping = {1: 'Green Skills', 0: 'Brown Skills'}
+classified_groups = [group_mapping[cluster] for cluster in new_clusters]
+
+# Output the classification
+for term, group in zip(new_terms, classified_groups):
+    print(f"'{term}' is classified as: {group}")
 ```
 
-</div>
+- 'Sustainable textile recycling' is classified as: Green Skills
 
+- 'Coal burning technology' is classified as: Brown Skills
 
+## Visualize classification
+
+![](assets/umap_2.png){fig-align="center" width=100%}
 
 ## Assign HISCOs: process
 
@@ -769,6 +808,8 @@ graph TB
 
 ```
 
+Here the HISCO descriptions are in English, as are the translated titles from my biographies in Swedish.
+
 ## How to get a text embedding?
 
 ```{python}
@@ -787,11 +828,11 @@ df['ada_embedding'] = df['hisco_text'].apply(lambda x: get_embedding(x, model='t
 
 ## Assign HISCOs: example
 
-### 026 Metallurgists
+### 026 Metallurgists (HISCO description)
 
 Workers in this unit group advise on metallurgical problems and develop and control processes for the extraction of metals from their ores, study the properties and engineering characteristics of metals and develop new alloys, and develop and supervise metal manufacturing processes for making finished metal products.
 
-### Karl Lund in 1923
+### Karl Lund in 1923 (Input)
 
 Metallurgist and Chemist at Westinghouse Electric & Manufacturing Co.
 
@@ -873,20 +914,91 @@ occupation_table %>%
 
 ```
 
+
+## Keep titles in Swedish?
+
+Instead of using the HISCO schema in English, I am using the SSYK classification from 2012.
+
+Instead of using the multilingual OpenAI ADA model, I now use [The National Library of Sweden Swedish BERT model](https://huggingface.co/KB/bert-base-swedish-cased). It is trained on 200M sentences, 3000M tokens from books, news, government publications, swedish wikipedia and internet forums.
+
+The input is from the Job Tech Data so we have a ground truth that they have labelled.
+
+```{r}
+knitr::include_url("https://huggingface.co/KB/bert-base-swedish-cased", height = 800)
+```
+
+## SSYK and Swedish BERT examples:
+
+```{r}
+library(tibble)
+library(gt)
+
+# New tibble with the provided data
+new_occupation_data <- tibble(
+    Rank = c(1, 2, 3, 4, 5),
+    Closest_Match_Title_and_Code = c(
+        "5326 - Ambulanssjukvårdare",
+        "2226 - Ambulanssjuksköterskor m.fl.",
+        "2227 - Geriatriksjuksköterskor",
+        "5112 - Tågvärdar och ombordansvariga m.fl.",
+        "2231 - Operationssjuksköterskor"
+    )
+)
+
+# Create a gt table from the new tibble
+new_occupation_table <- new_occupation_data %>%
+    gt() %>%
+    tab_header(
+        title = md("**Closest SSYK Codes** to 'Ambulanssjukvårdare' (Code: 5326)")
+    ) %>%
+    cols_label(
+        Rank = "Rank",
+        Closest_Match_Title_and_Code = "Closest Match Title and Code"
+    )
+
+new_occupation_table %>% 
+  tab_options(table.font.size = 40)
+
+```
+
+## SSYK and Swedish BERT examples:
+
+```{r}
+library(tibble)
+library(gt)
+
+# New tibble with the provided data
+new_occupation_data <- tibble(
+    Rank = c(1, 2, 3, 4, 5),
+    Closest_Match_Title_and_Code = c(
+        "3115 - Ingenjörer och tekniker inom kemi och kemiteknik",
+        "2145 - Civilingenjörsyrken inom kemi och kemiteknik",
+        "3113 - Ingenjörer och tekniker inom elektroteknik",
+        "7321 - Prepresstekniker",
+        "2163 - Planeringsarkitekter m.fl."
+    )
+)
+
+# Create a gt table from the new tibble
+new_occupation_table <- new_occupation_data %>%
+    gt() %>%
+    tab_header(
+        title = md("**Closest Matches** to 'Processingenjör, kemiteknik (Code: 2512)'")
+    ) %>%
+    cols_label(
+        Rank = "Rank",
+        Closest_Match_Title_and_Code = "Closest Match Title and Code"
+    )
+
+new_occupation_table %>% 
+  tab_options(table.font.size = 40)
+```
+
 ## Can we score how successful this is?
 
 We can use a crosswalk from one schema to another as a test set, e.g. O * Net to ISCO:
 
 ![](assets/scoring_assignement.png){fig-align="center" width=100%}
-
-## Matricies of HISCO codes
-
-```{r}
-knitr::include_url("assets/heatmap.html", height = "800")
-
-```
-
-
 
 ## You can do it too!
 
