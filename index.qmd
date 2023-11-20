@@ -1,14 +1,16 @@
 ---
 title: "Wired for Success: Sweden's Electrical Innovators in the Age of Industrial Transformation"
-subtitle: "Presentation at SDU for the group working on Human Capital in the Nordics"
+subtitle: "Labour Mobility Lab in Lund"
 date: today
 author: "Jonathan Jayes  - Lund University"
 title-slide-attributes:
   data-background-image: "assets/preview.png"
   data-background-size: "30%"
-  data-background-opacity: "0.6"
-format: 
-  revealjs:
+  data-background-opacity: "0.2"
+  data-background-position: "right"
+  data-background-repeat: "repeat"
+format:
+  clean-revealjs:
     code-overflow: wrap
     width: 1600
     height: 900
@@ -52,6 +54,8 @@ favicon: html/favicon.ico
 # Research question{background-color="#1C9E77"}
 
 How important was **migration and skill adoption** for the **electricity adjascent technology development** in Sweden?
+
+[[Skip to Classifying Occupations]{.button}](#sec-classifying-occupations)
 
 ## What I want you to take away from today as researchers
 
@@ -118,33 +122,37 @@ theme_set(theme_light())
 
 # Create a tibble from the JSON data
 books <- tibble(
-  book_name = c("Skåne", "Stockholm", "Svealand", "The Götaland region except Skåne", "Skåne", "Norrland", "Stockholm", "The Götaland region except Skåne", "Who is who in indsutry and business?"),
-  year = c(1948, 1962, 1964, 1965, 1966, 1968, 1945, 1948, 1945),
-  pages = c(624, 1498, 945, 1203, 952, 1340, 1044, 1075, 625),
-  volume = c(1, 2, 2, 2, 2, 2, 1, 1, 3)
-) 
+    book_name = c("Skåne", "Stockholm", "Svealand", "The Götaland region except Skåne", "Skåne", "Norrland", "Stockholm", "The Götaland region except Skåne", "Who is who in indsutry and business?"),
+    year = c(1948, 1962, 1964, 1965, 1966, 1968, 1945, 1948, 1945),
+    pages = c(624, 1498, 945, 1203, 952, 1340, 1044, 1075, 625),
+    volume = c(1, 2, 2, 2, 2, 2, 1, 1, 3)
+)
 
 books <- books %>%
-    mutate(name = str_c(book_name, " - ", year),
-            name = fct_reorder(name, pages),
-            records = pages * 8) %>%
-            mutate(volume = case_when(
-                volume == 1 ~ "1945–1950", 
-                volume == 2 ~"1962–1968",
-                TRUE ~ "Who is who in indsutry and business?")
-            ) %>%
-    select(name, records, volume) 
+    mutate(
+        name = str_c(book_name, " - ", year),
+        name = fct_reorder(name, pages),
+        records = pages * 8
+    ) %>%
+    mutate(volume = case_when(
+        volume == 1 ~ "1945–1950",
+        volume == 2 ~ "1962–1968",
+        TRUE ~ "Who is who in indsutry and business?"
+    )) %>%
+    select(name, records, volume)
 
 # books %>% summarise(records = sum(records))
 
 # Create the ggplot visualization
 ggplot(books, aes(x = records, y = name, fill = factor(volume))) +
-  geom_col(alpha = .8) +
-  labs(x = "Number of biographies", y = "Book volume",
-  title = "Number of biographies in Vem är Vem?",
-  fill = "Edition") +
-  scale_x_continuous(labels = scales::number_format()) +
-  scale_fill_manual(values = c("#2B8CBE", "#be5d2b", "midnightblue")) 
+    geom_col(alpha = .8) +
+    labs(
+        x = "Number of biographies", y = "Book volume",
+        title = "Number of biographies in Vem är Vem?",
+        fill = "Edition"
+    ) +
+    scale_x_continuous(labels = scales::number_format()) +
+    scale_fill_manual(values = c("#2B8CBE", "#be5d2b", "midnightblue"))
 
 ```
 
@@ -469,68 +477,73 @@ font_add_google("IBM Plex Mono", "ibm")
 showtext_auto(enable = TRUE)
 
 timeline <- tibble(
-  event = c("Birth", "Graduated from Bergsskolan in Filipstad", 
-            "Specialized studies at the Royal Institute of Technology (KTH)",
-            "Studied at the Institute of Metallurgy and Stockholm University",
-            "Marriage to Sigrid Johansson",
-            "Birth of Ingvar", "Birth of Lennart",
-            "Chemist at Strömsnäs Järnverks A-B in Degerfors",
-            "Metallurgist and chemist at Westinghouse Electric & Manufacturing Co.",
-            "Chief metallurgist at Laclede Steel Co. in Alton, Illinois, USA",
-            "Furnace and steelworks engineer at A-B Iggesunds Bruk",
-            "Site manager at Gunnebo Bruks Nya A-B, Varbergsverket",
-            "Member of the municipal executive committee",
-            "Deputy chairman of the economic department",
-            "Deputy member of the board of the power plant",
-            "Chairman of Varbergs Sparbank",
-            "Employer representative in the district council of the county labor board",
-            "Member of the board of Varbergs Luftskyddsförening",
-            "Secretary of Varbergs Högerförening",
-            "Chairman of the railway sick fund",
-            "Plant Society for Small Bird Friends",
-            "Traveled to Germany",
-            "Traveled to Denmark and Czechoslovakia",
-            "Traveled to Austria",
-            "Traveled to the USA",
-            "*Wrote 'Some fundamental factors for obtaining sharp thermal curves'",
-            "*Wrote 'Contemporary production of saw blades, circular saws, and machine knives'",
-            "Hobbies: hunting and fishing"
-  ),
-  start_year = c(1893, 1917, 1920, 1921, 1936, 1938, 1942, 1918, 1923, 1927, 1929,
-                 1931, NA, NA, NA, NA, NA, NA, NA, NA, NA, 1921, 1921, 1921, 1923, 1925, 1931, NA),
-  end_year = c(1893, 1917, 1922, 1922, 1936, 1938, 1942, 1920, 1929, 1927, 1931,
-               NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, 1923, 1923, 1921, 1929, NA, NA, NA)
+    event = c(
+        "Birth", "Graduated from Bergsskolan in Filipstad",
+        "Specialized studies at the Royal Institute of Technology (KTH)",
+        "Studied at the Institute of Metallurgy and Stockholm University",
+        "Marriage to Sigrid Johansson",
+        "Birth of Ingvar", "Birth of Lennart",
+        "Chemist at Strömsnäs Järnverks A-B in Degerfors",
+        "Metallurgist and chemist at Westinghouse Electric & Manufacturing Co.",
+        "Chief metallurgist at Laclede Steel Co. in Alton, Illinois, USA",
+        "Furnace and steelworks engineer at A-B Iggesunds Bruk",
+        "Site manager at Gunnebo Bruks Nya A-B, Varbergsverket",
+        "Member of the municipal executive committee",
+        "Deputy chairman of the economic department",
+        "Deputy member of the board of the power plant",
+        "Chairman of Varbergs Sparbank",
+        "Employer representative in the district council of the county labor board",
+        "Member of the board of Varbergs Luftskyddsförening",
+        "Secretary of Varbergs Högerförening",
+        "Chairman of the railway sick fund",
+        "Plant Society for Small Bird Friends",
+        "Traveled to Germany",
+        "Traveled to Denmark and Czechoslovakia",
+        "Traveled to Austria",
+        "Traveled to the USA",
+        "*Wrote 'Some fundamental factors for obtaining sharp thermal curves'",
+        "*Wrote 'Contemporary production of saw blades, circular saws, and machine knives'",
+        "Hobbies: hunting and fishing"
+    ),
+    start_year = c(
+        1893, 1917, 1920, 1921, 1936, 1938, 1942, 1918, 1923, 1927, 1929,
+        1931, NA, NA, NA, NA, NA, NA, NA, NA, NA, 1921, 1921, 1921, 1923, 1925, 1931, NA
+    ),
+    end_year = c(
+        1893, 1917, 1922, 1922, 1936, 1938, 1942, 1920, 1929, 1927, 1931,
+        NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, 1923, 1923, 1921, 1929, NA, NA, NA
+    )
 )
 
 timeline %>%
     filter(!is.na(start_year)) %>%
-  arrange(start_year) %>%
-  mutate(end_year_imputed = case_when(
-    is.na(end_year) ~ lead(start_year),
-    is.na(lead(start_year)) ~ start_year,
-    TRUE ~ end_year
-  )) %>%
-  mutate(
-    event = fct_reorder(event, start_year, .desc = TRUE)
-  ) %>%
-  # pivot_longer(c(start_year, end_year_imputed)) %>%
-  # ggplot(aes(value, english_occupation, colour = name)) +
-  ggplot(aes(xmin = start_year, xmax = end_year_imputed, y = event)) +
-  geom_linerange(colour = "gray50", size = 2) +
-  geom_point(aes(x = end_year_imputed), colour = "#be5d2b", size = 4) +
-  geom_point(aes(x = start_year), colour = "#2B8CBE", size = 4) +
-  labs(
-    title = "Karl Lund's life course",
-    subtitle = "Showing <span style = 'color:#2B8CBE;'>start dates</span> and <span style = 'color:#be5d2b;'>end dates</span> for his various roles and life events",
-    x = NULL,
-    y = NULL
-  ) +
-  theme(
-    legend.position = "none",
-    plot.subtitle = element_markdown(),
-    plot.title.position = "plot",
-    text = element_text(family = "ibm", size = 13)
-  )
+    arrange(start_year) %>%
+    mutate(end_year_imputed = case_when(
+        is.na(end_year) ~ lead(start_year),
+        is.na(lead(start_year)) ~ start_year,
+        TRUE ~ end_year
+    )) %>%
+    mutate(
+        event = fct_reorder(event, start_year, .desc = TRUE)
+    ) %>%
+    # pivot_longer(c(start_year, end_year_imputed)) %>%
+    # ggplot(aes(value, english_occupation, colour = name)) +
+    ggplot(aes(xmin = start_year, xmax = end_year_imputed, y = event)) +
+    geom_linerange(colour = "gray50", size = 2) +
+    geom_point(aes(x = end_year_imputed), colour = "#be5d2b", size = 4) +
+    geom_point(aes(x = start_year), colour = "#2B8CBE", size = 4) +
+    labs(
+        title = "Karl Lund's life course",
+        subtitle = "Showing <span style = 'color:#2B8CBE;'>start dates</span> and <span style = 'color:#be5d2b;'>end dates</span> for his various roles and life events",
+        x = NULL,
+        y = NULL
+    ) +
+    theme(
+        legend.position = "none",
+        plot.subtitle = element_markdown(),
+        plot.title.position = "plot",
+        text = element_text(family = "ibm", size = 13)
+    )
 
 ```
 
@@ -560,9 +573,84 @@ knitr::include_url("assets/kth_birthplace_map.html", height = "800")
 
 </div>
 
-# Classifying occupations{background-color="#1C9E77"}
+# Classifying occupations{#sec-classifying-occupations background-color="#1C9E77"}
 
-## How to measure career progression
+
+```{mermaid}
+graph LR
+    A[Queried Job Title: Civilingenjör, teknisk fysik Code: 2142] --> B[Text Embeddings]
+    B --> C[Classifier Algorithm]
+    C --> D[Similarity Ranking]
+    D --> E1[1. 2142 - Civilingenjörsyrken inom bygg och anläggning]
+    D --> E2[2. 8212 - Montörer, elektrisk och elektronisk utrustning]
+    D --> E3[3. 7215 - Stålkonstruktionsmontörer och grovplåtslagare]
+    D --> E4[4. 7319 - Musikinstrumentmakare och övriga konsthantverkare]
+    D --> E5[5. 1212 - Ekonomi- och finanschefer nivå 2]
+
+    style E1 fill:#ffff
+    style A fill:#ffff
+
+```
+
+## Why is classification important?
+
+We often want to classify an observation into a group in order to make inference about the group.
+
+```{r}
+library(tidyverse)
+library(gt)
+
+skills_table <- tibble(
+    green_skills = c(
+        "Renewable Energy System Design",
+        "Sustainable Urban Planning",
+        "Environmental Impact Assessment",
+        "Waste Management and Recycling",
+        "Water Resource Management",
+        "Sustainable Agriculture Practices",
+        "Energy Efficiency Analysis",
+        "Carbon Footprinting and Reduction",
+        "Green Building Design",
+        "Conservation Biology"
+    ),
+    brown_skills = c(
+        "Petroleum Geology",
+        "Oil and Gas Drilling Techniques",
+        "Fossil Fuel Plant Operations",
+        "Pipeline Design and Maintenance",
+        "Refinery Operations",
+        "Coal Mining Techniques",
+        "Fossil Fuel Transportation Logistics",
+        "Emission Control Technologies",
+        "Fossil-Based Power Generation",
+        "Risk Assessment in Fossil Fuel Industries"
+    )
+)
+
+skills_table <- skills_table %>%
+    gt() %>%
+    tab_header(
+        title = md("**Green and brown skills to be grouped**")
+    ) %>%
+    cols_label(
+        green_skills = "Green Skills",
+        brown_skills = "Brown Skills"
+    ) %>%
+    tab_style(
+        style = cell_fill(color = "#b7e8b7"),
+        locations = cells_body(columns = green_skills)
+    ) %>%
+    tab_style(
+        style = cell_fill(color = "#e6b27e"),
+        locations = cells_body(columns = brown_skills)
+    )
+
+skills_table %>%
+    tab_options(table.font.size = 40)
+```
+
+
+## My use case: how to measure career progression
 
 ```{python, eval=FALSE, echo=TRUE}
 #| code-line-numbers: "10-14"
@@ -603,6 +691,65 @@ knitr::include_url("assets/kth_birthplace_map.html", height = "800")
 
 ```
 
+
+## Why was classification hard?
+
+### Fuzzy string matching doesn't capture semantic similarity between words
+- "chauffeur" is close to "car driver" semantically, but not close in text.
+
+### Many possible groups makes classification challenging for traditional ML models
+- HISCO schema has 1,600 unit groups.
+
+I spent months doing this last year to classify occupations to HISCLASS groups, hand labelling data and optimizing a support vector machine model.
+
+**It did not work**
+
+<div style="text-align: center">
+
+
+```{r}
+knitr::include_graphics("assets/svm.png")
+```
+
+</div>
+
+## Why is classification easier now?
+
+### We make use of pre-trained large language models
+- Benefit from semantic similarity
+- Text embeddings mean we can have an arbitrary number of classes
+
+<div style="text-align: center">
+
+
+```{r}
+knitr::include_graphics("assets/sustainable-planning.png")
+```
+
+</div>
+
+## What is an embedding?
+
+![](assets/word2vec-king-queen-vectors.png){fig-align="center" width=100%}
+
+## What is an embedding?{.unnumbered}
+
+![](assets/word2vec-king-queen-composition.png){fig-align="center" width=100%}
+
+
+## Use embeddings to cluster skills
+
+<div style="text-align: center">
+
+
+```{r}
+knitr::include_graphics("assets/umap_1.png")
+```
+
+</div>
+
+
+
 ## Assign HISCOs: process
 
 ```{mermaid}
@@ -621,14 +768,6 @@ graph TB
 
 
 ```
-
-## What is an embedding?
-
-![](assets/word2vec-king-queen-vectors.png){fig-align="center" width=100%}
-
-## What is an embedding?{.unnumbered}
-
-![](assets/word2vec-king-queen-composition.png){fig-align="center" width=100%}
 
 ## How to get a text embedding?
 
@@ -671,29 +810,31 @@ library(gt)
 
 # Create a tibble with the provided data
 watchmaker_data <- tibble(
-  Rank = c(1, 2, 3, 4, 5),
-  HISCO_CODE = c(842, 830, 810, 811, 839),
-  Occupational_Description = c("Watch, Clock and Precision Instrument Makers",
-                               "Blacksmiths, Toolmakers and Machine-Tool Operators",
-                               "Woodworkers",
-                               "Cabinetmakers",
-                               "Blacksmiths, Toolmakers and Machine-Tool Operators")
+    Rank = c(1, 2, 3, 4, 5),
+    HISCO_CODE = c(842, 830, 810, 811, 839),
+    Occupational_Description = c(
+        "Watch, Clock and Precision Instrument Makers",
+        "Blacksmiths, Toolmakers and Machine-Tool Operators",
+        "Woodworkers",
+        "Cabinetmakers",
+        "Blacksmiths, Toolmakers and Machine-Tool Operators"
+    )
 )
 
 # Create a gt table from the tibble
 watchmaker_table <- watchmaker_data %>%
-  gt() %>%
-  tab_header(
-    title = md("**Closest HISCO codes** to Watchmaker Apprentice")
-  ) %>%
-  cols_label(
-    Rank = "Rank",
-    HISCO_CODE = "HISCO CODE",
-    Occupational_Description = "Occupational Description"
-  )
+    gt() %>%
+    tab_header(
+        title = md("**Closest HISCO codes** to Watchmaker Apprentice")
+    ) %>%
+    cols_label(
+        Rank = "Rank",
+        HISCO_CODE = "HISCO CODE",
+        Occupational_Description = "Occupational Description"
+    )
 
-watchmaker_table %>% 
-  tab_options(table.font.size = 40)
+watchmaker_table %>%
+    tab_options(table.font.size = 40)
 ```
 
 ## Assign HISCOs: Shipyard Assistant Engineer
@@ -704,29 +845,31 @@ watchmaker_table %>%
 
 # Create a tibble with the provided data
 occupation_data <- tibble(
-  Rank = c(1, 2, 3, 4, 5),
-  HISCO_CODE = c(43, 24, 982, 42, 959),
-  Occupational_Description = c("Ships' Engineers",
-                               "Mechanical Engineer",
-                               "Ships' Engine-Room Workers",
-                               "Ships' Deck Officers and Pilots",
-                               "Construction Workers")
+    Rank = c(1, 2, 3, 4, 5),
+    HISCO_CODE = c(43, 24, 982, 42, 959),
+    Occupational_Description = c(
+        "Ships' Engineers",
+        "Mechanical Engineer",
+        "Ships' Engine-Room Workers",
+        "Ships' Deck Officers and Pilots",
+        "Construction Workers"
+    )
 )
 
 # Create a gt table from the tibble
 occupation_table <- occupation_data %>%
-  gt() %>%
-  tab_header(
-    title = md("**Closest HISCO Codes** to 'Shipyard Assistant Engineer'")
-  ) %>%
-  cols_label(
-    Rank = "Rank",
-    HISCO_CODE = "HISCO CODE",
-    Occupational_Description = "Occupational Description"
-  )
+    gt() %>%
+    tab_header(
+        title = md("**Closest HISCO Codes** to 'Shipyard Assistant Engineer'")
+    ) %>%
+    cols_label(
+        Rank = "Rank",
+        HISCO_CODE = "HISCO CODE",
+        Occupational_Description = "Occupational Description"
+    )
 
-occupation_table %>% 
-  tab_options(table.font.size = 40)
+occupation_table %>%
+    tab_options(table.font.size = 40)
 
 ```
 

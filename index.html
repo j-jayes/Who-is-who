@@ -7,11 +7,13 @@
 <link href="index_files/libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="index_files/libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="index_files/libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
-<link href="index_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+<link href="index_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="index_files/libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
+<link href="index_files/libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.3.450">
 
   <meta name="author" content="Jonathan Jayes - Lund University">
-  <meta name="dcterms.date" content="2023-10-31">
+  <meta name="dcterms.date" content="2023-11-20">
   <title>Wired for Success: Sweden’s Electrical Innovators in the Age of Industrial Transformation</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -393,9 +395,9 @@
   <div class="reveal">
     <div class="slides">
 
-<section id="title-slide" data-background-image="assets/preview.png" data-background-opacity="0.6" data-background-size="30%" class="quarto-title-block center">
+<section id="title-slide" data-background-image="assets/preview.png" data-background-opacity="0.2" data-background-position="right" data-background-repeat="repeat" data-background-size="30%" class="quarto-title-block center">
   <h1 class="title">Wired for Success: Sweden’s Electrical Innovators in the Age of Industrial Transformation</h1>
-  <p class="subtitle">Presentation at SDU for the group working on Human Capital in the Nordics</p>
+  <p class="subtitle">Labour Mobility Lab in Lund</p>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -405,7 +407,7 @@ Jonathan Jayes - Lund University
 </div>
 </div>
 
-  <p class="date">2023-10-31</p>
+  <p class="date">November 20, 2023</p>
 </section>
 <section id="motivation" class="slide level2">
 <h2>Motivation</h2>
@@ -443,6 +445,7 @@ Jonathan Jayes - Lund University
 <section id="research-question" class="title-slide slide level1 center" data-background-color="#1C9E77">
 <h1>Research question</h1>
 <p>How important was <strong>migration and skill adoption</strong> for the <strong>electricity adjascent technology development</strong> in Sweden?</p>
+<p><a href="#/sec-classifying-occupations"><span class="button">Skip to Classifying Occupations</span></a></p>
 </section>
 <section id="what-i-want-you-to-take-away-from-today-as-researchers" class="slide level2">
 <h2>What I want you to take away from today as researchers</h2>
@@ -844,12 +847,519 @@ Jonathan Jayes - Lund University
 </div>
 </section></section>
 <section>
-<section id="classifying-occupations" class="title-slide slide level1 center" data-background-color="#1C9E77">
+<section id="sec-classifying-occupations" class="title-slide slide level1 center" data-background-color="#1C9E77">
 <h1>Classifying occupations</h1>
+<div class="cell" data-reveal="true">
+<div class="cell-output-display">
+<div>
+<div>
+<pre class="mermaid mermaid-js">graph LR
+    A[Queried Job Title: Civilingenjör, teknisk fysik Code: 2142] --&gt; B[Text Embeddings]
+    B --&gt; C[Classifier Algorithm]
+    C --&gt; D[Similarity Ranking]
+    D --&gt; E1[1. 2142 - Civilingenjörsyrken inom bygg och anläggning]
+    D --&gt; E2[2. 8212 - Montörer, elektrisk och elektronisk utrustning]
+    D --&gt; E3[3. 7215 - Stålkonstruktionsmontörer och grovplåtslagare]
+    D --&gt; E4[4. 7319 - Musikinstrumentmakare och övriga konsthantverkare]
+    D --&gt; E5[5. 1212 - Ekonomi- och finanschefer nivå 2]
 
+    style E1 fill:#ffff
+    style A fill:#ffff
+
+</pre>
+</div>
+</div>
+</div>
+</div>
 </section>
-<section id="how-to-measure-career-progression" class="slide level2">
-<h2>How to measure career progression</h2>
+<section id="why-is-classification-important" class="slide level2">
+<h2>Why is classification important?</h2>
+<p>We often want to classify an observation into a group in order to make inference about the group.</p>
+<div class="cell">
+<div class="cell-output-display">
+
+<div id="pehutjkhry" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#pehutjkhry table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#pehutjkhry thead, #pehutjkhry tbody, #pehutjkhry tfoot, #pehutjkhry tr, #pehutjkhry td, #pehutjkhry th {
+  border-style: none;
+}
+
+#pehutjkhry p {
+  margin: 0;
+  padding: 0;
+}
+
+#pehutjkhry .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 40px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#pehutjkhry .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#pehutjkhry .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#pehutjkhry .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#pehutjkhry .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#pehutjkhry .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#pehutjkhry .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#pehutjkhry .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#pehutjkhry .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#pehutjkhry .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#pehutjkhry .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#pehutjkhry .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#pehutjkhry .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#pehutjkhry .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#pehutjkhry .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#pehutjkhry .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#pehutjkhry .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#pehutjkhry .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#pehutjkhry .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#pehutjkhry .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#pehutjkhry .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#pehutjkhry .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#pehutjkhry .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#pehutjkhry .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#pehutjkhry .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#pehutjkhry .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#pehutjkhry .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#pehutjkhry .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#pehutjkhry .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#pehutjkhry .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#pehutjkhry .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#pehutjkhry .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#pehutjkhry .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#pehutjkhry .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#pehutjkhry .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#pehutjkhry .gt_left {
+  text-align: left;
+}
+
+#pehutjkhry .gt_center {
+  text-align: center;
+}
+
+#pehutjkhry .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#pehutjkhry .gt_font_normal {
+  font-weight: normal;
+}
+
+#pehutjkhry .gt_font_bold {
+  font-weight: bold;
+}
+
+#pehutjkhry .gt_font_italic {
+  font-style: italic;
+}
+
+#pehutjkhry .gt_super {
+  font-size: 65%;
+}
+
+#pehutjkhry .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#pehutjkhry .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#pehutjkhry .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#pehutjkhry .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#pehutjkhry .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#pehutjkhry .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#pehutjkhry .gt_indent_5 {
+  text-indent: 25px;
+}
+</style>
+<table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+  <thead>
+    <tr class="gt_heading">
+      <td colspan="2" class="gt_heading gt_title gt_font_normal gt_bottom_border" style=""><strong>Green and brown skills to be grouped</strong></td>
+    </tr>
+    
+    <tr class="gt_col_headings">
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="Green Skills">Green Skills</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="Brown Skills">Brown Skills</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr><td headers="green_skills" class="gt_row gt_left" style="background-color: #B7E8B7;">Renewable Energy System Design</td>
+<td headers="brown_skills" class="gt_row gt_left" style="background-color: #E6B27E;">Petroleum Geology</td></tr>
+    <tr><td headers="green_skills" class="gt_row gt_left" style="background-color: #B7E8B7;">Sustainable Urban Planning</td>
+<td headers="brown_skills" class="gt_row gt_left" style="background-color: #E6B27E;">Oil and Gas Drilling Techniques</td></tr>
+    <tr><td headers="green_skills" class="gt_row gt_left" style="background-color: #B7E8B7;">Environmental Impact Assessment</td>
+<td headers="brown_skills" class="gt_row gt_left" style="background-color: #E6B27E;">Fossil Fuel Plant Operations</td></tr>
+    <tr><td headers="green_skills" class="gt_row gt_left" style="background-color: #B7E8B7;">Waste Management and Recycling</td>
+<td headers="brown_skills" class="gt_row gt_left" style="background-color: #E6B27E;">Pipeline Design and Maintenance</td></tr>
+    <tr><td headers="green_skills" class="gt_row gt_left" style="background-color: #B7E8B7;">Water Resource Management</td>
+<td headers="brown_skills" class="gt_row gt_left" style="background-color: #E6B27E;">Refinery Operations</td></tr>
+    <tr><td headers="green_skills" class="gt_row gt_left" style="background-color: #B7E8B7;">Sustainable Agriculture Practices</td>
+<td headers="brown_skills" class="gt_row gt_left" style="background-color: #E6B27E;">Coal Mining Techniques</td></tr>
+    <tr><td headers="green_skills" class="gt_row gt_left" style="background-color: #B7E8B7;">Energy Efficiency Analysis</td>
+<td headers="brown_skills" class="gt_row gt_left" style="background-color: #E6B27E;">Fossil Fuel Transportation Logistics</td></tr>
+    <tr><td headers="green_skills" class="gt_row gt_left" style="background-color: #B7E8B7;">Carbon Footprinting and Reduction</td>
+<td headers="brown_skills" class="gt_row gt_left" style="background-color: #E6B27E;">Emission Control Technologies</td></tr>
+    <tr><td headers="green_skills" class="gt_row gt_left" style="background-color: #B7E8B7;">Green Building Design</td>
+<td headers="brown_skills" class="gt_row gt_left" style="background-color: #E6B27E;">Fossil-Based Power Generation</td></tr>
+    <tr><td headers="green_skills" class="gt_row gt_left" style="background-color: #B7E8B7;">Conservation Biology</td>
+<td headers="brown_skills" class="gt_row gt_left" style="background-color: #E6B27E;">Risk Assessment in Fossil Fuel Industries</td></tr>
+  </tbody>
+  
+  
+</table>
+</div>
+</div>
+</div>
+</section>
+<section id="my-use-case-how-to-measure-career-progression" class="slide level2">
+<h2>My use case: how to measure career progression</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb5" data-code-line-numbers="10-14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a>{</span>
 <span id="cb5-2"><a href="#cb5-2"></a>  <span class="st">"career"</span>: [</span>
@@ -887,6 +1397,59 @@ Jonathan Jayes - Lund University
 <span id="cb5-34"><a href="#cb5-34"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
+<section id="why-was-classification-hard" class="slide level2">
+<h2>Why was classification hard?</h2>
+<h3 id="fuzzy-string-matching-doesnt-capture-semantic-similarity-between-words">Fuzzy string matching doesn’t capture semantic similarity between words</h3>
+<ul>
+<li>“chauffeur” is close to “car driver” semantically, but not close in text.</li>
+</ul>
+<h3 id="many-possible-groups-makes-classification-challenging-for-traditional-ml-models">Many possible groups makes classification challenging for traditional ML models</h3>
+<ul>
+<li>HISCO schema has 1,600 unit groups.</li>
+</ul>
+<p>I spent months doing this last year to classify occupations to HISCLASS groups, hand labelling data and optimizing a support vector machine model.</p>
+<p><strong>It did not work</strong></p>
+<div style="text-align: center">
+<div class="cell">
+<div class="cell-output-display">
+<p><img data-src="assets/svm.png" width="392"></p>
+</div>
+</div>
+</div>
+</section>
+<section id="why-is-classification-easier-now" class="slide level2">
+<h2>Why is classification easier now?</h2>
+<h3 id="we-make-use-of-pre-trained-large-language-models">We make use of pre-trained large language models</h3>
+<ul>
+<li>Benefit from semantic similarity</li>
+<li>Text embeddings mean we can have an arbitrary number of classes</li>
+</ul>
+<div style="text-align: center">
+<div class="cell">
+<div class="cell-output-display">
+<p><img data-src="assets/sustainable-planning.png" width="1934"></p>
+</div>
+</div>
+</div>
+</section>
+<section id="what-is-an-embedding" class="slide level2">
+<h2>What is an embedding?</h2>
+
+<img data-src="assets/word2vec-king-queen-vectors.png" style="width:100.0%" class="r-stretch quarto-figure-center"></section>
+<section id="what-is-an-embedding-1" class="slide level2 unnumbered">
+<h2>What is an embedding?</h2>
+
+<img data-src="assets/word2vec-king-queen-composition.png" style="width:100.0%" class="r-stretch quarto-figure-center"></section>
+<section id="use-embeddings-to-cluster-skills" class="slide level2">
+<h2>Use embeddings to cluster skills</h2>
+<div style="text-align: center">
+<div class="cell">
+<div class="cell-output-display">
+<p><img data-src="assets/umap_1.png" width="608"></p>
+</div>
+</div>
+</div>
+</section>
 <section id="assign-hiscos-process" class="slide level2">
 <h2>Assign HISCOs: process</h2>
 <div class="cell" data-reveal="true">
@@ -912,14 +1475,6 @@ Jonathan Jayes - Lund University
 </div>
 </div>
 </section>
-<section id="what-is-an-embedding" class="slide level2">
-<h2>What is an embedding?</h2>
-
-<img data-src="assets/word2vec-king-queen-vectors.png" style="width:100.0%" class="r-stretch quarto-figure-center"></section>
-<section id="what-is-an-embedding-1" class="slide level2 unnumbered">
-<h2>What is an embedding?</h2>
-
-<img data-src="assets/word2vec-king-queen-composition.png" style="width:100.0%" class="r-stretch quarto-figure-center"></section>
 <section id="how-to-get-a-text-embedding" class="slide level2">
 <h2>How to get a text embedding?</h2>
 <div class="cell">
@@ -952,23 +1507,23 @@ Jonathan Jayes - Lund University
 <div class="cell">
 <div class="cell-output-display">
 
-<div id="xkdcthpeao" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#xkdcthpeao table {
+<div id="golwsragwa" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#golwsragwa table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#xkdcthpeao thead, #xkdcthpeao tbody, #xkdcthpeao tfoot, #xkdcthpeao tr, #xkdcthpeao td, #xkdcthpeao th {
+#golwsragwa thead, #golwsragwa tbody, #golwsragwa tfoot, #golwsragwa tr, #golwsragwa td, #golwsragwa th {
   border-style: none;
 }
 
-#xkdcthpeao p {
+#golwsragwa p {
   margin: 0;
   padding: 0;
 }
 
-#xkdcthpeao .gt_table {
+#golwsragwa .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -994,12 +1549,12 @@ Jonathan Jayes - Lund University
   border-left-color: #D3D3D3;
 }
 
-#xkdcthpeao .gt_caption {
+#golwsragwa .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#xkdcthpeao .gt_title {
+#golwsragwa .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1011,7 +1566,7 @@ Jonathan Jayes - Lund University
   border-bottom-width: 0;
 }
 
-#xkdcthpeao .gt_subtitle {
+#golwsragwa .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1023,7 +1578,7 @@ Jonathan Jayes - Lund University
   border-top-width: 0;
 }
 
-#xkdcthpeao .gt_heading {
+#golwsragwa .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1035,13 +1590,13 @@ Jonathan Jayes - Lund University
   border-right-color: #D3D3D3;
 }
 
-#xkdcthpeao .gt_bottom_border {
+#golwsragwa .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#xkdcthpeao .gt_col_headings {
+#golwsragwa .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1056,7 +1611,7 @@ Jonathan Jayes - Lund University
   border-right-color: #D3D3D3;
 }
 
-#xkdcthpeao .gt_col_heading {
+#golwsragwa .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1076,7 +1631,7 @@ Jonathan Jayes - Lund University
   overflow-x: hidden;
 }
 
-#xkdcthpeao .gt_column_spanner_outer {
+#golwsragwa .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1088,15 +1643,15 @@ Jonathan Jayes - Lund University
   padding-right: 4px;
 }
 
-#xkdcthpeao .gt_column_spanner_outer:first-child {
+#golwsragwa .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#xkdcthpeao .gt_column_spanner_outer:last-child {
+#golwsragwa .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#xkdcthpeao .gt_column_spanner {
+#golwsragwa .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1108,11 +1663,11 @@ Jonathan Jayes - Lund University
   width: 100%;
 }
 
-#xkdcthpeao .gt_spanner_row {
+#golwsragwa .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#xkdcthpeao .gt_group_heading {
+#golwsragwa .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1138,7 +1693,7 @@ Jonathan Jayes - Lund University
   text-align: left;
 }
 
-#xkdcthpeao .gt_empty_group_heading {
+#golwsragwa .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1153,15 +1708,15 @@ Jonathan Jayes - Lund University
   vertical-align: middle;
 }
 
-#xkdcthpeao .gt_from_md > :first-child {
+#golwsragwa .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#xkdcthpeao .gt_from_md > :last-child {
+#golwsragwa .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#xkdcthpeao .gt_row {
+#golwsragwa .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1180,7 +1735,7 @@ Jonathan Jayes - Lund University
   overflow-x: hidden;
 }
 
-#xkdcthpeao .gt_stub {
+#golwsragwa .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1193,7 +1748,7 @@ Jonathan Jayes - Lund University
   padding-right: 5px;
 }
 
-#xkdcthpeao .gt_stub_row_group {
+#golwsragwa .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1207,15 +1762,15 @@ Jonathan Jayes - Lund University
   vertical-align: top;
 }
 
-#xkdcthpeao .gt_row_group_first td {
+#golwsragwa .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#xkdcthpeao .gt_row_group_first th {
+#golwsragwa .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#xkdcthpeao .gt_summary_row {
+#golwsragwa .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1225,16 +1780,16 @@ Jonathan Jayes - Lund University
   padding-right: 5px;
 }
 
-#xkdcthpeao .gt_first_summary_row {
+#golwsragwa .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#xkdcthpeao .gt_first_summary_row.thick {
+#golwsragwa .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#xkdcthpeao .gt_last_summary_row {
+#golwsragwa .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1244,7 +1799,7 @@ Jonathan Jayes - Lund University
   border-bottom-color: #D3D3D3;
 }
 
-#xkdcthpeao .gt_grand_summary_row {
+#golwsragwa .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1254,7 +1809,7 @@ Jonathan Jayes - Lund University
   padding-right: 5px;
 }
 
-#xkdcthpeao .gt_first_grand_summary_row {
+#golwsragwa .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1264,7 +1819,7 @@ Jonathan Jayes - Lund University
   border-top-color: #D3D3D3;
 }
 
-#xkdcthpeao .gt_last_grand_summary_row_top {
+#golwsragwa .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1274,11 +1829,11 @@ Jonathan Jayes - Lund University
   border-bottom-color: #D3D3D3;
 }
 
-#xkdcthpeao .gt_striped {
+#golwsragwa .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#xkdcthpeao .gt_table_body {
+#golwsragwa .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1287,7 +1842,7 @@ Jonathan Jayes - Lund University
   border-bottom-color: #D3D3D3;
 }
 
-#xkdcthpeao .gt_footnotes {
+#golwsragwa .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1301,7 +1856,7 @@ Jonathan Jayes - Lund University
   border-right-color: #D3D3D3;
 }
 
-#xkdcthpeao .gt_footnote {
+#golwsragwa .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1310,7 +1865,7 @@ Jonathan Jayes - Lund University
   padding-right: 5px;
 }
 
-#xkdcthpeao .gt_sourcenotes {
+#golwsragwa .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1324,7 +1879,7 @@ Jonathan Jayes - Lund University
   border-right-color: #D3D3D3;
 }
 
-#xkdcthpeao .gt_sourcenote {
+#golwsragwa .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1332,63 +1887,63 @@ Jonathan Jayes - Lund University
   padding-right: 5px;
 }
 
-#xkdcthpeao .gt_left {
+#golwsragwa .gt_left {
   text-align: left;
 }
 
-#xkdcthpeao .gt_center {
+#golwsragwa .gt_center {
   text-align: center;
 }
 
-#xkdcthpeao .gt_right {
+#golwsragwa .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#xkdcthpeao .gt_font_normal {
+#golwsragwa .gt_font_normal {
   font-weight: normal;
 }
 
-#xkdcthpeao .gt_font_bold {
+#golwsragwa .gt_font_bold {
   font-weight: bold;
 }
 
-#xkdcthpeao .gt_font_italic {
+#golwsragwa .gt_font_italic {
   font-style: italic;
 }
 
-#xkdcthpeao .gt_super {
+#golwsragwa .gt_super {
   font-size: 65%;
 }
 
-#xkdcthpeao .gt_footnote_marks {
+#golwsragwa .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#xkdcthpeao .gt_asterisk {
+#golwsragwa .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#xkdcthpeao .gt_indent_1 {
+#golwsragwa .gt_indent_1 {
   text-indent: 5px;
 }
 
-#xkdcthpeao .gt_indent_2 {
+#golwsragwa .gt_indent_2 {
   text-indent: 10px;
 }
 
-#xkdcthpeao .gt_indent_3 {
+#golwsragwa .gt_indent_3 {
   text-indent: 15px;
 }
 
-#xkdcthpeao .gt_indent_4 {
+#golwsragwa .gt_indent_4 {
   text-indent: 20px;
 }
 
-#xkdcthpeao .gt_indent_5 {
+#golwsragwa .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -1434,23 +1989,23 @@ Jonathan Jayes - Lund University
 <div class="cell">
 <div class="cell-output-display">
 
-<div id="dncwnhexkp" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#dncwnhexkp table {
+<div id="aqjsufyhuw" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#aqjsufyhuw table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#dncwnhexkp thead, #dncwnhexkp tbody, #dncwnhexkp tfoot, #dncwnhexkp tr, #dncwnhexkp td, #dncwnhexkp th {
+#aqjsufyhuw thead, #aqjsufyhuw tbody, #aqjsufyhuw tfoot, #aqjsufyhuw tr, #aqjsufyhuw td, #aqjsufyhuw th {
   border-style: none;
 }
 
-#dncwnhexkp p {
+#aqjsufyhuw p {
   margin: 0;
   padding: 0;
 }
 
-#dncwnhexkp .gt_table {
+#aqjsufyhuw .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1476,12 +2031,12 @@ Jonathan Jayes - Lund University
   border-left-color: #D3D3D3;
 }
 
-#dncwnhexkp .gt_caption {
+#aqjsufyhuw .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#dncwnhexkp .gt_title {
+#aqjsufyhuw .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1493,7 +2048,7 @@ Jonathan Jayes - Lund University
   border-bottom-width: 0;
 }
 
-#dncwnhexkp .gt_subtitle {
+#aqjsufyhuw .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1505,7 +2060,7 @@ Jonathan Jayes - Lund University
   border-top-width: 0;
 }
 
-#dncwnhexkp .gt_heading {
+#aqjsufyhuw .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1517,13 +2072,13 @@ Jonathan Jayes - Lund University
   border-right-color: #D3D3D3;
 }
 
-#dncwnhexkp .gt_bottom_border {
+#aqjsufyhuw .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#dncwnhexkp .gt_col_headings {
+#aqjsufyhuw .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1538,7 +2093,7 @@ Jonathan Jayes - Lund University
   border-right-color: #D3D3D3;
 }
 
-#dncwnhexkp .gt_col_heading {
+#aqjsufyhuw .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1558,7 +2113,7 @@ Jonathan Jayes - Lund University
   overflow-x: hidden;
 }
 
-#dncwnhexkp .gt_column_spanner_outer {
+#aqjsufyhuw .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1570,15 +2125,15 @@ Jonathan Jayes - Lund University
   padding-right: 4px;
 }
 
-#dncwnhexkp .gt_column_spanner_outer:first-child {
+#aqjsufyhuw .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#dncwnhexkp .gt_column_spanner_outer:last-child {
+#aqjsufyhuw .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#dncwnhexkp .gt_column_spanner {
+#aqjsufyhuw .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1590,11 +2145,11 @@ Jonathan Jayes - Lund University
   width: 100%;
 }
 
-#dncwnhexkp .gt_spanner_row {
+#aqjsufyhuw .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#dncwnhexkp .gt_group_heading {
+#aqjsufyhuw .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1620,7 +2175,7 @@ Jonathan Jayes - Lund University
   text-align: left;
 }
 
-#dncwnhexkp .gt_empty_group_heading {
+#aqjsufyhuw .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1635,15 +2190,15 @@ Jonathan Jayes - Lund University
   vertical-align: middle;
 }
 
-#dncwnhexkp .gt_from_md > :first-child {
+#aqjsufyhuw .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#dncwnhexkp .gt_from_md > :last-child {
+#aqjsufyhuw .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#dncwnhexkp .gt_row {
+#aqjsufyhuw .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1662,7 +2217,7 @@ Jonathan Jayes - Lund University
   overflow-x: hidden;
 }
 
-#dncwnhexkp .gt_stub {
+#aqjsufyhuw .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1675,7 +2230,7 @@ Jonathan Jayes - Lund University
   padding-right: 5px;
 }
 
-#dncwnhexkp .gt_stub_row_group {
+#aqjsufyhuw .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1689,15 +2244,15 @@ Jonathan Jayes - Lund University
   vertical-align: top;
 }
 
-#dncwnhexkp .gt_row_group_first td {
+#aqjsufyhuw .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#dncwnhexkp .gt_row_group_first th {
+#aqjsufyhuw .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#dncwnhexkp .gt_summary_row {
+#aqjsufyhuw .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1707,16 +2262,16 @@ Jonathan Jayes - Lund University
   padding-right: 5px;
 }
 
-#dncwnhexkp .gt_first_summary_row {
+#aqjsufyhuw .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#dncwnhexkp .gt_first_summary_row.thick {
+#aqjsufyhuw .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#dncwnhexkp .gt_last_summary_row {
+#aqjsufyhuw .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1726,7 +2281,7 @@ Jonathan Jayes - Lund University
   border-bottom-color: #D3D3D3;
 }
 
-#dncwnhexkp .gt_grand_summary_row {
+#aqjsufyhuw .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1736,7 +2291,7 @@ Jonathan Jayes - Lund University
   padding-right: 5px;
 }
 
-#dncwnhexkp .gt_first_grand_summary_row {
+#aqjsufyhuw .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1746,7 +2301,7 @@ Jonathan Jayes - Lund University
   border-top-color: #D3D3D3;
 }
 
-#dncwnhexkp .gt_last_grand_summary_row_top {
+#aqjsufyhuw .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1756,11 +2311,11 @@ Jonathan Jayes - Lund University
   border-bottom-color: #D3D3D3;
 }
 
-#dncwnhexkp .gt_striped {
+#aqjsufyhuw .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#dncwnhexkp .gt_table_body {
+#aqjsufyhuw .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1769,7 +2324,7 @@ Jonathan Jayes - Lund University
   border-bottom-color: #D3D3D3;
 }
 
-#dncwnhexkp .gt_footnotes {
+#aqjsufyhuw .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1783,7 +2338,7 @@ Jonathan Jayes - Lund University
   border-right-color: #D3D3D3;
 }
 
-#dncwnhexkp .gt_footnote {
+#aqjsufyhuw .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1792,7 +2347,7 @@ Jonathan Jayes - Lund University
   padding-right: 5px;
 }
 
-#dncwnhexkp .gt_sourcenotes {
+#aqjsufyhuw .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1806,7 +2361,7 @@ Jonathan Jayes - Lund University
   border-right-color: #D3D3D3;
 }
 
-#dncwnhexkp .gt_sourcenote {
+#aqjsufyhuw .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1814,63 +2369,63 @@ Jonathan Jayes - Lund University
   padding-right: 5px;
 }
 
-#dncwnhexkp .gt_left {
+#aqjsufyhuw .gt_left {
   text-align: left;
 }
 
-#dncwnhexkp .gt_center {
+#aqjsufyhuw .gt_center {
   text-align: center;
 }
 
-#dncwnhexkp .gt_right {
+#aqjsufyhuw .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#dncwnhexkp .gt_font_normal {
+#aqjsufyhuw .gt_font_normal {
   font-weight: normal;
 }
 
-#dncwnhexkp .gt_font_bold {
+#aqjsufyhuw .gt_font_bold {
   font-weight: bold;
 }
 
-#dncwnhexkp .gt_font_italic {
+#aqjsufyhuw .gt_font_italic {
   font-style: italic;
 }
 
-#dncwnhexkp .gt_super {
+#aqjsufyhuw .gt_super {
   font-size: 65%;
 }
 
-#dncwnhexkp .gt_footnote_marks {
+#aqjsufyhuw .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#dncwnhexkp .gt_asterisk {
+#aqjsufyhuw .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#dncwnhexkp .gt_indent_1 {
+#aqjsufyhuw .gt_indent_1 {
   text-indent: 5px;
 }
 
-#dncwnhexkp .gt_indent_2 {
+#aqjsufyhuw .gt_indent_2 {
   text-indent: 10px;
 }
 
-#dncwnhexkp .gt_indent_3 {
+#aqjsufyhuw .gt_indent_3 {
   text-indent: 15px;
 }
 
-#dncwnhexkp .gt_indent_4 {
+#aqjsufyhuw .gt_indent_4 {
   text-indent: 20px;
 }
 
-#dncwnhexkp .gt_indent_5 {
+#aqjsufyhuw .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -1927,7 +2482,7 @@ Jonathan Jayes - Lund University
 
 <img data-src="assets/code.png" style="width:100.0%" class="r-stretch quarto-figure-center"><p><a href="https://github.com/j-jayes/who-is-who-in-industry">GitHub repo</a></p>
 <div class="footer footer-default">
-<p><a href="https://interludeone.com"></a></p>
+<p><a href="https://interludeone.com"><i class="fa-solid fa-house" aria-label="house"></i></a></p>
 </div>
 </section></section>
     </div>
