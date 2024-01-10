@@ -1,0 +1,252 @@
+---
+title: "Paper 4: Praise the people or praise the place"
+format:
+  hikmah-pdf: default
+  hikmah-manuscript-pdf: default
+
+bibliography: bibliography.bib
+---
+
+## Introduction
+
+In the quest to understand the dynamics of economic development and technological advancement, previous research by this author and his supervisors shed light on the transformative impact of early electricity access in Sweden. "Power for progress: The impact of electricity on individual labor market outcomes" [@jayes_power_2024] revealed how the advent of electricity in certain parishes led to positive economic outcomes: a boost in income levels, reduced inequality, and the maintenance of employment levels despite the advent of labor-saving technology. A particularly striking observation was the tendency of workers in these electrified parishes to remain in their birthplaces, hinting at a newfound economic vibrancy stemming from the technological spillovers.
+
+Building on these insights, the present paper delves deeper into the human aspect of this technological revolution. It poses a critical question: Who were the key figures driving this change? Were they local talents nurtured by the opportunities at hand, or did they represent a wave of skilled individuals drawn from afar, lured by the pioneering spirit of these early electrified areas?
+
+To answer this, the investigation leverages two novel and rich data sources. The first, "Vem är Vem", is a comprehensive set of biographical dictionaries containing the profiles of 75,000 notable Swedes active between 1945 and 1968. The second, the "Svensk Industrikalender" or Swedish Industrial Calendar of 1947, offers an exhaustive catalogue of industrial firms, detailing their activities, workforce, and financial metrics.
+
+I digitize and structure these sources in order to analyze the changing patterns of the Swedish labour market in the middle of the 20th century in light of electrification. Our findings challenge our prior expectations. Contrary to the belief that local talent pools predominantly fueled the technological boom, I observe a pattern of geographical mobility among the highly educated and skilled professionals in electricity-related fields. These individuals, pivotal to overseeing and advancing the electricity sector, often sought education and opportunities far from their origins. This suggests a bifurcated labor market: local talent predominantly filled the burgeoning middle-skilled roles within the electricity sector, while the top-tier skilled professionals were more transient, moving towards educational and occupational opportunities. This paper explores the implications of this labor market structure for the economic development patterns witnessed during Sweden's second Industrial Revolution.
+
+These findings, tentative as they are, have real world value. As we seek to understand what drove the dynamism during the age of electrification in Sweden, we are better equipped to shape policy today that seeks to revitalize deindustrializing areas across the developed world and help the developing world harness new technologies for sustainable growth. In addition, the methodologies employed to structure and analyze archival data can provide a template for future research using similar materials. [fix up]
+
+The paper is laid out as follows: the current research question is placed in context, the sources are explained, followed by their digitization and structuring process. I then lay out some descriptive statistics and tentative findings regarding the patterns of movement for the high skilled electricity related workers, compared with other professionals I observe in the biographical dictionaries.
+
+## Related Literature
+
+The question of where the high skilled workers in electricity related occupations in Sweden came from is important in order to understand the economic dynamism of that era. As such, it ties into a wealth of research on technological change and the labour market, which I review briefly here.
+
+The historical adaptability of labor markets to technological change is well-documented. In their study of the U.S. labor market's response to the automation of telephone operation, Feigenbaum and Gross [@Feigenbaum2020] demonstrate how technological displacement in one sector led to increased demand in others, suggesting an inherent resilience in labor markets. This finding is particularly pertinent to our exploration of Sweden's electrification, as it indicates a potential for both displacement and opportunity in the face of technological change.
+
+Goldin's extensive analysis of labor markets in the 20th century provides a comprehensive backdrop to our study [@Goldin1994; @Goldin1998]. Her work highlights critical shifts in labor participation, wage structures, and job security, reflecting the complex interplay between societal changes and labor market dynamics. These insights are crucial for understanding how shifts in human capital, like those during Sweden's electrification period, contribute to broader economic outcomes.
+
+The impact of the Digital Revolution on labor markets, as reviewed in the Oxford Review of Economic Policy, is also salient to our study [@Adams2018; @Goos2018]. These articles underscore the emergence of job polarization and the crucial role of policy interventions in ensuring equitable benefits from technological advancements. This perspective is instrumental in understanding the differential impacts of electrification in Sweden, especially in terms of job creation and labor market segmentation.
+
+Moretti’s exploration of the geographical clustering of talent and innovation in "The New Geography of Jobs" provides a crucial perspective on the spatial dynamics of economic development [@Moretti2012]. His findings about the importance of local ecosystems in fostering innovation and economic vitality resonate with our investigation of how early electrification in Swedish parishes influenced the distribution and impact of skilled labor. His concern, that gains to productivity are eaten up by increased cost of living (primarily though housing costs) when constraints prevail, is not evidenced in the first half of the 20th century in Sweden. However, his example of Silicon Valley -- where high productivity and attractive jobs draw in people with high levels of skill, raising property prices - is becoming more concerning in today's relatively housing scarce urban centers.
+
+New technologies require new skills. Mokyr's research provides insights into the importance of both artisans and engineers in the progression of the Industrial Revolution. His studies underscore the synergistic relationship between theoretical knowledge and practical expertise, essential in driving technological innovation and economic progress [@Mokyr2017]. In his examination of the socio-economic elites of early modern Europe, Mokyr explains how their education and exposure to new ideas and sciences were pivotal in fostering various intellectual and technological advancements. This educated elite, through their changing culture and institutions, played a crucial role in creating an environment conducive to innovation [@Mokyr2017Journal].
+
+Not every innovator needs higher education. Mokyr's perspective is crucial in understanding the dynamics of technological development and economic growth, emphasizing the collaborative efforts between well-educated scientists and highly skilled artisans. This interplay highlights the importance of practical skills, theoretical knowledge, and their combined impact on technological progress. For example, figures like metallurgist Henry Cort, who collaborated with scientists despite lacking formal scientific training, exemplify the productive synergy between different forms of expertise in this era [@Mokyr2017Journal].
+
+In this paper, I want to find out where the individuals came from who enabled the technological development that was associated with Sweden becoming richer and more equal. Did they come from the areas around where the technology was developed / adopted, learning skills on the job? Or did they get formal education at one of Sweden's universities and then bring these skills to the hubs of technology? Should we praise the people, or the place?
+
+## Biographical dictionaries
+
+"Vem är Vem?" is a biographical dictionary, comprising a rich repository of information about notable individuals in Sweden. Published in two editions with a total of five volumes each, the first edition spanned from 1945 to 1950, and the second from 1962 to 1968, by the Bokförlaget Vem är Vem publishing house. An additional volume specifically focussed on individuals in industry and business was produced in 1945. This encyclopedia offers an invaluable snapshot of Swedish societal and professional landscapes during these pivotal periods. [fix citation]
+
+The primary intention behind the creation of "Vem är Vem?" was to spotlight individuals who were at the peak of their careers, regardless of their age. This focus extends beyond traditional measures of influence, emphasizing the importance of those in influential positions or notable roles across relatively diverse sectors. As such, it serves as a crucial resource for understanding the professional and personal trajectories of around 75,000 individuals who shaped Swedish society in the mid-20th century.
+
+The depth and breadth of "Vem är Vem?" are further enhanced by its digitization, with 9 out of the 11 volumes being made accessible online by librarians in Uppsala. This digitization has significantly facilitated research, allowing for a broader and more efficient exploration of the biographies and career paths of thousands of individuals. The encyclopedia's extensive coverage makes it a goldmine for researchers, historians, and anyone interested in the socio-economic history of Sweden during a period marked by significant change and development.
+
+In the context of economic and historical research, "Vem är Vem?" serves as a unique tool. By providing detailed biographies and career information, it allows for an in-depth analysis of the human capital that contributed to Sweden's economic and social evolution during the mid-20th century.
+
+![A representative page of Vem är Vem?](assets/vem_page.png)
+
+[complete explanation]
+
+## Industrial Catalogue
+
+We make use of the Swedish Industrial Calendar (*Svensk Industrikalender*) from 1947. This document is digitized and made available online by *Projekt Runeberg*.
+
+[finish description]
+
+![](assets/svensk-industrikalender_1.png)
+
+The common fields listed for each company entry in the catalogue are as follows:
+
+1. **Company Name**: The name of the company is listed at the beginning of each entry, usually in bold or with an asterisk.
+
+2. **Location/Town**: The town or location of the company, which in this case is `Arboga`.
+
+3. **Description of Business**: A brief description of the company's main activities or products is provided.
+
+4. **Products or Services Offered**: Specific items or services the company provides, such as types of machinery, tools, or materials.
+
+5. **Contact Information**: This typically includes:
+   - **Telegraph Address**: Listed as "Telegr.-adr." indicating the address to which telegraphs are to be sent.
+   - **Telephone Number**: Listed as "Telefon" followed by the number.
+   - **Postal Code**: Mentioned as "Postgiro" or "Postiro" with corresponding numbers.
+   - **Bank Account**: Sometimes a bank account number or similar financial information is included.
+
+6. **Management and Key Personnel**: Names and titles of important figures in the company, such as the director (`Verkst. dir.`), board members, or founders.
+
+7. **Financial Information**: Information about the financial aspect of the company, such as capital invested (`Akt.-kap.`) or turnover (`Tillv.-värde`).
+
+8. **Establishment Details**: This includes the year of establishment and sometimes the history or lineage of the company's ownership or major changes.
+
+9. **Address**: The full postal address, which may include a street name or a postbox number, indicated as "Postgiro".
+
+This type of catalogue was commonly used for business-to-business interactions and could be considered an early form of networking resource, allowing companies to find suppliers, customers, and partners.
+
+## Data collection strategy
+
+We need to digitize this record in order to use it.
+
+We make use 
+
+
+```{mermaid}
+graph TD
+    A[Start] --> B[Download Images]
+    B --> C[Send Images to Azure OCR]
+    C --> D[Receive JSON Files]
+    D --> E[Analyze JSON for Geographic Clusters]
+    E --> F[Identify Technology Clusters]
+    F --> G[End]
+
+```
+
+
+### Information about the company register:
+
+[THE COMPANY REGISTER](https://runeberg.org/svindkal/1947/0140.html)
+
+
+contains information regarding industrial companies' place of address, nature, main
+productions, location of various factory departments, head office and
+branch office postal and telegram addresses, telephone and postal giro, representatives in
+important locations within the country; share capital for companies operating under
+limited liability company form; approximate number of industrial workers or, where production is
+temporarily significantly curtailed due to prevailing conditions, the workforce
+normally employed; approximate manufacturing value,
+manufacturing quantity or manufacturing capacity, where information about this could be
+published; year of construction; the board members of the limited companies (in alphabetical order)
+and the owners of other companies; names of managers and department heads to the
+extent resp. company wished to let information about this influence.
+
+A * denotes companies affiliated to Sweden's Confederation of Industry. For companies
+that have an ad in the calendar's ad section, there is a reference to
+the number or location of the ad.
+
+
+
+
+25 people who are hisco code 23. We can look into where they studied and worked.
+
+
+This is the guy we tell our story around:
+
+ "3": {
+            "full_name": "Nordell, Axel Verner",
+            "location": "Motala, Östergötland",
+            "occupation": "Civilingenjör, kraftverksdirektör",
+            "birth_details": {
+                "date": "15/08/1881",
+                "place": "S. Möckleby, Kalmar",
+                "parents": "Gustaf N. and Amanda Seillergren",
+                "place_coordinates": {
+                    "Latitude": 56.35646300000001,
+                    "Longitude": 16.420155
+                }
+            },
+            "education": [
+                {
+                    "degree": "Studentexamen",
+                    "year": "1899",
+                    "institution": "Lunds högre allmänna läroverk",
+                    "institution_coordinates": {
+                        "Latitude": 55.7046601,
+                        "Longitude": 13.1910073
+                    }
+                },
+                {
+                    "degree": "Avgångsexamen från KTH",
+                    "year": "1904",
+                    "institution": "KTH (E)",
+                    "institution_coordinates": {
+                        "Latitude": 60.12816100000001,
+                        "Longitude": 18.643501
+                    }
+                }
+            ],
+            "career": [
+                {
+                    "position": "Ritare",
+                    "years": {
+                        "start_year": 1904,
+                        "end_year": 1905
+                    },
+                    "organization": "ASEA i Malmö"
+                },
+                {
+                    "position": "Ingenjör",
+                    "years": {
+                        "start_year": 1905,
+                        "end_year": 1907
+                    },
+                    "organization": "Elektr. A-B Hodmia i Sthilm"
+                },
+                {
+                    "position": "Ingenjör",
+                    "years": {
+                        "start_year": 1907,
+                        "end_year": 1909
+                    },
+                    "organization": "Trollhätte (kanal- och vattenverk)"
+                },
+                {
+                    "position": "Chef för vattenfallsverket i Älvkarleby, sektion Motala",
+                    "years": {
+                        "start_year": 1918,
+                        "end_year": 1920
+                    },
+                    "organization": "Älvkarleby kraftverk"
+                },
+                {
+                    "position": "Kraftverksdirektör",
+                    "years": {
+                        "start_year": 1920,
+                        "end_year": 1947
+                    },
+                    "organization": "Motala kraftverk"
+                },
+                {
+                    "position": "Verkställande direktör",
+                    "years": {
+                        "start_year": 1930,
+                        "end_year": 1947
+                    },
+                    "organization": "Motala Ströms Kraft A-B"
+                }
+            ],
+            "family": {
+                "spouse": "Agnies Hellgren",
+                "marriage_year": "1911",
+                "children": [
+                    {
+                        "name": "Inga",
+                        "birth_year": "1912"
+                    },
+                    {
+                        "name": "Hans",
+                        "birth_year": "1914"
+                    },
+                    {
+                        "name": "Gösta",
+                        "birth_year": "1918"
+                    },
+                    {
+                        "name": "Ulla",
+                        "birth_year": "1920"
+                    }
+                ]
+            },
+            "location_coordinates": {
+                "Latitude": 58.5380335,
+                "Longitude": 15.0470936
+            },
+            "occupation_hisco_code": 34,
+            "occupation_cosine_similarity": 0.7726821043535681,
+            "occupation_hisco_occupation": "Electrical and Electronics Engineering Technicians"
+        }
+    }
+}

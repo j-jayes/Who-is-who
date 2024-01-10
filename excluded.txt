@@ -1,0 +1,145 @@
+
+### Information about the company register:
+
+[THE COMPANY REGISTER](https://runeberg.org/svindkal/1947/0140.html)
+
+
+contains information regarding industrial companies' place of address, nature, main
+productions, location of various factory departments, head office and
+branch office postal and telegram addresses, telephone and postal giro, representatives in
+important locations within the country; share capital for companies operating under
+limited liability company form; approximate number of industrial workers or, where production is
+temporarily significantly curtailed due to prevailing conditions, the workforce
+normally employed; approximate manufacturing value,
+manufacturing quantity or manufacturing capacity, where information about this could be
+published; year of construction; the board members of the limited companies (in alphabetical order)
+and the owners of other companies; names of managers and department heads to the
+extent resp. company wished to let information about this influence.
+
+A * denotes companies affiliated to Sweden's Confederation of Industry. For companies
+that have an ad in the calendar's ad section, there is a reference to
+the number or location of the ad.
+
+
+
+
+25 people who are hisco code 23. We can look into where they studied and worked.
+
+
+This is the guy we tell our story around:
+
+ "3": {
+            "full_name": "Nordell, Axel Verner",
+            "location": "Motala, Östergötland",
+            "occupation": "Civilingenjör, kraftverksdirektör",
+            "birth_details": {
+                "date": "15/08/1881",
+                "place": "S. Möckleby, Kalmar",
+                "parents": "Gustaf N. and Amanda Seillergren",
+                "place_coordinates": {
+                    "Latitude": 56.35646300000001,
+                    "Longitude": 16.420155
+                }
+            },
+            "education": [
+                {
+                    "degree": "Studentexamen",
+                    "year": "1899",
+                    "institution": "Lunds högre allmänna läroverk",
+                    "institution_coordinates": {
+                        "Latitude": 55.7046601,
+                        "Longitude": 13.1910073
+                    }
+                },
+                {
+                    "degree": "Avgångsexamen från KTH",
+                    "year": "1904",
+                    "institution": "KTH (E)",
+                    "institution_coordinates": {
+                        "Latitude": 60.12816100000001,
+                        "Longitude": 18.643501
+                    }
+                }
+            ],
+            "career": [
+                {
+                    "position": "Ritare",
+                    "years": {
+                        "start_year": 1904,
+                        "end_year": 1905
+                    },
+                    "organization": "ASEA i Malmö"
+                },
+                {
+                    "position": "Ingenjör",
+                    "years": {
+                        "start_year": 1905,
+                        "end_year": 1907
+                    },
+                    "organization": "Elektr. A-B Hodmia i Sthilm"
+                },
+                {
+                    "position": "Ingenjör",
+                    "years": {
+                        "start_year": 1907,
+                        "end_year": 1909
+                    },
+                    "organization": "Trollhätte (kanal- och vattenverk)"
+                },
+                {
+                    "position": "Chef för vattenfallsverket i Älvkarleby, sektion Motala",
+                    "years": {
+                        "start_year": 1918,
+                        "end_year": 1920
+                    },
+                    "organization": "Älvkarleby kraftverk"
+                },
+                {
+                    "position": "Kraftverksdirektör",
+                    "years": {
+                        "start_year": 1920,
+                        "end_year": 1947
+                    },
+                    "organization": "Motala kraftverk"
+                },
+                {
+                    "position": "Verkställande direktör",
+                    "years": {
+                        "start_year": 1930,
+                        "end_year": 1947
+                    },
+                    "organization": "Motala Ströms Kraft A-B"
+                }
+            ],
+            "family": {
+                "spouse": "Agnies Hellgren",
+                "marriage_year": "1911",
+                "children": [
+                    {
+                        "name": "Inga",
+                        "birth_year": "1912"
+                    },
+                    {
+                        "name": "Hans",
+                        "birth_year": "1914"
+                    },
+                    {
+                        "name": "Gösta",
+                        "birth_year": "1918"
+                    },
+                    {
+                        "name": "Ulla",
+                        "birth_year": "1920"
+                    }
+                ]
+            },
+            "location_coordinates": {
+                "Latitude": 58.5380335,
+                "Longitude": 15.0470936
+            },
+            "occupation_hisco_code": 34,
+            "occupation_cosine_similarity": 0.7726821043535681,
+            "occupation_hisco_occupation": "Electrical and Electronics Engineering Technicians"
+        }
+    }
+}
