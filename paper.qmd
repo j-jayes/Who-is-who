@@ -11,7 +11,7 @@ author:
         name: Lund University Economic History Department
 abstract: |
   Abstract
-date: January, 2024
+date: 12 January, 2024
 thanks: |
   Thank you to seminar participants at the Copenhagen Business School Department of Strategy and Innovation PhD Seminar  and the HEDG Group at the University of Southern Denmark for valuable feedback on this work.
 format:
@@ -19,6 +19,8 @@ format:
   hikmah-manuscript-pdf: default
 execute: 
   echo: false
+  warning: false
+  message: false
 bibliography: bibliography.bib
 ---
 
@@ -149,7 +151,9 @@ This type of catalogue was commonly used for business-to-business interactions a
 
 ## Data collection strategy
 
-In order to analyze both the biographical dictionaries and industrial catalogue, we need to bend the text into a machine readable structure. This process is relatively complicated. It involves breaking each component of the source up (e.g. each biography or company record), extracting the pertinent information from each record, storing each value with its associated key, and then saving this information in a way that is easy to analyze and aggregate. The simplified process is laid out in @fig-data-collection-process.^[The underlying code can be found on the GitHub repo linked at on the first page of this paper.]
+In order to analyze both the biographical dictionaries and industrial catalogue, we need to bend the text into a machine readable structure. This process is relatively complicated. It involves breaking each component of the source up (e.g. each biography or company record), extracting the pertinent information from each record, storing each value with its associated key, and then saving this information in a way that is easy to analyze and aggregate. 
+
+The simplified process is laid out in @fig-data-collection-process. The underlying code can be found on the GitHub repo linked at on the first page of this paper. I detail the third step, structuring the records, in the section below, and the remainder of the steps in the appendix. 
 
 ```{r}
 #| label: fig-data-collection-process
@@ -167,15 +171,17 @@ Due to the number of abbreviations, acronyms and contractions (for example, `Gä
 
 However, with the rapid advancements in LLM technology in the previous five years, and poplular adoption of these tools through Chat-GPT and Microsoft's integration of GPTs into their products in the previous year, new tools mean this manual workload can be avoided to a large extent. 
 
-I make use of the backed of Chat-GPT, a model called GPT-3.5-turbo from OpenAI to structure the information from the dictionaries and catalogue into a JSON format that I can analyse. 
+I make use of the backed of Chat-GPT, a model called GPT-3.5-turbo from OpenAI to structure the information from the dictionaries and catalogue into a JSON format that I can analyse, step 3, as shown in @fig-data-collection-process. 
+
+By passing the text to the LLM, along with some context about what the model is being given, the model can behave like a skilled research assistant, reading the records, searching for the specific pieces of information requested, and outputting a structured file containing the information that we seek.
 
 ### Intuitive explanation of LLMs contextual 'understanding'
 
-The GPT-3.5-turbo model which I make use of is a LLM which has been trained on all of Wikipedia and Wikidata, among others. These two sources contain the same information, but in a different format, as shown in the adapted extracts below.
+The GPT-3.5-turbo model which I make use of is a LLM which has been trained on all of Wikipedia and Wikidata, among other training material. These two sources contain the same information, but in a different format, as shown in the adapted extracts below. As the base model that is pre-trained to predict the next token on this kind of data, it has developed the ability though repeated exposure to this kind of biographic data to produce structured information from free text, and likewise construct natural sounding text from pieces of structured information.
 
 <blockquote>
 
-Jonas Wenström (4 August 1855 in Hällefors – 22 December 1893 in Västerås) was a Swedish engineer and inventor, who in 1890 received a Swedish patent on the same three-phase system independently developed by Mikhail Dolivo-Dobrovolsky. He studied at Uppsala University.
+*Jonas Wenström (4 August 1855 in Hällefors – 22 December 1893 in Västerås) was a Swedish engineer and inventor, who in 1890 received a Swedish patent on the same three-phase system independently developed by Mikhail Dolivo-Dobrovolsky. He studied at Uppsala University.*
 
 </blockquote>
 
@@ -197,31 +203,119 @@ tab_header(title = md("Wikidata information about Swedish inventor **Jonas Wenst
 
 ```
 
+### Example of structured biographic text
 
-[complete explanation]
+Following this process of structuring the records into a format with specified keys and values, I augment the data by geocoding locations in order to analyse geographic paths of individuals in the sample, and geographic clusters of firms.
+
+Below I show the output of the data collection process, where the biographical dictionary entry on Swedish engineer and power station manager Axel Verner Nordell is shown in @fig-axel and some of the extracted information along with the geocoded coordinates are shown in @tbl-axel.
+
+```{r}
+#| label: fig-axel
+#| fig-cap: "Raw information about Swedish engineer and power station manager Axel Verner Nordell"
+#| fig-width: 3
+#| out-width: 3in
+
+knitr::include_graphics("assets/axel.png")
+
+```
+
+{{< pagebreak >}}
+
+```{r}
+#| label: tbl-axel
+#| tbl-cap: "Extracted information about Axel Verner Nordell"
+
+
+person_info <- tribble(
+  ~key, ~value,
+  "full_name", "Nordell, Axel Verner",
+  "location", "Motala, Östergötland",
+  "occupation", "Civilingenjör, kraftverksdirektör",
+  "birth_date", "15/08/1881",
+  "birth_place", "S. Möckleby, Kalmar",
+  "birth_parents", "Gustaf N. and Amanda Seillergren",
+  "birth_latitude", "56.35646300000001",
+  "birth_longitude", "16.420155",
+  "education_degree", "Studentexamen",
+  "education_year", "1899",
+  "education_institution", "Lunds högre allmänna läroverk",
+  "education_latitude", "55.7046601",
+  "education_longitude", "13.1910073"
+)
+
+person_info %>% 
+gt() %>% 
+cols_label(key = "Key", value = "Value") %>% 
+tab_header(title = md("Selected collected information about Swedish engineer and power station manager<br>**Axel Verner Nordell**"))
+
+```
 
 <br>
 
 ## Clustering of firms and classification of occupations
 
-[explain how I cluster firms with text embeddings based on business and products]
+The next task involved grouping the firms from the catalogue and then classifying each individual in the biographical dictionaries into a particular occupation in order to track the trends in the labour market. 
 
-[explain how I ]
+For both of these tasks, I lent on the tools of text embeddings, and a combination of unsupervised machine learning and advanced language processing techniques. I made use of a text embedding model trained on Swedish language text by the Royal Library @bert-base-swedish-cased. It is an adaptation of the breakthrough BERT model, introduced by Google Research in 2018 [citation]. The advantage of this model is that it has been trained on a selection of Swedish data, including books, news reports, and internet forums. Hence it is able to score the similarity of Swedish business descriptions and occupational titles.
+
+Text embeddings are effective for clustering because they capture semantic meaning rather than relying on surface-level features like character composition. For example, while "steam engine" and "power station" are different in characters and literal meaning, they are semantically related in the context of industrial machinery and energy production. Text embeddings transform these phrases into numerical vectors that reflect this semantic similarity. When applied to clustering, this means that items with similar meanings, even if their literal expressions differ, are grouped together based on the contextual and conceptual similarities encoded in their embeddings. This capability makes text embeddings particularly powerful for organizing and categorizing text data in a way that aligns with human understanding and interpretation. [citation]
+
+For grouping firms, I used the k-means clustering algorithm, an unsupervised learning method, to categorize firms into 20 distinct categories. This algorithm works by partitioning the data into k distinct clusters based on features (in this case, text embeddings derived from company descriptions). [citation]
+
+The result of this classification is visible in @fig-density-ridges, which shows the number of firms founded each year by category from the industrial catalogue. The clusters are ordered by peak year for foundation. We see that Breweries, malt and soft drink factories are some of the first established industrial businesses, along with book printing and publishing. At the bottom of the figure, it is evident that electrical appliance and mechanical machinery manufacturers, as well as firms in the chemical and pharmaceutical industries have the greatest number of firms founded in the years just prior to 1947, when our industrial firm catalogue is produced. 
+
+```{r}
+#| label: fig-density-ridges
+#| fig-cap: "Density plot showing the foundation year of the firms in the 20 categories derived from the business descriptions"
+#| fig-width: 5
+#| out-width: 5in
+
+knitr::include_graphics("assets/geom_density_ridges.png")
+```
+
+In classifying occupations, I utilized the KB BERT model to create sentence embeddings for both the titles in the three-digit Historical International Standard Classification of Occupations (HISCO) schema and for each occupation in my biographical dictionary data. These embeddings were then projected into a 364-dimensional vector space. For each occupation, I determined the closest HISCO code in this vector space based on cosine distance, a measure of similarity without a specific unit. I established a threshold for this distance to ensure that the occupation was 'close enough' to the corresponding HISCO code, setting it to a level where 85% of occupations received a HISCO code. While somewhat arbitrary, this approach allowed for a contextually relevant classification of occupations, drawing on the advanced language understanding capabilities of the KB BERT model.
 
 ## What does the industrial calendar tell us about industrial firms in Sweden in 1947?
 
-![](assets/geom_density_ridges.png)
+[Explain that we see forestry and wood business in rural areas and the North of Sweden (purple), we see mechical workshops in modern day Skåne (pink), we see a cluster of furniture factories and home goods factories in central Southern Sweden, and a cluster of electrical appliance and mechanical machinery stores around Stockholm. Note that these clusters don't show all firms of one type, but the location of firms by geographic cluster, and the most common firm in that geographic cluster - makes it easier to see than many dots overlapping.]
 
-![](assets/map_most_common_businesses.png)
+
+```{r}
+#| label: fig-common-businesses
+#| fig-cap: "Map of the geographic clusters of businesses by most common business type"
+#| fig-width: 8.5
+#| out-width: 8.5in
+
+knitr::include_graphics("assets/map_most_common_businesses.png")
+```
+
 
 ![](assets/map_of_electricity_related_businesses.png)
 
+[In this map, we show two kinds of firms; firms taht make electronic products, and firms that produce power or supply power stations with equipment. We can see that electronic products companies are clustered near the large population centers of Stockholm, Gothenburg and Malmö. There are many power stations in central Southern Sweden that make use of hydropower, and firms near them that supply equipment for these power stations.] 
+
 ![](assets/capital_vs_employees.png)
+
+[Here we show that mechanical workshop firms are relatively labour intensive, while electrical appliance and machinery producing firms are relatively capital intensive, compared to all other firms (in purple)]
 
 ## What can we learn from the Who is Who? biographies?
 
 ![](assets/hisco_counts.png)
 
+[We can show that of those in our sample, a great deal are general managers of firms, as well as doctos, dentists, teachers and priests. Engineers make up a large other component.]
+
 ![](assets/eee_map.png)
 
 ![](assets/distances_comparison.png)
+
+## Appendix {.appendix}
+
+@fig-data-collection-process outlines the data collection process. 
+
+I scrape the book content from the *Projekt Runeberg* website with an HTML scraper (beautiful soup in python).
+
+I split the records using regular expression in python, looking for specific terms that begin and end the records in the dictionaries and catalogue.
+
+I augment the records with coordinates using the Google Maps Geocoding API. 
+
+I store the data in JSON format, keeping the original text in the file alongside the derived key value pairs.
