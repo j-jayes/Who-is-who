@@ -1,0 +1,28 @@
+---
+title: "table"
+format: html
+---
+
+
+```{r}
+library(tidyverse)
+library(gt)
+
+data <- tribble(
+  ~Step, ~Process,                               ~Icons,   ~Description,
+  1,     "Scrape book data from website",         "🌐➡️📚",  "",
+  2,     "Split records on each page of a book", "📚➡️📄", "",
+  3,     "Structure records with LLM",                 "📄🔀📄",   "",
+  4,     "Augment data with coordinates",                          "🔗🔍🌍🎓📚", "",
+  5,     "Store data for analysis",                            "🔗📚📂",   ""
+)
+
+data %>%
+select(-Description) %>% 
+gt() %>% 
+cols_label(Icons = "") %>% 
+tab_header(title = md("**Data Collection Strategy**"),
+subtitle = "For biographical dictionaries and industry catalogue") %>% 
+gtsave("assets/data-collection-process.png")
+
+```

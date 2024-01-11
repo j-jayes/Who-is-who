@@ -151,7 +151,10 @@ ggplot(books, aes(x = records, y = name, fill = factor(volume))) +
         fill = "Edition"
     ) +
     scale_x_continuous(labels = scales::number_format()) +
-    scale_fill_manual(values = c("#2B8CBE", "#be5d2b", "midnightblue"))
+    scale_fill_manual(values = c("#2B8CBE", "#be5d2b", "midnightblue")) +
+    theme(plot.title.position = "plot")
+
+# ggsave("assets/who-is-who-volumes.png", width = 20, height = 20, units = "cm")
 
 ```
 
