@@ -1,0 +1,1490 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.2 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{apa/apasortcite//global/global}
+    \entry{Adams2018}{article}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=486cb0828d9b60e453afea0a1c66c86f}{%
+           family={Adams},
+           familyi={A\bibinitperiod},
+           given={Abi},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{486cb0828d9b60e453afea0a1c66c86f}
+      \strng{fullhash}{486cb0828d9b60e453afea0a1c66c86f}
+      \strng{bibnamehash}{486cb0828d9b60e453afea0a1c66c86f}
+      \strng{authorbibnamehash}{486cb0828d9b60e453afea0a1c66c86f}
+      \strng{authornamehash}{486cb0828d9b60e453afea0a1c66c86f}
+      \strng{authorfullhash}{486cb0828d9b60e453afea0a1c66c86f}
+      \field{sortinit}{A}
+      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issue}{3}
+      \field{journaltitle}{Oxford Review of Economic Policy}
+      \field{title}{Technology and the Labour Market: The Assessment}
+      \field{volume}{34}
+      \field{year}{2018}
+      \field{pages}{349\bibrangedash 361}
+      \range{pages}{13}
+      \verb{doi}
+      \verb 10.1093/oxrep/gry010
+      \endverb
+      \verb{urlraw}
+      \verb https://academic.oup.com/oxrep/article/34/3/349/5058475
+      \endverb
+      \verb{url}
+      \verb https://academic.oup.com/oxrep/article/34/3/349/5058475
+      \endverb
+    \endentry
+    \entry{amujala2023digitization}{article}{}
+      \name{author}{3}{}{%
+        {{un=0,uniquepart=base,hash=b2cb195486002c0ed15c5291328f06e6}{%
+           family={Amujala},
+           familyi={A\bibinitperiod},
+           given={Someswar},
+           giveni={S\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=9b6040988945a904dfa2e370e569e8db}{%
+           family={Vossmeyer},
+           familyi={V\bibinitperiod},
+           given={Angela},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=8979bdace351a31be341650c7268f439}{%
+           family={Das},
+           familyi={D\bibinitperiod},
+           given={Sanjiv\bibnamedelima R.},
+           giveni={S\bibinitperiod\bibinitdelim R\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{8cd15e42e515bb0c760fa5dfbbcbf51d}
+      \strng{fullhash}{37a424c87ecc5b879c5800d43087b607}
+      \strng{bibnamehash}{37a424c87ecc5b879c5800d43087b607}
+      \strng{authorbibnamehash}{37a424c87ecc5b879c5800d43087b607}
+      \strng{authornamehash}{8cd15e42e515bb0c760fa5dfbbcbf51d}
+      \strng{authorfullhash}{37a424c87ecc5b879c5800d43087b607}
+      \field{sortinit}{A}
+      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{We develop a methodology for converting card index archival records into usable data frames for statistical and textual analyses. Leveraging machine learning and natural-language processing tools from Amazon Web Services (AWS), we overcome hurdles associated with character recognition, inconsistent data reporting, column misalignment, and irregular naming. In this article, we detail the step-by-step conversion process and discuss remedies for common problems and edge cases, using historical records from the Reconstruction Finance Corporation.}
+      \field{issn}{0014-4983}
+      \field{journaltitle}{Explorations in Economic History}
+      \field{note}{Methodological Advances in the Extraction and Analysis of Historical Data}
+      \field{title}{Digitization and data frames for card index records}
+      \field{volume}{87}
+      \field{year}{2023}
+      \field{pages}{101469}
+      \range{pages}{1}
+      \verb{doi}
+      \verb https://doi.org/10.1016/j.eeh.2022.101469
+      \endverb
+      \verb{urlraw}
+      \verb https://www.sciencedirect.com/science/article/pii/S001449832200047X
+      \endverb
+      \verb{url}
+      \verb https://www.sciencedirect.com/science/article/pii/S001449832200047X
+      \endverb
+      \keyw{Machine learning,Natural-language processing,Archival records,Unstructured data}
+    \endentry
+    \entry{bandiera2013making}{article}{}
+      \name{author}{3}{}{%
+        {{un=0,uniquepart=base,hash=c0b3369a69cfdd849f836d77957c1f9a}{%
+           family={Bandiera},
+           familyi={B\bibinitperiod},
+           given={Oriana},
+           giveni={O\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=5f5b6b3ff741152e984a5e38264a941d}{%
+           family={Rasul},
+           familyi={R\bibinitperiod},
+           given={Imran},
+           giveni={I\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=055d5b7c7d98f3ef61271cbc3573be80}{%
+           family={Viarengo},
+           familyi={V\bibinitperiod},
+           given={Martina},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{be18d0259ad9bcb93d278b17c1f2282a}
+      \strng{fullhash}{1429b1c276fd63c35754f789ff1f0376}
+      \strng{bibnamehash}{1429b1c276fd63c35754f789ff1f0376}
+      \strng{authorbibnamehash}{1429b1c276fd63c35754f789ff1f0376}
+      \strng{authornamehash}{be18d0259ad9bcb93d278b17c1f2282a}
+      \strng{authorfullhash}{1429b1c276fd63c35754f789ff1f0376}
+      \field{sortinit}{B}
+      \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{We provide new estimates of migrant flows into and out of America during the Age of Mass Migration at the turn of the twentieth century. Our analysis is based on a novel data set of administrative records covering the universe of 24 million migrants who entered Ellis Island, New York between 1892 and 1924. We use these records to measure inflows into New York, and then scale-up these figures to estimate migrant inflows into America as a whole. Combining these flow estimates with census data on the stock of foreign-born in America in 1900, 1910 and 1920, we conduct a demographic accounting exercise to estimate out-migration rates in aggregate and for each nationality-age-gender cohort. This exercise overturns common wisdom on two fronts. First, we estimate flows into the US to be 20% and 170% higher than stated in official statistics for the 1900-10 and 1910-20 decades, respectively. Second, once mortality is accounted for, we estimate out-migration rates from the US to be around .6 for the 1900-10 decade and around .75 for the 1910-20. These figures are over twice as high as official estimates for each decade. That migration was effectively a two-way flow between the US and the sending countries has major implications for understanding the potential selection of immigrants that chose to permanently reside in the US, their impact on Americans in labor markets, and institutional change in America and sending countries.}
+      \field{issn}{0304-3878}
+      \field{journaltitle}{Journal of Development Economics}
+      \field{note}{Migration and Development}
+      \field{title}{The Making of Modern America: Migratory Flows in the Age of Mass Migration}
+      \field{volume}{102}
+      \field{year}{2013}
+      \field{pages}{23\bibrangedash 47}
+      \range{pages}{25}
+      \verb{doi}
+      \verb https://doi.org/10.1016/j.jdeveco.2012.11.005
+      \endverb
+      \verb{urlraw}
+      \verb https://www.sciencedirect.com/science/article/pii/S0304387812000995
+      \endverb
+      \verb{url}
+      \verb https://www.sciencedirect.com/science/article/pii/S0304387812000995
+      \endverb
+      \keyw{Ellis Island,migration accounting,migratory inflows and outflows}
+    \endentry
+    \entry{correia2023digitizing}{article}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=e8344b104644437b9125af7b1135ed38}{%
+           family={Correia},
+           familyi={C\bibinitperiod},
+           given={Sergio},
+           giveni={S\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=3138f9558d19260ad4239e2ebb17b1e3}{%
+           family={Luck},
+           familyi={L\bibinitperiod},
+           given={Stephan},
+           giveni={S\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{b7024ac7ac83d001e770b936c3b92cf3}
+      \strng{fullhash}{b7024ac7ac83d001e770b936c3b92cf3}
+      \strng{bibnamehash}{b7024ac7ac83d001e770b936c3b92cf3}
+      \strng{authorbibnamehash}{b7024ac7ac83d001e770b936c3b92cf3}
+      \strng{authornamehash}{b7024ac7ac83d001e770b936c3b92cf3}
+      \strng{authorfullhash}{b7024ac7ac83d001e770b936c3b92cf3}
+      \field{sortinit}{C}
+      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{This paper discusses how to successfully digitize large-scale historical micro-data by augmenting optical character recognition (OCR) engines with pre- and post-processing methods. Although OCR software has improved dramatically in recent years due to improvements in machine learning, off-the-shelf OCR applications still present high error rates which limit their applications for accurate extraction of structured information. Complementing OCR with additional methods can however dramatically increase its success rate, making it a powerful and cost-efficient tool for economic historians. This paper showcases these methods and explains why they are useful. We apply them against two large balance sheet datasets and introduce quipucamayoc, a Python package containing these methods in a unified framework.}
+      \field{issn}{0014-4983}
+      \field{journaltitle}{Explorations in Economic History}
+      \field{note}{Methodological Advances in the Extraction and Analysis of Historical Data}
+      \field{title}{Digitizing historical balance sheet data: A practitioner’s guide}
+      \field{volume}{87}
+      \field{year}{2023}
+      \field{pages}{101475}
+      \range{pages}{1}
+      \verb{doi}
+      \verb https://doi.org/10.1016/j.eeh.2022.101475
+      \endverb
+      \verb{urlraw}
+      \verb https://www.sciencedirect.com/science/article/pii/S0014498322000535
+      \endverb
+      \verb{url}
+      \verb https://www.sciencedirect.com/science/article/pii/S0014498322000535
+      \endverb
+      \keyw{OCR,Data extraction,Balance sheets}
+    \endentry
+    \entry{eichengreen2021gold}{article}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=f4d61c3fbb6caa6fbfa7f45bda4630b4}{%
+           family={Eichengreen},
+           familyi={E\bibinitperiod},
+           given={Barry},
+           giveni={B\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Routledge}%
+      }
+      \strng{namehash}{f4d61c3fbb6caa6fbfa7f45bda4630b4}
+      \strng{fullhash}{f4d61c3fbb6caa6fbfa7f45bda4630b4}
+      \strng{bibnamehash}{f4d61c3fbb6caa6fbfa7f45bda4630b4}
+      \strng{authorbibnamehash}{f4d61c3fbb6caa6fbfa7f45bda4630b4}
+      \strng{authornamehash}{f4d61c3fbb6caa6fbfa7f45bda4630b4}
+      \strng{authorfullhash}{f4d61c3fbb6caa6fbfa7f45bda4630b4}
+      \field{sortinit}{E}
+      \field{sortinithash}{8da8a182d344d5b9047633dfc0cc9131}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Economic History of Developing Regions}
+      \field{number}{2}
+      \field{title}{Gold and South Africa’s Great Depression}
+      \field{volume}{36}
+      \field{year}{2021}
+      \field{pages}{175\bibrangedash 193}
+      \range{pages}{19}
+      \verb{doi}
+      \verb 10.1080/20780389.2021.1891879
+      \endverb
+      \verb{eprint}
+      \verb https://doi.org/10.1080/20780389.2021.1891879
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1080/20780389.2021.1891879
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1080/20780389.2021.1891879
+      \endverb
+    \endentry
+    \entry{Feigenbaum2020}{article}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=4869eae6c40aa8ec2a0928a60f948f1b}{%
+           family={Feigenbaum},
+           familyi={F\bibinitperiod},
+           given={James},
+           giveni={J\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=9ab4a757d97de7c6d4850fd8462be3b6}{%
+           family={Gross},
+           familyi={G\bibinitperiod},
+           given={Daniel\bibnamedelima P.},
+           giveni={D\bibinitperiod\bibinitdelim P\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{2816105645543faa259301b533bde1cd}
+      \strng{fullhash}{2816105645543faa259301b533bde1cd}
+      \strng{bibnamehash}{2816105645543faa259301b533bde1cd}
+      \strng{authorbibnamehash}{2816105645543faa259301b533bde1cd}
+      \strng{authornamehash}{2816105645543faa259301b533bde1cd}
+      \strng{authorfullhash}{2816105645543faa259301b533bde1cd}
+      \field{sortinit}{F}
+      \field{sortinithash}{2638baaa20439f1b5a8f80c6c08a13b4}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{National Bureau of Economic Research}
+      \field{title}{Answering the Call of Automation: How the Labor Market Adjusted to the Mechanization of Telephone Operation}
+      \field{year}{2020}
+      \verb{doi}
+      \verb 10.3386/w28061
+      \endverb
+      \verb{urlraw}
+      \verb https://www.nber.org/papers/w28061
+      \endverb
+      \verb{url}
+      \verb https://www.nber.org/papers/w28061
+      \endverb
+    \endentry
+    \entry{ford2023not}{report}{}
+      \name{author}{3}{}{%
+        {{un=0,uniquepart=base,hash=0e30f61b3d49c48d7786b61f30b8588b}{%
+           family={Ford},
+           familyi={F\bibinitperiod},
+           given={Nicholas\bibnamedelima Martin},
+           giveni={N\bibinitperiod\bibinitdelim M\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=679cba5adb5a20caf5be79bfc1897ab3}{%
+           family={Ranestad},
+           familyi={R\bibinitperiod},
+           given={Kristin},
+           giveni={K\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=1a7bbf6d2af7a7870c1d11256b55e926}{%
+           family={Sharp},
+           familyi={S\bibinitperiod},
+           given={Paul},
+           giveni={P\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{institution}{1}{%
+        {European Historical Economics Society (EHES)}%
+      }
+      \strng{namehash}{180657e48bf1182151fec0089230ab9a}
+      \strng{fullhash}{fd54e46f58c722ade153778f57e678da}
+      \strng{bibnamehash}{fd54e46f58c722ade153778f57e678da}
+      \strng{authorbibnamehash}{fd54e46f58c722ade153778f57e678da}
+      \strng{authornamehash}{180657e48bf1182151fec0089230ab9a}
+      \strng{authorfullhash}{fd54e46f58c722ade153778f57e678da}
+      \field{sortinit}{F}
+      \field{sortinithash}{2638baaa20439f1b5a8f80c6c08a13b4}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{“Upper tail knowledge”, embodied by knowledge elites, has been suggested to be a driving force of industrialization and development, yet measuring it remains problematic. Despite some recent innovations, much empirical work continues to rely on measures of “average” or “non-upper tail” human capital such as literacy and years of schooling. We thus turn to per- haps unique sources from Denmark and Norway. From the early nineteenth century until after the Second World War, these countries had the tradition of publishing biographies of all high school graduates, usually 25 and 50 years after graduation. These were effectively mini-CVs covering entire careers, including work positions, travel, achievements, and more. We discuss these sources and their potential for furthering our understanding of the role of upper tail knowledge and human capital for development. Source criticism reveals strengths and weak- nesses, but importantly confirms promising perspectives for improving the measurement of upper tail knowledge.}
+      \field{month}{11}
+      \field{number}{0242}
+      \field{title}{{Not the Best Fillers in of Forms? The Danish and Norwegian Graduate Biographies and “Upper Tail Knowledge”}}
+      \field{type}{Working Papers}
+      \field{year}{2023}
+      \verb{urlraw}
+      \verb https://ideas.repec.org/p/hes/wpaper/0242.html
+      \endverb
+      \verb{url}
+      \verb https://ideas.repec.org/p/hes/wpaper/0242.html
+      \endverb
+      \keyw{Biographies; Denmark; Norway; human capital; source criticism; upper tail knowledge}
+    \endentry
+    \entry{Goldin1994}{article}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=a18c02f3c78d81d8178faf1ae63981ee}{%
+           family={Goldin},
+           familyi={G\bibinitperiod},
+           given={Claudia},
+           giveni={C\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{a18c02f3c78d81d8178faf1ae63981ee}
+      \strng{fullhash}{a18c02f3c78d81d8178faf1ae63981ee}
+      \strng{bibnamehash}{a18c02f3c78d81d8178faf1ae63981ee}
+      \strng{authorbibnamehash}{a18c02f3c78d81d8178faf1ae63981ee}
+      \strng{authornamehash}{a18c02f3c78d81d8178faf1ae63981ee}
+      \strng{authorfullhash}{a18c02f3c78d81d8178faf1ae63981ee}
+      \field{extraname}{1}
+      \field{sortinit}{G}
+      \field{sortinithash}{32d67eca0634bf53703493fb1090a2e8}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{National Bureau of Economic Research}
+      \field{title}{Labor Markets in the Twentieth Century}
+      \field{year}{1994}
+      \verb{doi}
+      \verb 10.3386/h0058
+      \endverb
+      \verb{urlraw}
+      \verb https://www.nber.org/papers/h0058
+      \endverb
+      \verb{url}
+      \verb https://www.nber.org/papers/h0058
+      \endverb
+    \endentry
+    \entry{Goldin1998}{inbook}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=a18c02f3c78d81d8178faf1ae63981ee}{%
+           family={Goldin},
+           familyi={G\bibinitperiod},
+           given={Claudia},
+           giveni={C\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Cambridge University Press}%
+      }
+      \strng{namehash}{a18c02f3c78d81d8178faf1ae63981ee}
+      \strng{fullhash}{a18c02f3c78d81d8178faf1ae63981ee}
+      \strng{bibnamehash}{a18c02f3c78d81d8178faf1ae63981ee}
+      \strng{authorbibnamehash}{a18c02f3c78d81d8178faf1ae63981ee}
+      \strng{authornamehash}{a18c02f3c78d81d8178faf1ae63981ee}
+      \strng{authorfullhash}{a18c02f3c78d81d8178faf1ae63981ee}
+      \field{extraname}{2}
+      \field{sortinit}{G}
+      \field{sortinithash}{32d67eca0634bf53703493fb1090a2e8}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{The Cambridge Economic History of the United States, Vol. III}
+      \field{title}{Labor Markets in the Twentieth Century}
+      \field{year}{1998}
+      \field{pages}{549\bibrangedash 624}
+      \range{pages}{76}
+      \verb{urlraw}
+      \verb https://scholar.harvard.edu/goldin/publications/labor-markets-twentieth-century
+      \endverb
+      \verb{url}
+      \verb https://scholar.harvard.edu/goldin/publications/labor-markets-twentieth-century
+      \endverb
+    \endentry
+    \entry{Goos2018}{article}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=f38fa122b7a8e6744967b7eecf1219c0}{%
+           family={Goos},
+           familyi={G\bibinitperiod},
+           given={Maarten},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{f38fa122b7a8e6744967b7eecf1219c0}
+      \strng{fullhash}{f38fa122b7a8e6744967b7eecf1219c0}
+      \strng{bibnamehash}{f38fa122b7a8e6744967b7eecf1219c0}
+      \strng{authorbibnamehash}{f38fa122b7a8e6744967b7eecf1219c0}
+      \strng{authornamehash}{f38fa122b7a8e6744967b7eecf1219c0}
+      \strng{authorfullhash}{f38fa122b7a8e6744967b7eecf1219c0}
+      \field{sortinit}{G}
+      \field{sortinithash}{32d67eca0634bf53703493fb1090a2e8}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issue}{3}
+      \field{journaltitle}{Oxford Review of Economic Policy}
+      \field{title}{The Impact of Technological Progress on Labour Markets: Policy Challenges}
+      \field{volume}{34}
+      \field{year}{2018}
+      \field{pages}{362\bibrangedash 375}
+      \range{pages}{14}
+      \verb{doi}
+      \verb 10.1093/oxrep/gry002
+      \endverb
+      \verb{urlraw}
+      \verb https://academic.oup.com/oxrep/article/34/3/362/5063938
+      \endverb
+      \verb{url}
+      \verb https://academic.oup.com/oxrep/article/34/3/362/5063938
+      \endverb
+    \endentry
+    \entry{gutmann2018big}{article}{}
+      \name{author}{3}{}{%
+        {{un=0,uniquepart=base,hash=b1ae5576302fb834e89d5ef36e037efc}{%
+           family={Gutmann},
+           familyi={G\bibinitperiod},
+           given={Myron\bibnamedelima P.},
+           giveni={M\bibinitperiod\bibinitdelim P\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=8bddf2092382f349f6b07f0c740f4589}{%
+           family={Merchant},
+           familyi={M\bibinitperiod},
+           given={Emily\bibnamedelima Klancher},
+           giveni={E\bibinitperiod\bibinitdelim K\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=89a50b79daf66cf65181e469976243bd}{%
+           family={Roberts},
+           familyi={R\bibinitperiod},
+           given={Evan},
+           giveni={E\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Cambridge University Press}%
+      }
+      \strng{namehash}{b4c7b306216ac127df1cde0bd70955b9}
+      \strng{fullhash}{dfb27d87e1058fdd76ce1678c68169c5}
+      \strng{bibnamehash}{dfb27d87e1058fdd76ce1678c68169c5}
+      \strng{authorbibnamehash}{dfb27d87e1058fdd76ce1678c68169c5}
+      \strng{authornamehash}{b4c7b306216ac127df1cde0bd70955b9}
+      \strng{authorfullhash}{dfb27d87e1058fdd76ce1678c68169c5}
+      \field{sortinit}{G}
+      \field{sortinithash}{32d67eca0634bf53703493fb1090a2e8}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{The Journal of Economic History}
+      \field{number}{1}
+      \field{title}{“Big Data” in Economic History}
+      \field{volume}{78}
+      \field{year}{2018}
+      \field{pages}{268\bibrangedash 299}
+      \range{pages}{32}
+      \verb{doi}
+      \verb 10.1017/S0022050718000177
+      \endverb
+    \endentry
+    \entry{jayes_power_2024}{unpublished}{}
+      \name{author}{3}{}{%
+        {{un=0,uniquepart=base,hash=1350015ae4676d68fe1c7180b4bfb09a}{%
+           family={Jayes},
+           familyi={J\bibinitperiod},
+           given={Jonathan},
+           giveni={J\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=42fd01a9d1d6f1911d4d1b8981a9dbc4}{%
+           family={{Molinder, Jakob}},
+           familyi={M\bibinitperiod}}}%
+        {{un=0,uniquepart=base,hash=43da3d529352b1eb7bffd5baa09c4ee5}{%
+           family={{Enflo, Kerstin}},
+           familyi={E\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {Lund}%
+      }
+      \strng{namehash}{d6324c74a3f06cb549980fb31b007f5c}
+      \strng{fullhash}{f91c988274a91b524e9baee708afd961}
+      \strng{bibnamehash}{f91c988274a91b524e9baee708afd961}
+      \strng{authorbibnamehash}{f91c988274a91b524e9baee708afd961}
+      \strng{authornamehash}{d6324c74a3f06cb549980fb31b007f5c}
+      \strng{authorfullhash}{f91c988274a91b524e9baee708afd961}
+      \field{sortinit}{J}
+      \field{sortinithash}{b2f54a9081ace9966a7cb9413811edb4}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{Unpublished Manuscript}
+      \field{title}{Power for progress: The impact of electricity on individual labor market outcomes}
+      \field{type}{Unpublished Manuscript}
+      \field{year}{2024}
+      \field{dateera}{ce}
+    \endentry
+    \entry{koschnick2023breaking}{misc}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=6740d0b4168392e0238bf343b584d190}{%
+           family={Koschnick},
+           familyi={K\bibinitperiod},
+           given={Julius},
+           giveni={J\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{6740d0b4168392e0238bf343b584d190}
+      \strng{fullhash}{6740d0b4168392e0238bf343b584d190}
+      \strng{bibnamehash}{6740d0b4168392e0238bf343b584d190}
+      \strng{authorbibnamehash}{6740d0b4168392e0238bf343b584d190}
+      \strng{authornamehash}{6740d0b4168392e0238bf343b584d190}
+      \strng{authorfullhash}{6740d0b4168392e0238bf343b584d190}
+      \field{sortinit}{K}
+      \field{sortinithash}{c02bf6bff1c488450c352b40f5d853ab}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{RHI Seminar, London School of Economics}
+      \field{note}{Presented on March 23, 2023, from 16:00 to 17:15}
+      \field{title}{Breaking Tradition: Teacher-student effects at English Universities during the Scientific Revolution}
+      \field{year}{2023}
+      \verb{urlraw}
+      \verb https://www.wur.nl/en/activity/rhi-seminar-breaking-tradition-teacher-student-effects-at-english-universities-during-the-scientific-revolution.htm
+      \endverb
+      \verb{url}
+      \verb https://www.wur.nl/en/activity/rhi-seminar-breaking-tradition-teacher-student-effects-at-english-universities-during-the-scientific-revolution.htm
+      \endverb
+    \endentry
+    \entry{Mokyr2017Journal}{article}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=e033b18aca6c0e3473f12bfb836a1ce6}{%
+           family={Mokyr},
+           familyi={M\bibinitperiod},
+           given={Joel},
+           giveni={J\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{e033b18aca6c0e3473f12bfb836a1ce6}
+      \strng{fullhash}{e033b18aca6c0e3473f12bfb836a1ce6}
+      \strng{bibnamehash}{e033b18aca6c0e3473f12bfb836a1ce6}
+      \strng{authorbibnamehash}{e033b18aca6c0e3473f12bfb836a1ce6}
+      \strng{authornamehash}{e033b18aca6c0e3473f12bfb836a1ce6}
+      \strng{authorfullhash}{e033b18aca6c0e3473f12bfb836a1ce6}
+      \field{extraname}{1}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{extradate}{1}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of Institutional Economics}
+      \field{title}{Bottom-up or top-down? The origins of the Industrial Revolution}
+      \field{year}{2017}
+      \verb{doi}
+      \verb 10.1017/S1744137417000251
+      \endverb
+      \verb{urlraw}
+      \verb https://www.cambridge.org/core/journals/journal-of-institutional-economics/article/bottomup-or-topdown-the-origins-of-the-industrial-revolution/9EAA92CA1A28EBCFBAFACF3F324D85B0
+      \endverb
+      \verb{url}
+      \verb https://www.cambridge.org/core/journals/journal-of-institutional-economics/article/bottomup-or-topdown-the-origins-of-the-industrial-revolution/9EAA92CA1A28EBCFBAFACF3F324D85B0
+      \endverb
+    \endentry
+    \entry{Mokyr2017}{article}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=e033b18aca6c0e3473f12bfb836a1ce6}{%
+           family={Mokyr},
+           familyi={M\bibinitperiod},
+           given={Joel},
+           giveni={J\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{e033b18aca6c0e3473f12bfb836a1ce6}
+      \strng{fullhash}{e033b18aca6c0e3473f12bfb836a1ce6}
+      \strng{bibnamehash}{e033b18aca6c0e3473f12bfb836a1ce6}
+      \strng{authorbibnamehash}{e033b18aca6c0e3473f12bfb836a1ce6}
+      \strng{authornamehash}{e033b18aca6c0e3473f12bfb836a1ce6}
+      \strng{authorfullhash}{e033b18aca6c0e3473f12bfb836a1ce6}
+      \field{extraname}{2}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{extradate}{2}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{isbn}{978-0691168883}
+      \field{journaltitle}{Princeton University Press}
+      \field{title}{A Culture of Growth: The Origins of the Modern Economy}
+      \field{year}{2017}
+    \endentry
+    \entry{Moretti2012}{book}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=f58347226b88750723f89cb2b99cd2e9}{%
+           family={Moretti},
+           familyi={M\bibinitperiod},
+           given={Enrico},
+           giveni={E\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Houghton Mifflin Harcourt}%
+      }
+      \strng{namehash}{f58347226b88750723f89cb2b99cd2e9}
+      \strng{fullhash}{f58347226b88750723f89cb2b99cd2e9}
+      \strng{bibnamehash}{f58347226b88750723f89cb2b99cd2e9}
+      \strng{authorbibnamehash}{f58347226b88750723f89cb2b99cd2e9}
+      \strng{authornamehash}{f58347226b88750723f89cb2b99cd2e9}
+      \strng{authorfullhash}{f58347226b88750723f89cb2b99cd2e9}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{isbn}{978-0547750118}
+      \field{title}{The New Geography of Jobs}
+      \field{year}{2012}
+    \endentry
+    \entry{mullainathan2017machine}{article}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=0ad4a50fedec7f3fb2ce43f3f64e62d6}{%
+           family={Mullainathan},
+           familyi={M\bibinitperiod},
+           given={Sendhil},
+           giveni={S\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=2e249611355f88583165432eab0ba4e1}{%
+           family={Spiess},
+           familyi={S\bibinitperiod},
+           given={Jann},
+           giveni={J\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {American Economic Association}%
+      }
+      \strng{namehash}{d03e62d9ef32260474f68f83abd9b754}
+      \strng{fullhash}{d03e62d9ef32260474f68f83abd9b754}
+      \strng{bibnamehash}{d03e62d9ef32260474f68f83abd9b754}
+      \strng{authorbibnamehash}{d03e62d9ef32260474f68f83abd9b754}
+      \strng{authornamehash}{d03e62d9ef32260474f68f83abd9b754}
+      \strng{authorfullhash}{d03e62d9ef32260474f68f83abd9b754}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{08953309}
+      \field{journaltitle}{The Journal of Economic Perspectives}
+      \field{number}{2}
+      \field{title}{Machine Learning: An Applied Econometric Approach}
+      \field{urlday}{16}
+      \field{urlmonth}{1}
+      \field{urlyear}{2024}
+      \field{volume}{31}
+      \field{year}{2017}
+      \field{urldateera}{ce}
+      \field{pages}{87\bibrangedash 106}
+      \range{pages}{20}
+      \verb{urlraw}
+      \verb http://www.jstor.org/stable/44235000
+      \endverb
+      \verb{url}
+      \verb http://www.jstor.org/stable/44235000
+      \endverb
+    \endentry
+    \entry{bert-base-swedish-cased}{misc}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=23cf013d7e47b6d7fec3ad34b0e721b3}{%
+           family={{National Library of Sweden/KBLab}},
+           familyi={N\bibinitperiod}}}%
+      }
+      \strng{namehash}{23cf013d7e47b6d7fec3ad34b0e721b3}
+      \strng{fullhash}{23cf013d7e47b6d7fec3ad34b0e721b3}
+      \strng{bibnamehash}{23cf013d7e47b6d7fec3ad34b0e721b3}
+      \strng{authorbibnamehash}{23cf013d7e47b6d7fec3ad34b0e721b3}
+      \strng{authornamehash}{23cf013d7e47b6d7fec3ad34b0e721b3}
+      \strng{authorfullhash}{23cf013d7e47b6d7fec3ad34b0e721b3}
+      \field{sortinit}{N}
+      \field{sortinithash}{22369a73d5f88983a108b63f07f37084}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{https://huggingface.co/KB/bert-base-swedish-cased}}
+      \field{title}{bert-base-swedish-cased}
+      \field{year}{2024}
+    \endentry
+  \enddatalist
+  \datalist[entry]{apa/global//global/global}
+    \entry{Adams2018}{article}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=486cb0828d9b60e453afea0a1c66c86f}{%
+           family={Adams},
+           familyi={A\bibinitperiod},
+           given={Abi},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{486cb0828d9b60e453afea0a1c66c86f}
+      \strng{fullhash}{486cb0828d9b60e453afea0a1c66c86f}
+      \strng{bibnamehash}{486cb0828d9b60e453afea0a1c66c86f}
+      \strng{authorbibnamehash}{486cb0828d9b60e453afea0a1c66c86f}
+      \strng{authornamehash}{486cb0828d9b60e453afea0a1c66c86f}
+      \strng{authorfullhash}{486cb0828d9b60e453afea0a1c66c86f}
+      \field{sortinit}{A}
+      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issue}{3}
+      \field{journaltitle}{Oxford Review of Economic Policy}
+      \field{title}{Technology and the Labour Market: The Assessment}
+      \field{volume}{34}
+      \field{year}{2018}
+      \field{pages}{349\bibrangedash 361}
+      \range{pages}{13}
+      \verb{doi}
+      \verb 10.1093/oxrep/gry010
+      \endverb
+      \verb{urlraw}
+      \verb https://academic.oup.com/oxrep/article/34/3/349/5058475
+      \endverb
+      \verb{url}
+      \verb https://academic.oup.com/oxrep/article/34/3/349/5058475
+      \endverb
+    \endentry
+    \entry{amujala2023digitization}{article}{}
+      \name{author}{3}{}{%
+        {{un=0,uniquepart=base,hash=b2cb195486002c0ed15c5291328f06e6}{%
+           family={Amujala},
+           familyi={A\bibinitperiod},
+           given={Someswar},
+           giveni={S\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=9b6040988945a904dfa2e370e569e8db}{%
+           family={Vossmeyer},
+           familyi={V\bibinitperiod},
+           given={Angela},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=8979bdace351a31be341650c7268f439}{%
+           family={Das},
+           familyi={D\bibinitperiod},
+           given={Sanjiv\bibnamedelima R.},
+           giveni={S\bibinitperiod\bibinitdelim R\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{8cd15e42e515bb0c760fa5dfbbcbf51d}
+      \strng{fullhash}{37a424c87ecc5b879c5800d43087b607}
+      \strng{bibnamehash}{37a424c87ecc5b879c5800d43087b607}
+      \strng{authorbibnamehash}{37a424c87ecc5b879c5800d43087b607}
+      \strng{authornamehash}{8cd15e42e515bb0c760fa5dfbbcbf51d}
+      \strng{authorfullhash}{37a424c87ecc5b879c5800d43087b607}
+      \field{sortinit}{A}
+      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{We develop a methodology for converting card index archival records into usable data frames for statistical and textual analyses. Leveraging machine learning and natural-language processing tools from Amazon Web Services (AWS), we overcome hurdles associated with character recognition, inconsistent data reporting, column misalignment, and irregular naming. In this article, we detail the step-by-step conversion process and discuss remedies for common problems and edge cases, using historical records from the Reconstruction Finance Corporation.}
+      \field{issn}{0014-4983}
+      \field{journaltitle}{Explorations in Economic History}
+      \field{note}{Methodological Advances in the Extraction and Analysis of Historical Data}
+      \field{title}{Digitization and data frames for card index records}
+      \field{volume}{87}
+      \field{year}{2023}
+      \field{pages}{101469}
+      \range{pages}{1}
+      \verb{doi}
+      \verb https://doi.org/10.1016/j.eeh.2022.101469
+      \endverb
+      \verb{urlraw}
+      \verb https://www.sciencedirect.com/science/article/pii/S001449832200047X
+      \endverb
+      \verb{url}
+      \verb https://www.sciencedirect.com/science/article/pii/S001449832200047X
+      \endverb
+      \keyw{Machine learning,Natural-language processing,Archival records,Unstructured data}
+    \endentry
+    \entry{bandiera2013making}{article}{}
+      \name{author}{3}{}{%
+        {{un=0,uniquepart=base,hash=c0b3369a69cfdd849f836d77957c1f9a}{%
+           family={Bandiera},
+           familyi={B\bibinitperiod},
+           given={Oriana},
+           giveni={O\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=5f5b6b3ff741152e984a5e38264a941d}{%
+           family={Rasul},
+           familyi={R\bibinitperiod},
+           given={Imran},
+           giveni={I\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=055d5b7c7d98f3ef61271cbc3573be80}{%
+           family={Viarengo},
+           familyi={V\bibinitperiod},
+           given={Martina},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{be18d0259ad9bcb93d278b17c1f2282a}
+      \strng{fullhash}{1429b1c276fd63c35754f789ff1f0376}
+      \strng{bibnamehash}{1429b1c276fd63c35754f789ff1f0376}
+      \strng{authorbibnamehash}{1429b1c276fd63c35754f789ff1f0376}
+      \strng{authornamehash}{be18d0259ad9bcb93d278b17c1f2282a}
+      \strng{authorfullhash}{1429b1c276fd63c35754f789ff1f0376}
+      \field{sortinit}{B}
+      \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{We provide new estimates of migrant flows into and out of America during the Age of Mass Migration at the turn of the twentieth century. Our analysis is based on a novel data set of administrative records covering the universe of 24 million migrants who entered Ellis Island, New York between 1892 and 1924. We use these records to measure inflows into New York, and then scale-up these figures to estimate migrant inflows into America as a whole. Combining these flow estimates with census data on the stock of foreign-born in America in 1900, 1910 and 1920, we conduct a demographic accounting exercise to estimate out-migration rates in aggregate and for each nationality-age-gender cohort. This exercise overturns common wisdom on two fronts. First, we estimate flows into the US to be 20% and 170% higher than stated in official statistics for the 1900-10 and 1910-20 decades, respectively. Second, once mortality is accounted for, we estimate out-migration rates from the US to be around .6 for the 1900-10 decade and around .75 for the 1910-20. These figures are over twice as high as official estimates for each decade. That migration was effectively a two-way flow between the US and the sending countries has major implications for understanding the potential selection of immigrants that chose to permanently reside in the US, their impact on Americans in labor markets, and institutional change in America and sending countries.}
+      \field{issn}{0304-3878}
+      \field{journaltitle}{Journal of Development Economics}
+      \field{note}{Migration and Development}
+      \field{title}{The Making of Modern America: Migratory Flows in the Age of Mass Migration}
+      \field{volume}{102}
+      \field{year}{2013}
+      \field{pages}{23\bibrangedash 47}
+      \range{pages}{25}
+      \verb{doi}
+      \verb https://doi.org/10.1016/j.jdeveco.2012.11.005
+      \endverb
+      \verb{urlraw}
+      \verb https://www.sciencedirect.com/science/article/pii/S0304387812000995
+      \endverb
+      \verb{url}
+      \verb https://www.sciencedirect.com/science/article/pii/S0304387812000995
+      \endverb
+      \keyw{Ellis Island,migration accounting,migratory inflows and outflows}
+    \endentry
+    \entry{correia2023digitizing}{article}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=e8344b104644437b9125af7b1135ed38}{%
+           family={Correia},
+           familyi={C\bibinitperiod},
+           given={Sergio},
+           giveni={S\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=3138f9558d19260ad4239e2ebb17b1e3}{%
+           family={Luck},
+           familyi={L\bibinitperiod},
+           given={Stephan},
+           giveni={S\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{b7024ac7ac83d001e770b936c3b92cf3}
+      \strng{fullhash}{b7024ac7ac83d001e770b936c3b92cf3}
+      \strng{bibnamehash}{b7024ac7ac83d001e770b936c3b92cf3}
+      \strng{authorbibnamehash}{b7024ac7ac83d001e770b936c3b92cf3}
+      \strng{authornamehash}{b7024ac7ac83d001e770b936c3b92cf3}
+      \strng{authorfullhash}{b7024ac7ac83d001e770b936c3b92cf3}
+      \field{sortinit}{C}
+      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{This paper discusses how to successfully digitize large-scale historical micro-data by augmenting optical character recognition (OCR) engines with pre- and post-processing methods. Although OCR software has improved dramatically in recent years due to improvements in machine learning, off-the-shelf OCR applications still present high error rates which limit their applications for accurate extraction of structured information. Complementing OCR with additional methods can however dramatically increase its success rate, making it a powerful and cost-efficient tool for economic historians. This paper showcases these methods and explains why they are useful. We apply them against two large balance sheet datasets and introduce quipucamayoc, a Python package containing these methods in a unified framework.}
+      \field{issn}{0014-4983}
+      \field{journaltitle}{Explorations in Economic History}
+      \field{note}{Methodological Advances in the Extraction and Analysis of Historical Data}
+      \field{title}{Digitizing historical balance sheet data: A practitioner’s guide}
+      \field{volume}{87}
+      \field{year}{2023}
+      \field{pages}{101475}
+      \range{pages}{1}
+      \verb{doi}
+      \verb https://doi.org/10.1016/j.eeh.2022.101475
+      \endverb
+      \verb{urlraw}
+      \verb https://www.sciencedirect.com/science/article/pii/S0014498322000535
+      \endverb
+      \verb{url}
+      \verb https://www.sciencedirect.com/science/article/pii/S0014498322000535
+      \endverb
+      \keyw{OCR,Data extraction,Balance sheets}
+    \endentry
+    \entry{eichengreen2021gold}{article}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=f4d61c3fbb6caa6fbfa7f45bda4630b4}{%
+           family={Eichengreen},
+           familyi={E\bibinitperiod},
+           given={Barry},
+           giveni={B\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Routledge}%
+      }
+      \strng{namehash}{f4d61c3fbb6caa6fbfa7f45bda4630b4}
+      \strng{fullhash}{f4d61c3fbb6caa6fbfa7f45bda4630b4}
+      \strng{bibnamehash}{f4d61c3fbb6caa6fbfa7f45bda4630b4}
+      \strng{authorbibnamehash}{f4d61c3fbb6caa6fbfa7f45bda4630b4}
+      \strng{authornamehash}{f4d61c3fbb6caa6fbfa7f45bda4630b4}
+      \strng{authorfullhash}{f4d61c3fbb6caa6fbfa7f45bda4630b4}
+      \field{sortinit}{E}
+      \field{sortinithash}{8da8a182d344d5b9047633dfc0cc9131}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Economic History of Developing Regions}
+      \field{number}{2}
+      \field{title}{Gold and South Africa’s Great Depression}
+      \field{volume}{36}
+      \field{year}{2021}
+      \field{pages}{175\bibrangedash 193}
+      \range{pages}{19}
+      \verb{doi}
+      \verb 10.1080/20780389.2021.1891879
+      \endverb
+      \verb{eprint}
+      \verb https://doi.org/10.1080/20780389.2021.1891879
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1080/20780389.2021.1891879
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1080/20780389.2021.1891879
+      \endverb
+    \endentry
+    \entry{Feigenbaum2020}{article}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=4869eae6c40aa8ec2a0928a60f948f1b}{%
+           family={Feigenbaum},
+           familyi={F\bibinitperiod},
+           given={James},
+           giveni={J\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=9ab4a757d97de7c6d4850fd8462be3b6}{%
+           family={Gross},
+           familyi={G\bibinitperiod},
+           given={Daniel\bibnamedelima P.},
+           giveni={D\bibinitperiod\bibinitdelim P\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{2816105645543faa259301b533bde1cd}
+      \strng{fullhash}{2816105645543faa259301b533bde1cd}
+      \strng{bibnamehash}{2816105645543faa259301b533bde1cd}
+      \strng{authorbibnamehash}{2816105645543faa259301b533bde1cd}
+      \strng{authornamehash}{2816105645543faa259301b533bde1cd}
+      \strng{authorfullhash}{2816105645543faa259301b533bde1cd}
+      \field{sortinit}{F}
+      \field{sortinithash}{2638baaa20439f1b5a8f80c6c08a13b4}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{National Bureau of Economic Research}
+      \field{title}{Answering the Call of Automation: How the Labor Market Adjusted to the Mechanization of Telephone Operation}
+      \field{year}{2020}
+      \verb{doi}
+      \verb 10.3386/w28061
+      \endverb
+      \verb{urlraw}
+      \verb https://www.nber.org/papers/w28061
+      \endverb
+      \verb{url}
+      \verb https://www.nber.org/papers/w28061
+      \endverb
+    \endentry
+    \entry{ford2023not}{report}{}
+      \name{author}{3}{}{%
+        {{un=0,uniquepart=base,hash=0e30f61b3d49c48d7786b61f30b8588b}{%
+           family={Ford},
+           familyi={F\bibinitperiod},
+           given={Nicholas\bibnamedelima Martin},
+           giveni={N\bibinitperiod\bibinitdelim M\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=679cba5adb5a20caf5be79bfc1897ab3}{%
+           family={Ranestad},
+           familyi={R\bibinitperiod},
+           given={Kristin},
+           giveni={K\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=1a7bbf6d2af7a7870c1d11256b55e926}{%
+           family={Sharp},
+           familyi={S\bibinitperiod},
+           given={Paul},
+           giveni={P\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{institution}{1}{%
+        {European Historical Economics Society (EHES)}%
+      }
+      \strng{namehash}{180657e48bf1182151fec0089230ab9a}
+      \strng{fullhash}{fd54e46f58c722ade153778f57e678da}
+      \strng{bibnamehash}{fd54e46f58c722ade153778f57e678da}
+      \strng{authorbibnamehash}{fd54e46f58c722ade153778f57e678da}
+      \strng{authornamehash}{180657e48bf1182151fec0089230ab9a}
+      \strng{authorfullhash}{fd54e46f58c722ade153778f57e678da}
+      \field{sortinit}{F}
+      \field{sortinithash}{2638baaa20439f1b5a8f80c6c08a13b4}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{“Upper tail knowledge”, embodied by knowledge elites, has been suggested to be a driving force of industrialization and development, yet measuring it remains problematic. Despite some recent innovations, much empirical work continues to rely on measures of “average” or “non-upper tail” human capital such as literacy and years of schooling. We thus turn to per- haps unique sources from Denmark and Norway. From the early nineteenth century until after the Second World War, these countries had the tradition of publishing biographies of all high school graduates, usually 25 and 50 years after graduation. These were effectively mini-CVs covering entire careers, including work positions, travel, achievements, and more. We discuss these sources and their potential for furthering our understanding of the role of upper tail knowledge and human capital for development. Source criticism reveals strengths and weak- nesses, but importantly confirms promising perspectives for improving the measurement of upper tail knowledge.}
+      \field{month}{11}
+      \field{number}{0242}
+      \field{title}{{Not the Best Fillers in of Forms? The Danish and Norwegian Graduate Biographies and “Upper Tail Knowledge”}}
+      \field{type}{Working Papers}
+      \field{year}{2023}
+      \verb{urlraw}
+      \verb https://ideas.repec.org/p/hes/wpaper/0242.html
+      \endverb
+      \verb{url}
+      \verb https://ideas.repec.org/p/hes/wpaper/0242.html
+      \endverb
+      \keyw{Biographies; Denmark; Norway; human capital; source criticism; upper tail knowledge}
+    \endentry
+    \entry{Goldin1994}{article}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=a18c02f3c78d81d8178faf1ae63981ee}{%
+           family={Goldin},
+           familyi={G\bibinitperiod},
+           given={Claudia},
+           giveni={C\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{a18c02f3c78d81d8178faf1ae63981ee}
+      \strng{fullhash}{a18c02f3c78d81d8178faf1ae63981ee}
+      \strng{bibnamehash}{a18c02f3c78d81d8178faf1ae63981ee}
+      \strng{authorbibnamehash}{a18c02f3c78d81d8178faf1ae63981ee}
+      \strng{authornamehash}{a18c02f3c78d81d8178faf1ae63981ee}
+      \strng{authorfullhash}{a18c02f3c78d81d8178faf1ae63981ee}
+      \field{extraname}{1}
+      \field{sortinit}{G}
+      \field{sortinithash}{32d67eca0634bf53703493fb1090a2e8}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{National Bureau of Economic Research}
+      \field{title}{Labor Markets in the Twentieth Century}
+      \field{year}{1994}
+      \verb{doi}
+      \verb 10.3386/h0058
+      \endverb
+      \verb{urlraw}
+      \verb https://www.nber.org/papers/h0058
+      \endverb
+      \verb{url}
+      \verb https://www.nber.org/papers/h0058
+      \endverb
+    \endentry
+    \entry{Goldin1998}{inbook}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=a18c02f3c78d81d8178faf1ae63981ee}{%
+           family={Goldin},
+           familyi={G\bibinitperiod},
+           given={Claudia},
+           giveni={C\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Cambridge University Press}%
+      }
+      \strng{namehash}{a18c02f3c78d81d8178faf1ae63981ee}
+      \strng{fullhash}{a18c02f3c78d81d8178faf1ae63981ee}
+      \strng{bibnamehash}{a18c02f3c78d81d8178faf1ae63981ee}
+      \strng{authorbibnamehash}{a18c02f3c78d81d8178faf1ae63981ee}
+      \strng{authornamehash}{a18c02f3c78d81d8178faf1ae63981ee}
+      \strng{authorfullhash}{a18c02f3c78d81d8178faf1ae63981ee}
+      \field{extraname}{2}
+      \field{sortinit}{G}
+      \field{sortinithash}{32d67eca0634bf53703493fb1090a2e8}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{The Cambridge Economic History of the United States, Vol. III}
+      \field{title}{Labor Markets in the Twentieth Century}
+      \field{year}{1998}
+      \field{pages}{549\bibrangedash 624}
+      \range{pages}{76}
+      \verb{urlraw}
+      \verb https://scholar.harvard.edu/goldin/publications/labor-markets-twentieth-century
+      \endverb
+      \verb{url}
+      \verb https://scholar.harvard.edu/goldin/publications/labor-markets-twentieth-century
+      \endverb
+    \endentry
+    \entry{Goos2018}{article}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=f38fa122b7a8e6744967b7eecf1219c0}{%
+           family={Goos},
+           familyi={G\bibinitperiod},
+           given={Maarten},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{f38fa122b7a8e6744967b7eecf1219c0}
+      \strng{fullhash}{f38fa122b7a8e6744967b7eecf1219c0}
+      \strng{bibnamehash}{f38fa122b7a8e6744967b7eecf1219c0}
+      \strng{authorbibnamehash}{f38fa122b7a8e6744967b7eecf1219c0}
+      \strng{authornamehash}{f38fa122b7a8e6744967b7eecf1219c0}
+      \strng{authorfullhash}{f38fa122b7a8e6744967b7eecf1219c0}
+      \field{sortinit}{G}
+      \field{sortinithash}{32d67eca0634bf53703493fb1090a2e8}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issue}{3}
+      \field{journaltitle}{Oxford Review of Economic Policy}
+      \field{title}{The Impact of Technological Progress on Labour Markets: Policy Challenges}
+      \field{volume}{34}
+      \field{year}{2018}
+      \field{pages}{362\bibrangedash 375}
+      \range{pages}{14}
+      \verb{doi}
+      \verb 10.1093/oxrep/gry002
+      \endverb
+      \verb{urlraw}
+      \verb https://academic.oup.com/oxrep/article/34/3/362/5063938
+      \endverb
+      \verb{url}
+      \verb https://academic.oup.com/oxrep/article/34/3/362/5063938
+      \endverb
+    \endentry
+    \entry{gutmann2018big}{article}{}
+      \name{author}{3}{}{%
+        {{un=0,uniquepart=base,hash=b1ae5576302fb834e89d5ef36e037efc}{%
+           family={Gutmann},
+           familyi={G\bibinitperiod},
+           given={Myron\bibnamedelima P.},
+           giveni={M\bibinitperiod\bibinitdelim P\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=8bddf2092382f349f6b07f0c740f4589}{%
+           family={Merchant},
+           familyi={M\bibinitperiod},
+           given={Emily\bibnamedelima Klancher},
+           giveni={E\bibinitperiod\bibinitdelim K\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=89a50b79daf66cf65181e469976243bd}{%
+           family={Roberts},
+           familyi={R\bibinitperiod},
+           given={Evan},
+           giveni={E\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Cambridge University Press}%
+      }
+      \strng{namehash}{b4c7b306216ac127df1cde0bd70955b9}
+      \strng{fullhash}{dfb27d87e1058fdd76ce1678c68169c5}
+      \strng{bibnamehash}{dfb27d87e1058fdd76ce1678c68169c5}
+      \strng{authorbibnamehash}{dfb27d87e1058fdd76ce1678c68169c5}
+      \strng{authornamehash}{b4c7b306216ac127df1cde0bd70955b9}
+      \strng{authorfullhash}{dfb27d87e1058fdd76ce1678c68169c5}
+      \field{sortinit}{G}
+      \field{sortinithash}{32d67eca0634bf53703493fb1090a2e8}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{The Journal of Economic History}
+      \field{number}{1}
+      \field{title}{“Big Data” in Economic History}
+      \field{volume}{78}
+      \field{year}{2018}
+      \field{pages}{268\bibrangedash 299}
+      \range{pages}{32}
+      \verb{doi}
+      \verb 10.1017/S0022050718000177
+      \endverb
+    \endentry
+    \entry{jayes_power_2024}{unpublished}{}
+      \name{author}{3}{}{%
+        {{un=0,uniquepart=base,hash=1350015ae4676d68fe1c7180b4bfb09a}{%
+           family={Jayes},
+           familyi={J\bibinitperiod},
+           given={Jonathan},
+           giveni={J\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=42fd01a9d1d6f1911d4d1b8981a9dbc4}{%
+           family={{Molinder, Jakob}},
+           familyi={M\bibinitperiod}}}%
+        {{un=0,uniquepart=base,hash=43da3d529352b1eb7bffd5baa09c4ee5}{%
+           family={{Enflo, Kerstin}},
+           familyi={E\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {Lund}%
+      }
+      \strng{namehash}{d6324c74a3f06cb549980fb31b007f5c}
+      \strng{fullhash}{f91c988274a91b524e9baee708afd961}
+      \strng{bibnamehash}{f91c988274a91b524e9baee708afd961}
+      \strng{authorbibnamehash}{f91c988274a91b524e9baee708afd961}
+      \strng{authornamehash}{d6324c74a3f06cb549980fb31b007f5c}
+      \strng{authorfullhash}{f91c988274a91b524e9baee708afd961}
+      \field{sortinit}{J}
+      \field{sortinithash}{b2f54a9081ace9966a7cb9413811edb4}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{Unpublished Manuscript}
+      \field{title}{Power for progress: The impact of electricity on individual labor market outcomes}
+      \field{type}{Unpublished Manuscript}
+      \field{year}{2024}
+      \field{dateera}{ce}
+    \endentry
+    \entry{koschnick2023breaking}{misc}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=6740d0b4168392e0238bf343b584d190}{%
+           family={Koschnick},
+           familyi={K\bibinitperiod},
+           given={Julius},
+           giveni={J\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{6740d0b4168392e0238bf343b584d190}
+      \strng{fullhash}{6740d0b4168392e0238bf343b584d190}
+      \strng{bibnamehash}{6740d0b4168392e0238bf343b584d190}
+      \strng{authorbibnamehash}{6740d0b4168392e0238bf343b584d190}
+      \strng{authornamehash}{6740d0b4168392e0238bf343b584d190}
+      \strng{authorfullhash}{6740d0b4168392e0238bf343b584d190}
+      \field{sortinit}{K}
+      \field{sortinithash}{c02bf6bff1c488450c352b40f5d853ab}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{RHI Seminar, London School of Economics}
+      \field{note}{Presented on March 23, 2023, from 16:00 to 17:15}
+      \field{title}{Breaking Tradition: Teacher-student effects at English Universities during the Scientific Revolution}
+      \field{year}{2023}
+      \verb{urlraw}
+      \verb https://www.wur.nl/en/activity/rhi-seminar-breaking-tradition-teacher-student-effects-at-english-universities-during-the-scientific-revolution.htm
+      \endverb
+      \verb{url}
+      \verb https://www.wur.nl/en/activity/rhi-seminar-breaking-tradition-teacher-student-effects-at-english-universities-during-the-scientific-revolution.htm
+      \endverb
+    \endentry
+    \entry{Mokyr2017Journal}{article}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=e033b18aca6c0e3473f12bfb836a1ce6}{%
+           family={Mokyr},
+           familyi={M\bibinitperiod},
+           given={Joel},
+           giveni={J\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{e033b18aca6c0e3473f12bfb836a1ce6}
+      \strng{fullhash}{e033b18aca6c0e3473f12bfb836a1ce6}
+      \strng{bibnamehash}{e033b18aca6c0e3473f12bfb836a1ce6}
+      \strng{authorbibnamehash}{e033b18aca6c0e3473f12bfb836a1ce6}
+      \strng{authornamehash}{e033b18aca6c0e3473f12bfb836a1ce6}
+      \strng{authorfullhash}{e033b18aca6c0e3473f12bfb836a1ce6}
+      \field{extraname}{1}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{extradate}{1}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of Institutional Economics}
+      \field{title}{Bottom-up or top-down? The origins of the Industrial Revolution}
+      \field{year}{2017}
+      \verb{doi}
+      \verb 10.1017/S1744137417000251
+      \endverb
+      \verb{urlraw}
+      \verb https://www.cambridge.org/core/journals/journal-of-institutional-economics/article/bottomup-or-topdown-the-origins-of-the-industrial-revolution/9EAA92CA1A28EBCFBAFACF3F324D85B0
+      \endverb
+      \verb{url}
+      \verb https://www.cambridge.org/core/journals/journal-of-institutional-economics/article/bottomup-or-topdown-the-origins-of-the-industrial-revolution/9EAA92CA1A28EBCFBAFACF3F324D85B0
+      \endverb
+    \endentry
+    \entry{Mokyr2017}{article}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=e033b18aca6c0e3473f12bfb836a1ce6}{%
+           family={Mokyr},
+           familyi={M\bibinitperiod},
+           given={Joel},
+           giveni={J\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{e033b18aca6c0e3473f12bfb836a1ce6}
+      \strng{fullhash}{e033b18aca6c0e3473f12bfb836a1ce6}
+      \strng{bibnamehash}{e033b18aca6c0e3473f12bfb836a1ce6}
+      \strng{authorbibnamehash}{e033b18aca6c0e3473f12bfb836a1ce6}
+      \strng{authornamehash}{e033b18aca6c0e3473f12bfb836a1ce6}
+      \strng{authorfullhash}{e033b18aca6c0e3473f12bfb836a1ce6}
+      \field{extraname}{2}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{extradate}{2}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{isbn}{978-0691168883}
+      \field{journaltitle}{Princeton University Press}
+      \field{title}{A Culture of Growth: The Origins of the Modern Economy}
+      \field{year}{2017}
+    \endentry
+    \entry{Moretti2012}{book}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=f58347226b88750723f89cb2b99cd2e9}{%
+           family={Moretti},
+           familyi={M\bibinitperiod},
+           given={Enrico},
+           giveni={E\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Houghton Mifflin Harcourt}%
+      }
+      \strng{namehash}{f58347226b88750723f89cb2b99cd2e9}
+      \strng{fullhash}{f58347226b88750723f89cb2b99cd2e9}
+      \strng{bibnamehash}{f58347226b88750723f89cb2b99cd2e9}
+      \strng{authorbibnamehash}{f58347226b88750723f89cb2b99cd2e9}
+      \strng{authornamehash}{f58347226b88750723f89cb2b99cd2e9}
+      \strng{authorfullhash}{f58347226b88750723f89cb2b99cd2e9}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{isbn}{978-0547750118}
+      \field{title}{The New Geography of Jobs}
+      \field{year}{2012}
+    \endentry
+    \entry{mullainathan2017machine}{article}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=0ad4a50fedec7f3fb2ce43f3f64e62d6}{%
+           family={Mullainathan},
+           familyi={M\bibinitperiod},
+           given={Sendhil},
+           giveni={S\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=2e249611355f88583165432eab0ba4e1}{%
+           family={Spiess},
+           familyi={S\bibinitperiod},
+           given={Jann},
+           giveni={J\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {American Economic Association}%
+      }
+      \strng{namehash}{d03e62d9ef32260474f68f83abd9b754}
+      \strng{fullhash}{d03e62d9ef32260474f68f83abd9b754}
+      \strng{bibnamehash}{d03e62d9ef32260474f68f83abd9b754}
+      \strng{authorbibnamehash}{d03e62d9ef32260474f68f83abd9b754}
+      \strng{authornamehash}{d03e62d9ef32260474f68f83abd9b754}
+      \strng{authorfullhash}{d03e62d9ef32260474f68f83abd9b754}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{08953309}
+      \field{journaltitle}{The Journal of Economic Perspectives}
+      \field{number}{2}
+      \field{title}{Machine Learning: An Applied Econometric Approach}
+      \field{urlday}{16}
+      \field{urlmonth}{1}
+      \field{urlyear}{2024}
+      \field{volume}{31}
+      \field{year}{2017}
+      \field{urldateera}{ce}
+      \field{pages}{87\bibrangedash 106}
+      \range{pages}{20}
+      \verb{urlraw}
+      \verb http://www.jstor.org/stable/44235000
+      \endverb
+      \verb{url}
+      \verb http://www.jstor.org/stable/44235000
+      \endverb
+    \endentry
+    \entry{bert-base-swedish-cased}{misc}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=23cf013d7e47b6d7fec3ad34b0e721b3}{%
+           family={{National Library of Sweden/KBLab}},
+           familyi={N\bibinitperiod}}}%
+      }
+      \strng{namehash}{23cf013d7e47b6d7fec3ad34b0e721b3}
+      \strng{fullhash}{23cf013d7e47b6d7fec3ad34b0e721b3}
+      \strng{bibnamehash}{23cf013d7e47b6d7fec3ad34b0e721b3}
+      \strng{authorbibnamehash}{23cf013d7e47b6d7fec3ad34b0e721b3}
+      \strng{authornamehash}{23cf013d7e47b6d7fec3ad34b0e721b3}
+      \strng{authorfullhash}{23cf013d7e47b6d7fec3ad34b0e721b3}
+      \field{sortinit}{N}
+      \field{sortinithash}{22369a73d5f88983a108b63f07f37084}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{https://huggingface.co/KB/bert-base-swedish-cased}}
+      \field{title}{bert-base-swedish-cased}
+      \field{year}{2024}
+    \endentry
+  \enddatalist
+  \missing{herstory}
+\endrefsection
+\endinput
+

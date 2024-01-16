@@ -26,7 +26,7 @@ bibliography: bibliography.bib
 
 ## Introduction
 
-Economic history as a discipline is set to benefit in at least three ways from the nascent AI revolution. Novel sources of data become available as new tools make them readable to machines, analysis in new ways is possible with new kinds algorithms, and the time-cost of asking certain kinds of questions decreases, opening up new avenues for research. In this paper, I make an attempt to leverage these benefits to answer the question, 'where did the high skilled workers in electricity related occupations in Sweden come from?'. I detail the process of structuring and analyzing two novel data sources, a set of biographical dictionaries and an industrial catalogue, in order to answer this question.
+Economic history as a discipline is set to benefit in at least three ways from the nascent AI revolution. Novel sources of data become available as new tools make them readable to machines, analysis in new ways is possible with new kinds algorithms, and the time-cost of asking certain kinds of questions decreases, opening up new avenues for research. In this paper, I make an attempt to leverage these benefits to answer the question, 'who were the high skilled workers in electricity related occupations in Sweden, and where did they come from?'. I detail the process of structuring and analyzing two novel data sources, a set of biographical dictionaries and an industrial catalogue, in order to answer this question.
 
 In the quest to understand the dynamics of economic development and technological advancement, previous research by this author and his supervisors shed light on the transformative impact of early electricity access in Sweden. "Power for progress: The impact of electricity on individual labor market outcomes" [@jayes_power_2024] revealed how the advent of electricity in certain parishes led to positive economic outcomes: a boost in income levels, reduced inequality, and the maintenance of employment levels despite the advent of labor-saving technology. A particularly striking observation was the tendency of workers in these early electrified parishes to remain in their birthplaces, hinting at a newfound economic vibrancy stemming from the income spillovers into sectors not affected by the new technology.
 
@@ -46,9 +46,13 @@ This paper ties into three strands of literature; two in content and one in meth
 
 ### The use of individual level biographic data in economic history at scale
 
-A number of recent papers have made use of biographic data in innovative ways. @ford2023not uses biographies of high school graduates compiled at the time of their school reunions to create a far richer measure of human capital than the conventional measure, number of years of schooling, alone. These biographies are "mini-CVs", containing information about the school leaver's grades, their occupational trajectory, and their family background. These are used to create an innovative approach to measuring `upper tail knowledge`.
+A number of recent papers have made use of biographic data in innovative ways. @ford2023not use biographies of high school graduates compiled at the time of their school reunions to create a far richer measure of human capital than the conventional measure, number of years of schooling, alone. These biographies are "mini-CVs", containing information about the school leaver's grades, their occupational trajectory, and their family background. These are used to create an innovative approach to measuring `upper tail knowledge`.
 
+@Nekoei2020Herstory titled "Herstory: the rise of self-made women" analyzes the historical prominence of self-made women using a specially created database. This database, formed by applying machine learning to Wikidata and Wikipedia, catalogues notable individuals throughout history, highlighting details like occupation and family background. Their unique approach reveals a significant increase in the number of prominent women, especially those who achieved success independently of their family connections, across various fields since the 17th century. This research provides a fresh perspective on women's historical achievements and roles.
 
+Importantly, these papers go beyond the use of just administrative records, though it is a noble task.
+
+In this paper, I structure biographic data about elite individuals that is similar in structure to @ford2023not, and use the career trajectories of these individuals to better understand the contribution of educated workers to the adoption of electricity across Sweden in the 20th century. The contribution is the scale - I capture 75,000 individuals in Sweden in an automated manner.
 
 ### The importance of human capital in economic development
 
@@ -70,7 +74,24 @@ In this paper, I want to find out where the individuals came from who enabled th
 
 ### The use of new tools to structure and analyze historical data
 
-The third strand of literature that this paper ties into is the use of new tools to structure and analyze historical data. A breakthrough paper in this vein that bridges the gap between cutting-edge computer science literature and the use cases of applied economists is by @correia2023digitizing. 
+The third strand of literature that this paper ties into is the use of new tools to structure and analyze historical data. Within this strand, there are perhaps two main use cases; problems of prediction and classification, and 'big data' gathering and analysis.
+
+Relating to the former, @mullainathan2017machine wrote a pathbreaking article that documents the use of machine learning as part of an economists toolkit in the context of prediction problems, differentiating it from traditional parameter estimation. The authors explain the use of new data types like satellite images and text, as well as machine learning's role in policy, estimation, and testing economic theories. 
+
+Some interesting papers that incorporate prediction and classification problems include @Bandiera2020ceo, who classify CEO behavior by collecting high-frequency diary information and then use a machine learning algorithm to classify CEOs into 'leaders' and 'managers' by the content of their meetings. @koschnick2023breaking uses a machine learning topic model to classify each paper by the universe of all students at English universities in the seventeenth and early eighteenth century to calculate a measure of how innovative the paper was; how it differed from the papers before it in the field and how similar the papers afterwards were. @DahlVedel2024 in a paper titled "Breaking the HISCO Barrier: AI and Occupational Data Standardization" apply a neural network to the task of classifying an occupational description and benchmark their results against human labelling to show that the neural network achieved comparable accuracy with human labelling and involved an order of magnitude fewer human hours.
+
+'Big data' papers in economic history now abound, as surveyed in @gutmann2018big in a review titled "'Big Data' in Economic History". Many of these papers construct and use high quality register or census-like data on individual outcomes. Notable examples include the Longitudinal, Intergenerational Family Electronic Micro-Database Project by Martha Bailey which focuses on family histories to understand long-term economic trends. These histories are collected from various census-like sources and innovative ML tools are used to construct the longitudinal links. Similarly, "The Making of Modern America: Migratory Flows in the Age of Mass Migration" by @bandiera2013making involved the digitization of 24 million records of migrant flows through Ellis Island in New York, and found that measured out-migration rates in the US were double the reported figures in the earliest decades of the 20th century. @eichengreen2021gold uses natural language processing (NLP) to understand the content of a parliamentary committee debate on the gold standard in South Africa.
+
+There is also a growing literature of papers which lay out the step by step process required for economic historians to make use of these new tools. A great paper in this vein that bridges the gap between cutting-edge computer science literature and the use cases of applied economists is by @correia2023digitizing. The paper "Digitizing Historical Balance Sheet Data: A Practitioner’s Guide" explores the application of machine learning, particularly Optical Character Recognition (OCR), to digitize large-scale historical economic data. The authors highlight the limitations of off-the-shelf OCR software, mainly due to high error rates, and propose a combination of pre- and post-processing methods to enhance accuracy. They apply these methods to two extensive datasets of balance sheets and introduce "quipucamayoc," a Python package that unifies these techniques.
+
+@amujala2023digitization explain how we can digitize bank records 
+
+melissa dell. 
+
+
+
+
+
 
 ## Source material
 
