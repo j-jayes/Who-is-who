@@ -1,0 +1,698 @@
+  "6": {
+            "full_name": "Erik Henrik Näslund",
+            "location": "Hörby",
+            "occupation": "Radioingenjör",
+            "birth_details": {
+                "date": "06/07/1905",
+                "place": "Sundsvall",
+                "place_coordinates": {
+                    "Latitude": 62.390811,
+                    "Longitude": 17.306927
+                }
+            },
+            "education": [
+                {
+                    "degree": null,
+                    "year": "1932",
+                    "institution": "CTI (E) ",
+                    "institution_coordinates": {
+                        "Latitude": 60.12816100000001,
+                        "Longitude": 18.643501
+                    }
+                }
+            ],
+            "career": [
+                {
+                    "position": "Extra ordinarie ingenjörsassistent",
+                    "years": {
+                        "start_year": 1935,
+                        "end_year": 1936
+                    },
+                    "organization": "Hörby rundradiostation"
+                }
+            ],
+            "family": null,
+            "location_coordinates": {
+                "Latitude": 55.851716,
+                "Longitude": 13.6619255
+            },
+            "occupation_hisco_code": 854,
+            "occupation_cosine_similarity": 0.720286608093054,
+            "occupation_hisco_occupation": "Radio and Television Repairmen"
+        }
+    }
+
+
+    "4": {
+        "full_name": "Mattsson, Erik Henrik",
+        "location": "Storhertigdommen Stockholm",
+        "occupation": "radiokommissarie",
+        "birth_details": {
+            "date": "19 januari 1899",
+            "place": "Stora Tuna, Kopparbergs län",
+            "place_coordinates": {
+                "Latitude": 60.4470971,
+                "Longitude": 15.4793016
+            }
+        },
+        "education": [
+            {
+                "degree": "Realexamen",
+                "year": null,
+                "institution": null
+            }
+        ],
+        "career": [
+            {
+                "position": null,
+                "years": {
+                    "start_year": 1917,
+                    "end_year": 1939
+                },
+                "organization": "Telegrafverket"
+            },
+            {
+                "position": null,
+                "years": {
+                    "start_year": 1940,
+                    "end_year": null
+                },
+                "organization": "Radiotjänst"
+            }
+        ],
+        "family": null,
+        "location_coordinates": {
+            "Latitude": 59.32932349999999,
+            "Longitude": 18.0685808
+        },
+        "occupation_hisco_code": 854,
+        "occupation_cosine_similarity": 0.6467472372510931,
+        "occupation_hisco_occupation": "Radio and Television Repairmen"
+    },
+
+
+    "1": {
+        "full_name": "Lars B Madsen",
+        "location": "Lidingö",
+        "occupation": "Radioman",
+        "birth_details": {
+            "date": "19/06/1904",
+            "place": "Vänersborg",
+            "parents": "rektor Peder M, Anna Nordin",
+            "place_coordinates": {
+                "Latitude": 58.3797283,
+                "Longitude": 12.3248032
+            }
+        },
+        "education": [
+            {
+                "degree": "Studrex",
+                "year": "1923",
+                "institution": "NULL",
+                "institution_coordinates": {
+                    "Latitude": 60.12816100000001,
+                    "Longitude": 18.643501
+                }
+            },
+            {
+                "degree": "Filosofie kandidat",
+                "year": "1930",
+                "institution": "Uppsala",
+                "institution_coordinates": {
+                    "Latitude": 59.85856380000001,
+                    "Longitude": 17.6389267
+                }
+            },
+            {
+                "degree": "Filosofie magister",
+                "year": "1932",
+                "institution": "NULL",
+                "institution_coordinates": {
+                    "Latitude": 60.12816100000001,
+                    "Longitude": 18.643501
+                }
+            }
+        ],
+        "career": [
+            {
+                "position": "anställd",
+                "years": {
+                    "start_year": 1933,
+                    "end_year": 2022
+                },
+                "organization": "Sveriges Radio"
+            }
+        ],
+        "family": {
+            "spouse": "Ingrid Malmquist",
+            "marriage_year": "1931",
+            "children": [
+                {
+                    "name": "Lena",
+                    "birth_year": "1934"
+                },
+                {
+                    "name": "Peder",
+                    "birth_year": "1935"
+                },
+                {
+                    "name": "Ann-Sofie",
+                    "birth_year": "1939"
+                },
+                {
+                    "name": "Elisabet",
+                    "birth_year": "1943"
+                }
+            ]
+        },
+        "location_coordinates": {
+            "Latitude": 59.36295999999999,
+            "Longitude": 18.1468
+        },
+        "occupation_hisco_code": 854,
+        "occupation_cosine_similarity": 0.662573581177726,
+        "occupation_hisco_occupation": "Radio and Television Repairmen"
+    },
+
+
+    "0": {
+        "full_name": "TOR-HENRIK BJÖRCK",
+        "location": "Örebro",
+        "occupation": "teleöverkon-trollör",
+        "birth_details": {
+            "date": "30/03/1919",
+            "place": "Göteborg",
+            "parents": "apotekare Henrik Björck och Ingeborg Janson",
+            "place_coordinates": {
+                "Latitude": 57.70887,
+                "Longitude": 11.97456
+            }
+        },
+        "education": [
+            {
+                "degree": "Stud:ex",
+                "year": "1939",
+                "institution": null
+            },
+            {
+                "degree": "teleass :elev",
+                "year": "1940",
+                "institution": null
+            },
+            {
+                "degree": "teleass",
+                "year": "1943",
+                "institution": null
+            }
+        ],
+        "career": [
+            {
+                "position": "l:e teleass Örebro",
+                "years": {
+                    "start_year": 1947,
+                    "end_year": 1951
+                },
+                "organization": null
+            },
+            {
+                "position": "kontr",
+                "years": {
+                    "start_year": 1951,
+                    "end_year": 1958
+                },
+                "organization": null
+            },
+            {
+                "position": "l:e kontr",
+                "years": {
+                    "start_year": 1958,
+                    "end_year": 1963
+                },
+                "organization": null
+            },
+            {
+                "position": "överkontr",
+                "years": {
+                    "start_year": 1963,
+                    "end_year": null
+                },
+                "organization": null
+            }
+        ],
+        "family": {
+            "spouse": "Märta Bergström",
+            "marriage_year": "1944",
+            "children": [
+                {
+                    "name": "Christian",
+                    "birth_year": "1947"
+                },
+                {
+                    "name": "Tomas",
+                    "birth_year": "1948"
+                },
+                {
+                    "name": "Helena",
+                    "birth_year": "1952"
+                },
+                {
+                    "name": "Marika",
+                    "birth_year": "1954"
+                }
+            ]
+        },
+        "location_coordinates": {
+            "Latitude": 59.2752626,
+            "Longitude": 15.2134105
+        },
+        "occupation_hisco_code": 855,
+        "occupation_cosine_similarity": 0.559693203760954,
+        "occupation_hisco_occupation": "Electrical Wiremen"
+    },
+
+
+
+    "1": {
+        "full_name": "Max Wilhelm Richard Hepke",
+        "location": "Visby",
+        "occupation": "ingenjör, elverkschef",
+        "birth_details": {
+            "date": "30/03/1881",
+            "place": "Breslau, Tyskland"
+        },
+        "education": [],
+        "career": [
+            {
+                "position": "Chef för anläggningsarbeten",
+                "years": {
+                    "start_year": 1906,
+                    "end_year": 1910
+                },
+                "organization": "Sverige, Belgien, Chile"
+            },
+            {
+                "position": "Chef för laboratorium för elektriska material",
+                "years": {
+                    "start_year": 1916,
+                    "end_year": 1919
+                },
+                "organization": "Siemens, Berlin"
+            },
+            {
+                "position": "Elverkschef i Visby",
+                "years": {
+                    "start_year": 1919,
+                    "end_year": null
+                },
+                "organization": null
+            },
+            {
+                "position": "Lärare vid Visby lärläroverk och yrkesskola",
+                "years": {
+                    "start_year": 1921,
+                    "end_year": null
+                },
+                "organization": null
+            },
+            {
+                "position": "Besiktningsman i Gotlands läns brandstodsbolag",
+                "years": {
+                    "start_year": 1921,
+                    "end_year": null
+                },
+                "organization": null
+            }
+        ],
+        "family": {
+            "spouse": null,
+            "marriage_year": null,
+            "children": []
+        },
+        "location_coordinates": {
+            "Latitude": 57.6348,
+            "Longitude": 18.29484
+        },
+        "occupation_hisco_code": 23,
+        "occupation_cosine_similarity": 0.8320954753020471,
+        "occupation_hisco_occupation": "Electrical and Electronics Engineers"
+    },
+
+
+
+
+
+
+    "7": {
+        "full_name": "Hedenblad, Ivar Eggert",
+        "location": "Trollhättan",
+        "occupation": "civilingenjör, kraftverksdirektör",
+        "birth_details": {
+            "date": "07/08/1892",
+            "place": "Hälsingborg",
+            "place_coordinates": {
+                "Latitude": 56.0464674,
+                "Longitude": 12.6945121
+            }
+        },
+        "education": [
+            {
+                "degree": "Studenterexamen i Hälsingborg",
+                "year": "1910",
+                "institution": "Unknown",
+                "institution_coordinates": {
+                    "Latitude": 60.12816100000001,
+                    "Longitude": 18.643501
+                }
+            },
+            {
+                "degree": "Studier vid KTH (Elektroteknik)",
+                "institution": "Kungliga Tekniska Högskolan",
+                "year": "1911-1914",
+                "institution_coordinates": {
+                    "Latitude": 59.3498706,
+                    "Longitude": 18.0702566
+                }
+            },
+            {
+                "degree": "Reservofficersexamen",
+                "year": "1916",
+                "institution": "Unknown",
+                "institution_coordinates": {
+                    "Latitude": 60.12816100000001,
+                    "Longitude": 18.643501
+                }
+            },
+            {
+                "degree": "ASEA ingenjörselevkurs",
+                "year": null,
+                "institution": "Unknown",
+                "institution_coordinates": {
+                    "Latitude": 60.12816100000001,
+                    "Longitude": 18.643501
+                }
+            }
+        ],
+        "career": [
+            {
+                "position": "Ingenjör vid A-B Norrahammars Bruk",
+                "years": {
+                    "start_year": 1917,
+                    "end_year": null
+                },
+                "organization": "A-B Norrahammars Bruk"
+            },
+            {
+                "position": "Elektrisk konsult vid Elektrisk Konsultbyrå i Göteborg",
+                "years": {
+                    "start_year": 1918,
+                    "end_year": 1920
+                },
+                "organization": "Elektrisk Konsultbyrå"
+            },
+            {
+                "position": "Byråingenjör vid Trollhättans Kraftverk",
+                "years": {
+                    "start_year": 1921,
+                    "end_year": 1921
+                },
+                "organization": "Trollhättans Kraftverk"
+            },
+            {
+                "position": "Tf. driftchef vid Porjus Kraftverk",
+                "years": {
+                    "start_year": 1929,
+                    "end_year": 1934
+                },
+                "organization": "Porjus Kraftverk"
+            },
+            {
+                "position": "Byrådirektör vid Vattenfallsstyrelsens kraftverksbyrå",
+                "years": {
+                    "start_year": 1935,
+                    "end_year": 1937
+                },
+                "organization": "Vattenfallsstyrelsen"
+            },
+            {
+                "position": "Kraftverksdirektör vid Norrländska Kraftverk",
+                "years": {
+                    "start_year": 1938,
+                    "end_year": null
+                },
+                "organization": "Norrländska Kraftverk"
+            },
+            {
+                "position": "Kraftverksdirektör vid Trollhättans Kraftverk",
+                "years": {
+                    "start_year": 1939,
+                    "end_year": null
+                },
+                "organization": "Trollhättans Kraftverk"
+            }
+        ],
+        "family": {
+            "spouse": "Grevinnan Ebba Taube",
+            "marriage_year": "1927",
+            "children": [
+                {
+                    "name": "Henrik",
+                    "birth_year": "1931"
+                },
+                {
+                    "name": "Bengt",
+                    "birth_year": "1935"
+                }
+            ]
+        },
+        "location_coordinates": {
+            "Latitude": 58.28348939999999,
+            "Longitude": 12.2858206
+        },
+        "occupation_hisco_code": 34,
+        "occupation_cosine_similarity": 0.7715926279806791,
+        "occupation_hisco_occupation": "Electrical and Electronics Engineering Technicians"
+    },
+
+
+
+    "1": {
+        "full_name": "John Oscar Jacobson",
+        "location": "Kalmar",
+        "occupation": "civilingenjör, fd. belysningschef",
+        "birth_details": {
+            "date": "16/04/1879",
+            "place": "Kulltorp",
+            "parents": "dir. Claes Adrian J. o. Sofia Torbjörnsson",
+            "place_coordinates": {
+                "Latitude": 57.2639556,
+                "Longitude": 13.7937279
+            }
+        },
+        "education": [
+            {
+                "degree": "Stud:examen",
+                "year": "1899",
+                "institution": "NULL",
+                "institution_coordinates": {
+                    "Latitude": 60.12816100000001,
+                    "Longitude": 18.643501
+                }
+            },
+            {
+                "degree": "Civ:ing:examen",
+                "year": "1902",
+                "institution": "NULL",
+                "institution_coordinates": {
+                    "Latitude": 60.12816100000001,
+                    "Longitude": 18.643501
+                }
+            }
+        ],
+        "career": [
+            {
+                "position": "förest",
+                "years": {
+                    "start_year": 1903,
+                    "end_year": 1905
+                },
+                "organization": "Kristianstads kem. station"
+            },
+            {
+                "position": "f",
+                "years": {
+                    "start_year": 1905,
+                    "end_year": 1907
+                },
+                "organization": "Uddevalla gasverk"
+            },
+            {
+                "position": "f",
+                "years": {
+                    "start_year": 1907,
+                    "end_year": 1946
+                },
+                "organization": "belysn:-verken i Kalmar"
+            }
+        ],
+        "family": {
+            "spouse": "NULL",
+            "marriage_year": "NULL",
+            "children": [],
+            "publications": [
+                {
+                    "title": "NULL",
+                    "year": "NULL",
+                    "type": "NULL"
+                }
+            ],
+            "community_involvement": [
+                {
+                    "role": "NULL",
+                    "organization": "NULL",
+                    "years": "NULL"
+                }
+            ],
+            "board_memberships": [
+                {
+                    "position": "NULL",
+                    "organization": "NULL",
+                    "years": "NULL"
+                }
+            ],
+            "honorary_titles": [
+                {
+                    "title": "RVO",
+                    "institution": "NULL",
+                    "year": "NULL"
+                }
+            ],
+            "hobbies": [
+                "musik"
+            ]
+        },
+        "location_coordinates": {
+            "Latitude": 56.6634447,
+            "Longitude": 16.356779
+        },
+        "occupation_hisco_code": 34,
+        "occupation_cosine_similarity": 0.7003714029383581,
+        "occupation_hisco_occupation": "Electrical and Electronics Engineering Technicians"
+
+
+
+
+        "3": {
+            "full_name": "Nordell, Axel Verner",
+            "location": "Motala, Östergötland",
+            "occupation": "Civilingenjör, kraftverksdirektör",
+            "birth_details": {
+                "date": "15/08/1881",
+                "place": "S. Möckleby, Kalmar",
+                "parents": "Gustaf N. and Amanda Seillergren",
+                "place_coordinates": {
+                    "Latitude": 56.35646300000001,
+                    "Longitude": 16.420155
+                }
+            },
+            "education": [
+                {
+                    "degree": "Studentexamen",
+                    "year": "1899",
+                    "institution": "Lunds högre allmänna läroverk",
+                    "institution_coordinates": {
+                        "Latitude": 55.7046601,
+                        "Longitude": 13.1910073
+                    }
+                },
+                {
+                    "degree": "Avgångsexamen från KTH",
+                    "year": "1904",
+                    "institution": "KTH (E)",
+                    "institution_coordinates": {
+                        "Latitude": 60.12816100000001,
+                        "Longitude": 18.643501
+                    }
+                }
+            ],
+            "career": [
+                {
+                    "position": "Ritare",
+                    "years": {
+                        "start_year": 1904,
+                        "end_year": 1905
+                    },
+                    "organization": "ASEA i Malmö"
+                },
+                {
+                    "position": "Ingenjör",
+                    "years": {
+                        "start_year": 1905,
+                        "end_year": 1907
+                    },
+                    "organization": "Elektr. A-B Hodmia i Sthilm"
+                },
+                {
+                    "position": "Ingenjör",
+                    "years": {
+                        "start_year": 1907,
+                        "end_year": 1909
+                    },
+                    "organization": "Trollhätte (kanal- och vattenverk)"
+                },
+                {
+                    "position": "Chef för vattenfallsverket i Älvkarleby, sektion Motala",
+                    "years": {
+                        "start_year": 1918,
+                        "end_year": 1920
+                    },
+                    "organization": "Älvkarleby kraftverk"
+                },
+                {
+                    "position": "Kraftverksdirektör",
+                    "years": {
+                        "start_year": 1920,
+                        "end_year": 1947
+                    },
+                    "organization": "Motala kraftverk"
+                },
+                {
+                    "position": "Verkställande direktör",
+                    "years": {
+                        "start_year": 1930,
+                        "end_year": 1947
+                    },
+                    "organization": "Motala Ströms Kraft A-B"
+                }
+            ],
+            "family": {
+                "spouse": "Agnies Hellgren",
+                "marriage_year": "1911",
+                "children": [
+                    {
+                        "name": "Inga",
+                        "birth_year": "1912"
+                    },
+                    {
+                        "name": "Hans",
+                        "birth_year": "1914"
+                    },
+                    {
+                        "name": "Gösta",
+                        "birth_year": "1918"
+                    },
+                    {
+                        "name": "Ulla",
+                        "birth_year": "1920"
+                    }
+                ]
+            },
+            "location_coordinates": {
+                "Latitude": 58.5380335,
+                "Longitude": 15.0470936
+            },
+            "occupation_hisco_code": 34,
+            "occupation_cosine_similarity": 0.7726821043535681,
+            "occupation_hisco_occupation": "Electrical and Electronics Engineering Technicians"
+        }
+    }
+}

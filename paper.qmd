@@ -26,25 +26,37 @@ bibliography: bibliography.bib
 
 ## Introduction
 
-In the quest to understand the dynamics of economic development and technological advancement, previous research by this author and his supervisors shed light on the transformative impact of early electricity access in Sweden. "Power for progress: The impact of electricity on individual labor market outcomes" [@jayes_power_2024] revealed how the advent of electricity in certain parishes led to positive economic outcomes: a boost in income levels, reduced inequality, and the maintenance of employment levels despite the advent of labor-saving technology. A particularly striking observation was the tendency of workers in these early electrified parishes to remain in their birthplaces, hinting at a newfound economic vibrancy stemming from the technological spillovers.
+Economic history as a discipline is set to benefit in at least three ways from the nascent AI revolution. Novel sources of data become available as new tools make them readable to machines, analysis in new ways is possible with new kinds algorithms, and the time-cost of asking certain kinds of questions decreases, opening up new avenues for research. In this paper, I make an attempt to leverage these benefits to answer the question, 'where did the high skilled workers in electricity related occupations in Sweden come from?'. I detail the process of structuring and analyzing two novel data sources, a set of biographical dictionaries and an industrial catalogue, in order to answer this question.
+
+In the quest to understand the dynamics of economic development and technological advancement, previous research by this author and his supervisors shed light on the transformative impact of early electricity access in Sweden. "Power for progress: The impact of electricity on individual labor market outcomes" [@jayes_power_2024] revealed how the advent of electricity in certain parishes led to positive economic outcomes: a boost in income levels, reduced inequality, and the maintenance of employment levels despite the advent of labor-saving technology. A particularly striking observation was the tendency of workers in these early electrified parishes to remain in their birthplaces, hinting at a newfound economic vibrancy stemming from the income spillovers into sectors not affected by the new technology.
 
 Building on these insights, the present paper delves deeper into the human aspect of this technological revolution. It poses a critical question: Who were the key figures driving this change? Were they local talents nurtured by the opportunities at hand, or did they represent a wave of skilled individuals drawn from afar, lured by the pioneering spirit of these early electrified areas?
 
 To answer this, the investigation leverages two novel and rich data sources. The first, "Vem är Vem", is a comprehensive set of biographical dictionaries containing the profiles of 75,000 notable Swedes active between 1945 and 1968. The second, the "Svensk Industrikalender" or Swedish Industrial Calendar of 1947, offers an exhaustive catalogue of industrial firms, detailing their activities, workforce, and financial metrics.
 
-I digitize and structure these sources in order to analyze the changing patterns of the Swedish labour market in the middle of the 20th century in light of electrification. Our findings challenge our prior expectations. Contrary to the belief that local talent pools predominantly fueled the technological boom, I observe a pattern of geographical mobility among the highly educated and skilled professionals in electricity-related fields. These individuals, pivotal to overseeing and advancing the electricity sector, often sought education and opportunities far from their origins. This suggests a bifurcated labor market: local talent predominantly filled the burgeoning middle-skilled roles within the electricity sector, while the top-tier skilled professionals were more transient, moving towards educational and occupational opportunities. This paper explores the implications of this labor market structure for the economic development patterns witnessed during Sweden's second Industrial Revolution.
+I digitize and structure these sources in order to analyze the changing patterns of the Swedish labour market in the middle of the 20th century in light of electrification. The findings challenge my prior expectations. Contrary to the belief that local talent pools predominantly fueled the technological boom, I observe a pattern of geographical mobility among the highly educated and skilled professionals in electricity-related fields. These individuals, pivotal to overseeing and advancing the electricity sector, often sought education and opportunities far from their origins. This suggests a bifurcated labor market: local talent predominantly filled the burgeoning middle-skilled roles within the electricity sector, while the top-tier skilled professionals were more transient, moving towards educational and occupational opportunities. This paper explores the implications of this labor market structure for the economic development patterns witnessed during Sweden's second Industrial Revolution.
 
-These findings, tentative as they are, have real world value. As we seek to understand what drove the dynamism during the age of electrification in Sweden, we are better equipped to shape policy today that seeks to revitalize deindustrializing areas across the developed world and help the developing world harness new technologies for sustainable growth. In addition, the methodologies employed to structure and analyze archival data can provide a template for future research using similar materials. [fix up]
+These findings, tentative as they are, have real world value. As we seek to understand what drove the dynamism during the age of electrification in Sweden, we are better equipped to shape policy today that seeks to revitalize deindustrializing areas across the developed world and help the developing world harness new technologies for sustainable growth. In addition, the methodologies employed to structure and analyze archival data can provide a template for future research using similar materials.
 
-The paper is laid out as follows: the current research question is placed in context, the sources are explained, followed by their digitization and structuring process. I then lay out some descriptive statistics and tentative findings regarding the patterns of movement for the high skilled electricity related workers, compared with other professionals I observe in the biographical dictionaries.
+The paper is laid out as follows: the current research question is placed in context, the sources are explained, followed by their digitization and structuring process. I then discuss the classification task involved in assigning engineers to a sector based on their occupational trajectories. I then lay out some descriptive statistics and tentative findings regarding the patterns of movement for the high skilled electricity related workers, compared with other professionals I observe in the biographical dictionaries.
 
 ## Related Literature
 
+This paper ties into three strands of literature; two in content and one in methodology. The first strand focusses on the use of individual level biographic data in economic history, at scale. The second strand focusses on the importance of human capital in economic development. The third strand focusses on the use of new tools to structure and analyze historical data.
+
+### The use of individual level biographic data in economic history at scale
+
+A number of recent papers have made use of biographic data in innovative ways. @ford2023not uses biographies of high school graduates compiled at the time of their school reunions to create a far richer measure of human capital than the conventional measure, number of years of schooling, alone. These biographies are "mini-CVs", containing information about the school leaver's grades, their occupational trajectory, and their family background. These are used to create an innovative approach to measuring `upper tail knowledge`.
+
+
+
+### The importance of human capital in economic development
+
 The question of where the high skilled workers in electricity related occupations in Sweden came from is important in order to understand the economic dynamism of that era. As such, it ties into a wealth of research on technological change and the labour market, which I review briefly here.
 
-The historical adaptability of labor markets to technological change is well-documented. In their study of the U.S. labor market's response to the automation of telephone operation, Feigenbaum and Gross @Feigenbaum2020 demonstrate how technological displacement in one sector led to increased demand in others, suggesting an inherent resilience in labor markets. This finding is particularly pertinent to our exploration of Sweden's electrification, as it indicates a potential for both displacement and opportunity in the face of technological change.
+The historical adaptability of labor markets to technological change is well-documented. In their study of the U.S. labor market's response to the automation of telephone operation, Feigenbaum and Gross @Feigenbaum2020 demonstrate how technological displacement in one sector led to increased demand in others, suggesting an inherent resilience in labor markets. This finding is particularly pertinent to this exploration of Sweden's electrification, as it indicates a potential for both displacement and opportunity in the face of technological change.
 
-Goldin's extensive analysis of labor markets in the 20th century provides a comprehensive backdrop to our study [-@Goldin1994; -@Goldin1998]. Her work highlights critical shifts in labor participation, wage structures, and job security, reflecting the complex interplay between societal changes and labor market dynamics. These insights are crucial for understanding how shifts in human capital, like those during Sweden's electrification period, contribute to broader economic outcomes.
+Goldin's extensive analysis of labor markets in the 20th century provides a comprehensive backdrop to this study [-@Goldin1994; -@Goldin1998]. Her work highlights critical shifts in labor participation, wage structures, and job security, reflecting the complex interplay between societal changes and labor market dynamics. These insights are crucial for understanding how shifts in human capital, like those during Sweden's electrification period, contribute to broader economic outcomes.
 
 The impact of the Digital Revolution on labor markets, as reviewed in the Oxford Review of Economic Policy, is also salient to our study [@Adams2018; @Goos2018]. These articles underscore the emergence of job polarization and the crucial role of policy interventions in ensuring equitable benefits from technological advancements. This perspective is instrumental in understanding the differential impacts of electrification in Sweden, especially in terms of job creation and labor market segmentation.
 
@@ -55,6 +67,10 @@ New technologies require new skills. Mokyr's research provides insights into the
 Not every innovator needs higher education. Mokyr's perspective is crucial in understanding the dynamics of technological development and economic growth, emphasizing the collaborative efforts between well-educated scientists and highly skilled artisans. This interplay highlights the importance of practical skills, theoretical knowledge, and their combined impact on technological progress. For example, figures like metallurgist Henry Cort, who collaborated with scientists despite lacking formal scientific training, exemplify the productive synergy between different forms of expertise in this era [@Mokyr2017Journal].
 
 In this paper, I want to find out where the individuals came from who enabled the technological development that was associated with Sweden becoming richer and more equal. Did they come from the areas around where the technology was developed / adopted, learning skills on the job? Or did they get formal education at one of Sweden's universities and then bring these skills to the hubs of technology? Should we praise the people, or the place?
+
+### The use of new tools to structure and analyze historical data
+
+The third strand of literature that this paper ties into is the use of new tools to structure and analyze historical data. A breakthrough paper in this vein that bridges the gap between cutting-edge computer science literature and the use cases of applied economists is by @correia2023digitizing. 
 
 ## Source material
 
@@ -302,9 +318,17 @@ knitr::include_graphics("assets/map_most_common_businesses.png")
 
 ![](assets/hisco_counts.png)
 
+<br>
+
 [We can show that of those in our sample, a great deal are general managers of firms, as well as doctos, dentists, teachers and priests. Engineers make up a large other component.]
 
+<br>
+
 ![](assets/eee_map.png)
+
+<br>
+
+[We can show that electrical and electronic engineering technicians move the furthest from the birthplace to their places of education, and further still from their place of education to their current location. Not the case that local lads were filling the roles for skilled workers in these new occupations - kinda interesting!]
 
 ![](assets/distances_comparison.png)
 
