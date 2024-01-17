@@ -3,5 +3,8 @@
         "editor.defaultFormatter": "ms-python.autopep8"
     },
     "python.formatting.provider": "none",
-    "window.autoDetectColorScheme": true
+    "window.autoDetectColorScheme": true,
+    "cSpell.words": [
+        "geocoded"
+    ]
 }
