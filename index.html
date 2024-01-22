@@ -447,6 +447,7 @@ Jonathan Jayes - Lund University
 <li>It made individuals richer 💰🔋</li>
 <li>It lowered inequality 📉🤝</li>
 <li>It allowed structural change on the labor market 🔧💼</li>
+<li>Middle-skill workers were drawn from the local area to the new jobs 🏙🏃‍♀️</li>
 </ul></li>
 <li><p>What we want to know next:</p>
 <ul>
@@ -504,16 +505,12 @@ Jonathan Jayes - Lund University
 </div><div class="column" style="width:25%;">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="assets/vem_cover.png" style="width:100.0%"></p>
+<p><img data-src="assets/vem_page.png" style="width:100.0%"></p>
 </figure>
 </div>
 </div>
 </div>
 </section>
-<section id="vem-är-vem-example-page" class="slide level2">
-<h2>Vem är Vem? Example page</h2>
-
-<img data-src="assets/vem_page.png" style="width:100.0%" class="r-stretch quarto-figure-center"></section>
 <section id="vem-är-vem" class="slide level2">
 <h2>Vem är Vem?</h2>
 
@@ -620,254 +617,74 @@ Jonathan Jayes - Lund University
 </div>
 </div>
 </section>
-<section id="translate" class="slide level2">
-<h2>1. Translate 🤖</h2>
+<section id="structure-using-openai-api" class="slide level2">
+<h2>Structure using OpenAI API 🤖</h2>
 <h3 id="using-openais-gpt-3.5-chat-api">Using OpenAI’s GPT-3.5 chat API:</h3>
-<p>We tell the system “You are an expert in Swedish family history”</p>
-<p>Then we ask it to translate the Swedish text to English</p>
+<p>We provide the system a schema to structure the record in, e.g.&nbsp;keys.</p>
+<p>We provide the system the Swedish text</p>
+<p>We specify the JSON response format we want</p>
 <p><br></p>
+<div class="columns">
+<div class="column">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="kw">def</span> translate_and_structure_text(swedish_text):</span>
-<span id="cb1-2"><a href="#cb1-2"></a>    <span class="cf">try</span>:</span>
-<span id="cb1-3"><a href="#cb1-3"></a>        <span class="co"># Translate the Swedish text to English</span></span>
-<span id="cb1-4"><a href="#cb1-4"></a>        translate_prompt <span class="op">=</span> <span class="ss">f"Translate the following abbreviated Swedish biography to English: </span><span class="sc">{</span>swedish_text<span class="sc">}</span><span class="ss">"</span></span>
-<span id="cb1-5"><a href="#cb1-5"></a>        translation_response <span class="op">=</span> openai.ChatCompletion.create(</span>
-<span id="cb1-6"><a href="#cb1-6"></a>            model<span class="op">=</span><span class="st">"gpt-3.5-turbo"</span>,</span>
-<span id="cb1-7"><a href="#cb1-7"></a>            messages<span class="op">=</span>[</span>
-<span id="cb1-8"><a href="#cb1-8"></a>                {<span class="st">"role"</span>: <span class="st">"system"</span>, <span class="st">"content"</span>: <span class="st">"You are an expert on Swedish family history."</span>},</span>
-<span id="cb1-9"><a href="#cb1-9"></a>                {<span class="st">"role"</span>: <span class="st">"user"</span>, <span class="st">"content"</span>: <span class="ss">f"</span><span class="sc">{</span>translate_prompt<span class="sc">}</span><span class="ss">"</span>}</span>
-<span id="cb1-10"><a href="#cb1-10"></a>            ]</span>
-<span id="cb1-11"><a href="#cb1-11"></a>        )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a>schema <span class="op">=</span> {</span>
+<span id="cb1-2"><a href="#cb1-2"></a>    <span class="st">"type"</span>: <span class="st">"object"</span>,</span>
+<span id="cb1-3"><a href="#cb1-3"></a>    <span class="st">"required"</span>: [</span>
+<span id="cb1-4"><a href="#cb1-4"></a>        <span class="st">"full_name"</span>,</span>
+<span id="cb1-5"><a href="#cb1-5"></a>        <span class="st">"location"</span>,</span>
+<span id="cb1-6"><a href="#cb1-6"></a>        <span class="st">"occupation"</span>,</span>
+<span id="cb1-7"><a href="#cb1-7"></a>        <span class="st">"birth_details"</span>,</span>
+<span id="cb1-8"><a href="#cb1-8"></a>        <span class="st">"education"</span>,</span>
+<span id="cb1-9"><a href="#cb1-9"></a>        <span class="st">"career"</span>,</span>
+<span id="cb1-10"><a href="#cb1-10"></a>        <span class="st">"family"</span>,</span>
+<span id="cb1-11"><a href="#cb1-11"></a>    ],</span>
+<span id="cb1-12"><a href="#cb1-12"></a>    <span class="st">"properties"</span>: {</span>
+<span id="cb1-13"><a href="#cb1-13"></a>        <span class="st">"full_name"</span>: {<span class="st">"type"</span>: <span class="st">"string"</span>},</span>
+<span id="cb1-14"><a href="#cb1-14"></a>        <span class="st">"location"</span>: {<span class="st">"type"</span>: <span class="st">"string"</span>},</span>
+<span id="cb1-15"><a href="#cb1-15"></a>        <span class="st">"occupation"</span>: {<span class="st">"type"</span>: <span class="st">"string"</span>},</span>
+<span id="cb1-16"><a href="#cb1-16"></a>        <span class="st">"birth_details"</span>: {</span>
+<span id="cb1-17"><a href="#cb1-17"></a>            <span class="st">"type"</span>: <span class="st">"object"</span>,</span>
+<span id="cb1-18"><a href="#cb1-18"></a>            <span class="st">"properties"</span>: {</span>
+<span id="cb1-19"><a href="#cb1-19"></a>                <span class="st">"date"</span>: {<span class="st">"type"</span>: <span class="st">"string"</span>},</span>
+<span id="cb1-20"><a href="#cb1-20"></a>                <span class="st">"place"</span>: {<span class="st">"type"</span>: <span class="st">"string"</span>},</span>
+<span id="cb1-21"><a href="#cb1-21"></a>                <span class="st">"parents"</span>: {<span class="st">"type"</span>: <span class="st">"string"</span>},</span>
+<span id="cb1-22"><a href="#cb1-22"></a>            },</span>
+<span id="cb1-23"><a href="#cb1-23"></a>            <span class="st">"required"</span>: [<span class="st">"date"</span>, <span class="st">"place"</span>],</span>
+<span id="cb1-24"><a href="#cb1-24"></a>        },}}<span class="st">"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section>
-<section id="structure" class="slide level2">
-<h2>2. Structure 🤖</h2>
-
-<img data-src="assets/schema.png" class="r-stretch"></section>
-<section id="structure-1" class="slide level2">
-<h2>2. Structure 🤖</h2>
-<h3 id="using-openais-gpt-3.5-chat-api-1">Using OpenAI’s GPT-3.5 chat API:</h3>
-<p>We tell the system “You are an expert in Swedish family history and the Schema.org/Person format”</p>
-<p>We provide it the original Swedish and English translation, and ask it to structure the biography in Schema.org/Person format as a JSON object</p>
-<p><br></p>
+</div><div class="column">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a>structure_prompt <span class="op">=</span> <span class="ss">f"Given the original Swedish biography: </span><span class="sc">{</span>swedish_text<span class="sc">}</span><span class="ch">\n</span><span class="ss">And its English translation: </span><span class="sc">{</span>english_text<span class="sc">}</span><span class="ss">, Structure the biography in Schema.org/Person format as a JSON object. Include dates wherever possible. Only provide a  RFC8259 compliant JSON response."</span></span>
-<span id="cb2-2"><a href="#cb2-2"></a></span>
-<span id="cb2-3"><a href="#cb2-3"></a>structure_response <span class="op">=</span> openai.ChatCompletion.create(</span>
-<span id="cb2-4"><a href="#cb2-4"></a>    model<span class="op">=</span><span class="st">"gpt-3.5-turbo"</span>,</span>
-<span id="cb2-5"><a href="#cb2-5"></a>    messages<span class="op">=</span>[</span>
-<span id="cb2-6"><a href="#cb2-6"></a>        {<span class="st">"role"</span>: <span class="st">"system"</span>, <span class="st">"content"</span>: <span class="st">"You are an expert on Swedish family history and the Schema.org/Person format."</span>},</span>
-<span id="cb2-7"><a href="#cb2-7"></a>        {<span class="st">"role"</span>: <span class="st">"user"</span>, <span class="st">"content"</span>: <span class="ss">f"</span><span class="sc">{</span>structure_prompt<span class="sc">}</span><span class="ss">"</span>}</span>
-<span id="cb2-8"><a href="#cb2-8"></a>    ]</span>
-<span id="cb2-9"><a href="#cb2-9"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="kw">def</span> structure_biography_info(page_text):</span>
+<span id="cb2-2"><a href="#cb2-2"></a>    <span class="cf">try</span>:</span>
+<span id="cb2-3"><a href="#cb2-3"></a>        <span class="co"># Create a prompt for the system</span></span>
+<span id="cb2-4"><a href="#cb2-4"></a>        structure_prompt <span class="op">=</span> <span class="ss">f"Task: read the schema and return RFC compliant JSON information about the Swedish individuals from the 1950 biographical dictionary 'Vem är Vem' that is provided below. Use a numeric index for each biography in your JSON output and return information about all of them, including all career information available. Keep the biographic descriptions in Swedish and remove any abbreviations based on your knowledge, e.g. 'fil. kand.' is 'filosofie kandidat', and 'Skarab. l.' is 'Skaraborgs Län'. Put years in full based on context. Put dates in dd/mm/yyyy format where possible. If there is no information for a key, leave it out. If there is no information for a required key, put NULL as the value.</span><span class="ch">\n</span><span class="ss">Here is the schema: </span><span class="sc">{</span>schema<span class="sc">}</span><span class="ss">.</span><span class="ch">\n</span><span class="ss">Here is the text: </span><span class="sc">{</span>page_text<span class="sc">}</span><span class="ss">. Go!"</span></span>
+<span id="cb2-5"><a href="#cb2-5"></a>        structure_response <span class="op">=</span> client.chat.completions.create(</span>
+<span id="cb2-6"><a href="#cb2-6"></a>            model<span class="op">=</span><span class="st">"gpt-3.5-turbo-1106"</span>,</span>
+<span id="cb2-7"><a href="#cb2-7"></a>            response_format<span class="op">=</span>{<span class="st">"type"</span>: <span class="st">"json_object"</span>},</span>
+<span id="cb2-8"><a href="#cb2-8"></a>            messages<span class="op">=</span>[</span>
+<span id="cb2-9"><a href="#cb2-9"></a>                {</span>
+<span id="cb2-10"><a href="#cb2-10"></a>                    <span class="st">"role"</span>: <span class="st">"system"</span>,</span>
+<span id="cb2-11"><a href="#cb2-11"></a>                    <span class="st">"content"</span>: <span class="st">"You are an expert on Swedish biographies."</span>,</span>
+<span id="cb2-12"><a href="#cb2-12"></a>                },</span>
+<span id="cb2-13"><a href="#cb2-13"></a>                {<span class="st">"role"</span>: <span class="st">"user"</span>, <span class="st">"content"</span>: <span class="ss">f"</span><span class="sc">{</span>structure_prompt<span class="sc">}</span><span class="ss">"</span>},</span>
+<span id="cb2-14"><a href="#cb2-14"></a>            ],</span>
+<span id="cb2-15"><a href="#cb2-15"></a>        )</span>
+<span id="cb2-16"><a href="#cb2-16"></a></span>
+<span id="cb2-17"><a href="#cb2-17"></a>        structured_biography_info <span class="op">=</span> json.loads(</span>
+<span id="cb2-18"><a href="#cb2-18"></a>            structure_response.choices[<span class="dv">0</span>].message.content</span>
+<span id="cb2-19"><a href="#cb2-19"></a>        )</span>
+<span id="cb2-20"><a href="#cb2-20"></a></span>
+<span id="cb2-21"><a href="#cb2-21"></a>        <span class="cf">return</span> structured_biography_info</span>
+<span id="cb2-22"><a href="#cb2-22"></a></span>
+<span id="cb2-23"><a href="#cb2-23"></a>    <span class="cf">except</span> <span class="pp">Exception</span> <span class="im">as</span> e:</span>
+<span id="cb2-24"><a href="#cb2-24"></a>        <span class="bu">print</span>(<span class="ss">f"Error in structure_biography_info: </span><span class="sc">{</span>e<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb2-25"><a href="#cb2-25"></a>        <span class="cf">return</span> <span class="va">None</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section>
-<section id="augment" class="slide level2">
-<h2>3. Augment 🤖</h2>
-<h3 id="using-openais-gpt-4-chat-api">Using OpenAI’s GPT-4 chat API:</h3>
-<p>We create python code to geocode any addresses in the biography (in this example), as well as flagging the highest level of education, and extract any mention of patents or inventions in the biography.</p>
-<p><br></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="kw">def</span> geocode_birthplace(birthplace, geolocator, geocoded_cache):</span>
-<span id="cb3-2"><a href="#cb3-2"></a>    <span class="cf">if</span> <span class="bu">isinstance</span>(birthplace, <span class="bu">dict</span>):</span>
-<span id="cb3-3"><a href="#cb3-3"></a>        <span class="cf">if</span> <span class="st">"name"</span> <span class="kw">in</span> birthplace:</span>
-<span id="cb3-4"><a href="#cb3-4"></a>            birthplace_name <span class="op">=</span> birthplace[<span class="st">"name"</span>]</span>
-<span id="cb3-5"><a href="#cb3-5"></a>        <span class="cf">elif</span> <span class="st">"address"</span> <span class="kw">in</span> birthplace <span class="kw">and</span> <span class="st">"addressLocality"</span> <span class="kw">in</span> birthplace[<span class="st">"address"</span>]:</span>
-<span id="cb3-6"><a href="#cb3-6"></a>            birthplace_name <span class="op">=</span> birthplace[<span class="st">"address"</span>][<span class="st">"addressLocality"</span>]</span>
-<span id="cb3-7"><a href="#cb3-7"></a>        <span class="cf">else</span>:</span>
-<span id="cb3-8"><a href="#cb3-8"></a>            <span class="bu">print</span>(<span class="ss">f"Invalid birthplace data: </span><span class="sc">{</span>birthplace<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb3-9"><a href="#cb3-9"></a>            <span class="cf">return</span> <span class="va">None</span></span>
-<span id="cb3-10"><a href="#cb3-10"></a>    <span class="cf">elif</span> <span class="bu">isinstance</span>(birthplace, <span class="bu">str</span>):</span>
-<span id="cb3-11"><a href="#cb3-11"></a>        birthplace_name <span class="op">=</span> birthplace</span>
-<span id="cb3-12"><a href="#cb3-12"></a>    <span class="cf">else</span>:</span>
-<span id="cb3-13"><a href="#cb3-13"></a>        <span class="bu">print</span>(<span class="ss">f"Invalid birthplace data: </span><span class="sc">{</span>birthplace<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb3-14"><a href="#cb3-14"></a>        <span class="cf">return</span> <span class="va">None</span></span>
-<span id="cb3-15"><a href="#cb3-15"></a></span>
-<span id="cb3-16"><a href="#cb3-16"></a>    <span class="cf">if</span> birthplace_name <span class="kw">not</span> <span class="kw">in</span> geocoded_cache:</span>
-<span id="cb3-17"><a href="#cb3-17"></a>        <span class="cf">try</span>:</span>
-<span id="cb3-18"><a href="#cb3-18"></a>            location <span class="op">=</span> geolocator.geocode(birthplace_name)</span>
-<span id="cb3-19"><a href="#cb3-19"></a>            <span class="cf">if</span> location:</span>
-<span id="cb3-20"><a href="#cb3-20"></a>                geocoded_cache[birthplace_name] <span class="op">=</span> {</span>
-<span id="cb3-21"><a href="#cb3-21"></a>                    <span class="st">"latitude"</span>: location.latitude,</span>
-<span id="cb3-22"><a href="#cb3-22"></a>                    <span class="st">"longitude"</span>: location.longitude</span>
-<span id="cb3-23"><a href="#cb3-23"></a>                }</span>
-<span id="cb3-24"><a href="#cb3-24"></a>            time.sleep(<span class="dv">1</span>)  <span class="co"># Add a 1-second delay between geocoding requests</span></span>
-<span id="cb3-25"><a href="#cb3-25"></a>        <span class="cf">except</span> <span class="pp">Exception</span> <span class="im">as</span> e:</span>
-<span id="cb3-26"><a href="#cb3-26"></a>            <span class="bu">print</span>(<span class="ss">f"Error geocoding birthplace </span><span class="sc">{</span>birthplace_name<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>e<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb3-27"><a href="#cb3-27"></a></span>
-<span id="cb3-28"><a href="#cb3-28"></a>    <span class="cf">return</span> geocoded_cache.get(birthplace_name)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="output" class="slide level2">
-<h2>Output</h2>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a>{</span>
-<span id="cb4-2"><a href="#cb4-2"></a>    <span class="st">"original"</span>: <span class="st">"Lund, Karl Gustaf, överingenjör, Varberg, f. 22/7/93 i Hille, Gävleb. 1., av brukstj :m. Ferdinand L. o. Maria Andersson. G. 36 m. Sigrid Johansson. Barn: Ingvar f. 38, Lennart 42. — Ex. v. bergssk. i Filipstad 17, spec:-stud. v. KTH (B) 20-22, stud. v. me-tallogr. inst. o. Sthlms högsk. 21-22. Kemist v. Strömsnäs Järnverks A-B, Degerfors, 18-20, metallurg o. kemist v. Westinghouse Electric &amp; Manuf. Co., East Pittsburgh, Pa, USA, 23-26 o. 28-29, chefsmetallurg v. Laclede Steel^Co., Ahon, 111., USA, 27, hytt-o. stålv.ing. v. A-B Iggesunds Bruk 29-31, platschef v. Gunnebo Bruks Nya A-B, Varbergsverket, sed. 31. Led. av drätselkamm., v. ordf. v. ekonomi-avd., suppl. i styr. f. elverket, huv:-man i Varbergs Sparbank, arb :giv. repr. i länsarb:ndns kretsråd, led. av styr. f. Varbergs luftsk ifören., sekr. i Varbergs högerfören., ordfs i järnv. sjukkassa o. Plant :sällsk. Småfågl. Vänner. Res. t. Tyskl. 21, 2^ 23, 30 o. 36, Danm., Tjeckoslov. 21, 22, 23, Österr. 21, USA 23-29. Skr.: Some fundamental factors for obtaining sharp thermal curves (Träns. Am. Soc. for Steel Treating, tills. m. C. Benedicks o. W. H. Dearden 25), Nutida fabrikation av sågblad, sågklingor o. maskinknivar (Trävaruind. 31). Hob-bies: jakt o. fiske."</span>,</span>
-<span id="cb4-3"><a href="#cb4-3"></a>    <span class="st">"translated"</span>: <span class="st">"Lund, Karl Gustaf, chief engineer, Varberg, born on July 22, 1893, in Hille, Gävleborgs län, Sweden, son of factory worker Ferdinand L. and Maria Andersson. Married in 1936 to Sigrid Johansson. Children: Ingvar (born 1938), Lennart (born 1942). — Graduated from Bergsskolan in Filipstad in 1917, specialized studies at the Royal Institute of Technology (KTH) from 1920 to 1922, studied at the Institute of Metallurgy and Stockholm University in 1921-1922. Chemist at Strömsnäs Järnverks A-B in Degerfors from 1918 to 1920."</span>,</span>
-<span id="cb4-4"><a href="#cb4-4"></a>    <span class="st">"structured"</span>: {</span>
-<span id="cb4-5"><a href="#cb4-5"></a>            <span class="st">"@context"</span>: <span class="st">"http://schema.org"</span>,</span>
-<span id="cb4-6"><a href="#cb4-6"></a>            <span class="st">"@type"</span>: <span class="st">"Person"</span>,</span>
-<span id="cb4-7"><a href="#cb4-7"></a>            <span class="st">"name"</span>: <span class="st">"Karl Gustaf Lund"</span>,</span>
-<span id="cb4-8"><a href="#cb4-8"></a>            <span class="st">"givenName"</span>: <span class="st">"Karl Gustaf"</span>,</span>
-<span id="cb4-9"><a href="#cb4-9"></a>            <span class="st">"familyName"</span>: <span class="st">"Lund"</span>,</span>
-<span id="cb4-10"><a href="#cb4-10"></a>            <span class="st">"gender"</span>: <span class="st">"Male"</span>,</span>
-<span id="cb4-11"><a href="#cb4-11"></a>            <span class="st">"birthDate"</span>: <span class="st">"1893-07-22"</span>,</span>
-<span id="cb4-12"><a href="#cb4-12"></a>            <span class="st">"birthPlace"</span>: {</span>
-<span id="cb4-13"><a href="#cb4-13"></a>                <span class="st">"@type"</span>: <span class="st">"Place"</span>,</span>
-<span id="cb4-14"><a href="#cb4-14"></a>                <span class="st">"address"</span>: {</span>
-<span id="cb4-15"><a href="#cb4-15"></a>                <span class="st">"@type"</span>: <span class="st">"PostalAddress"</span>,</span>
-<span id="cb4-16"><a href="#cb4-16"></a>                <span class="st">"addressLocality"</span>: <span class="st">"Hille"</span>,</span>
-<span id="cb4-17"><a href="#cb4-17"></a>                <span class="st">"addressRegion"</span>: <span class="st">"Gävleborgs län"</span>,</span>
-<span id="cb4-18"><a href="#cb4-18"></a>                <span class="st">"addressCountry"</span>: <span class="st">"Sweden"</span></span>
-<span id="cb4-19"><a href="#cb4-19"></a>                }</span>
-<span id="cb4-20"><a href="#cb4-20"></a>            },</span>
-<span id="cb4-21"><a href="#cb4-21"></a>            <span class="st">"nationality"</span>: <span class="st">"Swedish"</span>,</span>
-<span id="cb4-22"><a href="#cb4-22"></a>            <span class="st">"parent"</span>: [</span>
-<span id="cb4-23"><a href="#cb4-23"></a>                {</span>
-<span id="cb4-24"><a href="#cb4-24"></a>                <span class="st">"@type"</span>: <span class="st">"Person"</span>,</span>
-<span id="cb4-25"><a href="#cb4-25"></a>                <span class="st">"name"</span>: <span class="st">"Ferdinand L."</span>,</span>
-<span id="cb4-26"><a href="#cb4-26"></a>                <span class="st">"jobTitle"</span>: <span class="st">"Factory Worker"</span></span>
-<span id="cb4-27"><a href="#cb4-27"></a>                },</span>
-<span id="cb4-28"><a href="#cb4-28"></a>                {</span>
-<span id="cb4-29"><a href="#cb4-29"></a>                <span class="st">"@type"</span>: <span class="st">"Person"</span>,</span>
-<span id="cb4-30"><a href="#cb4-30"></a>                <span class="st">"name"</span>: <span class="st">"Maria Andersson"</span></span>
-<span id="cb4-31"><a href="#cb4-31"></a>                }</span>
-<span id="cb4-32"><a href="#cb4-32"></a>            ],</span>
-<span id="cb4-33"><a href="#cb4-33"></a>            <span class="st">"spouse"</span>: {</span>
-<span id="cb4-34"><a href="#cb4-34"></a>                <span class="st">"@type"</span>: <span class="st">"Person"</span>,</span>
-<span id="cb4-35"><a href="#cb4-35"></a>                <span class="st">"name"</span>: <span class="st">"Sigrid Johansson"</span>,</span>
-<span id="cb4-36"><a href="#cb4-36"></a>                <span class="st">"marriageDate"</span>: <span class="st">"1936"</span></span>
-<span id="cb4-37"><a href="#cb4-37"></a>            },</span>
-<span id="cb4-38"><a href="#cb4-38"></a>            <span class="st">"children"</span>: [</span>
-<span id="cb4-39"><a href="#cb4-39"></a>                {</span>
-<span id="cb4-40"><a href="#cb4-40"></a>                <span class="st">"@type"</span>: <span class="st">"Person"</span>,</span>
-<span id="cb4-41"><a href="#cb4-41"></a>                <span class="st">"name"</span>: <span class="st">"Ingvar"</span>,</span>
-<span id="cb4-42"><a href="#cb4-42"></a>                <span class="st">"birthDate"</span>: <span class="st">"1938"</span></span>
-<span id="cb4-43"><a href="#cb4-43"></a>                },</span>
-<span id="cb4-44"><a href="#cb4-44"></a>                {</span>
-<span id="cb4-45"><a href="#cb4-45"></a>                <span class="st">"@type"</span>: <span class="st">"Person"</span>,</span>
-<span id="cb4-46"><a href="#cb4-46"></a>                <span class="st">"name"</span>: <span class="st">"Lennart"</span>,</span>
-<span id="cb4-47"><a href="#cb4-47"></a>                <span class="st">"birthDate"</span>: <span class="st">"1942"</span></span>
-<span id="cb4-48"><a href="#cb4-48"></a>                }</span>
-<span id="cb4-49"><a href="#cb4-49"></a>            ],</span>
-<span id="cb4-50"><a href="#cb4-50"></a>            <span class="st">"alumniOf"</span>: [</span>
-<span id="cb4-51"><a href="#cb4-51"></a>                {</span>
-<span id="cb4-52"><a href="#cb4-52"></a>                <span class="st">"@type"</span>: <span class="st">"EducationalOrganization"</span>,</span>
-<span id="cb4-53"><a href="#cb4-53"></a>                <span class="st">"name"</span>: <span class="st">"Bergsskolan in Filipstad"</span>,</span>
-<span id="cb4-54"><a href="#cb4-54"></a>                <span class="st">"graduationDate"</span>: <span class="st">"1917"</span></span>
-<span id="cb4-55"><a href="#cb4-55"></a>                },</span>
-<span id="cb4-56"><a href="#cb4-56"></a>                {</span>
-<span id="cb4-57"><a href="#cb4-57"></a>                <span class="st">"@type"</span>: <span class="st">"EducationalOrganization"</span>,</span>
-<span id="cb4-58"><a href="#cb4-58"></a>                <span class="st">"name"</span>: <span class="st">"Royal Institute of Technology (KTH)"</span>,</span>
-<span id="cb4-59"><a href="#cb4-59"></a>                <span class="st">"attendancePeriod"</span>: <span class="st">"1920-1922"</span></span>
-<span id="cb4-60"><a href="#cb4-60"></a>                },</span>
-<span id="cb4-61"><a href="#cb4-61"></a>                {</span>
-<span id="cb4-62"><a href="#cb4-62"></a>                <span class="st">"@type"</span>: <span class="st">"EducationalOrganization"</span>,</span>
-<span id="cb4-63"><a href="#cb4-63"></a>                <span class="st">"name"</span>: <span class="st">"Institute of Metallurgy and Stockholm University"</span>,</span>
-<span id="cb4-64"><a href="#cb4-64"></a>                <span class="st">"attendancePeriod"</span>: <span class="st">"1921-1922"</span></span>
-<span id="cb4-65"><a href="#cb4-65"></a>                }</span>
-<span id="cb4-66"><a href="#cb4-66"></a>            ],</span>
-<span id="cb4-67"><a href="#cb4-67"></a>            <span class="st">"worksFor"</span>: [</span>
-<span id="cb4-68"><a href="#cb4-68"></a>                {</span>
-<span id="cb4-69"><a href="#cb4-69"></a>                <span class="st">"@type"</span>: <span class="st">"Organization"</span>,</span>
-<span id="cb4-70"><a href="#cb4-70"></a>                <span class="st">"name"</span>: <span class="st">"Strömsnäs Järnverks A-B"</span>,</span>
-<span id="cb4-71"><a href="#cb4-71"></a>                <span class="st">"jobTitle"</span>: <span class="st">"Chemist"</span>,</span>
-<span id="cb4-72"><a href="#cb4-72"></a>                <span class="st">"employmentPeriod"</span>: <span class="st">"1918-1920"</span></span>
-<span id="cb4-73"><a href="#cb4-73"></a>                },</span>
-<span id="cb4-74"><a href="#cb4-74"></a>                {</span>
-<span id="cb4-75"><a href="#cb4-75"></a>                <span class="st">"@type"</span>: <span class="st">"Organization"</span>,</span>
-<span id="cb4-76"><a href="#cb4-76"></a>                <span class="st">"name"</span>: <span class="st">"Westinghouse Electric &amp; Manufacturing Co."</span>,</span>
-<span id="cb4-77"><a href="#cb4-77"></a>                <span class="st">"jobTitle"</span>: <span class="st">"Metallurgist and Chemist"</span>,</span>
-<span id="cb4-78"><a href="#cb4-78"></a>                <span class="st">"employmentPeriod"</span>: <span class="st">"1923-1926, 1928-1929"</span>,</span>
-<span id="cb4-79"><a href="#cb4-79"></a>                <span class="st">"location"</span>: <span class="st">"East Pittsburgh, PA, USA"</span></span>
-<span id="cb4-80"><a href="#cb4-80"></a>                },</span>
-<span id="cb4-81"><a href="#cb4-81"></a>                {</span>
-<span id="cb4-82"><a href="#cb4-82"></a>                <span class="st">"@type"</span>: <span class="st">"Organization"</span>,</span>
-<span id="cb4-83"><a href="#cb4-83"></a>                <span class="st">"name"</span>: <span class="st">"Laclede Steel Co."</span>,</span>
-<span id="cb4-84"><a href="#cb4-84"></a>                <span class="st">"jobTitle"</span>: <span class="st">"Chief Metallurgist"</span>,</span>
-<span id="cb4-85"><a href="#cb4-85"></a>                <span class="st">"employmentPeriod"</span>: <span class="st">"1927"</span>,</span>
-<span id="cb4-86"><a href="#cb4-86"></a>                <span class="st">"location"</span>: <span class="st">"Alton, Illinois, USA"</span></span>
-<span id="cb4-87"><a href="#cb4-87"></a>                },</span>
-<span id="cb4-88"><a href="#cb4-88"></a>                {</span>
-<span id="cb4-89"><a href="#cb4-89"></a>                <span class="st">"@type"</span>: <span class="st">"Organization"</span>,</span>
-<span id="cb4-90"><a href="#cb4-90"></a>                <span class="st">"name"</span>: <span class="st">"A-B Iggesunds Bruk"</span>,</span>
-<span id="cb4-91"><a href="#cb4-91"></a>                <span class="st">"jobTitle"</span>: <span class="st">"Furnace and Steelworks Engineer"</span>,</span>
-<span id="cb4-92"><a href="#cb4-92"></a>                <span class="st">"employmentPeriod"</span>: <span class="st">"1929-1931"</span></span>
-<span id="cb4-93"><a href="#cb4-93"></a>                },</span>
-<span id="cb4-94"><a href="#cb4-94"></a>                {</span>
-<span id="cb4-95"><a href="#cb4-95"></a>                <span class="st">"@type"</span>: <span class="st">"Organization"</span>,</span>
-<span id="cb4-96"><a href="#cb4-96"></a>                <span class="st">"name"</span>: <span class="st">"Gunnebo Bruks Nya A-B, Varbergsverket"</span>,</span>
-<span id="cb4-97"><a href="#cb4-97"></a>                <span class="st">"jobTitle"</span>: <span class="st">"Site Manager"</span>,</span>
-<span id="cb4-98"><a href="#cb4-98"></a>                <span class="st">"employmentPeriod"</span>: <span class="st">"1931-present"</span></span>
-<span id="cb4-99"><a href="#cb4-99"></a>                }</span>
-<span id="cb4-100"><a href="#cb4-100"></a>            ],</span>
-<span id="cb4-101"><a href="#cb4-101"></a>            <span class="st">"memberOf"</span>: [</span>
-<span id="cb4-102"><a href="#cb4-102"></a>                {</span>
-<span id="cb4-103"><a href="#cb4-103"></a>                <span class="st">"@type"</span>: <span class="st">"Organization"</span>,</span>
-<span id="cb4-104"><a href="#cb4-104"></a>                <span class="st">"name"</span>: <span class="st">"Municipal Executive Committee"</span></span>
-<span id="cb4-105"><a href="#cb4-105"></a>                },</span>
-<span id="cb4-106"><a href="#cb4-106"></a>                {</span>
-<span id="cb4-107"><a href="#cb4-107"></a>                <span class="st">"@type"</span>: <span class="st">"Organization"</span>,</span>
-<span id="cb4-108"><a href="#cb4-108"></a>                <span class="st">"name"</span>: <span class="st">"Varbergs Sparbank"</span>,</span>
-<span id="cb4-109"><a href="#cb4-109"></a>                <span class="st">"position"</span>: <span class="st">"Chairman"</span></span>
-<span id="cb4-110"><a href="#cb4-110"></a>                },</span>
-<span id="cb4-111"><a href="#cb4-111"></a>                {</span>
-<span id="cb4-112"><a href="#cb4-112"></a>                <span class="st">"@type"</span>: <span class="st">"Organization"</span>,</span>
-<span id="cb4-113"><a href="#cb4-113"></a>                <span class="st">"name"</span>: <span class="st">"Varbergs Luftskyddsförening"</span>,</span>
-<span id="cb4-114"><a href="#cb4-114"></a>                <span class="st">"position"</span>: <span class="st">"Member of the Board"</span></span>
-<span id="cb4-115"><a href="#cb4-115"></a>                },</span>
-<span id="cb4-116"><a href="#cb4-116"></a>                {</span>
-<span id="cb4-117"><a href="#cb4-117"></a>                <span class="st">"@type"</span>: <span class="st">"Organization"</span>,</span>
-<span id="cb4-118"><a href="#cb4-118"></a>                <span class="st">"name"</span>: <span class="st">"Varbergs Högerförening"</span>,</span>
-<span id="cb4-119"><a href="#cb4-119"></a>                <span class="st">"position"</span>: <span class="st">"Secretary"</span></span>
-<span id="cb4-120"><a href="#cb4-120"></a>                }</span>
-<span id="cb4-121"><a href="#cb4-121"></a>            ],</span>
-<span id="cb4-122"><a href="#cb4-122"></a>            <span class="st">"hasOccupation"</span>: {</span>
-<span id="cb4-123"><a href="#cb4-123"></a>                <span class="st">"@type"</span>: <span class="st">"Occupation"</span>,</span>
-<span id="cb4-124"><a href="#cb4-124"></a>                <span class="st">"name"</span>: <span class="st">"Chief Engineer"</span></span>
-<span id="cb4-125"><a href="#cb4-125"></a>            },</span>
-<span id="cb4-126"><a href="#cb4-126"></a>            <span class="st">"address"</span>: {</span>
-<span id="cb4-127"><a href="#cb4-127"></a>                <span class="st">"@type"</span>: <span class="st">"PostalAddress"</span>,</span>
-<span id="cb4-128"><a href="#cb4-128"></a>                <span class="st">"addressLocality"</span>: <span class="st">"Varberg"</span>,</span>
-<span id="cb4-129"><a href="#cb4-129"></a>                <span class="st">"addressCountry"</span>: <span class="st">"Sweden"</span></span>
-<span id="cb4-130"><a href="#cb4-130"></a>            },</span>
-<span id="cb4-131"><a href="#cb4-131"></a>            <span class="st">"author"</span>: [</span>
-<span id="cb4-132"><a href="#cb4-132"></a>                {</span>
-<span id="cb4-133"><a href="#cb4-133"></a>                <span class="st">"@type"</span>: <span class="st">"CreativeWork"</span>,</span>
-<span id="cb4-134"><a href="#cb4-134"></a>                <span class="st">"name"</span>: <span class="st">"Some fundamental factors for obtaining sharp thermal curves"</span>,</span>
-<span id="cb4-135"><a href="#cb4-135"></a>                <span class="st">"publisher"</span>: <span class="st">"Transactions of the American Society for Steel Treating"</span>,</span>
-<span id="cb4-136"><a href="#cb4-136"></a>                <span class="st">"author"</span>: [<span class="st">"Karl Gustaf Lund"</span>, <span class="st">"C. Benedicks"</span>, <span class="st">"W. H. Dearden"</span>],</span>
-<span id="cb4-137"><a href="#cb4-137"></a>                <span class="st">"datePublished"</span>: <span class="st">"1925"</span></span>
-<span id="cb4-138"><a href="#cb4-138"></a>                },</span>
-<span id="cb4-139"><a href="#cb4-139"></a>                {</span>
-<span id="cb4-140"><a href="#cb4-140"></a>                <span class="st">"@type"</span>: <span class="st">"CreativeWork"</span>,</span>
-<span id="cb4-141"><a href="#cb4-141"></a>                <span class="st">"name"</span>: <span class="st">"Contemporary production of saw blades, circular saws, and machine knives"</span>,</span>
-<span id="cb4-142"><a href="#cb4-142"></a>                <span class="st">"publisher"</span>: <span class="st">"Timber Industry"</span>,</span>
-<span id="cb4-143"><a href="#cb4-143"></a>                <span class="st">"author"</span>: <span class="st">"Karl Gustaf Lund"</span>,</span>
-<span id="cb4-144"><a href="#cb4-144"></a>                <span class="st">"datePublished"</span>: <span class="st">"1931"</span></span>
-<span id="cb4-145"><a href="#cb4-145"></a>                }</span>
-<span id="cb4-146"><a href="#cb4-146"></a>            ],</span>
-<span id="cb4-147"><a href="#cb4-147"></a>            <span class="st">"interests"</span>: <span class="st">"Hunting and Fishing"</span></span>
-<span id="cb4-148"><a href="#cb4-148"></a>    }</span>
-<span id="cb4-149"><a href="#cb4-149"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="output-1" class="slide level2">
-<h2>Output</h2>
-
-<img data-src="index_files/figure-revealjs/unnamed-chunk-6-1.png" width="960" class="r-stretch"></section>
-<section id="birthplaces-mapped" class="slide level2">
-<h2>Birthplaces mapped</h2>
-<p>Sample of birthplaces of individuals with surnames beginning with A in Götaland 1948:</p>
-<div style="text-align: center">
-<div class="cell">
-<iframe src="assets/sweden_map_checkboxes.html" width="960" height="800" data-external="1">
-</iframe>
 </div>
 </div>
 </section>
-<section id="birthplaces-mapped-1" class="slide level2">
-<h2>Birthplaces mapped</h2>
+<section id="add-coordinates-to-firms-and-individuals" class="slide level2">
+<h2>Add coordinates to firms and individuals</h2>
 <p>Birthplaces of individuals who studied at Royal Tehcnical Institute (KTH) in <em>Who is Who in Industry and Business</em></p>
 <div style="text-align: center">
 <div class="cell">
@@ -902,529 +719,44 @@ Jonathan Jayes - Lund University
 </div>
 </div>
 </section>
-<section id="why-is-classification-important" class="slide level2">
-<h2>Why is classification important?</h2>
-<p>We often want to classify an observation into a group in order to make inference about the group.</p>
+<section id="two-part-classification-process" class="slide level2">
+<h2>Two-part classification process</h2>
+<p>Makes use of occupational title, e.g.&nbsp;“Civilingenjör, teknisk fysik” and workplace information, e.g.&nbsp;“Strömsnäs Järnverks A-B”.</p>
 <div class="cell">
-<div class="cell-output-display">
-
-<div id="zdixgykufr" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#zdixgykufr table {
-  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-#zdixgykufr thead, #zdixgykufr tbody, #zdixgykufr tfoot, #zdixgykufr tr, #zdixgykufr td, #zdixgykufr th {
-  border-style: none;
-}
-
-#zdixgykufr p {
-  margin: 0;
-  padding: 0;
-}
-
-#zdixgykufr .gt_table {
-  display: table;
-  border-collapse: collapse;
-  line-height: normal;
-  margin-left: auto;
-  margin-right: auto;
-  color: #333333;
-  font-size: 32px;
-  font-weight: normal;
-  font-style: normal;
-  background-color: #FFFFFF;
-  width: auto;
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #A8A8A8;
-  border-right-style: none;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #A8A8A8;
-  border-left-style: none;
-  border-left-width: 2px;
-  border-left-color: #D3D3D3;
-}
-
-#zdixgykufr .gt_caption {
-  padding-top: 4px;
-  padding-bottom: 4px;
-}
-
-#zdixgykufr .gt_title {
-  color: #333333;
-  font-size: 125%;
-  font-weight: initial;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-bottom-color: #FFFFFF;
-  border-bottom-width: 0;
-}
-
-#zdixgykufr .gt_subtitle {
-  color: #333333;
-  font-size: 85%;
-  font-weight: initial;
-  padding-top: 3px;
-  padding-bottom: 5px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-top-color: #FFFFFF;
-  border-top-width: 0;
-}
-
-#zdixgykufr .gt_heading {
-  background-color: #FFFFFF;
-  text-align: center;
-  border-bottom-color: #FFFFFF;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-}
-
-#zdixgykufr .gt_bottom_border {
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-}
-
-#zdixgykufr .gt_col_headings {
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-}
-
-#zdixgykufr .gt_col_heading {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: normal;
-  text-transform: inherit;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-  vertical-align: bottom;
-  padding-top: 5px;
-  padding-bottom: 6px;
-  padding-left: 5px;
-  padding-right: 5px;
-  overflow-x: hidden;
-}
-
-#zdixgykufr .gt_column_spanner_outer {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: normal;
-  text-transform: inherit;
-  padding-top: 0;
-  padding-bottom: 0;
-  padding-left: 4px;
-  padding-right: 4px;
-}
-
-#zdixgykufr .gt_column_spanner_outer:first-child {
-  padding-left: 0;
-}
-
-#zdixgykufr .gt_column_spanner_outer:last-child {
-  padding-right: 0;
-}
-
-#zdixgykufr .gt_column_spanner {
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  vertical-align: bottom;
-  padding-top: 5px;
-  padding-bottom: 5px;
-  overflow-x: hidden;
-  display: inline-block;
-  width: 100%;
-}
-
-#zdixgykufr .gt_spanner_row {
-  border-bottom-style: hidden;
-}
-
-#zdixgykufr .gt_group_heading {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  text-transform: inherit;
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-  vertical-align: middle;
-  text-align: left;
-}
-
-#zdixgykufr .gt_empty_group_heading {
-  padding: 0.5px;
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  vertical-align: middle;
-}
-
-#zdixgykufr .gt_from_md > :first-child {
-  margin-top: 0;
-}
-
-#zdixgykufr .gt_from_md > :last-child {
-  margin-bottom: 0;
-}
-
-#zdixgykufr .gt_row {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  margin: 10px;
-  border-top-style: solid;
-  border-top-width: 1px;
-  border-top-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-  vertical-align: middle;
-  overflow-x: hidden;
-}
-
-#zdixgykufr .gt_stub {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  text-transform: inherit;
-  border-right-style: solid;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#zdixgykufr .gt_stub_row_group {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  text-transform: inherit;
-  border-right-style: solid;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-  padding-left: 5px;
-  padding-right: 5px;
-  vertical-align: top;
-}
-
-#zdixgykufr .gt_row_group_first td {
-  border-top-width: 2px;
-}
-
-#zdixgykufr .gt_row_group_first th {
-  border-top-width: 2px;
-}
-
-#zdixgykufr .gt_summary_row {
-  color: #333333;
-  background-color: #FFFFFF;
-  text-transform: inherit;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#zdixgykufr .gt_first_summary_row {
-  border-top-style: solid;
-  border-top-color: #D3D3D3;
-}
-
-#zdixgykufr .gt_first_summary_row.thick {
-  border-top-width: 2px;
-}
-
-#zdixgykufr .gt_last_summary_row {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-}
-
-#zdixgykufr .gt_grand_summary_row {
-  color: #333333;
-  background-color: #FFFFFF;
-  text-transform: inherit;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#zdixgykufr .gt_first_grand_summary_row {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-top-style: double;
-  border-top-width: 6px;
-  border-top-color: #D3D3D3;
-}
-
-#zdixgykufr .gt_last_grand_summary_row_top {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-bottom-style: double;
-  border-bottom-width: 6px;
-  border-bottom-color: #D3D3D3;
-}
-
-#zdixgykufr .gt_striped {
-  background-color: rgba(128, 128, 128, 0.05);
-}
-
-#zdixgykufr .gt_table_body {
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-}
-
-#zdixgykufr .gt_footnotes {
-  color: #333333;
-  background-color: #FFFFFF;
-  border-bottom-style: none;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 2px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-}
-
-#zdixgykufr .gt_footnote {
-  margin: 0px;
-  font-size: 90%;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#zdixgykufr .gt_sourcenotes {
-  color: #333333;
-  background-color: #FFFFFF;
-  border-bottom-style: none;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 2px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-}
-
-#zdixgykufr .gt_sourcenote {
-  font-size: 90%;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#zdixgykufr .gt_left {
-  text-align: left;
-}
-
-#zdixgykufr .gt_center {
-  text-align: center;
-}
-
-#zdixgykufr .gt_right {
-  text-align: right;
-  font-variant-numeric: tabular-nums;
-}
-
-#zdixgykufr .gt_font_normal {
-  font-weight: normal;
-}
-
-#zdixgykufr .gt_font_bold {
-  font-weight: bold;
-}
-
-#zdixgykufr .gt_font_italic {
-  font-style: italic;
-}
-
-#zdixgykufr .gt_super {
-  font-size: 65%;
-}
-
-#zdixgykufr .gt_footnote_marks {
-  font-size: 75%;
-  vertical-align: 0.4em;
-  position: initial;
-}
-
-#zdixgykufr .gt_asterisk {
-  font-size: 100%;
-  vertical-align: 0;
-}
-
-#zdixgykufr .gt_indent_1 {
-  text-indent: 5px;
-}
-
-#zdixgykufr .gt_indent_2 {
-  text-indent: 10px;
-}
-
-#zdixgykufr .gt_indent_3 {
-  text-indent: 15px;
-}
-
-#zdixgykufr .gt_indent_4 {
-  text-indent: 20px;
-}
-
-#zdixgykufr .gt_indent_5 {
-  text-indent: 25px;
-}
-</style>
-<table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
-  <thead>
-    <tr class="gt_heading">
-      <td colspan="2" class="gt_heading gt_title gt_font_normal gt_bottom_border" style=""><strong>Green and brown skills to be grouped</strong></td>
-    </tr>
-    
-    <tr class="gt_col_headings">
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="Green Skills">Green Skills</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="Brown Skills">Brown Skills</th>
-    </tr>
-  </thead>
-  <tbody class="gt_table_body">
-    <tr><td headers="green_skills" class="gt_row gt_left" style="background-color: #B7E8B7;">Renewable Energy System Design</td>
-<td headers="brown_skills" class="gt_row gt_left" style="background-color: #E6B27E;">Petroleum Geology</td></tr>
-    <tr><td headers="green_skills" class="gt_row gt_left" style="background-color: #B7E8B7;">Sustainable Urban Planning</td>
-<td headers="brown_skills" class="gt_row gt_left" style="background-color: #E6B27E;">Oil and Gas Drilling Techniques</td></tr>
-    <tr><td headers="green_skills" class="gt_row gt_left" style="background-color: #B7E8B7;">Environmental Impact Assessment</td>
-<td headers="brown_skills" class="gt_row gt_left" style="background-color: #E6B27E;">Fossil Fuel Plant Operations</td></tr>
-    <tr><td headers="green_skills" class="gt_row gt_left" style="background-color: #B7E8B7;">Waste Management and Recycling</td>
-<td headers="brown_skills" class="gt_row gt_left" style="background-color: #E6B27E;">Pipeline Design and Maintenance</td></tr>
-    <tr><td headers="green_skills" class="gt_row gt_left" style="background-color: #B7E8B7;">Water Resource Management</td>
-<td headers="brown_skills" class="gt_row gt_left" style="background-color: #E6B27E;">Refinery Operations</td></tr>
-    <tr><td headers="green_skills" class="gt_row gt_left" style="background-color: #B7E8B7;">Sustainable Agriculture Practices</td>
-<td headers="brown_skills" class="gt_row gt_left" style="background-color: #E6B27E;">Coal Mining Techniques</td></tr>
-    <tr><td headers="green_skills" class="gt_row gt_left" style="background-color: #B7E8B7;">Energy Efficiency Analysis</td>
-<td headers="brown_skills" class="gt_row gt_left" style="background-color: #E6B27E;">Fossil Fuel Transportation Logistics</td></tr>
-    <tr><td headers="green_skills" class="gt_row gt_left" style="background-color: #B7E8B7;">Carbon Footprinting and Reduction</td>
-<td headers="brown_skills" class="gt_row gt_left" style="background-color: #E6B27E;">Emission Control Technologies</td></tr>
-    <tr><td headers="green_skills" class="gt_row gt_left" style="background-color: #B7E8B7;">Green Building Design</td>
-<td headers="brown_skills" class="gt_row gt_left" style="background-color: #E6B27E;">Fossil-Based Power Generation</td></tr>
-    <tr><td headers="green_skills" class="gt_row gt_left" style="background-color: #B7E8B7;">Conservation Biology</td>
-<td headers="brown_skills" class="gt_row gt_left" style="background-color: #E6B27E;">Risk Assessment in Fossil Fuel Industries</td></tr>
-  </tbody>
-  
-  
-</table>
-</div>
-</div>
-</div>
-</section>
-<section id="my-use-case-how-to-measure-career-progression" class="slide level2">
-<h2>My use case: how to measure career progression</h2>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb5" data-code-line-numbers="10-14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a>{</span>
-<span id="cb5-2"><a href="#cb5-2"></a>  <span class="st">"career"</span>: [</span>
-<span id="cb5-3"><a href="#cb5-3"></a>    {</span>
-<span id="cb5-4"><a href="#cb5-4"></a>      <span class="st">"occupational_title"</span>: <span class="st">"Chemist"</span>,</span>
-<span id="cb5-5"><a href="#cb5-5"></a>      <span class="st">"workplace"</span>: <span class="st">"Strömsnäs Järnverks A-B"</span>,</span>
-<span id="cb5-6"><a href="#cb5-6"></a>      <span class="st">"industry"</span>: <span class="st">"Metallurgy"</span>,</span>
-<span id="cb5-7"><a href="#cb5-7"></a>      <span class="st">"start_date"</span>: <span class="st">"1918"</span></span>
-<span id="cb5-8"><a href="#cb5-8"></a>    },</span>
-<span id="cb5-9"><a href="#cb5-9"></a>    {</span>
-<span id="cb5-10"><a href="#cb5-10"></a>      <span class="st">"occupational_title"</span>: <span class="st">"Metallurgist and Chemist"</span>,</span>
-<span id="cb5-11"><a href="#cb5-11"></a>      <span class="st">"workplace"</span>: <span class="st">"Westinghouse Electric &amp; Manufacturing Co."</span>,</span>
-<span id="cb5-12"><a href="#cb5-12"></a>      <span class="st">"industry"</span>: <span class="st">"Manufacturing"</span>,</span>
-<span id="cb5-13"><a href="#cb5-13"></a>      <span class="st">"start_date"</span>: <span class="st">"1923"</span></span>
-<span id="cb5-14"><a href="#cb5-14"></a>    },</span>
-<span id="cb5-15"><a href="#cb5-15"></a>    {</span>
-<span id="cb5-16"><a href="#cb5-16"></a>      <span class="st">"occupational_title"</span>: <span class="st">"Chief Metallurgist"</span>,</span>
-<span id="cb5-17"><a href="#cb5-17"></a>      <span class="st">"workplace"</span>: <span class="st">"Laclede Steel Co."</span>,</span>
-<span id="cb5-18"><a href="#cb5-18"></a>      <span class="st">"industry"</span>: <span class="st">"Steel Production"</span>,</span>
-<span id="cb5-19"><a href="#cb5-19"></a>      <span class="st">"start_date"</span>: <span class="st">"1927"</span></span>
-<span id="cb5-20"><a href="#cb5-20"></a>    },</span>
-<span id="cb5-21"><a href="#cb5-21"></a>    {</span>
-<span id="cb5-22"><a href="#cb5-22"></a>      <span class="st">"occupational_title"</span>: <span class="st">"Furnace and Steelworks Engineer"</span>,</span>
-<span id="cb5-23"><a href="#cb5-23"></a>      <span class="st">"workplace"</span>: <span class="st">"A-B Iggesunds Bruk"</span>,</span>
-<span id="cb5-24"><a href="#cb5-24"></a>      <span class="st">"industry"</span>: <span class="st">"Metallurgy"</span>,</span>
-<span id="cb5-25"><a href="#cb5-25"></a>      <span class="st">"start_date"</span>: <span class="st">"1929"</span></span>
-<span id="cb5-26"><a href="#cb5-26"></a>    },</span>
-<span id="cb5-27"><a href="#cb5-27"></a>    {</span>
-<span id="cb5-28"><a href="#cb5-28"></a>      <span class="st">"occupational_title"</span>: <span class="st">"Site Manager"</span>,</span>
-<span id="cb5-29"><a href="#cb5-29"></a>      <span class="st">"workplace"</span>: <span class="st">"Gunnebo Bruks Nya A-B, Varbergsverket"</span>,</span>
-<span id="cb5-30"><a href="#cb5-30"></a>      <span class="st">"industry"</span>: <span class="st">"Metallurgy"</span>,</span>
-<span id="cb5-31"><a href="#cb5-31"></a>      <span class="st">"start_date"</span>: <span class="st">"1931"</span></span>
-<span id="cb5-32"><a href="#cb5-32"></a>    }</span>
-<span id="cb5-33"><a href="#cb5-33"></a>  ]</span>
-<span id="cb5-34"><a href="#cb5-34"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3" data-code-line-numbers="10-14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a>{</span>
+<span id="cb3-2"><a href="#cb3-2"></a>  <span class="st">"career"</span>: [</span>
+<span id="cb3-3"><a href="#cb3-3"></a>    {</span>
+<span id="cb3-4"><a href="#cb3-4"></a>      <span class="st">"occupational_title"</span>: <span class="st">"Chemist"</span>,</span>
+<span id="cb3-5"><a href="#cb3-5"></a>      <span class="st">"workplace"</span>: <span class="st">"Strömsnäs Järnverks A-B"</span>,</span>
+<span id="cb3-6"><a href="#cb3-6"></a>      <span class="st">"industry"</span>: <span class="st">"Metallurgy"</span>,</span>
+<span id="cb3-7"><a href="#cb3-7"></a>      <span class="st">"start_date"</span>: <span class="st">"1918"</span></span>
+<span id="cb3-8"><a href="#cb3-8"></a>    },</span>
+<span id="cb3-9"><a href="#cb3-9"></a>    {</span>
+<span id="cb3-10"><a href="#cb3-10"></a>      <span class="st">"occupational_title"</span>: <span class="st">"Metallurgist and Chemist"</span>,</span>
+<span id="cb3-11"><a href="#cb3-11"></a>      <span class="st">"workplace"</span>: <span class="st">"Westinghouse Electric &amp; Manufacturing Co."</span>,</span>
+<span id="cb3-12"><a href="#cb3-12"></a>      <span class="st">"industry"</span>: <span class="st">"Manufacturing"</span>,</span>
+<span id="cb3-13"><a href="#cb3-13"></a>      <span class="st">"start_date"</span>: <span class="st">"1923"</span></span>
+<span id="cb3-14"><a href="#cb3-14"></a>    },</span>
+<span id="cb3-15"><a href="#cb3-15"></a>    {</span>
+<span id="cb3-16"><a href="#cb3-16"></a>      <span class="st">"occupational_title"</span>: <span class="st">"Chief Metallurgist"</span>,</span>
+<span id="cb3-17"><a href="#cb3-17"></a>      <span class="st">"workplace"</span>: <span class="st">"Laclede Steel Co."</span>,</span>
+<span id="cb3-18"><a href="#cb3-18"></a>      <span class="st">"industry"</span>: <span class="st">"Steel Production"</span>,</span>
+<span id="cb3-19"><a href="#cb3-19"></a>      <span class="st">"start_date"</span>: <span class="st">"1927"</span></span>
+<span id="cb3-20"><a href="#cb3-20"></a>    },</span>
+<span id="cb3-21"><a href="#cb3-21"></a>    {</span>
+<span id="cb3-22"><a href="#cb3-22"></a>      <span class="st">"occupational_title"</span>: <span class="st">"Furnace and Steelworks Engineer"</span>,</span>
+<span id="cb3-23"><a href="#cb3-23"></a>      <span class="st">"workplace"</span>: <span class="st">"A-B Iggesunds Bruk"</span>,</span>
+<span id="cb3-24"><a href="#cb3-24"></a>      <span class="st">"industry"</span>: <span class="st">"Metallurgy"</span>,</span>
+<span id="cb3-25"><a href="#cb3-25"></a>      <span class="st">"start_date"</span>: <span class="st">"1929"</span></span>
+<span id="cb3-26"><a href="#cb3-26"></a>    },</span>
+<span id="cb3-27"><a href="#cb3-27"></a>    {</span>
+<span id="cb3-28"><a href="#cb3-28"></a>      <span class="st">"occupational_title"</span>: <span class="st">"Site Manager"</span>,</span>
+<span id="cb3-29"><a href="#cb3-29"></a>      <span class="st">"workplace"</span>: <span class="st">"Gunnebo Bruks Nya A-B, Varbergsverket"</span>,</span>
+<span id="cb3-30"><a href="#cb3-30"></a>      <span class="st">"industry"</span>: <span class="st">"Metallurgy"</span>,</span>
+<span id="cb3-31"><a href="#cb3-31"></a>      <span class="st">"start_date"</span>: <span class="st">"1931"</span></span>
+<span id="cb3-32"><a href="#cb3-32"></a>    }</span>
+<span id="cb3-33"><a href="#cb3-33"></a>  ]</span>
+<span id="cb3-34"><a href="#cb3-34"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="why-was-classification-hard" class="slide level2">
@@ -1482,45 +814,14 @@ Jonathan Jayes - Lund University
 <img data-src="assets/word2vec-king-queen-composition.png" style="width:100.0%" class="r-stretch quarto-figure-center"></section>
 <section id="use-embeddings-to-cluster-skills" class="slide level2">
 <h2>Use embeddings to cluster skills</h2>
-<ul>
-<li>Here we do not say which skills are green or brown, we just use the <code>kmeans</code> algorithm to create two groups based on the embeddings:</li>
-</ul>
 
-<img data-src="assets/umap_1.png" style="width:100.0%" class="r-stretch quarto-figure-center"></section>
+<img data-src="assets/hisco_cluster.png" width="1181" class="r-stretch quarto-figure-center"><p class="caption">Figure&nbsp;1: Scatter plot showing the relative similarity of occupational titles in the HISCO schema</p></section>
+<section id="use-clusters-to-classify-individuals-into-the-groups" class="slide level2">
+<h2>Use clusters to classify individuals into the groups</h2>
+
+<img data-src="assets/hisco_counts.png" style="width:5in" class="r-stretch quarto-figure-center"><p class="caption">Figure&nbsp;2: Most common HISCO occupations in Vem är Vem</p></section>
 <section id="use-clusters-to-classify-new-skills-into-the-groups" class="slide level2">
 <h2>Use clusters to classify new skills into the groups</h2>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a><span class="co"># New terms to classify</span></span>
-<span id="cb6-2"><a href="#cb6-2"></a>new_terms <span class="op">=</span> [<span class="st">"Sustainable textile recycling"</span>, <span class="st">"Coal burning technology"</span>]</span>
-<span id="cb6-3"><a href="#cb6-3"></a></span>
-<span id="cb6-4"><a href="#cb6-4"></a><span class="co"># Encode the new terms using the same model</span></span>
-<span id="cb6-5"><a href="#cb6-5"></a>new_embeddings <span class="op">=</span> model.encode(new_terms)</span>
-<span id="cb6-6"><a href="#cb6-6"></a></span>
-<span id="cb6-7"><a href="#cb6-7"></a><span class="co"># Transform the new embeddings using the already fit UMAP model</span></span>
-<span id="cb6-8"><a href="#cb6-8"></a>new_embeddings_umap <span class="op">=</span> umap_model.transform(new_embeddings)</span>
-<span id="cb6-9"><a href="#cb6-9"></a></span>
-<span id="cb6-10"><a href="#cb6-10"></a><span class="co"># Use the trained KMeans model to predict the cluster for the new embeddings</span></span>
-<span id="cb6-11"><a href="#cb6-11"></a>new_clusters <span class="op">=</span> kmeans.predict(new_embeddings_umap)</span>
-<span id="cb6-12"><a href="#cb6-12"></a></span>
-<span id="cb6-13"><a href="#cb6-13"></a><span class="co"># Mapping clusters to groups for readability</span></span>
-<span id="cb6-14"><a href="#cb6-14"></a>group_mapping <span class="op">=</span> {<span class="dv">1</span>: <span class="st">'Green Skills'</span>, <span class="dv">0</span>: <span class="st">'Brown Skills'</span>}</span>
-<span id="cb6-15"><a href="#cb6-15"></a>classified_groups <span class="op">=</span> [group_mapping[cluster] <span class="cf">for</span> cluster <span class="kw">in</span> new_clusters]</span>
-<span id="cb6-16"><a href="#cb6-16"></a></span>
-<span id="cb6-17"><a href="#cb6-17"></a><span class="co"># Output the classification</span></span>
-<span id="cb6-18"><a href="#cb6-18"></a><span class="cf">for</span> term, group <span class="kw">in</span> <span class="bu">zip</span>(new_terms, classified_groups):</span>
-<span id="cb6-19"><a href="#cb6-19"></a>    <span class="bu">print</span>(<span class="ss">f"'</span><span class="sc">{</span>term<span class="sc">}</span><span class="ss">' is classified as: </span><span class="sc">{</span>group<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<ul>
-<li><p>‘Sustainable textile recycling’ is classified as: Green Skills</p></li>
-<li><p>‘Coal burning technology’ is classified as: Brown Skills</p></li>
-</ul>
-</section>
-<section id="visualize-classification" class="slide level2">
-<h2>Visualize classification</h2>
-
-<img data-src="assets/umap_2.png" style="width:100.0%" class="r-stretch quarto-figure-center"></section>
-<section id="assign-hiscos-process" class="slide level2">
-<h2>Assign HISCOs: process</h2>
 <div class="cell" data-reveal="true">
 <div class="cell-output-display">
 <div>
@@ -1544,56 +845,93 @@ Jonathan Jayes - Lund University
 </div>
 </div>
 <p>Here the HISCO descriptions are in English, as are the translated titles from my biographies in Swedish.</p>
+<p>##&nbsp;Cluster firms by location</p>
+
+<img data-src="assets/map_most_common_businesses.png" style="width:5in" class="r-stretch quarto-figure-center"><p class="caption">Figure&nbsp;3: Map of the geographic clusters of businesses by most common business type</p></section>
+<section id="you-can-do-it-too" class="slide level2">
+<h2>You can do it too!</h2>
+
+<img data-src="assets/code.png" style="width:100.0%" class="r-stretch quarto-figure-center"><p><a href="https://github.com/j-jayes/who-is-who-in-industry">GitHub repo</a></p>
 </section>
-<section id="how-to-get-a-text-embedding" class="slide level2">
+<section id="references" class="slide level2 smaller scrollable">
+<h2>References</h2>
+<div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-Bandiera2020ceo" class="csl-entry" role="listitem">
+Bandiera, Oriana, Andrea Prat, Stephen Hansen, and Raffaella Sadun. 2020. <span>“CEO Behavior and Firm Performance.”</span> <em>Journal of Political Economy</em> 128 (4): 1325–69. <a href="https://doi.org/10.1086/705331">https://doi.org/10.1086/705331</a>.
+</div>
+<div id="ref-DahlVedel2024" class="csl-entry" role="listitem">
+Dahl, Christian Møller, and Christian Vedel. 2023. <span>“Breaking the HISCO Barrier: AI and Occupational Data Standardization.”</span> Odense, Denmark: University of Southern Denmark.
+</div>
+<div id="ref-ford2023not" class="csl-entry" role="listitem">
+Ford, Nicholas Martin, Kristin Ranestad, and Paul Sharp. 2023. <span>“<span class="nocase">Not the Best Fillers in of Forms? The Danish and Norwegian Graduate Biographies and <span>‘Upper Tail Knowledge’</span></span>.”</span> Working Papers 0242. European Historical Economics Society (EHES). <a href="https://ideas.repec.org/p/hes/wpaper/0242.html">https://ideas.repec.org/p/hes/wpaper/0242.html</a>.
+</div>
+<div id="ref-Goldin1994" class="csl-entry" role="listitem">
+Goldin, Claudia. 1994. <span>“Labor Markets in the Twentieth Century.”</span> <em>National Bureau of Economic Research</em>. <a href="https://doi.org/10.3386/h0058">https://doi.org/10.3386/h0058</a>.
+</div>
+<div id="ref-merouani2023innovation" class="csl-entry" role="listitem">
+Merouani, Youssouf. 2023. <span>“Innovation and Gender During Industrialization: The Case of Patenting Activity in France 1791-1913.”</span> Midway Seminar, Economic History Department, LUSEM, Lund University. <a href="https://youssoufmerouani.com/talks/midway_seminar.html#/title-slide">https://youssoufmerouani.com/talks/midway_seminar.html#/title-slide</a>.
+</div>
+<div id="ref-Mokyr2017" class="csl-entry" role="listitem">
+Mokyr, Joel. 2017. <span>“A Culture of Growth: The Origins of the Modern Economy.”</span> <em>Princeton University Press</em>.
+</div>
+<div id="ref-Moretti2012" class="csl-entry" role="listitem">
+Moretti, Enrico. 2012. <em>The New Geography of Jobs</em>. Houghton Mifflin Harcourt.
+</div>
+<div id="ref-Nekoei2020Herstory" class="csl-entry" role="listitem">
+Nekoei, Arash, and Fabian Sinn. 2020. <span>“HERSTORY the Rise of Self-Made Women.”</span> <em>SSRN Electronic Journal</em>, December. <a href="https://doi.org/10.2139/ssrn.3741332">https://doi.org/10.2139/ssrn.3741332</a>.
+</div>
+</div>
+<p>#&nbsp;Appendix {#sec-appendix background-color=“#1C9E77” visibility=“uncounted”}</p>
+</section>
+<section id="how-to-get-a-text-embedding" class="slide level2" data-visibility="uncounted">
 <h2>How to get a text embedding?</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a><span class="co"># Define a function to get the text embedding</span></span>
-<span id="cb7-2"><a href="#cb7-2"></a><span class="kw">def</span> get_embedding(text, model<span class="op">=</span><span class="st">"text-embedding-ada-002"</span>):</span>
-<span id="cb7-3"><a href="#cb7-3"></a>    text <span class="op">=</span> text.replace(<span class="st">"</span><span class="ch">\n</span><span class="st">"</span>, <span class="st">" "</span>)</span>
-<span id="cb7-4"><a href="#cb7-4"></a>    <span class="cf">return</span> openai.Embedding.create(<span class="bu">input</span><span class="op">=</span>[text], model<span class="op">=</span>model)[<span class="st">'data'</span>][<span class="dv">0</span>][<span class="st">'embedding'</span>]</span>
-<span id="cb7-5"><a href="#cb7-5"></a></span>
-<span id="cb7-6"><a href="#cb7-6"></a><span class="co"># Apply the get_embedding function to your 'hisco_text' column</span></span>
-<span id="cb7-7"><a href="#cb7-7"></a>df[<span class="st">'ada_embedding'</span>] <span class="op">=</span> df[<span class="st">'hisco_text'</span>].<span class="bu">apply</span>(<span class="kw">lambda</span> x: get_embedding(x, model<span class="op">=</span><span class="st">'text-embedding-ada-002'</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a><span class="co"># Define a function to get the text embedding</span></span>
+<span id="cb4-2"><a href="#cb4-2"></a><span class="kw">def</span> get_embedding(text, model<span class="op">=</span><span class="st">"text-embedding-ada-002"</span>):</span>
+<span id="cb4-3"><a href="#cb4-3"></a>    text <span class="op">=</span> text.replace(<span class="st">"</span><span class="ch">\n</span><span class="st">"</span>, <span class="st">" "</span>)</span>
+<span id="cb4-4"><a href="#cb4-4"></a>    <span class="cf">return</span> openai.Embedding.create(<span class="bu">input</span><span class="op">=</span>[text], model<span class="op">=</span>model)[<span class="st">'data'</span>][<span class="dv">0</span>][<span class="st">'embedding'</span>]</span>
+<span id="cb4-5"><a href="#cb4-5"></a></span>
+<span id="cb4-6"><a href="#cb4-6"></a><span class="co"># Apply the get_embedding function to your 'hisco_text' column</span></span>
+<span id="cb4-7"><a href="#cb4-7"></a>df[<span class="st">'ada_embedding'</span>] <span class="op">=</span> df[<span class="st">'hisco_text'</span>].<span class="bu">apply</span>(<span class="kw">lambda</span> x: get_embedding(x, model<span class="op">=</span><span class="st">'text-embedding-ada-002'</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="assign-hiscos-example" class="slide level2">
+<section id="assign-hiscos-example" class="slide level2" data-visibility="uncounted">
 <h2>Assign HISCOs: example</h2>
 <h3 id="metallurgists-hisco-description">026 Metallurgists (HISCO description)</h3>
 <p>Workers in this unit group advise on metallurgical problems and develop and control processes for the extraction of metals from their ores, study the properties and engineering characteristics of metals and develop new alloys, and develop and supervise metal manufacturing processes for making finished metal products.</p>
 <h3 id="karl-lund-in-1923-input">Karl Lund in 1923 (Input)</h3>
 <p>Metallurgist and Chemist at Westinghouse Electric &amp; Manufacturing Co.</p>
 </section>
-<section id="assign-hiscos-codes-projected-from-1536-dimensions-to-2-with-umap" class="slide level2">
+<section id="assign-hiscos-codes-projected-from-1536-dimensions-to-2-with-umap" class="slide level2" data-visibility="uncounted">
 <h2>Assign HISCOs: codes projected from 1536 dimensions to 2 with UMAP</h2>
 <div class="cell">
 <iframe src="assets/interactive_umap_plot.html" width="960" height="800" data-external="1">
 </iframe>
 </div>
 </section>
-<section id="assign-hiscos-watchmaker-apprentice" class="slide level2">
+<section id="assign-hiscos-watchmaker-apprentice" class="slide level2" data-visibility="uncounted">
 <h2>Assign HISCOs: Watchmaker Apprentice</h2>
 <p><br></p>
 <div class="cell">
 <div class="cell-output-display">
 
-<div id="mcabegitnn" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#mcabegitnn table {
+<div id="mprnkrkvhp" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#mprnkrkvhp table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#mcabegitnn thead, #mcabegitnn tbody, #mcabegitnn tfoot, #mcabegitnn tr, #mcabegitnn td, #mcabegitnn th {
+#mprnkrkvhp thead, #mprnkrkvhp tbody, #mprnkrkvhp tfoot, #mprnkrkvhp tr, #mprnkrkvhp td, #mprnkrkvhp th {
   border-style: none;
 }
 
-#mcabegitnn p {
+#mprnkrkvhp p {
   margin: 0;
   padding: 0;
 }
 
-#mcabegitnn .gt_table {
+#mprnkrkvhp .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1619,12 +957,12 @@ Jonathan Jayes - Lund University
   border-left-color: #D3D3D3;
 }
 
-#mcabegitnn .gt_caption {
+#mprnkrkvhp .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#mcabegitnn .gt_title {
+#mprnkrkvhp .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1636,7 +974,7 @@ Jonathan Jayes - Lund University
   border-bottom-width: 0;
 }
 
-#mcabegitnn .gt_subtitle {
+#mprnkrkvhp .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1648,7 +986,7 @@ Jonathan Jayes - Lund University
   border-top-width: 0;
 }
 
-#mcabegitnn .gt_heading {
+#mprnkrkvhp .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1660,13 +998,13 @@ Jonathan Jayes - Lund University
   border-right-color: #D3D3D3;
 }
 
-#mcabegitnn .gt_bottom_border {
+#mprnkrkvhp .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#mcabegitnn .gt_col_headings {
+#mprnkrkvhp .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1681,7 +1019,7 @@ Jonathan Jayes - Lund University
   border-right-color: #D3D3D3;
 }
 
-#mcabegitnn .gt_col_heading {
+#mprnkrkvhp .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1701,7 +1039,7 @@ Jonathan Jayes - Lund University
   overflow-x: hidden;
 }
 
-#mcabegitnn .gt_column_spanner_outer {
+#mprnkrkvhp .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1713,15 +1051,15 @@ Jonathan Jayes - Lund University
   padding-right: 4px;
 }
 
-#mcabegitnn .gt_column_spanner_outer:first-child {
+#mprnkrkvhp .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#mcabegitnn .gt_column_spanner_outer:last-child {
+#mprnkrkvhp .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#mcabegitnn .gt_column_spanner {
+#mprnkrkvhp .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1733,11 +1071,11 @@ Jonathan Jayes - Lund University
   width: 100%;
 }
 
-#mcabegitnn .gt_spanner_row {
+#mprnkrkvhp .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#mcabegitnn .gt_group_heading {
+#mprnkrkvhp .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1763,7 +1101,7 @@ Jonathan Jayes - Lund University
   text-align: left;
 }
 
-#mcabegitnn .gt_empty_group_heading {
+#mprnkrkvhp .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1778,15 +1116,15 @@ Jonathan Jayes - Lund University
   vertical-align: middle;
 }
 
-#mcabegitnn .gt_from_md > :first-child {
+#mprnkrkvhp .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#mcabegitnn .gt_from_md > :last-child {
+#mprnkrkvhp .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#mcabegitnn .gt_row {
+#mprnkrkvhp .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1805,7 +1143,7 @@ Jonathan Jayes - Lund University
   overflow-x: hidden;
 }
 
-#mcabegitnn .gt_stub {
+#mprnkrkvhp .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1818,7 +1156,7 @@ Jonathan Jayes - Lund University
   padding-right: 5px;
 }
 
-#mcabegitnn .gt_stub_row_group {
+#mprnkrkvhp .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1832,15 +1170,15 @@ Jonathan Jayes - Lund University
   vertical-align: top;
 }
 
-#mcabegitnn .gt_row_group_first td {
+#mprnkrkvhp .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#mcabegitnn .gt_row_group_first th {
+#mprnkrkvhp .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#mcabegitnn .gt_summary_row {
+#mprnkrkvhp .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1850,16 +1188,16 @@ Jonathan Jayes - Lund University
   padding-right: 5px;
 }
 
-#mcabegitnn .gt_first_summary_row {
+#mprnkrkvhp .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#mcabegitnn .gt_first_summary_row.thick {
+#mprnkrkvhp .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#mcabegitnn .gt_last_summary_row {
+#mprnkrkvhp .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1869,7 +1207,7 @@ Jonathan Jayes - Lund University
   border-bottom-color: #D3D3D3;
 }
 
-#mcabegitnn .gt_grand_summary_row {
+#mprnkrkvhp .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1879,7 +1217,7 @@ Jonathan Jayes - Lund University
   padding-right: 5px;
 }
 
-#mcabegitnn .gt_first_grand_summary_row {
+#mprnkrkvhp .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1889,7 +1227,7 @@ Jonathan Jayes - Lund University
   border-top-color: #D3D3D3;
 }
 
-#mcabegitnn .gt_last_grand_summary_row_top {
+#mprnkrkvhp .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1899,11 +1237,11 @@ Jonathan Jayes - Lund University
   border-bottom-color: #D3D3D3;
 }
 
-#mcabegitnn .gt_striped {
+#mprnkrkvhp .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#mcabegitnn .gt_table_body {
+#mprnkrkvhp .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1912,7 +1250,7 @@ Jonathan Jayes - Lund University
   border-bottom-color: #D3D3D3;
 }
 
-#mcabegitnn .gt_footnotes {
+#mprnkrkvhp .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1926,7 +1264,7 @@ Jonathan Jayes - Lund University
   border-right-color: #D3D3D3;
 }
 
-#mcabegitnn .gt_footnote {
+#mprnkrkvhp .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1935,7 +1273,7 @@ Jonathan Jayes - Lund University
   padding-right: 5px;
 }
 
-#mcabegitnn .gt_sourcenotes {
+#mprnkrkvhp .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1949,7 +1287,7 @@ Jonathan Jayes - Lund University
   border-right-color: #D3D3D3;
 }
 
-#mcabegitnn .gt_sourcenote {
+#mprnkrkvhp .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1957,63 +1295,63 @@ Jonathan Jayes - Lund University
   padding-right: 5px;
 }
 
-#mcabegitnn .gt_left {
+#mprnkrkvhp .gt_left {
   text-align: left;
 }
 
-#mcabegitnn .gt_center {
+#mprnkrkvhp .gt_center {
   text-align: center;
 }
 
-#mcabegitnn .gt_right {
+#mprnkrkvhp .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#mcabegitnn .gt_font_normal {
+#mprnkrkvhp .gt_font_normal {
   font-weight: normal;
 }
 
-#mcabegitnn .gt_font_bold {
+#mprnkrkvhp .gt_font_bold {
   font-weight: bold;
 }
 
-#mcabegitnn .gt_font_italic {
+#mprnkrkvhp .gt_font_italic {
   font-style: italic;
 }
 
-#mcabegitnn .gt_super {
+#mprnkrkvhp .gt_super {
   font-size: 65%;
 }
 
-#mcabegitnn .gt_footnote_marks {
+#mprnkrkvhp .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#mcabegitnn .gt_asterisk {
+#mprnkrkvhp .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#mcabegitnn .gt_indent_1 {
+#mprnkrkvhp .gt_indent_1 {
   text-indent: 5px;
 }
 
-#mcabegitnn .gt_indent_2 {
+#mprnkrkvhp .gt_indent_2 {
   text-indent: 10px;
 }
 
-#mcabegitnn .gt_indent_3 {
+#mprnkrkvhp .gt_indent_3 {
   text-indent: 15px;
 }
 
-#mcabegitnn .gt_indent_4 {
+#mprnkrkvhp .gt_indent_4 {
   text-indent: 20px;
 }
 
-#mcabegitnn .gt_indent_5 {
+#mprnkrkvhp .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -2053,29 +1391,29 @@ Jonathan Jayes - Lund University
 </div>
 </div>
 </section>
-<section id="assign-hiscos-shipyard-assistant-engineer" class="slide level2">
+<section id="assign-hiscos-shipyard-assistant-engineer" class="slide level2" data-visibility="uncounted">
 <h2>Assign HISCOs: Shipyard Assistant Engineer</h2>
 <p><br></p>
 <div class="cell">
 <div class="cell-output-display">
 
-<div id="fuflymssaa" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#fuflymssaa table {
+<div id="mchvsookwf" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#mchvsookwf table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#fuflymssaa thead, #fuflymssaa tbody, #fuflymssaa tfoot, #fuflymssaa tr, #fuflymssaa td, #fuflymssaa th {
+#mchvsookwf thead, #mchvsookwf tbody, #mchvsookwf tfoot, #mchvsookwf tr, #mchvsookwf td, #mchvsookwf th {
   border-style: none;
 }
 
-#fuflymssaa p {
+#mchvsookwf p {
   margin: 0;
   padding: 0;
 }
 
-#fuflymssaa .gt_table {
+#mchvsookwf .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -2101,12 +1439,12 @@ Jonathan Jayes - Lund University
   border-left-color: #D3D3D3;
 }
 
-#fuflymssaa .gt_caption {
+#mchvsookwf .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#fuflymssaa .gt_title {
+#mchvsookwf .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -2118,7 +1456,7 @@ Jonathan Jayes - Lund University
   border-bottom-width: 0;
 }
 
-#fuflymssaa .gt_subtitle {
+#mchvsookwf .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -2130,7 +1468,7 @@ Jonathan Jayes - Lund University
   border-top-width: 0;
 }
 
-#fuflymssaa .gt_heading {
+#mchvsookwf .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -2142,13 +1480,13 @@ Jonathan Jayes - Lund University
   border-right-color: #D3D3D3;
 }
 
-#fuflymssaa .gt_bottom_border {
+#mchvsookwf .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#fuflymssaa .gt_col_headings {
+#mchvsookwf .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2163,7 +1501,7 @@ Jonathan Jayes - Lund University
   border-right-color: #D3D3D3;
 }
 
-#fuflymssaa .gt_col_heading {
+#mchvsookwf .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2183,7 +1521,7 @@ Jonathan Jayes - Lund University
   overflow-x: hidden;
 }
 
-#fuflymssaa .gt_column_spanner_outer {
+#mchvsookwf .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2195,15 +1533,15 @@ Jonathan Jayes - Lund University
   padding-right: 4px;
 }
 
-#fuflymssaa .gt_column_spanner_outer:first-child {
+#mchvsookwf .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#fuflymssaa .gt_column_spanner_outer:last-child {
+#mchvsookwf .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#fuflymssaa .gt_column_spanner {
+#mchvsookwf .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -2215,11 +1553,11 @@ Jonathan Jayes - Lund University
   width: 100%;
 }
 
-#fuflymssaa .gt_spanner_row {
+#mchvsookwf .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#fuflymssaa .gt_group_heading {
+#mchvsookwf .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2245,7 +1583,7 @@ Jonathan Jayes - Lund University
   text-align: left;
 }
 
-#fuflymssaa .gt_empty_group_heading {
+#mchvsookwf .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -2260,15 +1598,15 @@ Jonathan Jayes - Lund University
   vertical-align: middle;
 }
 
-#fuflymssaa .gt_from_md > :first-child {
+#mchvsookwf .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#fuflymssaa .gt_from_md > :last-child {
+#mchvsookwf .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#fuflymssaa .gt_row {
+#mchvsookwf .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2287,7 +1625,7 @@ Jonathan Jayes - Lund University
   overflow-x: hidden;
 }
 
-#fuflymssaa .gt_stub {
+#mchvsookwf .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2300,7 +1638,7 @@ Jonathan Jayes - Lund University
   padding-right: 5px;
 }
 
-#fuflymssaa .gt_stub_row_group {
+#mchvsookwf .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2314,15 +1652,15 @@ Jonathan Jayes - Lund University
   vertical-align: top;
 }
 
-#fuflymssaa .gt_row_group_first td {
+#mchvsookwf .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#fuflymssaa .gt_row_group_first th {
+#mchvsookwf .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#fuflymssaa .gt_summary_row {
+#mchvsookwf .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2332,16 +1670,16 @@ Jonathan Jayes - Lund University
   padding-right: 5px;
 }
 
-#fuflymssaa .gt_first_summary_row {
+#mchvsookwf .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#fuflymssaa .gt_first_summary_row.thick {
+#mchvsookwf .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#fuflymssaa .gt_last_summary_row {
+#mchvsookwf .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2351,7 +1689,7 @@ Jonathan Jayes - Lund University
   border-bottom-color: #D3D3D3;
 }
 
-#fuflymssaa .gt_grand_summary_row {
+#mchvsookwf .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2361,7 +1699,7 @@ Jonathan Jayes - Lund University
   padding-right: 5px;
 }
 
-#fuflymssaa .gt_first_grand_summary_row {
+#mchvsookwf .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2371,7 +1709,7 @@ Jonathan Jayes - Lund University
   border-top-color: #D3D3D3;
 }
 
-#fuflymssaa .gt_last_grand_summary_row_top {
+#mchvsookwf .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2381,11 +1719,11 @@ Jonathan Jayes - Lund University
   border-bottom-color: #D3D3D3;
 }
 
-#fuflymssaa .gt_striped {
+#mchvsookwf .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#fuflymssaa .gt_table_body {
+#mchvsookwf .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2394,7 +1732,7 @@ Jonathan Jayes - Lund University
   border-bottom-color: #D3D3D3;
 }
 
-#fuflymssaa .gt_footnotes {
+#mchvsookwf .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2408,7 +1746,7 @@ Jonathan Jayes - Lund University
   border-right-color: #D3D3D3;
 }
 
-#fuflymssaa .gt_footnote {
+#mchvsookwf .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -2417,7 +1755,7 @@ Jonathan Jayes - Lund University
   padding-right: 5px;
 }
 
-#fuflymssaa .gt_sourcenotes {
+#mchvsookwf .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2431,7 +1769,7 @@ Jonathan Jayes - Lund University
   border-right-color: #D3D3D3;
 }
 
-#fuflymssaa .gt_sourcenote {
+#mchvsookwf .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -2439,63 +1777,63 @@ Jonathan Jayes - Lund University
   padding-right: 5px;
 }
 
-#fuflymssaa .gt_left {
+#mchvsookwf .gt_left {
   text-align: left;
 }
 
-#fuflymssaa .gt_center {
+#mchvsookwf .gt_center {
   text-align: center;
 }
 
-#fuflymssaa .gt_right {
+#mchvsookwf .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#fuflymssaa .gt_font_normal {
+#mchvsookwf .gt_font_normal {
   font-weight: normal;
 }
 
-#fuflymssaa .gt_font_bold {
+#mchvsookwf .gt_font_bold {
   font-weight: bold;
 }
 
-#fuflymssaa .gt_font_italic {
+#mchvsookwf .gt_font_italic {
   font-style: italic;
 }
 
-#fuflymssaa .gt_super {
+#mchvsookwf .gt_super {
   font-size: 65%;
 }
 
-#fuflymssaa .gt_footnote_marks {
+#mchvsookwf .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#fuflymssaa .gt_asterisk {
+#mchvsookwf .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#fuflymssaa .gt_indent_1 {
+#mchvsookwf .gt_indent_1 {
   text-indent: 5px;
 }
 
-#fuflymssaa .gt_indent_2 {
+#mchvsookwf .gt_indent_2 {
   text-indent: 10px;
 }
 
-#fuflymssaa .gt_indent_3 {
+#mchvsookwf .gt_indent_3 {
   text-indent: 15px;
 }
 
-#fuflymssaa .gt_indent_4 {
+#mchvsookwf .gt_indent_4 {
   text-indent: 20px;
 }
 
-#fuflymssaa .gt_indent_5 {
+#mchvsookwf .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -2535,7 +1873,7 @@ Jonathan Jayes - Lund University
 </div>
 </div>
 </section>
-<section id="keep-titles-in-swedish" class="slide level2">
+<section id="keep-titles-in-swedish" class="slide level2" data-visibility="uncounted">
 <h2>Keep titles in Swedish?</h2>
 <p>Instead of using the HISCO schema in English, I am using the SSYK classification from 2012.</p>
 <p>Instead of using the multilingual OpenAI ADA model, I now use <a href="https://huggingface.co/KB/bert-base-swedish-cased">The National Library of Sweden Swedish BERT model</a>. It is trained on 200M sentences, 3000M tokens from books, news, government publications, swedish wikipedia and internet forums.</p>
@@ -2545,28 +1883,28 @@ Jonathan Jayes - Lund University
 </iframe>
 </div>
 </section>
-<section id="ssyk-and-swedish-bert-examples" class="slide level2">
+<section id="ssyk-and-swedish-bert-examples" class="slide level2" data-visibility="uncounted">
 <h2>SSYK and Swedish BERT examples:</h2>
 <div class="cell">
 <div class="cell-output-display">
 
-<div id="ffhhroaefe" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#ffhhroaefe table {
+<div id="ovwaotyrep" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#ovwaotyrep table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#ffhhroaefe thead, #ffhhroaefe tbody, #ffhhroaefe tfoot, #ffhhroaefe tr, #ffhhroaefe td, #ffhhroaefe th {
+#ovwaotyrep thead, #ovwaotyrep tbody, #ovwaotyrep tfoot, #ovwaotyrep tr, #ovwaotyrep td, #ovwaotyrep th {
   border-style: none;
 }
 
-#ffhhroaefe p {
+#ovwaotyrep p {
   margin: 0;
   padding: 0;
 }
 
-#ffhhroaefe .gt_table {
+#ovwaotyrep .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -2592,12 +1930,12 @@ Jonathan Jayes - Lund University
   border-left-color: #D3D3D3;
 }
 
-#ffhhroaefe .gt_caption {
+#ovwaotyrep .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#ffhhroaefe .gt_title {
+#ovwaotyrep .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -2609,7 +1947,7 @@ Jonathan Jayes - Lund University
   border-bottom-width: 0;
 }
 
-#ffhhroaefe .gt_subtitle {
+#ovwaotyrep .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -2621,7 +1959,7 @@ Jonathan Jayes - Lund University
   border-top-width: 0;
 }
 
-#ffhhroaefe .gt_heading {
+#ovwaotyrep .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -2633,13 +1971,13 @@ Jonathan Jayes - Lund University
   border-right-color: #D3D3D3;
 }
 
-#ffhhroaefe .gt_bottom_border {
+#ovwaotyrep .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#ffhhroaefe .gt_col_headings {
+#ovwaotyrep .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2654,7 +1992,7 @@ Jonathan Jayes - Lund University
   border-right-color: #D3D3D3;
 }
 
-#ffhhroaefe .gt_col_heading {
+#ovwaotyrep .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2674,7 +2012,7 @@ Jonathan Jayes - Lund University
   overflow-x: hidden;
 }
 
-#ffhhroaefe .gt_column_spanner_outer {
+#ovwaotyrep .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2686,15 +2024,15 @@ Jonathan Jayes - Lund University
   padding-right: 4px;
 }
 
-#ffhhroaefe .gt_column_spanner_outer:first-child {
+#ovwaotyrep .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#ffhhroaefe .gt_column_spanner_outer:last-child {
+#ovwaotyrep .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#ffhhroaefe .gt_column_spanner {
+#ovwaotyrep .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -2706,11 +2044,11 @@ Jonathan Jayes - Lund University
   width: 100%;
 }
 
-#ffhhroaefe .gt_spanner_row {
+#ovwaotyrep .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#ffhhroaefe .gt_group_heading {
+#ovwaotyrep .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2736,7 +2074,7 @@ Jonathan Jayes - Lund University
   text-align: left;
 }
 
-#ffhhroaefe .gt_empty_group_heading {
+#ovwaotyrep .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -2751,15 +2089,15 @@ Jonathan Jayes - Lund University
   vertical-align: middle;
 }
 
-#ffhhroaefe .gt_from_md > :first-child {
+#ovwaotyrep .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#ffhhroaefe .gt_from_md > :last-child {
+#ovwaotyrep .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#ffhhroaefe .gt_row {
+#ovwaotyrep .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2778,7 +2116,7 @@ Jonathan Jayes - Lund University
   overflow-x: hidden;
 }
 
-#ffhhroaefe .gt_stub {
+#ovwaotyrep .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2791,7 +2129,7 @@ Jonathan Jayes - Lund University
   padding-right: 5px;
 }
 
-#ffhhroaefe .gt_stub_row_group {
+#ovwaotyrep .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2805,15 +2143,15 @@ Jonathan Jayes - Lund University
   vertical-align: top;
 }
 
-#ffhhroaefe .gt_row_group_first td {
+#ovwaotyrep .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#ffhhroaefe .gt_row_group_first th {
+#ovwaotyrep .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#ffhhroaefe .gt_summary_row {
+#ovwaotyrep .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2823,16 +2161,16 @@ Jonathan Jayes - Lund University
   padding-right: 5px;
 }
 
-#ffhhroaefe .gt_first_summary_row {
+#ovwaotyrep .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#ffhhroaefe .gt_first_summary_row.thick {
+#ovwaotyrep .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#ffhhroaefe .gt_last_summary_row {
+#ovwaotyrep .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2842,7 +2180,7 @@ Jonathan Jayes - Lund University
   border-bottom-color: #D3D3D3;
 }
 
-#ffhhroaefe .gt_grand_summary_row {
+#ovwaotyrep .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2852,7 +2190,7 @@ Jonathan Jayes - Lund University
   padding-right: 5px;
 }
 
-#ffhhroaefe .gt_first_grand_summary_row {
+#ovwaotyrep .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2862,7 +2200,7 @@ Jonathan Jayes - Lund University
   border-top-color: #D3D3D3;
 }
 
-#ffhhroaefe .gt_last_grand_summary_row_top {
+#ovwaotyrep .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2872,11 +2210,11 @@ Jonathan Jayes - Lund University
   border-bottom-color: #D3D3D3;
 }
 
-#ffhhroaefe .gt_striped {
+#ovwaotyrep .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#ffhhroaefe .gt_table_body {
+#ovwaotyrep .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2885,7 +2223,7 @@ Jonathan Jayes - Lund University
   border-bottom-color: #D3D3D3;
 }
 
-#ffhhroaefe .gt_footnotes {
+#ovwaotyrep .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2899,7 +2237,7 @@ Jonathan Jayes - Lund University
   border-right-color: #D3D3D3;
 }
 
-#ffhhroaefe .gt_footnote {
+#ovwaotyrep .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -2908,7 +2246,7 @@ Jonathan Jayes - Lund University
   padding-right: 5px;
 }
 
-#ffhhroaefe .gt_sourcenotes {
+#ovwaotyrep .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2922,7 +2260,7 @@ Jonathan Jayes - Lund University
   border-right-color: #D3D3D3;
 }
 
-#ffhhroaefe .gt_sourcenote {
+#ovwaotyrep .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -2930,63 +2268,63 @@ Jonathan Jayes - Lund University
   padding-right: 5px;
 }
 
-#ffhhroaefe .gt_left {
+#ovwaotyrep .gt_left {
   text-align: left;
 }
 
-#ffhhroaefe .gt_center {
+#ovwaotyrep .gt_center {
   text-align: center;
 }
 
-#ffhhroaefe .gt_right {
+#ovwaotyrep .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#ffhhroaefe .gt_font_normal {
+#ovwaotyrep .gt_font_normal {
   font-weight: normal;
 }
 
-#ffhhroaefe .gt_font_bold {
+#ovwaotyrep .gt_font_bold {
   font-weight: bold;
 }
 
-#ffhhroaefe .gt_font_italic {
+#ovwaotyrep .gt_font_italic {
   font-style: italic;
 }
 
-#ffhhroaefe .gt_super {
+#ovwaotyrep .gt_super {
   font-size: 65%;
 }
 
-#ffhhroaefe .gt_footnote_marks {
+#ovwaotyrep .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#ffhhroaefe .gt_asterisk {
+#ovwaotyrep .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#ffhhroaefe .gt_indent_1 {
+#ovwaotyrep .gt_indent_1 {
   text-indent: 5px;
 }
 
-#ffhhroaefe .gt_indent_2 {
+#ovwaotyrep .gt_indent_2 {
   text-indent: 10px;
 }
 
-#ffhhroaefe .gt_indent_3 {
+#ovwaotyrep .gt_indent_3 {
   text-indent: 15px;
 }
 
-#ffhhroaefe .gt_indent_4 {
+#ovwaotyrep .gt_indent_4 {
   text-indent: 20px;
 }
 
-#ffhhroaefe .gt_indent_5 {
+#ovwaotyrep .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -3020,28 +2358,28 @@ Jonathan Jayes - Lund University
 </div>
 </div>
 </section>
-<section id="ssyk-and-swedish-bert-examples-1" class="slide level2">
+<section id="ssyk-and-swedish-bert-examples-1" class="slide level2" data-visibility="uncounted">
 <h2>SSYK and Swedish BERT examples:</h2>
 <div class="cell">
 <div class="cell-output-display">
 
-<div id="ntoyhhjezw" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#ntoyhhjezw table {
+<div id="ezqefuqbdq" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#ezqefuqbdq table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#ntoyhhjezw thead, #ntoyhhjezw tbody, #ntoyhhjezw tfoot, #ntoyhhjezw tr, #ntoyhhjezw td, #ntoyhhjezw th {
+#ezqefuqbdq thead, #ezqefuqbdq tbody, #ezqefuqbdq tfoot, #ezqefuqbdq tr, #ezqefuqbdq td, #ezqefuqbdq th {
   border-style: none;
 }
 
-#ntoyhhjezw p {
+#ezqefuqbdq p {
   margin: 0;
   padding: 0;
 }
 
-#ntoyhhjezw .gt_table {
+#ezqefuqbdq .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -3067,12 +2405,12 @@ Jonathan Jayes - Lund University
   border-left-color: #D3D3D3;
 }
 
-#ntoyhhjezw .gt_caption {
+#ezqefuqbdq .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#ntoyhhjezw .gt_title {
+#ezqefuqbdq .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -3084,7 +2422,7 @@ Jonathan Jayes - Lund University
   border-bottom-width: 0;
 }
 
-#ntoyhhjezw .gt_subtitle {
+#ezqefuqbdq .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -3096,7 +2434,7 @@ Jonathan Jayes - Lund University
   border-top-width: 0;
 }
 
-#ntoyhhjezw .gt_heading {
+#ezqefuqbdq .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -3108,13 +2446,13 @@ Jonathan Jayes - Lund University
   border-right-color: #D3D3D3;
 }
 
-#ntoyhhjezw .gt_bottom_border {
+#ezqefuqbdq .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#ntoyhhjezw .gt_col_headings {
+#ezqefuqbdq .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -3129,7 +2467,7 @@ Jonathan Jayes - Lund University
   border-right-color: #D3D3D3;
 }
 
-#ntoyhhjezw .gt_col_heading {
+#ezqefuqbdq .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3149,7 +2487,7 @@ Jonathan Jayes - Lund University
   overflow-x: hidden;
 }
 
-#ntoyhhjezw .gt_column_spanner_outer {
+#ezqefuqbdq .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3161,15 +2499,15 @@ Jonathan Jayes - Lund University
   padding-right: 4px;
 }
 
-#ntoyhhjezw .gt_column_spanner_outer:first-child {
+#ezqefuqbdq .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#ntoyhhjezw .gt_column_spanner_outer:last-child {
+#ezqefuqbdq .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#ntoyhhjezw .gt_column_spanner {
+#ezqefuqbdq .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -3181,11 +2519,11 @@ Jonathan Jayes - Lund University
   width: 100%;
 }
 
-#ntoyhhjezw .gt_spanner_row {
+#ezqefuqbdq .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#ntoyhhjezw .gt_group_heading {
+#ezqefuqbdq .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3211,7 +2549,7 @@ Jonathan Jayes - Lund University
   text-align: left;
 }
 
-#ntoyhhjezw .gt_empty_group_heading {
+#ezqefuqbdq .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -3226,15 +2564,15 @@ Jonathan Jayes - Lund University
   vertical-align: middle;
 }
 
-#ntoyhhjezw .gt_from_md > :first-child {
+#ezqefuqbdq .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#ntoyhhjezw .gt_from_md > :last-child {
+#ezqefuqbdq .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#ntoyhhjezw .gt_row {
+#ezqefuqbdq .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3253,7 +2591,7 @@ Jonathan Jayes - Lund University
   overflow-x: hidden;
 }
 
-#ntoyhhjezw .gt_stub {
+#ezqefuqbdq .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3266,7 +2604,7 @@ Jonathan Jayes - Lund University
   padding-right: 5px;
 }
 
-#ntoyhhjezw .gt_stub_row_group {
+#ezqefuqbdq .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3280,15 +2618,15 @@ Jonathan Jayes - Lund University
   vertical-align: top;
 }
 
-#ntoyhhjezw .gt_row_group_first td {
+#ezqefuqbdq .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#ntoyhhjezw .gt_row_group_first th {
+#ezqefuqbdq .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#ntoyhhjezw .gt_summary_row {
+#ezqefuqbdq .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -3298,16 +2636,16 @@ Jonathan Jayes - Lund University
   padding-right: 5px;
 }
 
-#ntoyhhjezw .gt_first_summary_row {
+#ezqefuqbdq .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#ntoyhhjezw .gt_first_summary_row.thick {
+#ezqefuqbdq .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#ntoyhhjezw .gt_last_summary_row {
+#ezqefuqbdq .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3317,7 +2655,7 @@ Jonathan Jayes - Lund University
   border-bottom-color: #D3D3D3;
 }
 
-#ntoyhhjezw .gt_grand_summary_row {
+#ezqefuqbdq .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -3327,7 +2665,7 @@ Jonathan Jayes - Lund University
   padding-right: 5px;
 }
 
-#ntoyhhjezw .gt_first_grand_summary_row {
+#ezqefuqbdq .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3337,7 +2675,7 @@ Jonathan Jayes - Lund University
   border-top-color: #D3D3D3;
 }
 
-#ntoyhhjezw .gt_last_grand_summary_row_top {
+#ezqefuqbdq .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3347,11 +2685,11 @@ Jonathan Jayes - Lund University
   border-bottom-color: #D3D3D3;
 }
 
-#ntoyhhjezw .gt_striped {
+#ezqefuqbdq .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#ntoyhhjezw .gt_table_body {
+#ezqefuqbdq .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -3360,7 +2698,7 @@ Jonathan Jayes - Lund University
   border-bottom-color: #D3D3D3;
 }
 
-#ntoyhhjezw .gt_footnotes {
+#ezqefuqbdq .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -3374,7 +2712,7 @@ Jonathan Jayes - Lund University
   border-right-color: #D3D3D3;
 }
 
-#ntoyhhjezw .gt_footnote {
+#ezqefuqbdq .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -3383,7 +2721,7 @@ Jonathan Jayes - Lund University
   padding-right: 5px;
 }
 
-#ntoyhhjezw .gt_sourcenotes {
+#ezqefuqbdq .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -3397,7 +2735,7 @@ Jonathan Jayes - Lund University
   border-right-color: #D3D3D3;
 }
 
-#ntoyhhjezw .gt_sourcenote {
+#ezqefuqbdq .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -3405,63 +2743,63 @@ Jonathan Jayes - Lund University
   padding-right: 5px;
 }
 
-#ntoyhhjezw .gt_left {
+#ezqefuqbdq .gt_left {
   text-align: left;
 }
 
-#ntoyhhjezw .gt_center {
+#ezqefuqbdq .gt_center {
   text-align: center;
 }
 
-#ntoyhhjezw .gt_right {
+#ezqefuqbdq .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#ntoyhhjezw .gt_font_normal {
+#ezqefuqbdq .gt_font_normal {
   font-weight: normal;
 }
 
-#ntoyhhjezw .gt_font_bold {
+#ezqefuqbdq .gt_font_bold {
   font-weight: bold;
 }
 
-#ntoyhhjezw .gt_font_italic {
+#ezqefuqbdq .gt_font_italic {
   font-style: italic;
 }
 
-#ntoyhhjezw .gt_super {
+#ezqefuqbdq .gt_super {
   font-size: 65%;
 }
 
-#ntoyhhjezw .gt_footnote_marks {
+#ezqefuqbdq .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#ntoyhhjezw .gt_asterisk {
+#ezqefuqbdq .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#ntoyhhjezw .gt_indent_1 {
+#ezqefuqbdq .gt_indent_1 {
   text-indent: 5px;
 }
 
-#ntoyhhjezw .gt_indent_2 {
+#ezqefuqbdq .gt_indent_2 {
   text-indent: 10px;
 }
 
-#ntoyhhjezw .gt_indent_3 {
+#ezqefuqbdq .gt_indent_3 {
   text-indent: 15px;
 }
 
-#ntoyhhjezw .gt_indent_4 {
+#ezqefuqbdq .gt_indent_4 {
   text-indent: 20px;
 }
 
-#ntoyhhjezw .gt_indent_5 {
+#ezqefuqbdq .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -3495,45 +2833,11 @@ Jonathan Jayes - Lund University
 </div>
 </div>
 </section>
-<section id="can-we-score-how-successful-this-is" class="slide level2">
+<section id="can-we-score-how-successful-this-is" class="slide level2" data-visibility="uncounted">
 <h2>Can we score how successful this is?</h2>
 <p>We can use a crosswalk from one schema to another as a test set, e.g.&nbsp;O * Net to ISCO:</p>
 
-<img data-src="assets/scoring_assignement.png" style="width:100.0%" class="r-stretch quarto-figure-center"></section>
-<section id="you-can-do-it-too" class="slide level2">
-<h2>You can do it too!</h2>
-
-<img data-src="assets/code.png" style="width:100.0%" class="r-stretch quarto-figure-center"><p><a href="https://github.com/j-jayes/who-is-who-in-industry">GitHub repo</a></p>
-</section>
-<section id="references" class="slide level2 smaller scrollable">
-<h2>References</h2>
-<div id="refs" class="references csl-bib-body hanging-indent" role="list">
-<div id="ref-Bandiera2020ceo" class="csl-entry" role="listitem">
-Bandiera, Oriana, Andrea Prat, Stephen Hansen, and Raffaella Sadun. 2020. <span>“CEO Behavior and Firm Performance.”</span> <em>Journal of Political Economy</em> 128 (4): 1325–69. <a href="https://doi.org/10.1086/705331">https://doi.org/10.1086/705331</a>.
-</div>
-<div id="ref-DahlVedel2024" class="csl-entry" role="listitem">
-Dahl, Christian Møller, and Christian Vedel. 2023. <span>“Breaking the HISCO Barrier: AI and Occupational Data Standardization.”</span> Odense, Denmark: University of Southern Denmark.
-</div>
-<div id="ref-ford2023not" class="csl-entry" role="listitem">
-Ford, Nicholas Martin, Kristin Ranestad, and Paul Sharp. 2023. <span>“<span class="nocase">Not the Best Fillers in of Forms? The Danish and Norwegian Graduate Biographies and <span>‘Upper Tail Knowledge’</span></span>.”</span> Working Papers 0242. European Historical Economics Society (EHES). <a href="https://ideas.repec.org/p/hes/wpaper/0242.html">https://ideas.repec.org/p/hes/wpaper/0242.html</a>.
-</div>
-<div id="ref-Goldin1994" class="csl-entry" role="listitem">
-Goldin, Claudia. 1994. <span>“Labor Markets in the Twentieth Century.”</span> <em>National Bureau of Economic Research</em>. <a href="https://doi.org/10.3386/h0058">https://doi.org/10.3386/h0058</a>.
-</div>
-<div id="ref-merouani2023innovation" class="csl-entry" role="listitem">
-Merouani, Youssouf. 2023. <span>“Innovation and Gender During Industrialization: The Case of Patenting Activity in France 1791-1913.”</span> Midway Seminar, Economic History Department, LUSEM, Lund University. <a href="https://youssoufmerouani.com/talks/midway_seminar.html#/title-slide">https://youssoufmerouani.com/talks/midway_seminar.html#/title-slide</a>.
-</div>
-<div id="ref-Mokyr2017" class="csl-entry" role="listitem">
-Mokyr, Joel. 2017. <span>“A Culture of Growth: The Origins of the Modern Economy.”</span> <em>Princeton University Press</em>.
-</div>
-<div id="ref-Moretti2012" class="csl-entry" role="listitem">
-Moretti, Enrico. 2012. <em>The New Geography of Jobs</em>. Houghton Mifflin Harcourt.
-</div>
-<div id="ref-Nekoei2020Herstory" class="csl-entry" role="listitem">
-Nekoei, Arash, and Fabian Sinn. 2020. <span>“HERSTORY the Rise of Self-Made Women.”</span> <em>SSRN Electronic Journal</em>, December. <a href="https://doi.org/10.2139/ssrn.3741332">https://doi.org/10.2139/ssrn.3741332</a>.
-</div>
-</div>
-<div class="footer footer-default">
+<img data-src="assets/scoring_assignement.png" style="width:100.0%" class="r-stretch quarto-figure-center"><div class="footer footer-default">
 <p><a href="https://interludeone.com/content/research.html"><i class="fa-solid fa-house" aria-label="house"></i></a></p>
 </div>
 </section></section>

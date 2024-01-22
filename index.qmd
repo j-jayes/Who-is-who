@@ -45,6 +45,7 @@ Answering involves:
     - It made individuals richer 💰🔋
     - It lowered inequality 📉🤝
     - It allowed structural change on the labor market 🔧💼
+    - Middle-skill workers were drawn from the local area to the new jobs 🏙🏃‍♀️
 
 
 2. What we want to know next:
@@ -111,15 +112,11 @@ The intention was, according to the publishers, to draw attention **to people wh
 
 ::: {.column width="25%"}
 
-![](assets/vem_cover.png){fig-align="center" width=100%}
+![](assets/vem_page.png){fig-align="center" width=100%}
 
 :::
 
 ::::
-
-## Vem är Vem? Example page
-
-![](assets/vem_page.png){fig-align="center" width=100%}
 
 ## Vem är Vem?
 
@@ -241,350 +238,89 @@ The Svensk Industrikalender, published by Sveriges Industriförbund (Sweden’s 
 
 ### Using OpenAI's GPT-3.5 chat API:
 
-We tell the system "You are an expert in Swedish family history"
+We provide the system a schema to structure the record in, e.g. keys.
 
-Then we ask it to translate the Swedish text to English
+We provide the system the Swedish text
+
+We specify the JSON response format we want
+
+
 
 <br>
 
-```{python}
-#| eval: false
-#| echo: true
+::: {.columns}
+::: {.column}
 
-def translate_and_structure_text(swedish_text):
+
+```{python, eval=FALSE, echo=TRUE}
+schema = {
+    "type": "object",
+    "required": [
+        "full_name",
+        "location",
+        "occupation",
+        "birth_details",
+        "education",
+        "career",
+        "family",
+    ],
+    "properties": {
+        "full_name": {"type": "string"},
+        "location": {"type": "string"},
+        "occupation": {"type": "string"},
+        "birth_details": {
+            "type": "object",
+            "properties": {
+                "date": {"type": "string"},
+                "place": {"type": "string"},
+                "parents": {"type": "string"},
+            },
+            "required": ["date", "place"],
+        },}}"
+```
+
+
+
+
+
+:::
+::: {.column}
+
+```{python, eval=FALSE, echo=TRUE}
+
+def structure_biography_info(page_text):
     try:
-        # Translate the Swedish text to English
-        translate_prompt = f"Translate the following abbreviated Swedish biography to English: {swedish_text}"
-        translation_response = openai.ChatCompletion.create(
-            model="gpt-3.5-turbo",
+        # Create a prompt for the system
+        structure_prompt = f"Task: read the schema and return RFC compliant JSON information about the Swedish individuals from the 1950 biographical dictionary 'Vem är Vem' that is provided below. Use a numeric index for each biography in your JSON output and return information about all of them, including all career information available. Keep the biographic descriptions in Swedish and remove any abbreviations based on your knowledge, e.g. 'fil. kand.' is 'filosofie kandidat', and 'Skarab. l.' is 'Skaraborgs Län'. Put years in full based on context. Put dates in dd/mm/yyyy format where possible. If there is no information for a key, leave it out. If there is no information for a required key, put NULL as the value.\nHere is the schema: {schema}.\nHere is the text: {page_text}. Go!"
+        structure_response = client.chat.completions.create(
+            model="gpt-3.5-turbo-1106",
+            response_format={"type": "json_object"},
             messages=[
-                {"role": "system", "content": "You are an expert on Swedish family history."},
-                {"role": "user", "content": f"{translate_prompt}"}
-            ]
+                {
+                    "role": "system",
+                    "content": "You are an expert on Swedish biographies.",
+                },
+                {"role": "user", "content": f"{structure_prompt}"},
+            ],
         )
 
-```
+        structured_biography_info = json.loads(
+            structure_response.choices[0].message.content
+        )
 
+        return structured_biography_info
 
-## 2. Structure 🤖
-
-![](assets/schema.png)
-
-## 2. Structure 🤖
-
-### Using OpenAI's GPT-3.5 chat API:
-
-We tell the system "You are an expert in Swedish family history and the Schema.org/Person format" 
-
-We provide it the original Swedish and English translation, and ask it to structure the biography in Schema.org/Person format as a JSON object
-
-<br>
-
-
-```{python, eval=FALSE, echo=TRUE}
-
-structure_prompt = f"Given the original Swedish biography: {swedish_text}\nAnd its English translation: {english_text}, Structure the biography in Schema.org/Person format as a JSON object. Include dates wherever possible. Only provide a  RFC8259 compliant JSON response."
-
-structure_response = openai.ChatCompletion.create(
-    model="gpt-3.5-turbo",
-    messages=[
-        {"role": "system", "content": "You are an expert on Swedish family history and the Schema.org/Person format."},
-        {"role": "user", "content": f"{structure_prompt}"}
-    ]
-)
-```
-
-## 3. Augment 🤖
-
-### Using OpenAI's GPT-4 chat API:
-
-We create python code to geocode any addresses in the biography (in this example), as well as flagging the highest level of education, and extract any mention of patents or inventions in the biography.
-
-<br>
-
-
-```{python, eval=FALSE, echo=TRUE}
-
-def geocode_birthplace(birthplace, geolocator, geocoded_cache):
-    if isinstance(birthplace, dict):
-        if "name" in birthplace:
-            birthplace_name = birthplace["name"]
-        elif "address" in birthplace and "addressLocality" in birthplace["address"]:
-            birthplace_name = birthplace["address"]["addressLocality"]
-        else:
-            print(f"Invalid birthplace data: {birthplace}")
-            return None
-    elif isinstance(birthplace, str):
-        birthplace_name = birthplace
-    else:
-        print(f"Invalid birthplace data: {birthplace}")
+    except Exception as e:
+        print(f"Error in structure_biography_info: {e}")
         return None
-
-    if birthplace_name not in geocoded_cache:
-        try:
-            location = geolocator.geocode(birthplace_name)
-            if location:
-                geocoded_cache[birthplace_name] = {
-                    "latitude": location.latitude,
-                    "longitude": location.longitude
-                }
-            time.sleep(1)  # Add a 1-second delay between geocoding requests
-        except Exception as e:
-            print(f"Error geocoding birthplace {birthplace_name}: {e}")
-
-    return geocoded_cache.get(birthplace_name)
 ```
 
 
-## Output
+:::
+::: 
 
 
-```{python, eval=FALSE, echo=TRUE}
-
-{
-    "original": "Lund, Karl Gustaf, överingenjör, Varberg, f. 22/7/93 i Hille, Gävleb. 1., av brukstj :m. Ferdinand L. o. Maria Andersson. G. 36 m. Sigrid Johansson. Barn: Ingvar f. 38, Lennart 42. — Ex. v. bergssk. i Filipstad 17, spec:-stud. v. KTH (B) 20-22, stud. v. me-tallogr. inst. o. Sthlms högsk. 21-22. Kemist v. Strömsnäs Järnverks A-B, Degerfors, 18-20, metallurg o. kemist v. Westinghouse Electric & Manuf. Co., East Pittsburgh, Pa, USA, 23-26 o. 28-29, chefsmetallurg v. Laclede Steel^Co., Ahon, 111., USA, 27, hytt-o. stålv.ing. v. A-B Iggesunds Bruk 29-31, platschef v. Gunnebo Bruks Nya A-B, Varbergsverket, sed. 31. Led. av drätselkamm., v. ordf. v. ekonomi-avd., suppl. i styr. f. elverket, huv:-man i Varbergs Sparbank, arb :giv. repr. i länsarb:ndns kretsråd, led. av styr. f. Varbergs luftsk ifören., sekr. i Varbergs högerfören., ordfs i järnv. sjukkassa o. Plant :sällsk. Småfågl. Vänner. Res. t. Tyskl. 21, 2^ 23, 30 o. 36, Danm., Tjeckoslov. 21, 22, 23, Österr. 21, USA 23-29. Skr.: Some fundamental factors for obtaining sharp thermal curves (Träns. Am. Soc. for Steel Treating, tills. m. C. Benedicks o. W. H. Dearden 25), Nutida fabrikation av sågblad, sågklingor o. maskinknivar (Trävaruind. 31). Hob-bies: jakt o. fiske.",
-    "translated": "Lund, Karl Gustaf, chief engineer, Varberg, born on July 22, 1893, in Hille, Gävleborgs län, Sweden, son of factory worker Ferdinand L. and Maria Andersson. Married in 1936 to Sigrid Johansson. Children: Ingvar (born 1938), Lennart (born 1942). — Graduated from Bergsskolan in Filipstad in 1917, specialized studies at the Royal Institute of Technology (KTH) from 1920 to 1922, studied at the Institute of Metallurgy and Stockholm University in 1921-1922. Chemist at Strömsnäs Järnverks A-B in Degerfors from 1918 to 1920.",
-    "structured": {
-            "@context": "http://schema.org",
-            "@type": "Person",
-            "name": "Karl Gustaf Lund",
-            "givenName": "Karl Gustaf",
-            "familyName": "Lund",
-            "gender": "Male",
-            "birthDate": "1893-07-22",
-            "birthPlace": {
-                "@type": "Place",
-                "address": {
-                "@type": "PostalAddress",
-                "addressLocality": "Hille",
-                "addressRegion": "Gävleborgs län",
-                "addressCountry": "Sweden"
-                }
-            },
-            "nationality": "Swedish",
-            "parent": [
-                {
-                "@type": "Person",
-                "name": "Ferdinand L.",
-                "jobTitle": "Factory Worker"
-                },
-                {
-                "@type": "Person",
-                "name": "Maria Andersson"
-                }
-            ],
-            "spouse": {
-                "@type": "Person",
-                "name": "Sigrid Johansson",
-                "marriageDate": "1936"
-            },
-            "children": [
-                {
-                "@type": "Person",
-                "name": "Ingvar",
-                "birthDate": "1938"
-                },
-                {
-                "@type": "Person",
-                "name": "Lennart",
-                "birthDate": "1942"
-                }
-            ],
-            "alumniOf": [
-                {
-                "@type": "EducationalOrganization",
-                "name": "Bergsskolan in Filipstad",
-                "graduationDate": "1917"
-                },
-                {
-                "@type": "EducationalOrganization",
-                "name": "Royal Institute of Technology (KTH)",
-                "attendancePeriod": "1920-1922"
-                },
-                {
-                "@type": "EducationalOrganization",
-                "name": "Institute of Metallurgy and Stockholm University",
-                "attendancePeriod": "1921-1922"
-                }
-            ],
-            "worksFor": [
-                {
-                "@type": "Organization",
-                "name": "Strömsnäs Järnverks A-B",
-                "jobTitle": "Chemist",
-                "employmentPeriod": "1918-1920"
-                },
-                {
-                "@type": "Organization",
-                "name": "Westinghouse Electric & Manufacturing Co.",
-                "jobTitle": "Metallurgist and Chemist",
-                "employmentPeriod": "1923-1926, 1928-1929",
-                "location": "East Pittsburgh, PA, USA"
-                },
-                {
-                "@type": "Organization",
-                "name": "Laclede Steel Co.",
-                "jobTitle": "Chief Metallurgist",
-                "employmentPeriod": "1927",
-                "location": "Alton, Illinois, USA"
-                },
-                {
-                "@type": "Organization",
-                "name": "A-B Iggesunds Bruk",
-                "jobTitle": "Furnace and Steelworks Engineer",
-                "employmentPeriod": "1929-1931"
-                },
-                {
-                "@type": "Organization",
-                "name": "Gunnebo Bruks Nya A-B, Varbergsverket",
-                "jobTitle": "Site Manager",
-                "employmentPeriod": "1931-present"
-                }
-            ],
-            "memberOf": [
-                {
-                "@type": "Organization",
-                "name": "Municipal Executive Committee"
-                },
-                {
-                "@type": "Organization",
-                "name": "Varbergs Sparbank",
-                "position": "Chairman"
-                },
-                {
-                "@type": "Organization",
-                "name": "Varbergs Luftskyddsförening",
-                "position": "Member of the Board"
-                },
-                {
-                "@type": "Organization",
-                "name": "Varbergs Högerförening",
-                "position": "Secretary"
-                }
-            ],
-            "hasOccupation": {
-                "@type": "Occupation",
-                "name": "Chief Engineer"
-            },
-            "address": {
-                "@type": "PostalAddress",
-                "addressLocality": "Varberg",
-                "addressCountry": "Sweden"
-            },
-            "author": [
-                {
-                "@type": "CreativeWork",
-                "name": "Some fundamental factors for obtaining sharp thermal curves",
-                "publisher": "Transactions of the American Society for Steel Treating",
-                "author": ["Karl Gustaf Lund", "C. Benedicks", "W. H. Dearden"],
-                "datePublished": "1925"
-                },
-                {
-                "@type": "CreativeWork",
-                "name": "Contemporary production of saw blades, circular saws, and machine knives",
-                "publisher": "Timber Industry",
-                "author": "Karl Gustaf Lund",
-                "datePublished": "1931"
-                }
-            ],
-            "interests": "Hunting and Fishing"
-    }
-}
-```
-
-## Output
-
-```{r}
-library(ggtext)
-library(showtext)
-font_add_google("IBM Plex Mono", "ibm")
-showtext_auto(enable = TRUE)
-
-timeline <- tibble(
-    event = c(
-        "Birth", "Graduated from Bergsskolan in Filipstad",
-        "Specialized studies at the Royal Institute of Technology (KTH)",
-        "Studied at the Institute of Metallurgy and Stockholm University",
-        "Marriage to Sigrid Johansson",
-        "Birth of Ingvar", "Birth of Lennart",
-        "Chemist at Strömsnäs Järnverks A-B in Degerfors",
-        "Metallurgist and chemist at Westinghouse Electric & Manufacturing Co.",
-        "Chief metallurgist at Laclede Steel Co. in Alton, Illinois, USA",
-        "Furnace and steelworks engineer at A-B Iggesunds Bruk",
-        "Site manager at Gunnebo Bruks Nya A-B, Varbergsverket",
-        "Member of the municipal executive committee",
-        "Deputy chairman of the economic department",
-        "Deputy member of the board of the power plant",
-        "Chairman of Varbergs Sparbank",
-        "Employer representative in the district council of the county labor board",
-        "Member of the board of Varbergs Luftskyddsförening",
-        "Secretary of Varbergs Högerförening",
-        "Chairman of the railway sick fund",
-        "Plant Society for Small Bird Friends",
-        "Traveled to Germany",
-        "Traveled to Denmark and Czechoslovakia",
-        "Traveled to Austria",
-        "Traveled to the USA",
-        "*Wrote 'Some fundamental factors for obtaining sharp thermal curves'",
-        "*Wrote 'Contemporary production of saw blades, circular saws, and machine knives'",
-        "Hobbies: hunting and fishing"
-    ),
-    start_year = c(
-        1893, 1917, 1920, 1921, 1936, 1938, 1942, 1918, 1923, 1927, 1929,
-        1931, NA, NA, NA, NA, NA, NA, NA, NA, NA, 1921, 1921, 1921, 1923, 1925, 1931, NA
-    ),
-    end_year = c(
-        1893, 1917, 1922, 1922, 1936, 1938, 1942, 1920, 1929, 1927, 1931,
-        NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, 1923, 1923, 1921, 1929, NA, NA, NA
-    )
-)
-
-timeline %>%
-    filter(!is.na(start_year)) %>%
-    arrange(start_year) %>%
-    mutate(end_year_imputed = case_when(
-        is.na(end_year) ~ lead(start_year),
-        is.na(lead(start_year)) ~ start_year,
-        TRUE ~ end_year
-    )) %>%
-    mutate(
-        event = fct_reorder(event, start_year, .desc = TRUE)
-    ) %>%
-    # pivot_longer(c(start_year, end_year_imputed)) %>%
-    # ggplot(aes(value, english_occupation, colour = name)) +
-    ggplot(aes(xmin = start_year, xmax = end_year_imputed, y = event)) +
-    geom_linerange(colour = "gray50", size = 2) +
-    geom_point(aes(x = end_year_imputed), colour = "#be5d2b", size = 4) +
-    geom_point(aes(x = start_year), colour = "#2B8CBE", size = 4) +
-    labs(
-        title = "Karl Lund's life course",
-        subtitle = "Showing <span style = 'color:#2B8CBE;'>start dates</span> and <span style = 'color:#be5d2b;'>end dates</span> for his various roles and life events",
-        x = NULL,
-        y = NULL
-    ) +
-    theme(
-        legend.position = "none",
-        plot.subtitle = element_markdown(),
-        plot.title.position = "plot",
-        text = element_text(family = "ibm", size = 13)
-    )
-
-```
-
-## Birthplaces mapped
-
-Sample of birthplaces of individuals with surnames beginning with A in Götaland 1948:
-
-<div style="text-align: center">
-
-
-```{r}
-knitr::include_url("assets/sweden_map_checkboxes.html", height = "800")
-```
-
-</div>
-
-## Birthplaces mapped
+## Add coordinates to firms and individuals
 
 Birthplaces of individuals who studied at Royal Tehcnical Institute (KTH) in *Who is Who in Industry and Business*
 
@@ -616,65 +352,9 @@ graph LR
 
 ```
 
-## Why is classification important?
+## Two-part classification process
 
-We often want to classify an observation into a group in order to make inference about the group.
-
-```{r}
-library(tidyverse)
-library(gt)
-
-skills_table <- tibble(
-    green_skills = c(
-        "Renewable Energy System Design",
-        "Sustainable Urban Planning",
-        "Environmental Impact Assessment",
-        "Waste Management and Recycling",
-        "Water Resource Management",
-        "Sustainable Agriculture Practices",
-        "Energy Efficiency Analysis",
-        "Carbon Footprinting and Reduction",
-        "Green Building Design",
-        "Conservation Biology"
-    ),
-    brown_skills = c(
-        "Petroleum Geology",
-        "Oil and Gas Drilling Techniques",
-        "Fossil Fuel Plant Operations",
-        "Pipeline Design and Maintenance",
-        "Refinery Operations",
-        "Coal Mining Techniques",
-        "Fossil Fuel Transportation Logistics",
-        "Emission Control Technologies",
-        "Fossil-Based Power Generation",
-        "Risk Assessment in Fossil Fuel Industries"
-    )
-)
-
-skills_table <- skills_table %>%
-    gt() %>%
-    tab_header(
-        title = md("**Green and brown skills to be grouped**")
-    ) %>%
-    cols_label(
-        green_skills = "Green Skills",
-        brown_skills = "Brown Skills"
-    ) %>%
-    tab_style(
-        style = cell_fill(color = "#b7e8b7"),
-        locations = cells_body(columns = green_skills)
-    ) %>%
-    tab_style(
-        style = cell_fill(color = "#e6b27e"),
-        locations = cells_body(columns = brown_skills)
-    )
-
-skills_table %>%
-    tab_options(table.font.size = 32)
-```
-
-
-## My use case: how to measure career progression
+Makes use of occupational title, e.g. "Civilingenjör, teknisk fysik" and workplace information, e.g. "Strömsnäs Järnverks A-B".
 
 ```{python, eval=FALSE, echo=TRUE}
 #| code-line-numbers: "10-14"
@@ -775,46 +455,28 @@ knitr::include_graphics("assets/sustainable-planning.png")
 
 ## Use embeddings to cluster skills
 
-- Here we do not say which skills are green or brown, we just use the `kmeans` algorithm to create two groups based on the embeddings:
 
-![](assets/umap_1.png){fig-align="center" width=100%}
+```{r}
+#| label: fig-hisco-cluster
+#| fig-cap: "Scatter plot showing the relative similarity of occupational titles in the HISCO schema"
+
+knitr::include_graphics("assets/hisco_cluster.png")
+```
+
+## Use clusters to classify individuals into the groups
+
+
+```{r}
+#| label: fig-hisco-counts
+#| fig-cap: "Most common HISCO occupations in Vem är Vem"
+#| fig-width: 5
+#| out-width: 5in
+
+knitr::include_graphics("assets/hisco_counts.png")
+```
 
 ## Use clusters to classify new skills into the groups
 
-```{python}
-#| eval: false
-#| echo: true
-
-# New terms to classify
-new_terms = ["Sustainable textile recycling", "Coal burning technology"]
-
-# Encode the new terms using the same model
-new_embeddings = model.encode(new_terms)
-
-# Transform the new embeddings using the already fit UMAP model
-new_embeddings_umap = umap_model.transform(new_embeddings)
-
-# Use the trained KMeans model to predict the cluster for the new embeddings
-new_clusters = kmeans.predict(new_embeddings_umap)
-
-# Mapping clusters to groups for readability
-group_mapping = {1: 'Green Skills', 0: 'Brown Skills'}
-classified_groups = [group_mapping[cluster] for cluster in new_clusters]
-
-# Output the classification
-for term, group in zip(new_terms, classified_groups):
-    print(f"'{term}' is classified as: {group}")
-```
-
-- 'Sustainable textile recycling' is classified as: Green Skills
-
-- 'Coal burning technology' is classified as: Brown Skills
-
-## Visualize classification
-
-![](assets/umap_2.png){fig-align="center" width=100%}
-
-## Assign HISCOs: process
 
 ```{mermaid}
 graph TB
@@ -835,7 +497,33 @@ graph TB
 
 Here the HISCO descriptions are in English, as are the translated titles from my biographies in Swedish.
 
-## How to get a text embedding?
+## Cluster firms by location
+
+```{r}
+#| label: fig-map-common-types
+#| fig-cap: "Map of the geographic clusters of businesses by most common business type"
+#| fig-width: 5
+#| out-width: 5in
+
+knitr::include_graphics("assets/map_most_common_businesses.png")
+```
+
+
+## You can do it too!
+
+![](assets/code.png){fig-align="center" width=100%}
+
+[GitHub repo](https://github.com/j-jayes/who-is-who-in-industry)
+
+
+## References
+
+::: {#refs}
+:::
+
+# Appendix {#sec-appendix background-color="#1C9E77" visibility="uncounted"}
+
+## How to get a text embedding?{visibility="uncounted"}
 
 ```{python}
 #| eval: false
@@ -851,7 +539,7 @@ df['ada_embedding'] = df['hisco_text'].apply(lambda x: get_embedding(x, model='t
 
 ```
 
-## Assign HISCOs: example
+## Assign HISCOs: example{visibility="uncounted"}
 
 ### 026 Metallurgists (HISCO description)
 
@@ -861,13 +549,13 @@ Workers in this unit group advise on metallurgical problems and develop and cont
 
 Metallurgist and Chemist at Westinghouse Electric & Manufacturing Co.
 
-## Assign HISCOs: codes projected from 1536 dimensions to 2 with UMAP
+## Assign HISCOs: codes projected from 1536 dimensions to 2 with UMAP{visibility="uncounted"}
 
 ```{r}
 knitr::include_url("assets/interactive_umap_plot.html", height = "800")
 ```
 
-## Assign HISCOs: Watchmaker Apprentice
+## Assign HISCOs: Watchmaker Apprentice{visibility="uncounted"}
 
 <br>
 
@@ -903,7 +591,7 @@ watchmaker_table %>%
     tab_options(table.font.size = 40)
 ```
 
-## Assign HISCOs: Shipyard Assistant Engineer
+## Assign HISCOs: Shipyard Assistant Engineer{visibility="uncounted"}
 
 <br>
 
@@ -940,7 +628,7 @@ occupation_table %>%
 ```
 
 
-## Keep titles in Swedish?
+## Keep titles in Swedish?{visibility="uncounted"}
 
 Instead of using the HISCO schema in English, I am using the SSYK classification from 2012.
 
@@ -952,7 +640,7 @@ The input is from the Job Tech Data so we have a ground truth that they have lab
 knitr::include_url("https://huggingface.co/KB/bert-base-swedish-cased", height = 800)
 ```
 
-## SSYK and Swedish BERT examples:
+## SSYK and Swedish BERT examples:{visibility="uncounted"}
 
 ```{r}
 library(tibble)
@@ -986,7 +674,7 @@ new_occupation_table %>%
 
 ```
 
-## SSYK and Swedish BERT examples:
+## SSYK and Swedish BERT examples:{visibility="uncounted"}
 
 ```{r}
 library(tibble)
@@ -1019,20 +707,8 @@ new_occupation_table %>%
   tab_options(table.font.size = 40)
 ```
 
-## Can we score how successful this is?
+## Can we score how successful this is?{visibility="uncounted"}
 
 We can use a crosswalk from one schema to another as a test set, e.g. O * Net to ISCO:
 
 ![](assets/scoring_assignement.png){fig-align="center" width=100%}
-
-## You can do it too!
-
-![](assets/code.png){fig-align="center" width=100%}
-
-[GitHub repo](https://github.com/j-jayes/who-is-who-in-industry)
-
-
-## References
-
-::: {#refs}
-:::
