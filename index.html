@@ -13,8 +13,7 @@
   <meta name="generator" content="quarto-1.3.450">
 
   <meta name="author" content="Jonathan Jayes - Lund University">
-  <meta name="dcterms.date" content="2023-11-20">
-  <title>Wired for Success: Sweden’s Electrical Innovators in the Age of Industrial Transformation</title>
+  <title>Praise the people or praise the place? Upper tail human capital in electrifying Sweden</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -97,7 +96,26 @@
     code span.va { color: #111111; } /* Variable */
     code span.vs { color: #20794d; } /* VerbatimString */
     code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
-  </style>
+    /* CSS for citations */
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+    }
+    .hanging-indent div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }  </style>
   <link rel="stylesheet" href="index_files/libs/revealjs/dist/theme/quarto.css">
   <link href="index_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="index_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
@@ -390,14 +408,15 @@
   <script src="index_files/libs/quarto-diagram/mermaid.min.js"></script>
   <script src="index_files/libs/quarto-diagram/mermaid-init.js"></script>
   <link href="index_files/libs/quarto-diagram/mermaid.css" rel="stylesheet">
+  <link rel="shortcut icon" href="assets/favicon.ico">
 </head>
 <body class="quarto-light">
   <div class="reveal">
     <div class="slides">
 
-<section id="title-slide" data-background-image="assets/preview.png" data-background-opacity="0.2" data-background-position="right" data-background-size="30%" class="quarto-title-block center">
-  <h1 class="title">Wired for Success: Sweden’s Electrical Innovators in the Age of Industrial Transformation</h1>
-  <p class="subtitle">Labour Mobility Lab in Lund</p>
+<section id="title-slide" data-background-image="assets/preview_wide.png" data-background-opacity="0.4" data-background-position="bottom 10" data-background-size="90%" class="quarto-title-block center">
+  <h1 class="title">Praise the people or praise the place? Upper tail human capital in electrifying Sweden</h1>
+  <p class="subtitle">Midway Seminar - 24-01-2024</p>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -407,7 +426,17 @@ Jonathan Jayes - Lund University
 </div>
 </div>
 
-  <p class="date">November 20, 2023</p>
+</section>
+<section>
+<section id="sec-researchquestion" class="title-slide slide level1 center" data-background-color="#1C9E77" data-visibility="uncounted">
+<h1>Research question</h1>
+<p><br></p>
+<p>How can we use new kinds of source material and new methods to find out where the skilled workers who built the Swedish electricity sector came from, and where they were trained?</p>
+<p>Answering involves:</p>
+<ul>
+<li>2 data structuring tasks</li>
+<li>2 classification tasks</li>
+</ul>
 </section>
 <section id="motivation" class="slide level2">
 <h2>Motivation</h2>
@@ -428,48 +457,36 @@ Jonathan Jayes - Lund University
 </ul></li>
 </ol>
 </section>
-<section id="motivation-1" class="slide level2">
-<h2>Motivation</h2>
-<ol type="1">
-<li><strong>Background: Return Migrants and Occupational Mobility in Sweden</strong> 🌍➡️🇸🇪
-<ul>
-<li>Return migrants brought back financial capital, often invested locally, but didn’t show much occupational upgrading on average.</li>
-</ul></li>
-<li><strong>How are the individuals at the top of the skill distribution different from those who returned to farm?</strong>
-<ul>
-<li>Where did they move back to, how did their education change?</li>
-</ul></li>
-</ol>
-</section>
-<section>
-<section id="research-question" class="title-slide slide level1 center" data-background-color="#1C9E77">
-<h1>Research question</h1>
-<p>How important was <strong>migration and skill adoption</strong> for the <strong>electricity adjascent technology development</strong> in Sweden?</p>
-<p><a href="#/sec-classifying-occupations"><span class="button">Skip to Classifying Occupations</span></a></p>
-</section>
-<section id="what-i-want-you-to-take-away-from-today-as-researchers" class="slide level2">
-<h2>What I want you to take away from today as researchers</h2>
+<section id="related-literature" class="slide level2">
+<h2>Related literature</h2>
+<p><strong>3 main strands:</strong></p>
 <div class="columns">
-<div class="column" style="width:40%;">
-<ol type="1">
-<li><p>NLP tasks that used to be very challenging / time consuming are no longer!</p></li>
-<li><p>We can use the OpenAI API to structure data from free text at very low cost.</p></li>
-<li><p>It is a <strong>General Purpose Technology</strong> that can both process data and also inform our workflow as researchers.</p></li>
-</ol>
-</div><div class="column" style="width:10%;">
-
-</div><div class="column" style="width:50%;">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="assets/world_champtions.jpeg" style="width:60.0%"></p>
-</figure>
-</div>
+<div class="column">
+<p><em>Recent papers making use of individual level biographic data</em></p>
+<ul>
+<li><span class="citation" data-cites="ford2023not">Ford, Ranestad, and Sharp (<a href="#/references" role="doc-biblioref" onclick="">2023</a>)</span></li>
+<li><span class="citation" data-cites="Nekoei2020Herstory">Nekoei and Sinn (<a href="#/references" role="doc-biblioref" onclick="">2020</a>)</span></li>
+</ul>
+</div><div class="column">
+<p><em>The importance of human capital in economic development</em></p>
+<ul>
+<li><span class="citation" data-cites="Goldin1994">Goldin (<a href="#/references" role="doc-biblioref" onclick="">1994</a>)</span></li>
+<li><span class="citation" data-cites="Moretti2012">Moretti (<a href="#/references" role="doc-biblioref" onclick="">2012</a>)</span></li>
+<li><span class="citation" data-cites="Mokyr2017">Mokyr (<a href="#/references" role="doc-biblioref" onclick="">2017</a>)</span></li>
+</ul>
+</div><div class="column">
+<p><em>Classification and prediction as part of EH</em></p>
+<ul>
+<li><span class="citation" data-cites="DahlVedel2024">Dahl and Vedel (<a href="#/references" role="doc-biblioref" onclick="">2023</a>)</span></li>
+<li><span class="citation" data-cites="merouani2023innovation">Merouani (<a href="#/references" role="doc-biblioref" onclick="">2023</a>)</span></li>
+<li><span class="citation" data-cites="Bandiera2020ceo">Bandiera et al. (<a href="#/references" role="doc-biblioref" onclick="">2020</a>)</span></li>
+</ul>
 </div>
 </div>
 </section></section>
 <section>
-<section id="structuring-biographies" class="title-slide slide level1 center" data-background-color="#1C9E77">
-<h1>Structuring biographies</h1>
+<section id="sec-who" class="title-slide slide level1 center" data-background-color="#1C9E77" data-visibility="uncounted">
+<h1>Who were the <code>innovators</code> or adopters?</h1>
 
 </section>
 <section id="who-is-who" class="slide level2">
@@ -501,22 +518,40 @@ Jonathan Jayes - Lund University
 <h2>Vem är Vem?</h2>
 
 <img data-src="index_files/figure-revealjs/unnamed-chunk-1-1.png" width="960" class="r-stretch"></section>
-<section id="vem-är-vem-example-biography" class="slide level2">
-<h2>Vem är Vem? Example biography</h2>
-
-<img data-src="assets/Karl_Lund.png" class="r-stretch"></section>
 <section id="vem-är-karl-lund" class="slide level2">
 <h2>Vem är Karl Lund?</h2>
-<p><span style="background-color: #b0c4de">Lund, Karl Gustaf</span>, <span style="background-color: #d2b48c">chief engineer</span>, <span style="background-color: #ff8c69">born on July 22, 1893</span>, <span style="background-color: #90ee90">in Hille, Gävleborgs län</span>, Sweden, son of <span style="background-color: #9370db">factory worker Ferdinand L. and Maria Andersson</span>. Married in 1936 to <span style="background-color: #ffadc1">Sigrid Johansson</span>. Children: <span style="background-color: #ffdead">Ingvar (born 1938)</span>, <span style="background-color: #ffdead">Lennart (born 1942)</span>. — Graduated from <span style="background-color: #afeeee">Bergsskolan</span> in Filipstad in 1917, specialized studies at the <span style="background-color: #afeeee">Royal Institute of Technology (KTH)</span> from 1920 to 1922, studied at the <span style="background-color: #afeeee">Institute of Metallurgy</span> and <span style="background-color: #afeeee">Stockholm University</span> in 1921-1922. Chemist at <span style="background-color: #98fb98">Strömsnäs Järnverks A-B</span> in Degerfors from 1918 to 1920, metallurgist and chemist at <span style="background-color: #98fb98">Westinghouse Electric &amp; Manufacturing Co.</span> in East Pittsburgh, PA, USA, from 1923 to 1926 and 1928 to 1929, chief metallurgist at <span style="background-color: #98fb98">Laclede Steel Co.</span> in Alton, Illinois, USA, in 1927, furnace and steelworks engineer at <span style="background-color: #98fb98">A-B Iggesunds Bruk</span> from 1929 to 1931, site manager at <span style="background-color: #98fb98">Gunnebo Bruks Nya A-B, Varbergsverket</span>, since 1931. Member of the municipal executive committee, deputy chairman of the economic department, deputy member of the board of the power plant, chairman of <span style="background-color: #ffdab9">Varbergs Sparbank</span>, employer representative in the district council of the county labor board, member of the board of <span style="background-color: #ffdab9">Varbergs Luftskyddsförening (Varberg Air Protection Association)</span>, secretary of <span style="background-color: #ffdab9">Varbergs Högerförening (Varberg Conservative Association)</span>, chairman of the railway sick fund, and <span style="background-color: #ffdab9">Plant Society for Small Bird Friends</span>.</p>
-</section>
-<section id="vem-är-karl-lund-1" class="slide level2">
-<h2>Vem är Karl Lund?</h2>
-<p>Traveled to <span style="background-color: #e6e6fa">Germany</span> in 1921, 1923, 1930, and 1936, <span style="background-color: #e6e6fa">Denmark</span>, <span style="background-color: #e6e6fa">Czechoslovakia</span> in 1921, 1922, and 1923, <span style="background-color: #e6e6fa">Austria</span> in 1921, and the <span style="background-color: #e6e6fa">USA</span> from 1923 to 1929. Writings: “Some fundamental factors for obtaining sharp thermal curves” (Transactions of the American Society for Steel Treating, co-authored with C. Benedicks and W. H. Dearden, 1925), “Contemporary production of saw blades, circular saws, and machine knives” (Timber Industry, 1931). Hobbies: <span style="background-color: #ffd700">hunting</span> and <span style="background-color: #ffd700">fishing</span>.</p>
-</section>
-<section id="section" class="slide level2">
-<h2></h2>
+<p><span style="background-color: #b0c4de">Lund, Karl Gustaf</span>, <span style="background-color: #d2b48c">chief engineer</span>, <span style="background-color: #ff8c69">born on July 22, 1893</span>, <span style="background-color: #90ee90">in Hille, Gävleborgs län</span>, Sweden, son of <span style="background-color: #9370db">clerk Ferdinand L. and Maria Andersson</span>. Married in 1936 to <span style="background-color: #ffadc1">Sigrid Johansson</span>. Children: <span style="background-color: #ffdead">Ingvar (born 1938)</span>, <span style="background-color: #ffdead">Lennart (born 1942)</span>. — Graduated from <span style="background-color: #afeeee">Bergsskolan</span> in Filipstad in 1917, specialized studies at the <span style="background-color: #afeeee">Royal Institute of Technology (KTH)</span> from 1920 to 1922, studied at the <span style="background-color: #afeeee">Institute of Metallurgy</span> and <span style="background-color: #afeeee">Stockholm University</span> in 1921-1922. Chemist at <span style="background-color: #98fb98">Strömsnäs Järnverks A-B</span> in Degerfors from 1918 to 1920, metallurgist and chemist at <span style="background-color: #98fb98">Westinghouse Electric &amp; Manufacturing Co.</span> in East Pittsburgh, PA, USA, from 1923 to 1926 and 1928 to 1929, chief metallurgist at <span style="background-color: #98fb98">Laclede Steel Co.</span> in Alton, Illinois, USA, in 1927, furnace and steelworks engineer at <span style="background-color: #98fb98">A-B Iggesunds Bruk</span> from 1929 to 1931, site manager at <span style="background-color: #98fb98">Gunnebo Bruks Nya A-B, Varbergsverket</span>, since 1931. Member of the municipal executive committee, deputy chairman of the economic department, deputy member of the board of the power plant, chairman of <span style="background-color: #ffdab9">Varbergs Sparbank</span>, employer representative in the district council of the county labor board, member of the board of <span style="background-color: #ffdab9">Varbergs Luftskyddsförening (Varberg Air Protection Association)</span>, secretary of <span style="background-color: #ffdab9">Varbergs Högerförening (Varberg Conservative Association)</span>, chairman of the railway sick fund, and <span style="background-color: #ffdab9">Plant Society for Small Bird Friends</span>.</p>
+</section></section>
+<section>
+<section id="sec-where" class="title-slide slide level1 center" data-background-color="#1C9E77" data-visibility="uncounted">
+<h1>Where were the <code>firms</code> in which these individuals worked?</h1>
 
-<img data-src="assets/tidy.jpg" class="r-stretch"></section>
+</section>
+<section id="swedish-industrial-firm-catalogue-of-1947" class="slide level2">
+<h2>Swedish industrial firm catalogue of 1947</h2>
+<div class="columns">
+<div class="column">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="assets/svensk-industrikalender_1.png" style="width:100.0%"></p>
+</figure>
+</div>
+</div><div class="column">
+<p>The Svensk Industrikalender, published by Sveriges Industriförbund (Sweden’s Industrial Association), is a comprehensive directory of Swedish industrial firms. This calendar was issued annually from 1918 to 2000 and contains information related to Swedish industry. The 1947 edition available on the Project Runeberg website was digitized in April 2012, sourced from the Centrum för Näringslivshis- toria.</p>
+</div>
+</div>
+</section>
+<section id="firms-across-the-country" class="slide level2">
+<h2>Firms across the country</h2>
+<div style="display: flex; justify-content: center; align-items: center;">
+    <iframe src="https://raw.githack.com/j-jayes/svensk-industrikalender/main/data/maps/all_companies_map.html" width="1400" height="700"></iframe>
+</div>
+</section></section>
+<section>
+<section id="sec-structure" class="title-slide slide level1 center" data-background-color="#1C9E77" data-visibility="uncounted">
+<h1>How can we <code>structure</code> the data?</h1>
+
+</section>
 <section id="data-pipeline" class="slide level2">
 <h2>Data pipeline</h2>
 <p><br></p>
@@ -541,27 +576,22 @@ Jonathan Jayes - Lund University
 </tr>
 <tr class="even">
 <td>2</td>
-<td>Split biographies on each page of a book</td>
+<td>Split records on each page of a book</td>
 <td>📚➡️📄</td>
 </tr>
 <tr class="odd">
 <td><strong>3</strong></td>
-<td><strong>Translate biographies</strong></td>
+<td><strong>Structure biographies using schema</strong></td>
 <td>📄🔄📄</td>
 </tr>
 <tr class="even">
 <td><strong>4</strong></td>
-<td><strong>Structure biographies using Schema.org</strong></td>
-<td>📄➡️🔗</td>
-</tr>
-<tr class="odd">
-<td><strong>5</strong></td>
-<td><strong>Augment data</strong></td>
+<td><strong>Classify record into group</strong></td>
 <td>🔗🔍🌍🎓📚</td>
 </tr>
-<tr class="even">
-<td>6</td>
-<td>Store data</td>
+<tr class="odd">
+<td>5</td>
+<td>Store data for analysis</td>
 <td>🔗📚📂</td>
 </tr>
 </tbody>
@@ -847,8 +877,8 @@ Jonathan Jayes - Lund University
 </div>
 </section></section>
 <section>
-<section id="sec-classifying-occupations" class="title-slide slide level1 center" data-background-color="#1C9E77">
-<h1>Classifying occupations</h1>
+<section id="sec-classifying-occupations" class="title-slide slide level1 center" data-background-color="#1C9E77" data-visibility="uncounted">
+<h1>How can we <code>classify occupations</code> according to a schema?</h1>
 <div class="cell" data-reveal="true">
 <div class="cell-output-display">
 <div>
@@ -878,23 +908,23 @@ Jonathan Jayes - Lund University
 <div class="cell">
 <div class="cell-output-display">
 
-<div id="zzjcfoxzlj" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#zzjcfoxzlj table {
+<div id="zdixgykufr" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#zdixgykufr table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#zzjcfoxzlj thead, #zzjcfoxzlj tbody, #zzjcfoxzlj tfoot, #zzjcfoxzlj tr, #zzjcfoxzlj td, #zzjcfoxzlj th {
+#zdixgykufr thead, #zdixgykufr tbody, #zdixgykufr tfoot, #zdixgykufr tr, #zdixgykufr td, #zdixgykufr th {
   border-style: none;
 }
 
-#zzjcfoxzlj p {
+#zdixgykufr p {
   margin: 0;
   padding: 0;
 }
 
-#zzjcfoxzlj .gt_table {
+#zdixgykufr .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -920,12 +950,12 @@ Jonathan Jayes - Lund University
   border-left-color: #D3D3D3;
 }
 
-#zzjcfoxzlj .gt_caption {
+#zdixgykufr .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#zzjcfoxzlj .gt_title {
+#zdixgykufr .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -937,7 +967,7 @@ Jonathan Jayes - Lund University
   border-bottom-width: 0;
 }
 
-#zzjcfoxzlj .gt_subtitle {
+#zdixgykufr .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -949,7 +979,7 @@ Jonathan Jayes - Lund University
   border-top-width: 0;
 }
 
-#zzjcfoxzlj .gt_heading {
+#zdixgykufr .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -961,13 +991,13 @@ Jonathan Jayes - Lund University
   border-right-color: #D3D3D3;
 }
 
-#zzjcfoxzlj .gt_bottom_border {
+#zdixgykufr .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#zzjcfoxzlj .gt_col_headings {
+#zdixgykufr .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -982,7 +1012,7 @@ Jonathan Jayes - Lund University
   border-right-color: #D3D3D3;
 }
 
-#zzjcfoxzlj .gt_col_heading {
+#zdixgykufr .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1002,7 +1032,7 @@ Jonathan Jayes - Lund University
   overflow-x: hidden;
 }
 
-#zzjcfoxzlj .gt_column_spanner_outer {
+#zdixgykufr .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1014,15 +1044,15 @@ Jonathan Jayes - Lund University
   padding-right: 4px;
 }
 
-#zzjcfoxzlj .gt_column_spanner_outer:first-child {
+#zdixgykufr .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#zzjcfoxzlj .gt_column_spanner_outer:last-child {
+#zdixgykufr .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#zzjcfoxzlj .gt_column_spanner {
+#zdixgykufr .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1034,11 +1064,11 @@ Jonathan Jayes - Lund University
   width: 100%;
 }
 
-#zzjcfoxzlj .gt_spanner_row {
+#zdixgykufr .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#zzjcfoxzlj .gt_group_heading {
+#zdixgykufr .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1064,7 +1094,7 @@ Jonathan Jayes - Lund University
   text-align: left;
 }
 
-#zzjcfoxzlj .gt_empty_group_heading {
+#zdixgykufr .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1079,15 +1109,15 @@ Jonathan Jayes - Lund University
   vertical-align: middle;
 }
 
-#zzjcfoxzlj .gt_from_md > :first-child {
+#zdixgykufr .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#zzjcfoxzlj .gt_from_md > :last-child {
+#zdixgykufr .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#zzjcfoxzlj .gt_row {
+#zdixgykufr .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1106,7 +1136,7 @@ Jonathan Jayes - Lund University
   overflow-x: hidden;
 }
 
-#zzjcfoxzlj .gt_stub {
+#zdixgykufr .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1119,7 +1149,7 @@ Jonathan Jayes - Lund University
   padding-right: 5px;
 }
 
-#zzjcfoxzlj .gt_stub_row_group {
+#zdixgykufr .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1133,15 +1163,15 @@ Jonathan Jayes - Lund University
   vertical-align: top;
 }
 
-#zzjcfoxzlj .gt_row_group_first td {
+#zdixgykufr .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#zzjcfoxzlj .gt_row_group_first th {
+#zdixgykufr .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#zzjcfoxzlj .gt_summary_row {
+#zdixgykufr .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1151,16 +1181,16 @@ Jonathan Jayes - Lund University
   padding-right: 5px;
 }
 
-#zzjcfoxzlj .gt_first_summary_row {
+#zdixgykufr .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#zzjcfoxzlj .gt_first_summary_row.thick {
+#zdixgykufr .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#zzjcfoxzlj .gt_last_summary_row {
+#zdixgykufr .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1170,7 +1200,7 @@ Jonathan Jayes - Lund University
   border-bottom-color: #D3D3D3;
 }
 
-#zzjcfoxzlj .gt_grand_summary_row {
+#zdixgykufr .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1180,7 +1210,7 @@ Jonathan Jayes - Lund University
   padding-right: 5px;
 }
 
-#zzjcfoxzlj .gt_first_grand_summary_row {
+#zdixgykufr .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1190,7 +1220,7 @@ Jonathan Jayes - Lund University
   border-top-color: #D3D3D3;
 }
 
-#zzjcfoxzlj .gt_last_grand_summary_row_top {
+#zdixgykufr .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1200,11 +1230,11 @@ Jonathan Jayes - Lund University
   border-bottom-color: #D3D3D3;
 }
 
-#zzjcfoxzlj .gt_striped {
+#zdixgykufr .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#zzjcfoxzlj .gt_table_body {
+#zdixgykufr .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1213,7 +1243,7 @@ Jonathan Jayes - Lund University
   border-bottom-color: #D3D3D3;
 }
 
-#zzjcfoxzlj .gt_footnotes {
+#zdixgykufr .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1227,7 +1257,7 @@ Jonathan Jayes - Lund University
   border-right-color: #D3D3D3;
 }
 
-#zzjcfoxzlj .gt_footnote {
+#zdixgykufr .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1236,7 +1266,7 @@ Jonathan Jayes - Lund University
   padding-right: 5px;
 }
 
-#zzjcfoxzlj .gt_sourcenotes {
+#zdixgykufr .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1250,7 +1280,7 @@ Jonathan Jayes - Lund University
   border-right-color: #D3D3D3;
 }
 
-#zzjcfoxzlj .gt_sourcenote {
+#zdixgykufr .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1258,63 +1288,63 @@ Jonathan Jayes - Lund University
   padding-right: 5px;
 }
 
-#zzjcfoxzlj .gt_left {
+#zdixgykufr .gt_left {
   text-align: left;
 }
 
-#zzjcfoxzlj .gt_center {
+#zdixgykufr .gt_center {
   text-align: center;
 }
 
-#zzjcfoxzlj .gt_right {
+#zdixgykufr .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#zzjcfoxzlj .gt_font_normal {
+#zdixgykufr .gt_font_normal {
   font-weight: normal;
 }
 
-#zzjcfoxzlj .gt_font_bold {
+#zdixgykufr .gt_font_bold {
   font-weight: bold;
 }
 
-#zzjcfoxzlj .gt_font_italic {
+#zdixgykufr .gt_font_italic {
   font-style: italic;
 }
 
-#zzjcfoxzlj .gt_super {
+#zdixgykufr .gt_super {
   font-size: 65%;
 }
 
-#zzjcfoxzlj .gt_footnote_marks {
+#zdixgykufr .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#zzjcfoxzlj .gt_asterisk {
+#zdixgykufr .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#zzjcfoxzlj .gt_indent_1 {
+#zdixgykufr .gt_indent_1 {
   text-indent: 5px;
 }
 
-#zzjcfoxzlj .gt_indent_2 {
+#zdixgykufr .gt_indent_2 {
   text-indent: 10px;
 }
 
-#zzjcfoxzlj .gt_indent_3 {
+#zdixgykufr .gt_indent_3 {
   text-indent: 15px;
 }
 
-#zzjcfoxzlj .gt_indent_4 {
+#zdixgykufr .gt_indent_4 {
   text-indent: 20px;
 }
 
-#zzjcfoxzlj .gt_indent_5 {
+#zdixgykufr .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -1547,23 +1577,23 @@ Jonathan Jayes - Lund University
 <div class="cell">
 <div class="cell-output-display">
 
-<div id="xkjnstfwhv" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#xkjnstfwhv table {
+<div id="mcabegitnn" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#mcabegitnn table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#xkjnstfwhv thead, #xkjnstfwhv tbody, #xkjnstfwhv tfoot, #xkjnstfwhv tr, #xkjnstfwhv td, #xkjnstfwhv th {
+#mcabegitnn thead, #mcabegitnn tbody, #mcabegitnn tfoot, #mcabegitnn tr, #mcabegitnn td, #mcabegitnn th {
   border-style: none;
 }
 
-#xkjnstfwhv p {
+#mcabegitnn p {
   margin: 0;
   padding: 0;
 }
 
-#xkjnstfwhv .gt_table {
+#mcabegitnn .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1589,12 +1619,12 @@ Jonathan Jayes - Lund University
   border-left-color: #D3D3D3;
 }
 
-#xkjnstfwhv .gt_caption {
+#mcabegitnn .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#xkjnstfwhv .gt_title {
+#mcabegitnn .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1606,7 +1636,7 @@ Jonathan Jayes - Lund University
   border-bottom-width: 0;
 }
 
-#xkjnstfwhv .gt_subtitle {
+#mcabegitnn .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1618,7 +1648,7 @@ Jonathan Jayes - Lund University
   border-top-width: 0;
 }
 
-#xkjnstfwhv .gt_heading {
+#mcabegitnn .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1630,13 +1660,13 @@ Jonathan Jayes - Lund University
   border-right-color: #D3D3D3;
 }
 
-#xkjnstfwhv .gt_bottom_border {
+#mcabegitnn .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#xkjnstfwhv .gt_col_headings {
+#mcabegitnn .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1651,7 +1681,7 @@ Jonathan Jayes - Lund University
   border-right-color: #D3D3D3;
 }
 
-#xkjnstfwhv .gt_col_heading {
+#mcabegitnn .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1671,7 +1701,7 @@ Jonathan Jayes - Lund University
   overflow-x: hidden;
 }
 
-#xkjnstfwhv .gt_column_spanner_outer {
+#mcabegitnn .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1683,15 +1713,15 @@ Jonathan Jayes - Lund University
   padding-right: 4px;
 }
 
-#xkjnstfwhv .gt_column_spanner_outer:first-child {
+#mcabegitnn .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#xkjnstfwhv .gt_column_spanner_outer:last-child {
+#mcabegitnn .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#xkjnstfwhv .gt_column_spanner {
+#mcabegitnn .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1703,11 +1733,11 @@ Jonathan Jayes - Lund University
   width: 100%;
 }
 
-#xkjnstfwhv .gt_spanner_row {
+#mcabegitnn .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#xkjnstfwhv .gt_group_heading {
+#mcabegitnn .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1733,7 +1763,7 @@ Jonathan Jayes - Lund University
   text-align: left;
 }
 
-#xkjnstfwhv .gt_empty_group_heading {
+#mcabegitnn .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1748,15 +1778,15 @@ Jonathan Jayes - Lund University
   vertical-align: middle;
 }
 
-#xkjnstfwhv .gt_from_md > :first-child {
+#mcabegitnn .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#xkjnstfwhv .gt_from_md > :last-child {
+#mcabegitnn .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#xkjnstfwhv .gt_row {
+#mcabegitnn .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1775,7 +1805,7 @@ Jonathan Jayes - Lund University
   overflow-x: hidden;
 }
 
-#xkjnstfwhv .gt_stub {
+#mcabegitnn .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1788,7 +1818,7 @@ Jonathan Jayes - Lund University
   padding-right: 5px;
 }
 
-#xkjnstfwhv .gt_stub_row_group {
+#mcabegitnn .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1802,15 +1832,15 @@ Jonathan Jayes - Lund University
   vertical-align: top;
 }
 
-#xkjnstfwhv .gt_row_group_first td {
+#mcabegitnn .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#xkjnstfwhv .gt_row_group_first th {
+#mcabegitnn .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#xkjnstfwhv .gt_summary_row {
+#mcabegitnn .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1820,16 +1850,16 @@ Jonathan Jayes - Lund University
   padding-right: 5px;
 }
 
-#xkjnstfwhv .gt_first_summary_row {
+#mcabegitnn .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#xkjnstfwhv .gt_first_summary_row.thick {
+#mcabegitnn .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#xkjnstfwhv .gt_last_summary_row {
+#mcabegitnn .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1839,7 +1869,7 @@ Jonathan Jayes - Lund University
   border-bottom-color: #D3D3D3;
 }
 
-#xkjnstfwhv .gt_grand_summary_row {
+#mcabegitnn .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1849,7 +1879,7 @@ Jonathan Jayes - Lund University
   padding-right: 5px;
 }
 
-#xkjnstfwhv .gt_first_grand_summary_row {
+#mcabegitnn .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1859,7 +1889,7 @@ Jonathan Jayes - Lund University
   border-top-color: #D3D3D3;
 }
 
-#xkjnstfwhv .gt_last_grand_summary_row_top {
+#mcabegitnn .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1869,11 +1899,11 @@ Jonathan Jayes - Lund University
   border-bottom-color: #D3D3D3;
 }
 
-#xkjnstfwhv .gt_striped {
+#mcabegitnn .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#xkjnstfwhv .gt_table_body {
+#mcabegitnn .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1882,7 +1912,7 @@ Jonathan Jayes - Lund University
   border-bottom-color: #D3D3D3;
 }
 
-#xkjnstfwhv .gt_footnotes {
+#mcabegitnn .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1896,7 +1926,7 @@ Jonathan Jayes - Lund University
   border-right-color: #D3D3D3;
 }
 
-#xkjnstfwhv .gt_footnote {
+#mcabegitnn .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1905,7 +1935,7 @@ Jonathan Jayes - Lund University
   padding-right: 5px;
 }
 
-#xkjnstfwhv .gt_sourcenotes {
+#mcabegitnn .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1919,7 +1949,7 @@ Jonathan Jayes - Lund University
   border-right-color: #D3D3D3;
 }
 
-#xkjnstfwhv .gt_sourcenote {
+#mcabegitnn .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1927,63 +1957,63 @@ Jonathan Jayes - Lund University
   padding-right: 5px;
 }
 
-#xkjnstfwhv .gt_left {
+#mcabegitnn .gt_left {
   text-align: left;
 }
 
-#xkjnstfwhv .gt_center {
+#mcabegitnn .gt_center {
   text-align: center;
 }
 
-#xkjnstfwhv .gt_right {
+#mcabegitnn .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#xkjnstfwhv .gt_font_normal {
+#mcabegitnn .gt_font_normal {
   font-weight: normal;
 }
 
-#xkjnstfwhv .gt_font_bold {
+#mcabegitnn .gt_font_bold {
   font-weight: bold;
 }
 
-#xkjnstfwhv .gt_font_italic {
+#mcabegitnn .gt_font_italic {
   font-style: italic;
 }
 
-#xkjnstfwhv .gt_super {
+#mcabegitnn .gt_super {
   font-size: 65%;
 }
 
-#xkjnstfwhv .gt_footnote_marks {
+#mcabegitnn .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#xkjnstfwhv .gt_asterisk {
+#mcabegitnn .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#xkjnstfwhv .gt_indent_1 {
+#mcabegitnn .gt_indent_1 {
   text-indent: 5px;
 }
 
-#xkjnstfwhv .gt_indent_2 {
+#mcabegitnn .gt_indent_2 {
   text-indent: 10px;
 }
 
-#xkjnstfwhv .gt_indent_3 {
+#mcabegitnn .gt_indent_3 {
   text-indent: 15px;
 }
 
-#xkjnstfwhv .gt_indent_4 {
+#mcabegitnn .gt_indent_4 {
   text-indent: 20px;
 }
 
-#xkjnstfwhv .gt_indent_5 {
+#mcabegitnn .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -2029,23 +2059,23 @@ Jonathan Jayes - Lund University
 <div class="cell">
 <div class="cell-output-display">
 
-<div id="pgszeiosxx" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#pgszeiosxx table {
+<div id="fuflymssaa" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#fuflymssaa table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#pgszeiosxx thead, #pgszeiosxx tbody, #pgszeiosxx tfoot, #pgszeiosxx tr, #pgszeiosxx td, #pgszeiosxx th {
+#fuflymssaa thead, #fuflymssaa tbody, #fuflymssaa tfoot, #fuflymssaa tr, #fuflymssaa td, #fuflymssaa th {
   border-style: none;
 }
 
-#pgszeiosxx p {
+#fuflymssaa p {
   margin: 0;
   padding: 0;
 }
 
-#pgszeiosxx .gt_table {
+#fuflymssaa .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -2071,12 +2101,12 @@ Jonathan Jayes - Lund University
   border-left-color: #D3D3D3;
 }
 
-#pgszeiosxx .gt_caption {
+#fuflymssaa .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#pgszeiosxx .gt_title {
+#fuflymssaa .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -2088,7 +2118,7 @@ Jonathan Jayes - Lund University
   border-bottom-width: 0;
 }
 
-#pgszeiosxx .gt_subtitle {
+#fuflymssaa .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -2100,7 +2130,7 @@ Jonathan Jayes - Lund University
   border-top-width: 0;
 }
 
-#pgszeiosxx .gt_heading {
+#fuflymssaa .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -2112,13 +2142,13 @@ Jonathan Jayes - Lund University
   border-right-color: #D3D3D3;
 }
 
-#pgszeiosxx .gt_bottom_border {
+#fuflymssaa .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#pgszeiosxx .gt_col_headings {
+#fuflymssaa .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2133,7 +2163,7 @@ Jonathan Jayes - Lund University
   border-right-color: #D3D3D3;
 }
 
-#pgszeiosxx .gt_col_heading {
+#fuflymssaa .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2153,7 +2183,7 @@ Jonathan Jayes - Lund University
   overflow-x: hidden;
 }
 
-#pgszeiosxx .gt_column_spanner_outer {
+#fuflymssaa .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2165,15 +2195,15 @@ Jonathan Jayes - Lund University
   padding-right: 4px;
 }
 
-#pgszeiosxx .gt_column_spanner_outer:first-child {
+#fuflymssaa .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#pgszeiosxx .gt_column_spanner_outer:last-child {
+#fuflymssaa .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#pgszeiosxx .gt_column_spanner {
+#fuflymssaa .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -2185,11 +2215,11 @@ Jonathan Jayes - Lund University
   width: 100%;
 }
 
-#pgszeiosxx .gt_spanner_row {
+#fuflymssaa .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#pgszeiosxx .gt_group_heading {
+#fuflymssaa .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2215,7 +2245,7 @@ Jonathan Jayes - Lund University
   text-align: left;
 }
 
-#pgszeiosxx .gt_empty_group_heading {
+#fuflymssaa .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -2230,15 +2260,15 @@ Jonathan Jayes - Lund University
   vertical-align: middle;
 }
 
-#pgszeiosxx .gt_from_md > :first-child {
+#fuflymssaa .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#pgszeiosxx .gt_from_md > :last-child {
+#fuflymssaa .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#pgszeiosxx .gt_row {
+#fuflymssaa .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2257,7 +2287,7 @@ Jonathan Jayes - Lund University
   overflow-x: hidden;
 }
 
-#pgszeiosxx .gt_stub {
+#fuflymssaa .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2270,7 +2300,7 @@ Jonathan Jayes - Lund University
   padding-right: 5px;
 }
 
-#pgszeiosxx .gt_stub_row_group {
+#fuflymssaa .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2284,15 +2314,15 @@ Jonathan Jayes - Lund University
   vertical-align: top;
 }
 
-#pgszeiosxx .gt_row_group_first td {
+#fuflymssaa .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#pgszeiosxx .gt_row_group_first th {
+#fuflymssaa .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#pgszeiosxx .gt_summary_row {
+#fuflymssaa .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2302,16 +2332,16 @@ Jonathan Jayes - Lund University
   padding-right: 5px;
 }
 
-#pgszeiosxx .gt_first_summary_row {
+#fuflymssaa .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#pgszeiosxx .gt_first_summary_row.thick {
+#fuflymssaa .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#pgszeiosxx .gt_last_summary_row {
+#fuflymssaa .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2321,7 +2351,7 @@ Jonathan Jayes - Lund University
   border-bottom-color: #D3D3D3;
 }
 
-#pgszeiosxx .gt_grand_summary_row {
+#fuflymssaa .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2331,7 +2361,7 @@ Jonathan Jayes - Lund University
   padding-right: 5px;
 }
 
-#pgszeiosxx .gt_first_grand_summary_row {
+#fuflymssaa .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2341,7 +2371,7 @@ Jonathan Jayes - Lund University
   border-top-color: #D3D3D3;
 }
 
-#pgszeiosxx .gt_last_grand_summary_row_top {
+#fuflymssaa .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2351,11 +2381,11 @@ Jonathan Jayes - Lund University
   border-bottom-color: #D3D3D3;
 }
 
-#pgszeiosxx .gt_striped {
+#fuflymssaa .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#pgszeiosxx .gt_table_body {
+#fuflymssaa .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2364,7 +2394,7 @@ Jonathan Jayes - Lund University
   border-bottom-color: #D3D3D3;
 }
 
-#pgszeiosxx .gt_footnotes {
+#fuflymssaa .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2378,7 +2408,7 @@ Jonathan Jayes - Lund University
   border-right-color: #D3D3D3;
 }
 
-#pgszeiosxx .gt_footnote {
+#fuflymssaa .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -2387,7 +2417,7 @@ Jonathan Jayes - Lund University
   padding-right: 5px;
 }
 
-#pgszeiosxx .gt_sourcenotes {
+#fuflymssaa .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2401,7 +2431,7 @@ Jonathan Jayes - Lund University
   border-right-color: #D3D3D3;
 }
 
-#pgszeiosxx .gt_sourcenote {
+#fuflymssaa .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -2409,63 +2439,63 @@ Jonathan Jayes - Lund University
   padding-right: 5px;
 }
 
-#pgszeiosxx .gt_left {
+#fuflymssaa .gt_left {
   text-align: left;
 }
 
-#pgszeiosxx .gt_center {
+#fuflymssaa .gt_center {
   text-align: center;
 }
 
-#pgszeiosxx .gt_right {
+#fuflymssaa .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#pgszeiosxx .gt_font_normal {
+#fuflymssaa .gt_font_normal {
   font-weight: normal;
 }
 
-#pgszeiosxx .gt_font_bold {
+#fuflymssaa .gt_font_bold {
   font-weight: bold;
 }
 
-#pgszeiosxx .gt_font_italic {
+#fuflymssaa .gt_font_italic {
   font-style: italic;
 }
 
-#pgszeiosxx .gt_super {
+#fuflymssaa .gt_super {
   font-size: 65%;
 }
 
-#pgszeiosxx .gt_footnote_marks {
+#fuflymssaa .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#pgszeiosxx .gt_asterisk {
+#fuflymssaa .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#pgszeiosxx .gt_indent_1 {
+#fuflymssaa .gt_indent_1 {
   text-indent: 5px;
 }
 
-#pgszeiosxx .gt_indent_2 {
+#fuflymssaa .gt_indent_2 {
   text-indent: 10px;
 }
 
-#pgszeiosxx .gt_indent_3 {
+#fuflymssaa .gt_indent_3 {
   text-indent: 15px;
 }
 
-#pgszeiosxx .gt_indent_4 {
+#fuflymssaa .gt_indent_4 {
   text-indent: 20px;
 }
 
-#pgszeiosxx .gt_indent_5 {
+#fuflymssaa .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -2520,23 +2550,23 @@ Jonathan Jayes - Lund University
 <div class="cell">
 <div class="cell-output-display">
 
-<div id="mazciubtii" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#mazciubtii table {
+<div id="ffhhroaefe" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#ffhhroaefe table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#mazciubtii thead, #mazciubtii tbody, #mazciubtii tfoot, #mazciubtii tr, #mazciubtii td, #mazciubtii th {
+#ffhhroaefe thead, #ffhhroaefe tbody, #ffhhroaefe tfoot, #ffhhroaefe tr, #ffhhroaefe td, #ffhhroaefe th {
   border-style: none;
 }
 
-#mazciubtii p {
+#ffhhroaefe p {
   margin: 0;
   padding: 0;
 }
 
-#mazciubtii .gt_table {
+#ffhhroaefe .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -2562,12 +2592,12 @@ Jonathan Jayes - Lund University
   border-left-color: #D3D3D3;
 }
 
-#mazciubtii .gt_caption {
+#ffhhroaefe .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#mazciubtii .gt_title {
+#ffhhroaefe .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -2579,7 +2609,7 @@ Jonathan Jayes - Lund University
   border-bottom-width: 0;
 }
 
-#mazciubtii .gt_subtitle {
+#ffhhroaefe .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -2591,7 +2621,7 @@ Jonathan Jayes - Lund University
   border-top-width: 0;
 }
 
-#mazciubtii .gt_heading {
+#ffhhroaefe .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -2603,13 +2633,13 @@ Jonathan Jayes - Lund University
   border-right-color: #D3D3D3;
 }
 
-#mazciubtii .gt_bottom_border {
+#ffhhroaefe .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#mazciubtii .gt_col_headings {
+#ffhhroaefe .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2624,7 +2654,7 @@ Jonathan Jayes - Lund University
   border-right-color: #D3D3D3;
 }
 
-#mazciubtii .gt_col_heading {
+#ffhhroaefe .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2644,7 +2674,7 @@ Jonathan Jayes - Lund University
   overflow-x: hidden;
 }
 
-#mazciubtii .gt_column_spanner_outer {
+#ffhhroaefe .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2656,15 +2686,15 @@ Jonathan Jayes - Lund University
   padding-right: 4px;
 }
 
-#mazciubtii .gt_column_spanner_outer:first-child {
+#ffhhroaefe .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#mazciubtii .gt_column_spanner_outer:last-child {
+#ffhhroaefe .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#mazciubtii .gt_column_spanner {
+#ffhhroaefe .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -2676,11 +2706,11 @@ Jonathan Jayes - Lund University
   width: 100%;
 }
 
-#mazciubtii .gt_spanner_row {
+#ffhhroaefe .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#mazciubtii .gt_group_heading {
+#ffhhroaefe .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2706,7 +2736,7 @@ Jonathan Jayes - Lund University
   text-align: left;
 }
 
-#mazciubtii .gt_empty_group_heading {
+#ffhhroaefe .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -2721,15 +2751,15 @@ Jonathan Jayes - Lund University
   vertical-align: middle;
 }
 
-#mazciubtii .gt_from_md > :first-child {
+#ffhhroaefe .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#mazciubtii .gt_from_md > :last-child {
+#ffhhroaefe .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#mazciubtii .gt_row {
+#ffhhroaefe .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2748,7 +2778,7 @@ Jonathan Jayes - Lund University
   overflow-x: hidden;
 }
 
-#mazciubtii .gt_stub {
+#ffhhroaefe .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2761,7 +2791,7 @@ Jonathan Jayes - Lund University
   padding-right: 5px;
 }
 
-#mazciubtii .gt_stub_row_group {
+#ffhhroaefe .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2775,15 +2805,15 @@ Jonathan Jayes - Lund University
   vertical-align: top;
 }
 
-#mazciubtii .gt_row_group_first td {
+#ffhhroaefe .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#mazciubtii .gt_row_group_first th {
+#ffhhroaefe .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#mazciubtii .gt_summary_row {
+#ffhhroaefe .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2793,16 +2823,16 @@ Jonathan Jayes - Lund University
   padding-right: 5px;
 }
 
-#mazciubtii .gt_first_summary_row {
+#ffhhroaefe .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#mazciubtii .gt_first_summary_row.thick {
+#ffhhroaefe .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#mazciubtii .gt_last_summary_row {
+#ffhhroaefe .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2812,7 +2842,7 @@ Jonathan Jayes - Lund University
   border-bottom-color: #D3D3D3;
 }
 
-#mazciubtii .gt_grand_summary_row {
+#ffhhroaefe .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2822,7 +2852,7 @@ Jonathan Jayes - Lund University
   padding-right: 5px;
 }
 
-#mazciubtii .gt_first_grand_summary_row {
+#ffhhroaefe .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2832,7 +2862,7 @@ Jonathan Jayes - Lund University
   border-top-color: #D3D3D3;
 }
 
-#mazciubtii .gt_last_grand_summary_row_top {
+#ffhhroaefe .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2842,11 +2872,11 @@ Jonathan Jayes - Lund University
   border-bottom-color: #D3D3D3;
 }
 
-#mazciubtii .gt_striped {
+#ffhhroaefe .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#mazciubtii .gt_table_body {
+#ffhhroaefe .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2855,7 +2885,7 @@ Jonathan Jayes - Lund University
   border-bottom-color: #D3D3D3;
 }
 
-#mazciubtii .gt_footnotes {
+#ffhhroaefe .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2869,7 +2899,7 @@ Jonathan Jayes - Lund University
   border-right-color: #D3D3D3;
 }
 
-#mazciubtii .gt_footnote {
+#ffhhroaefe .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -2878,7 +2908,7 @@ Jonathan Jayes - Lund University
   padding-right: 5px;
 }
 
-#mazciubtii .gt_sourcenotes {
+#ffhhroaefe .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2892,7 +2922,7 @@ Jonathan Jayes - Lund University
   border-right-color: #D3D3D3;
 }
 
-#mazciubtii .gt_sourcenote {
+#ffhhroaefe .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -2900,63 +2930,63 @@ Jonathan Jayes - Lund University
   padding-right: 5px;
 }
 
-#mazciubtii .gt_left {
+#ffhhroaefe .gt_left {
   text-align: left;
 }
 
-#mazciubtii .gt_center {
+#ffhhroaefe .gt_center {
   text-align: center;
 }
 
-#mazciubtii .gt_right {
+#ffhhroaefe .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#mazciubtii .gt_font_normal {
+#ffhhroaefe .gt_font_normal {
   font-weight: normal;
 }
 
-#mazciubtii .gt_font_bold {
+#ffhhroaefe .gt_font_bold {
   font-weight: bold;
 }
 
-#mazciubtii .gt_font_italic {
+#ffhhroaefe .gt_font_italic {
   font-style: italic;
 }
 
-#mazciubtii .gt_super {
+#ffhhroaefe .gt_super {
   font-size: 65%;
 }
 
-#mazciubtii .gt_footnote_marks {
+#ffhhroaefe .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#mazciubtii .gt_asterisk {
+#ffhhroaefe .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#mazciubtii .gt_indent_1 {
+#ffhhroaefe .gt_indent_1 {
   text-indent: 5px;
 }
 
-#mazciubtii .gt_indent_2 {
+#ffhhroaefe .gt_indent_2 {
   text-indent: 10px;
 }
 
-#mazciubtii .gt_indent_3 {
+#ffhhroaefe .gt_indent_3 {
   text-indent: 15px;
 }
 
-#mazciubtii .gt_indent_4 {
+#ffhhroaefe .gt_indent_4 {
   text-indent: 20px;
 }
 
-#mazciubtii .gt_indent_5 {
+#ffhhroaefe .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -2995,23 +3025,23 @@ Jonathan Jayes - Lund University
 <div class="cell">
 <div class="cell-output-display">
 
-<div id="cwygfbdufp" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#cwygfbdufp table {
+<div id="ntoyhhjezw" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#ntoyhhjezw table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#cwygfbdufp thead, #cwygfbdufp tbody, #cwygfbdufp tfoot, #cwygfbdufp tr, #cwygfbdufp td, #cwygfbdufp th {
+#ntoyhhjezw thead, #ntoyhhjezw tbody, #ntoyhhjezw tfoot, #ntoyhhjezw tr, #ntoyhhjezw td, #ntoyhhjezw th {
   border-style: none;
 }
 
-#cwygfbdufp p {
+#ntoyhhjezw p {
   margin: 0;
   padding: 0;
 }
 
-#cwygfbdufp .gt_table {
+#ntoyhhjezw .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -3037,12 +3067,12 @@ Jonathan Jayes - Lund University
   border-left-color: #D3D3D3;
 }
 
-#cwygfbdufp .gt_caption {
+#ntoyhhjezw .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#cwygfbdufp .gt_title {
+#ntoyhhjezw .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -3054,7 +3084,7 @@ Jonathan Jayes - Lund University
   border-bottom-width: 0;
 }
 
-#cwygfbdufp .gt_subtitle {
+#ntoyhhjezw .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -3066,7 +3096,7 @@ Jonathan Jayes - Lund University
   border-top-width: 0;
 }
 
-#cwygfbdufp .gt_heading {
+#ntoyhhjezw .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -3078,13 +3108,13 @@ Jonathan Jayes - Lund University
   border-right-color: #D3D3D3;
 }
 
-#cwygfbdufp .gt_bottom_border {
+#ntoyhhjezw .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#cwygfbdufp .gt_col_headings {
+#ntoyhhjezw .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -3099,7 +3129,7 @@ Jonathan Jayes - Lund University
   border-right-color: #D3D3D3;
 }
 
-#cwygfbdufp .gt_col_heading {
+#ntoyhhjezw .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3119,7 +3149,7 @@ Jonathan Jayes - Lund University
   overflow-x: hidden;
 }
 
-#cwygfbdufp .gt_column_spanner_outer {
+#ntoyhhjezw .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3131,15 +3161,15 @@ Jonathan Jayes - Lund University
   padding-right: 4px;
 }
 
-#cwygfbdufp .gt_column_spanner_outer:first-child {
+#ntoyhhjezw .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#cwygfbdufp .gt_column_spanner_outer:last-child {
+#ntoyhhjezw .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#cwygfbdufp .gt_column_spanner {
+#ntoyhhjezw .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -3151,11 +3181,11 @@ Jonathan Jayes - Lund University
   width: 100%;
 }
 
-#cwygfbdufp .gt_spanner_row {
+#ntoyhhjezw .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#cwygfbdufp .gt_group_heading {
+#ntoyhhjezw .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3181,7 +3211,7 @@ Jonathan Jayes - Lund University
   text-align: left;
 }
 
-#cwygfbdufp .gt_empty_group_heading {
+#ntoyhhjezw .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -3196,15 +3226,15 @@ Jonathan Jayes - Lund University
   vertical-align: middle;
 }
 
-#cwygfbdufp .gt_from_md > :first-child {
+#ntoyhhjezw .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#cwygfbdufp .gt_from_md > :last-child {
+#ntoyhhjezw .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#cwygfbdufp .gt_row {
+#ntoyhhjezw .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3223,7 +3253,7 @@ Jonathan Jayes - Lund University
   overflow-x: hidden;
 }
 
-#cwygfbdufp .gt_stub {
+#ntoyhhjezw .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3236,7 +3266,7 @@ Jonathan Jayes - Lund University
   padding-right: 5px;
 }
 
-#cwygfbdufp .gt_stub_row_group {
+#ntoyhhjezw .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3250,15 +3280,15 @@ Jonathan Jayes - Lund University
   vertical-align: top;
 }
 
-#cwygfbdufp .gt_row_group_first td {
+#ntoyhhjezw .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#cwygfbdufp .gt_row_group_first th {
+#ntoyhhjezw .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#cwygfbdufp .gt_summary_row {
+#ntoyhhjezw .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -3268,16 +3298,16 @@ Jonathan Jayes - Lund University
   padding-right: 5px;
 }
 
-#cwygfbdufp .gt_first_summary_row {
+#ntoyhhjezw .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#cwygfbdufp .gt_first_summary_row.thick {
+#ntoyhhjezw .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#cwygfbdufp .gt_last_summary_row {
+#ntoyhhjezw .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3287,7 +3317,7 @@ Jonathan Jayes - Lund University
   border-bottom-color: #D3D3D3;
 }
 
-#cwygfbdufp .gt_grand_summary_row {
+#ntoyhhjezw .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -3297,7 +3327,7 @@ Jonathan Jayes - Lund University
   padding-right: 5px;
 }
 
-#cwygfbdufp .gt_first_grand_summary_row {
+#ntoyhhjezw .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3307,7 +3337,7 @@ Jonathan Jayes - Lund University
   border-top-color: #D3D3D3;
 }
 
-#cwygfbdufp .gt_last_grand_summary_row_top {
+#ntoyhhjezw .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3317,11 +3347,11 @@ Jonathan Jayes - Lund University
   border-bottom-color: #D3D3D3;
 }
 
-#cwygfbdufp .gt_striped {
+#ntoyhhjezw .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#cwygfbdufp .gt_table_body {
+#ntoyhhjezw .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -3330,7 +3360,7 @@ Jonathan Jayes - Lund University
   border-bottom-color: #D3D3D3;
 }
 
-#cwygfbdufp .gt_footnotes {
+#ntoyhhjezw .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -3344,7 +3374,7 @@ Jonathan Jayes - Lund University
   border-right-color: #D3D3D3;
 }
 
-#cwygfbdufp .gt_footnote {
+#ntoyhhjezw .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -3353,7 +3383,7 @@ Jonathan Jayes - Lund University
   padding-right: 5px;
 }
 
-#cwygfbdufp .gt_sourcenotes {
+#ntoyhhjezw .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -3367,7 +3397,7 @@ Jonathan Jayes - Lund University
   border-right-color: #D3D3D3;
 }
 
-#cwygfbdufp .gt_sourcenote {
+#ntoyhhjezw .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -3375,63 +3405,63 @@ Jonathan Jayes - Lund University
   padding-right: 5px;
 }
 
-#cwygfbdufp .gt_left {
+#ntoyhhjezw .gt_left {
   text-align: left;
 }
 
-#cwygfbdufp .gt_center {
+#ntoyhhjezw .gt_center {
   text-align: center;
 }
 
-#cwygfbdufp .gt_right {
+#ntoyhhjezw .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#cwygfbdufp .gt_font_normal {
+#ntoyhhjezw .gt_font_normal {
   font-weight: normal;
 }
 
-#cwygfbdufp .gt_font_bold {
+#ntoyhhjezw .gt_font_bold {
   font-weight: bold;
 }
 
-#cwygfbdufp .gt_font_italic {
+#ntoyhhjezw .gt_font_italic {
   font-style: italic;
 }
 
-#cwygfbdufp .gt_super {
+#ntoyhhjezw .gt_super {
   font-size: 65%;
 }
 
-#cwygfbdufp .gt_footnote_marks {
+#ntoyhhjezw .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#cwygfbdufp .gt_asterisk {
+#ntoyhhjezw .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#cwygfbdufp .gt_indent_1 {
+#ntoyhhjezw .gt_indent_1 {
   text-indent: 5px;
 }
 
-#cwygfbdufp .gt_indent_2 {
+#ntoyhhjezw .gt_indent_2 {
   text-indent: 10px;
 }
 
-#cwygfbdufp .gt_indent_3 {
+#ntoyhhjezw .gt_indent_3 {
   text-indent: 15px;
 }
 
-#cwygfbdufp .gt_indent_4 {
+#ntoyhhjezw .gt_indent_4 {
   text-indent: 20px;
 }
 
-#cwygfbdufp .gt_indent_5 {
+#ntoyhhjezw .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -3474,8 +3504,37 @@ Jonathan Jayes - Lund University
 <h2>You can do it too!</h2>
 
 <img data-src="assets/code.png" style="width:100.0%" class="r-stretch quarto-figure-center"><p><a href="https://github.com/j-jayes/who-is-who-in-industry">GitHub repo</a></p>
+</section>
+<section id="references" class="slide level2 smaller scrollable">
+<h2>References</h2>
+<div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-Bandiera2020ceo" class="csl-entry" role="listitem">
+Bandiera, Oriana, Andrea Prat, Stephen Hansen, and Raffaella Sadun. 2020. <span>“CEO Behavior and Firm Performance.”</span> <em>Journal of Political Economy</em> 128 (4): 1325–69. <a href="https://doi.org/10.1086/705331">https://doi.org/10.1086/705331</a>.
+</div>
+<div id="ref-DahlVedel2024" class="csl-entry" role="listitem">
+Dahl, Christian Møller, and Christian Vedel. 2023. <span>“Breaking the HISCO Barrier: AI and Occupational Data Standardization.”</span> Odense, Denmark: University of Southern Denmark.
+</div>
+<div id="ref-ford2023not" class="csl-entry" role="listitem">
+Ford, Nicholas Martin, Kristin Ranestad, and Paul Sharp. 2023. <span>“<span class="nocase">Not the Best Fillers in of Forms? The Danish and Norwegian Graduate Biographies and <span>‘Upper Tail Knowledge’</span></span>.”</span> Working Papers 0242. European Historical Economics Society (EHES). <a href="https://ideas.repec.org/p/hes/wpaper/0242.html">https://ideas.repec.org/p/hes/wpaper/0242.html</a>.
+</div>
+<div id="ref-Goldin1994" class="csl-entry" role="listitem">
+Goldin, Claudia. 1994. <span>“Labor Markets in the Twentieth Century.”</span> <em>National Bureau of Economic Research</em>. <a href="https://doi.org/10.3386/h0058">https://doi.org/10.3386/h0058</a>.
+</div>
+<div id="ref-merouani2023innovation" class="csl-entry" role="listitem">
+Merouani, Youssouf. 2023. <span>“Innovation and Gender During Industrialization: The Case of Patenting Activity in France 1791-1913.”</span> Midway Seminar, Economic History Department, LUSEM, Lund University. <a href="https://youssoufmerouani.com/talks/midway_seminar.html#/title-slide">https://youssoufmerouani.com/talks/midway_seminar.html#/title-slide</a>.
+</div>
+<div id="ref-Mokyr2017" class="csl-entry" role="listitem">
+Mokyr, Joel. 2017. <span>“A Culture of Growth: The Origins of the Modern Economy.”</span> <em>Princeton University Press</em>.
+</div>
+<div id="ref-Moretti2012" class="csl-entry" role="listitem">
+Moretti, Enrico. 2012. <em>The New Geography of Jobs</em>. Houghton Mifflin Harcourt.
+</div>
+<div id="ref-Nekoei2020Herstory" class="csl-entry" role="listitem">
+Nekoei, Arash, and Fabian Sinn. 2020. <span>“HERSTORY the Rise of Self-Made Women.”</span> <em>SSRN Electronic Journal</em>, December. <a href="https://doi.org/10.2139/ssrn.3741332">https://doi.org/10.2139/ssrn.3741332</a>.
+</div>
+</div>
 <div class="footer footer-default">
-<p><a href="https://interludeone.com"><i class="fa-solid fa-house" aria-label="house"></i></a></p>
+<p><a href="https://interludeone.com/content/research.html"><i class="fa-solid fa-house" aria-label="house"></i></a></p>
 </div>
 </section></section>
     </div>

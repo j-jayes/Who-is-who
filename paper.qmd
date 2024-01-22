@@ -1,5 +1,5 @@
 ---
-title: "Paper 4: Praise the people or praise the place?"
+title: "Praise the people or praise the place?"
 subtitle: Upper tail human capital in electrifying Sweden
 code-repo: "Access the code, data, and analysis at <https://github.com/j-jayes/who-is-who-scraper> and <https://github.com/j-jayes/svensk-industrikalender>"
 author:
@@ -10,13 +10,18 @@ author:
       - id: lu
         name: Lund University Economic History Department
 abstract: |
-  Abstract
+  This paper explores the transformative role of Artificial Intelligence in economic history research, through the examination of the skilled workforce in Sweden's electricity sector during the mid-20th century. By ingesting and analyzing two unique data sources—a set of biographical dictionaries and an industrial catalogue—the study investigates the origins and trajectories of high-skilled workers in electricity-related occupations in Sweden. Contrary to previous assumptions that local talent predominantly drove the technological advancements, the findings reveal a bifurcated labor market. Highly educated and skilled professionals, crucial in overseeing and advancing the electricity sector, frequently migrated for education and career opportunities, often traveling significant distances from their birthplaces. In contrast, local talent primarily occupied the burgeoning middle-skilled roles within the sector.
 date: 12 January, 2024
 thanks: |
   Thank you to seminar participants at the Copenhagen Business School Department of Strategy and Innovation PhD Seminar  and the HEDG Group at the University of Southern Denmark for valuable feedback on this work.
 format:
   hikmah-pdf: default
   hikmah-manuscript-pdf: default
+# format:
+#   docx:
+#     toc: true
+#     number-sections: true
+#     highlight-style: github
 execute: 
   echo: false
   warning: false
@@ -26,7 +31,7 @@ bibliography: bibliography.bib
 
 ## Introduction
 
-Economic history as a discipline is set to benefit in at least three ways from the nascent AI revolution. Novel sources of data become available as new tools make them readable to machines, analysis in new ways is possible with new kinds algorithms, and the time-cost of asking certain kinds of questions decreases, opening up new avenues for research. In this paper, I make an attempt to leverage these benefits to answer the question, 'who were the high skilled workers in electricity related occupations in Sweden, and where did they come from?'. I detail the process of structuring and analyzing two novel data sources, a set of biographical dictionaries and an industrial catalogue, in order to answer this question.
+Economic history as a discipline is set to benefit in at least three ways from the nascent AI revolution. Novel sources of data become available as new tools make them readable to machines, analysis in new ways is possible with new kinds of algorithms, and the time-cost of asking certain kinds of questions decreases, opening up new avenues for research. In this paper, I make an attempt to leverage these benefits to answer the question, 'who were the high skilled workers in electricity related occupations in Sweden, and where did they come from?' I detail the process of structuring and analyzing two novel data sources, a set of biographical dictionaries and an industrial catalogue, in order to answer this question.
 
 In the quest to understand the dynamics of economic development and technological advancement, previous research by this author and his supervisors shed light on the transformative impact of early electricity access in Sweden. "Power for progress: The impact of electricity on individual labor market outcomes" [@jayes_power_2024] revealed how the advent of electricity in certain parishes led to positive economic outcomes: a boost in income levels, reduced inequality, and the maintenance of employment levels despite the advent of labor-saving technology. A particularly striking observation was the tendency of workers in these early electrified parishes to remain in their birthplaces, hinting at a newfound economic vibrancy stemming from the income spillovers into sectors not affected by the new technology.
 
@@ -46,7 +51,7 @@ This paper ties into three strands of literature; two in content and one in meth
 
 ### The use of individual level biographic data in economic history at scale
 
-Several recent papers have made use of biographic data in innovative ways. @ford2023not use biographies of high school graduates compiled at the time of their school reunions to create a far richer measure of human capital than the conventional measure, number of years of schooling, alone. Titled, "Not the Best Fillers in of Forms? The Danish and Norwegian Graduate Biographies and 'Upper Tail Knowledge'", the authors explain that these biographies are "mini-CVs", containing information about the school leaver's grades, their occupational trajectory, and their family background. These are used to create an innovative approach to measuring `upper tail knowledge`.
+Several recent papers have made use of biographic data in innovative ways. @ford2023not use biographies of high school graduates compiled at the time of their school reunions to create a far richer measure of human capital than the conventional measure, number of years of schooling, alone. Titled, "Not the Best Fillers in of Forms? The Danish and Norwegian Graduate Biographies and 'Upper Tail Knowledge'", the authors explain that these biographies are "mini-CVs", containing information about the school leaver's grades, their occupational trajectory, and their family background. These are used to create an innovative approach to measuring upper tail knowledge.
 
 @Nekoei2020Herstory titled "Herstory: the rise of self-made women" analyzes the historical prominence of self-made women using a specially created database. This database, formed by applying machine learning to Wikidata and Wikipedia, catalogues notable individuals throughout history, highlighting details like occupation and family background. Their unique approach reveals a significant increase in the number of prominent women, especially those who achieved success independently of their family connections, across various fields, starting with literature, since the 17th century. This research provides a fresh perspective on women's historical achievements and roles.
 
@@ -58,13 +63,13 @@ In this paper, I structure biographic data about elite individuals that is simil
 
 The question of where the high skilled workers in electricity related occupations in Sweden came from is important in order to understand the economic dynamism of that era. As such, it ties into a wealth of research on technological change and the labour market, which I review briefly here.
 
-The historical adaptability of labor markets to technological change is well-documented. In their study of the U.S. labor market's response to the automation of telephone operation, Feigenbaum and Gross @Feigenbaum2020 demonstrate how technological displacement in one sector led to increased demand in others, suggesting an inherent resilience in labor markets. This finding is particularly pertinent to this exploration of Sweden's electrification, as it indicates a potential for both displacement and opportunity in the face of technological change.
+The historical adaptability of labor markets to technological change is well-documented. In their study of the U.S. labor market's response to the automation of telephone operation, @Feigenbaum2020 demonstrate how technological displacement in one sector led to increased demand in others, suggesting an inherent resilience in labor markets. This finding is particularly pertinent to this exploration of Sweden's electrification, as it indicates a potential for both displacement and opportunity in the face of technological change.
 
 Claudia Goldin's extensive analysis of labor markets in the 20th century provides a comprehensive backdrop to this study [-@Goldin1994; -@Goldin1998]. Her work highlights critical shifts in labor participation, wage structures, and job security, reflecting the complex interplay between societal changes and labor market dynamics. These insights are crucial for understanding how shifts in human capital, like those during Sweden's electrification period, contribute to broader economic outcomes.
 
 The impact of the Digital Revolution on labor markets, as reviewed in the Oxford Review of Economic Policy, is also salient to our study [@Adams2018; @Goos2018]. These articles underscore the emergence of job polarization and the crucial role of policy interventions in ensuring equitable benefits from technological advancements. This perspective is instrumental in understanding the differential impacts of electrification in Sweden, especially in terms of job creation and labor market segmentation.
 
-Moretti’s exploration of the geographical clustering of talent and innovation in "The New Geography of Jobs" provides a crucial perspective on the spatial dynamics of economic development [@Moretti2012]. His findings about the importance of local ecosystems in fostering innovation and economic vitality resonate with our investigation of how early electrification in Swedish parishes influenced the distribution and impact of skilled labor. His concern, that gains to productivity are eaten up by increased cost of living (primarily though housing costs) when constraints prevail, is not evidenced in the first half of the 20th century in Sweden. However, his example of Silicon Valley -- where high productivity and attractive jobs draw in people with high levels of skill, raising property prices - is becoming more concerning in today's relatively housing scarce urban centers.
+Moretti’s exploration of the geographical clustering of talent and innovation in "The New Geography of Jobs" provides a crucial perspective on the spatial dynamics of economic development [@Moretti2012]. His findings about the importance of local ecosystems in fostering innovation and economic vitality resonate with our investigation of how early electrification in Swedish parishes influenced the distribution and impact of skilled labor. His concern, that gains to productivity are eaten up by increased cost of living (primarily through housing costs) when constraints prevail, is not evidenced in the first half of the 20th century in Sweden. However, his example of Silicon Valley -- where high productivity and attractive jobs draw in people with high levels of skill, raising property prices - is becoming more concerning in today's relatively housing scarce urban centers.
 
 New technologies require new skills. Mokyr's research provides insights into the importance of both artisans and engineers in the progression of the Industrial Revolution. His studies underscore the synergistic relationship between theoretical knowledge and practical expertise, essential in driving technological innovation and economic progress [@Mokyr2017]. In his examination of the socio-economic elites of early modern Europe, Mokyr explains how their education and exposure to new ideas and sciences were pivotal in fostering various intellectual and technological advancements. This educated elite, through their changing culture and institutions, played a crucial role in creating an environment conducive to innovation [@Mokyr2017Journal].
 
@@ -84,9 +89,9 @@ Some interesting papers that incorporate prediction and classification problems 
 
 There is also a growing literature in which authors lay out the step by step processes required for economic historians to make use of these new tools. A great paper in this vein that bridges the gap between cutting-edge computer science literature and the use cases of applied economists is by @correia2023digitizing. The paper "Digitizing Historical Balance Sheet Data: A Practitioner’s Guide" explores the application of machine learning, particularly Optical Character Recognition (OCR), to digitize large-scale historical economic data. The authors highlight the limitations of off-the-shelf OCR software, mainly due to high error rates, and propose a combination of pre- and post-processing methods to enhance accuracy. They apply these methods to two extensive datasets of balance sheets and introduce "quipucamayoc," a Python package that unifies these techniques.
 
-@amujala2023digitization, in "Digitization and data frames for card index records" explain the entire process through which they digitize and structure loan records from bank cards that contain both machine written and hand written text in varying formats over time. Tha authors lower the barrier to entry for other researchers by explaining their use off the shelf technology from Amazon Web Services. Each step is explained along with tips for successful extraction of handwritten information. 
+@amujala2023digitization, in "Digitization and data frames for card index records" explain the entire process through which they digitize and structure loan records from bank cards that contain both machine written and hand written text in varying formats over time. Tha authors lower the barrier to entry for other researchers by explaining their use off-the-shelf technology from Amazon Web Services. Each step is explained along with tips for successful extraction of handwritten information. 
 
-Perhaps the most impressive of these kinds of papers is the *Layout Parser* from Melissa Dell and her lab. The team have produced a python library that can be fine tuned to parse document type, extract information, and use machine learning to correct common errors at the point of data extraction. Dell demonstrates the use of this tool by extracting firm performance data from Japanese reports on yearly firm output which are atypical from the kinds of tables or column text that off the shelf optical character recognition tools have been trained on [-@dell2020large].
+Perhaps the most impressive of these kinds of papers is the *Layout Parser* from Melissa Dell and her lab. The team have produced a python library that can be fine tuned to parse document type, extract information, and use machine learning to correct common errors at the point of data extraction. Dell demonstrates the use of this tool by extracting firm performance data from Japanese reports on yearly firm output which are atypical from the kinds of tables or column text that off-the-shelf optical character recognition tools have been trained on [-@dell2020large].
 
 I hope that this paper can be useful for other researchers using similar kinds of sources as a prompt on where to start collecting and structuring their data at scale.
 
@@ -164,7 +169,7 @@ The common fields listed for each company entry in the catalogue are as follows:
 
 1. **Company Name**: The name of the company is listed at the beginning of each entry, with an asterisk indicating membership of Sveriges Industriförbundet.
 
-2. **Location/Town**: The town or location of the company, which in this case is `Arboga`.
+2. **Location/Town**: The town or location of the company, which in this case is *Arboga*.
 
 3. **Description of Business**: A brief description of the company's main activities or products is provided.
 
@@ -176,13 +181,13 @@ The common fields listed for each company entry in the catalogue are as follows:
    - **Postal Code**: Mentioned as "Postgiro" or "Postiro" with corresponding numbers.
    - **Bank Account**: Sometimes a bank account number or similar financial information is included.
 
-6. **Management and Key Personnel**: Names and titles of important figures in the company, such as the director (`Verkst. dir.`), board members, or founders.
+6. **Management and Key Personnel**: Names and titles of important figures in the company, such as the director (*Verkst. dir.*, board members, or founders.
 
-7. **Financial Information**: Information about the financial aspect of the company, such as capital invested (`Akt.-kap.`) or turnover (`Tillv.-värde`).
+7. **Financial Information**: Information about the financial aspect of the company, such as capital invested (*Akt.-kap.*) or turnover (*Tillv.-värde*).
 
 8. **Establishment Details**: This includes the year of establishment and sometimes the history or lineage of the company's ownership or major changes.
 
-9. **Address**: The full postal address, which may include a street name or a postbox number, indicated as `Postgiro`.
+9. **Address**: The full postal address, which may include a street name or a postbox number, indicated as *Postgiro*.
 
 This type of catalogue was commonly used for business-to-business interactions and can be considered an early form of networking resource, allowing companies to find suppliers, customers, and partners.
 
@@ -212,15 +217,15 @@ However, with the rapid advancements in LLM technology in the previous five year
 
 The structuring step involves sending a specific prompt to a LLM, along with the source material as text (rather than a scan of the book), and receiving back from the LLM a structured file with a key and value for each piece of information that I am interested in.
 
-I make use of the computational backed of Chat-GPT, a model called GPT-3.5-turbo from OpenAI to structure the information from the dictionaries and catalogue into a JSON format that I can analyze, step 3, as shown in @fig-data-collection-process. Many other LLMs, some open source, are available. I have chosen GPT-3.5-turbo as it is simple to interact with it in the programming language Python, and because doing so is relatively affordable for contained workloads such as this, when compared to hosting such a model on your own, beefy, costly computer.
+I make use of the computational backend of Chat-GPT, a model called GPT-3.5-turbo from OpenAI to structure the information from the dictionaries and catalogue into a JSON format that I can analyze, step 3, as shown in @fig-data-collection-process. Many other LLMs, some open source, are available. I have chosen GPT-3.5-turbo as it is simple to interact with it in the programming language Python, and because doing so is relatively affordable for contained workloads such as this, when compared to hosting such a model on your own, beefy, costly computer.
 
 By passing the text to the LLM, along with some context about what the model is being given, the model can behave like a skilled research assistant, reading the records, searching for the specific pieces of information requested, and outputting a structured file containing the information that we seek.
 
 ### Intuitive explanation of LLMs contextual 'understanding'
 
-The GPT-3.5-turbo model which I make use of is a LLM which has been trained on all of Wikipedia and Wikidata, among other training material. These two sources contain the same information, but in a different format, as shown in the adapted extracts below; the text and Table @tbl-wiki mimic the kind of material that the model I use is trained on. 
+The GPT-3.5-turbo model which I make use of is a LLM which has been trained on all of Wikipedia and Wikidata, among other training material. These two sources contain the same information, but in a different format, as shown in the adapted extracts below; the text and @fig-wiki mimic the kind of material that the model I use is trained on. 
 
-As the base model underlying GPT-3.5-turbo is pre-trained to predict the next token on this kind of data, it has developed the ability though repeated exposure to this kind of biographic data to produce structured information from free text, and likewise construct natural sounding text from pieces of structured information. With the addition of `JSON mode` to the model, it is able to output structured information in a reliable manner as detailed in @openai2024text.
+As the base model underlying GPT-3.5-turbo is pre-trained to predict the next token on this kind of data, it has developed the ability through repeated exposure to this kind of biographic data to produce structured information from free text, and likewise construct natural sounding text from pieces of structured information. With the addition of *JSON mode* to the model, it is able to output structured information in a reliable manner as detailed in @openai2024text.
 
 <blockquote>
 
@@ -229,8 +234,8 @@ As the base model underlying GPT-3.5-turbo is pre-trained to predict the next to
 </blockquote>
 
 ```{r}
-#| label: tbl-wiki
-#| tbl-cap: "Wikidata information about Swedish inventor Jonas Wenström, inventor of three-phase current"
+#| label: fig-wiki
+#| fig-cap: "Wikidata information about Swedish inventor Jonas Wenström, inventor of three-phase current"
 
 library(tibble)
 
@@ -280,7 +285,7 @@ Finally I provide detailed context about the source and instructions for what I 
 <br>
 
 
-`structure_prompt = "Task: read the schema and return RFC compliant JSON information about the Swedish individuals from the 1950 biographical dictionary 'Vem är Vem' that is provided below. Use a numeric index for each biography in your JSON output and return information about all of them, including all career information available. Keep the biographic descriptions in Swedish and remove any abbreviations based on your knowledge, e.g. 'fil. kand.' is 'filosofie kandidat', and 'Skarab. l.' is 'Skaraborgs Län'. Put years in full based on context. Put dates in dd/mm/yyyy format where possible. If there is no information for a key, leave it out. If there is no information for a required key, put NULL as the value.\nHere is the schema: {schema}.\nHere is the text: {page_text}"`
+`structure_prompt = "Task: read the schema and return RFC compliant JSON information about the Swedish individuals from the 1950 biographical dictionary 'Vem är Vem' that is provided below. Use a numeric index for each biography in your JSON output and return information about all of them, including all career information available. Keep the biographic descriptions in Swedish and remove any abbreviations based on your knowledge, e.g. 'fil. kand.' is 'filosofie kandidat', and 'Skarab. l.' is 'Skaraborgs Län'. Put years in full based on context. Put dates in dd/mm/yyyy format where possible. If there is no information for a key, leave it out. If there is no information for a required key, put NULL as the value.`
 
 <br>
 
@@ -289,7 +294,7 @@ Finally I provide detailed context about the source and instructions for what I 
 
 Following this process of structuring the records into a format with specified keys and values, I augment the data by geocoding locations in order to analyze geographic paths of individuals in the sample, and geographic clusters of firms.
 
-Below I show the output of the data collection process, where the biographical dictionary entry on Swedish engineer and power station manager Axel Verner Nordell is shown in @fig-axel and some of the extracted information along with the geocoded coordinates are shown in @tbl-axel.
+Below I show the output of the data collection process, where the biographical dictionary entry on Swedish engineer and power station manager Axel Verner Nordell is shown in @fig-axel and some of the extracted information along with the geocoded coordinates are shown in @fig-axel-tab.
 
 ```{r}
 #| label: fig-axel
@@ -304,8 +309,8 @@ knitr::include_graphics("assets/axel.png")
 {{< pagebreak >}}
 
 ```{r}
-#| label: tbl-axel
-#| tbl-cap: "Extracted information about Axel Verner Nordell"
+#| label: fig-axel-tab
+#| fig-cap: "Extracted information about Axel Verner Nordell"
 
 
 person_info <- tribble(
@@ -337,7 +342,7 @@ cols_label(key = "Key", value = "Value")
 
 The next task required to understand where these individuals came from and what kinds of firms they were drawn to involved grouping the firms from the catalogue and then classifying each individual in the biographical dictionaries into a particular occupation.
 
-For both of these tasks, I lent on the tools of text embeddings, and a combination of unsupervised machine learning and advanced language processing techniques. I made use of a text embedding model trained on Swedish language text by the @bert-base-swedish-cased. It is an adaptation of the breakthrough BERT model, introduced by Google Research in 2018 [@google2016bert]. The advantage of this KB Lab model is that it has been trained on a selection of Swedish data, including books, news reports, and internet forums. Hence it is able to score the similarity of Swedish business descriptions and occupational titles.
+For both of these tasks, I leaned on the tools of text embeddings, and a combination of unsupervised machine learning and advanced language processing techniques. I made use of a text embedding model trained on Swedish language text by the @bert-base-swedish-cased. It is an adaptation of the breakthrough BERT model, introduced by Google Research in 2018 [@google2016bert]. The advantage of this KB Lab model is that it has been trained on a selection of Swedish data, including books, news reports, and internet forums. Hence it is able to score the similarity of Swedish business descriptions and occupational titles.
 
 Text embeddings are effective for clustering because they capture semantic meaning rather than relying on surface-level features like character composition. For example, while "steam engine" and "power station" are different in characters and literal meaning, they are semantically related in the context of industrial machinery and energy production. Text embeddings transform these phrases into numerical vectors that reflect this semantic similarity. When applied to clustering, this means that items with similar meanings, even if their literal expressions differ, are grouped together based on the contextual and conceptual similarities encoded in their embeddings. This capability makes text embeddings particularly powerful for organizing and categorizing text data in a way that aligns with human understanding and interpretation [@jurafsky2023speech].
 
@@ -361,7 +366,7 @@ I develop a two step process to classify first an individual's occupation based 
 
 To get an intutive understanding of the clustering process, it is worth showing the relative similarity of a sample of occupations from the HISCO schema. @fig-hisco-cluster shows a scatterplot with some of the different occupations listed in HISCO. 
 
-We can see a cluster in the top right hand corner of the plot showing basketry weavers and brush makers adjascent to sewers and embroiders, and weaving-and knitting machine setters and pattern card preparers. Thses occupations belong to HISCO major group of production and related workers, and so are all green in the figure. In the bottom left corner we see bacteriolgists, medical doctors and veterinary assistants. On the far right of the plot, we see university lecturers and special education teachers. The takeaway is not necessarily where the occupations fall in the plot, but rather that similar occupations are close to one another in the vector space, and further from dissimilar occupations. 
+We can see a cluster in the top right hand corner of the plot showing basketry weavers and brush makers adjacent to sewers and embroiders, and weaving-and knitting machine setters and pattern card preparers. These occupations belong to HISCO major group of production and related workers, and so are all green in the figure. In the bottom left corner we see bacteriolgists, medical doctors and veterinary assistants. On the far right of the plot, we see university lecturers and special education teachers. The takeaway is not necessarily where the occupations fall in the plot, but rather that similar occupations are close to one another in the vector space, and further from dissimilar occupations. 
 
 To create this plot, I used the @bert-base-swedish-cased library to create text embedding vectors for each occupation and description in the HISCO schema. Each vector has 364 dimensions, representing the semantic content of the occupation title and description. To produce the figure, I have used dimensionality reducation to collapse the vector representation down from 364 dimensions to just two so that I could plot them on the x and y axis, which I have done with the Uniform Manifold Approximation and Projection for Dimension Reduction (UMAP) library.
 
@@ -376,26 +381,24 @@ knitr::include_graphics("assets/hisco_cluster.png")
 
 In order to classify the occupations from the *Vem är Vem* source according to the HISCO schema, I use this same projection of HISCO occupations, as well as projecting each occupational title into the vector space (in Swedish). I then do a simple cosine distance calculation to find the closest HISCO code to each occupational title in the vector space, and call that the 'most similar HISCO' to the occupational string. I experimented with a threshold for the cosine distance, and found that setting it such that roughly 85 percent of the sample recieved HISCO codes produced results that appeared reasonable. While somewhat arbitrary, this approach allowed for a contextually relevant classification of occupations, drawing on the advanced language understanding capabilities of the KB BERT model. More work to benchmark and score this process is needed in the future.
 
-In the next step, I extract the career trajectories for each engineer and company general manager. I choose engineers and general managers because the other HISCO occupations that make up my sample do not have sufficient information to differentiate their work into sectors. The other largest HISCO occupations in the *Vem är Vem* source are shown in @fig-hisco-counts, being doctors, university teachers, dentists and ministers.
+In the next step, I extract the career trajectories for each engineer. I choose engineers because the other HISCO occupations that make up my sample do not have sufficient information to differentiate their work into sectors. The other largest HISCO occupations in the *Vem är Vem* source are shown in @fig-hisco-counts, being doctors, university teachers, dentists and ministers.
 
 ```{r}
 #| label: fig-hisco-counts
 #| fig-cap: "Most common HISCO occupations in Vem är Vem"
-#| fig-width: 8.5
-#| out-width: 8.5in
+#| fig-width: 5
+#| out-width: 5in
 
 knitr::include_graphics("assets/hisco_counts.png")
 ```
 
-I group the terms from the career trajectories for each individual, project them into the vector space using the same NLP library as before and cluster them using the kmeans algorithm, an unsupervised learning method. I label these clusters manually based on their content.
+I group the terms from the career trajectories for each individual, project them into the vector space using the same NLP library as before and compare them to the firm clusters by business type that I explain below.
 
-[figure here for common types]
+### Clustering firms by business type and geography
 
-### Clustering firms by geography and business
+For grouping firms by business type, I again used the k-means clustering algorithm, to categorize firms into 20 distinct categories. This algorithm works by partitioning the data into k distinct clusters based on features (in this case, text embeddings derived from company descriptions) [@jurafsky2023speech]. I experimented and decided on 20 clusters and manually labelled each cluster based on the firm names and business operations of the firms in the different clusters.
 
-For grouping firms, I again used the k-means clustering algorithm, to categorize firms into 20 distinct categories. This algorithm works by partitioning the data into k distinct clusters based on features (in this case, text embeddings derived from company descriptions) [@jurafsky2023speech].
-
-The result of this classification is visible in @fig-density-ridges, which shows the number of firms founded each year by category from the industrial catalogue. The clusters are ordered by peak year for foundation. We see that Breweries, malt and soft drink factories are some of the first established industrial businesses, along with book printing and publishing. At the bottom of the figure, it is evident that electrical appliance and mechanical machinery manufacturers, as well as firms in the chemical and pharmaceutical industries have the greatest number of firms founded in the years just prior to 1947, when our industrial firm catalogue is produced. 
+The result of this classification is visible in @fig-density-ridges, which shows the number of firms founded each year by category from the industrial catalogue. The clusters are ordered by peak year for foundation. We see that breweries, malt and soft drink factories are some of the first established industrial businesses, along with book printing and publishing. At the bottom of the figure, it is evident that electrical appliance and mechanical machinery manufacturers, as well as firms in the chemical and pharmaceutical industries have the greatest number of firms founded in the years just prior to 1947, when our industrial firm catalogue is produced. 
 
 ```{r}
 #| label: fig-density-ridges
@@ -406,32 +409,60 @@ The result of this classification is visible in @fig-density-ridges, which shows
 knitr::include_graphics("assets/geom_density_ridges.png")
 ```
 
+To cluster the firms geographically, I made use of the Density-Based Spatial Clustering of Applications with Noise (DBSCAN) algorithm. Unlike k-means, DBSCAN doesn't require you to specify the number of clusters in advance. It finds the number of clusters based on the distribution of the data (over geography in this case). The algorithm works by picking an aribtrary point, and retrieving all points in its ε-neighborhood, a distance threshold. If there are a minimum number of points within this neighborhood, a cluster is started, and the point is marked as a core point. Otherwise, it's marked as noise (temporarily). For each core point, all points within its ε-neighborhood become part of the cluster. This process continues until there are no more points to add to the cluster. The algorithm then picks another unvisited point and repeats the process, leading to the discovery of additional clusters or noise [@WierzchonKlopotek2018]. DBSCAN is particularly useful in this context because it can handle irregularly shaped clusters and is robust to outliers, making it suitable for real-world geographic data where firms are not be evenly distributed.
 
-![](assets/map_of_electricity_related_businesses.png)
+In my case, I used the coordinates of each firm as the primary variables by which clusters were examined, and then provided the firm type cluster as an additional variable. In @fig-map-common-types I show the geographic clusters that were uncovered with the DBSCAN algorithm, labelling each cluster with the most common firm type in that cluster. I should be clear that not every firm within the geographic cluster show as a dot is of the same firm type, rather, each cluster is shown with the most common firm type as a way to understand the geography of Swedish industrial firms in 1947.
 
-[In this map, we show two kinds of firms; firms that make electronic products, and firms that produce power or supply power stations with equipment. We can see that electronic products companies are clustered near the large population centers of Stockholm, Gothenburg and Malmö. There are many power stations in central Southern Sweden that make use of hydropower, and firms near them that supply equipment for these power stations.] 
+What we learn from this map is that the most common firm type in rural areas and the North of Sweden are wood, sawmill and carpentry firms. This makes sense. Further, we see a cluster of metal goods mechanical workshops (in red) near to a cluster of steel and metal industries (light orange). Electricaal appliance firms cluster around Stockholm and Uppsala, as well as Karlstad (North of the large lake in the West of Sweden).
 
-![](assets/capital_vs_employees.png)
+```{r}
+#| label: fig-map-common-types
+#| fig-cap: "Map of the geographic clusters of businesses by most common business type"
+#| fig-width: 5
+#| out-width: 5in
 
-[Here we show that mechanical workshop firms are relatively labour intensive, while electrical appliance and machinery producing firms are relatively capital intensive, compared to all other firms (in purple)]
+knitr::include_graphics("assets/map_most_common_businesses.png")
+```
 
-## What can we learn from the Who is Who? biographies?
+## Findings
 
-![](assets/hisco_counts.png)
+With this rich individual level biographic data and information on the clusters of different firms, we can show detailed life courses for the individuals of interest. @fig-engineer-movements shows the paths of four individuals who worked in electricity related industries in my sample. They held HISCO code 34, titled "Electrical and Electronics Engineering Technicians" @vanLeeuwen2002HISCO. We can see that these individuals moved away from home to pursue education, and ended up further from their roots in search of new occupations related to the skills that they had acquired. 
 
-<br>
+```{r}
+#| label: fig-engineer-movements
+#| fig-cap: "Geographic trajectories of selected electrical technicians and engineers"
+#| fig-width: 5
+#| out-width: 5in
 
-[We can show that of those in our sample, a great deal are general managers of firms, as well as doctos, dentists, teachers and priests. Engineers make up a large other component.]
+knitr::include_graphics("assets/eee_map.png")
+```
 
-<br>
 
-![](assets/eee_map.png)
+This is bourne out in @fig-engineer-distances. This plots the average distance moved by engineers within different sectors^[engineers are all those with HISCO code beginning 2X]. Compared to the average distance that a working age adult lived away from their birthplace in the 1930 census of 24km, the average engineer working in the electrical appliance sector in our sample moved 350km from their place of birth, the furthest of all engineers. Even engineers working in the densely geographically concentrated steel and metal industries moved on average 167km away from home.
 
-<br>
+```{r}
+#| label: fig-engineer-distances
+#| fig-cap: "Distances moved by engineers by industrial sector"
+#| fig-width: 5
+#| out-width: 5in
 
-[We can show that electrical and electronic engineering technicians move the furthest from the birthplace to their places of education, and further still from their place of education to their current location. Not the case that local lads were filling the roles for skilled workers in these new occupations - kinda interesting!]
+knitr::include_graphics("assets/engineer_distance.png")
+```
 
-![](assets/distances_comparison.png)
+@fig-avg-distances shows that of all the common HISCO codes in the sample detailed in @fig-hisco-counts, engineers and mechanical engineers moved the furthest on average. We can also calculate, based on the geographic firm clusters, that of the engineers in the sample, 34 percent live closest to the geographic cluster where the most common firm type is electrical appliances and mechanical machinery.
+
+```{r}
+#| label: fig-avg-distances
+#| fig-cap: "Distances moved by engineers by industrial sector"
+#| fig-width: 5
+#| out-width: 5in
+
+knitr::include_graphics("assets/hisco_distance.png")
+```
+
+## Conclusion
+
+To sum up, I have demonstrated how using of new tools and algortihms can give economic historians new kinds of source material to work with and new types of questions to ask. I showcased a two-part occupation and sector classification routine. I showed that contrary to my expectations, the individuals with high levels of skill who worked in electricity related industries in Sweden in the middle of the 20th century were not sourced from the localities around where production was centered. Rather, engineers working in electrical appliance and mechanical machinery industries moved the furthest from their places of birth, an average of 350km. This is indicative of a bifurcated labour market, with medium skilled jobs being filled by local workers, and specialized knowledge being brought in by workers with higher education from afar.
 
 ## Appendix {.appendix}
 
@@ -439,22 +470,8 @@ knitr::include_graphics("assets/geom_density_ridges.png")
 
 I scrape the book content from the *Projekt Runeberg* website with an HTML scraper (beautiful soup in python).
 
-I split the records using regular expression in python, looking for specific terms that begin and end the records in the dictionaries and catalogue.
+I split the records using regular expressions in python, looking for specific terms that begin and end the records in the dictionaries and catalogue.
 
 I augment the records with coordinates using the Google Maps Geocoding API. 
 
 I store the data in JSON format, keeping the original text in the file alongside the derived key value pairs.
-
-## What does the industrial calendar tell us about industrial firms in Sweden in 1947? {.appendix}
-
-[Explain that we see forestry and wood business in rural areas and the North of Sweden (purple), we see mechical workshops in modern day Skåne (pink), we see a cluster of furniture factories and home goods factories in central Southern Sweden, and a cluster of electrical appliance and mechanical machinery stores around Stockholm. Note that these clusters don't show all firms of one type, but the location of firms by geographic cluster, and the most common firm in that geographic cluster - makes it easier to see than many dots overlapping.]
-
-
-```{r}
-#| label: fig-common-businesses
-#| fig-cap: "Map of the geographic clusters of businesses by most common business type"
-#| fig-width: 8.5
-#| out-width: 8.5in
-
-knitr::include_graphics("assets/map_most_common_businesses.png")
-```
