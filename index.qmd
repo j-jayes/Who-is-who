@@ -118,56 +118,6 @@ The intention was, according to the publishers, to draw attention **to people wh
 
 ::::
 
-## Vem är Vem?
-
-```{r}
-library(tidyverse)
-theme_set(theme_light())
-
-# Create a tibble from the JSON data
-books <- tibble(
-    book_name = c("Skåne", "Stockholm", "Svealand", "The Götaland region except Skåne", "Skåne", "Norrland", "Stockholm", "The Götaland region except Skåne", "Who is who in indsutry and business?"),
-    year = c(1948, 1962, 1964, 1965, 1966, 1968, 1945, 1948, 1945),
-    pages = c(624, 1498, 945, 1203, 952, 1340, 1044, 1075, 625),
-    volume = c(1, 2, 2, 2, 2, 2, 1, 1, 3)
-)
-
-books <- books %>%
-    mutate(
-        name = str_c(book_name, " - ", year),
-        name = fct_reorder(name, pages),
-        records = pages * 8
-    ) %>%
-    mutate(volume = case_when(
-        volume == 1 ~ "1945–1950",
-        volume == 2 ~ "1962–1968",
-        TRUE ~ "Who is who in indsutry and business?"
-    )) %>%
-    select(name, records, volume)
-
-# books %>% summarise(records = sum(records))
-
-# Create the ggplot visualization
-ggplot(books, aes(x = records, y = name, fill = factor(volume))) +
-    geom_col(alpha = .8) +
-    labs(
-        x = "Number of biographies", y = "Book volume",
-        title = "Number of biographies in Vem är Vem?",
-        fill = "Edition"
-    ) +
-    scale_x_continuous(labels = scales::number_format()) +
-    scale_fill_manual(values = c("#2B8CBE", "#be5d2b", "midnightblue")) +
-    theme(plot.title.position = "plot")
-
-# ggsave("assets/who-is-who-volumes.png", width = 20, height = 20, units = "cm")
-
-```
-
-
-## Vem är Karl Lund?
-
-[Lund, Karl Gustaf]{style="background-color: #b0c4de"}, [chief engineer]{style="background-color: #d2b48c"}, [born on July 22, 1893]{style="background-color: #ff8c69"}, [in Hille, Gävleborgs län]{style="background-color: #90ee90"}, Sweden, son of [clerk Ferdinand L. and Maria Andersson]{style="background-color: #9370db"}. Married in 1936 to [Sigrid Johansson]{style="background-color: #ffadc1"}. Children: [Ingvar (born 1938)]{style="background-color: #ffdead"}, [Lennart (born 1942)]{style="background-color: #ffdead"}. — Graduated from [Bergsskolan]{style="background-color: #afeeee"} in Filipstad in 1917, specialized studies at the [Royal Institute of Technology (KTH)]{style="background-color: #afeeee"} from 1920 to 1922, studied at the [Institute of Metallurgy]{style="background-color: #afeeee"} and [Stockholm University]{style="background-color: #afeeee"} in 1921-1922. Chemist at [Strömsnäs Järnverks A-B]{style="background-color: #98fb98"} in Degerfors from 1918 to 1920, metallurgist and chemist at [Westinghouse Electric & Manufacturing Co.]{style="background-color: #98fb98"} in East Pittsburgh, PA, USA, from 1923 to 1926 and 1928 to 1929, chief metallurgist at [Laclede Steel Co.]{style="background-color: #98fb98"} in Alton, Illinois, USA, in 1927, furnace and steelworks engineer at [A-B Iggesunds Bruk]{style="background-color: #98fb98"} from 1929 to 1931, site manager at [Gunnebo Bruks Nya A-B, Varbergsverket]{style="background-color: #98fb98"}, since 1931. Member of the municipal executive committee, deputy chairman of the economic department, deputy member of the board of the power plant, chairman of [Varbergs Sparbank]{style="background-color: #ffdab9"}, employer representative in the district council of the county labor board, member of the board of [Varbergs Luftskyddsförening (Varberg Air Protection Association)]{style="background-color: #ffdab9"}, secretary of [Varbergs Högerförening (Varberg Conservative Association)]{style="background-color: #ffdab9"}, chairman of the railway sick fund, and [Plant Society for Small Bird Friends]{style="background-color: #ffdab9"}. 
-
 
 # Where were the `firms` in which these individuals worked?{#sec-where background-color="#1C9E77" visibility="uncounted"}
 
@@ -183,15 +133,6 @@ The Svensk Industrikalender, published by Sveriges Industriförbund (Sweden’s 
 :::
 
 
-## Firms across the country
-
-
-```{=html}
-<div style="display: flex; justify-content: center; align-items: center;">
-    <iframe src="https://raw.githack.com/j-jayes/svensk-industrikalender/main/data/maps/all_companies_map.html" width="1400" height="700"></iframe>
-</div>
-```
-
 # How can we `structure` the data?{#sec-structure background-color="#1C9E77" visibility="uncounted"}
 
 ## Data pipeline
@@ -206,132 +147,9 @@ The Svensk Industrikalender, published by Sveriges Industriförbund (Sweden’s 
 | **4**    | **Classify record into group**                              | 🔗🔍🌍🎓📚   |
 | 5    | Store data for analysis                                | 🔗📚📂       | 
 
-
-## NLP challenges
-
-:::: {.columns}
-
-::: {.column width="50%"}
-
 <br>
 
-- Many abbreviations and contractions
-    - DOB: "f\.\\s*(\\d{2})\\/(\\d{2})/(\\d{2})"
-    - Gävleborg County: "Gävleb. l."
-
-- Similar structure for each entry but not exactly the same information in the same order
-
-
-:::
-
-::: {.column width="50%"}
-
-<br>
-
-![](assets/Karl_Lund_crop.png){fig-align="center"}
-
-:::
-
-::::
-
-## Structure using OpenAI API 🤖
-
-### Using OpenAI's GPT-3.5 chat API:
-
-We provide the system a schema to structure the record in, e.g. keys.
-
-We provide the system the Swedish text
-
-We specify the JSON response format we want
-
-
-
-<br>
-
-::: {.columns}
-::: {.column}
-
-
-```{python, eval=FALSE, echo=TRUE}
-schema = {
-    "type": "object",
-    "required": [
-        "full_name",
-        "location",
-        "occupation",
-        "birth_details",
-        "education",
-        "career",
-        "family",
-    ],
-    "properties": {
-        "full_name": {"type": "string"},
-        "location": {"type": "string"},
-        "occupation": {"type": "string"},
-        "birth_details": {
-            "type": "object",
-            "properties": {
-                "date": {"type": "string"},
-                "place": {"type": "string"},
-                "parents": {"type": "string"},
-            },
-            "required": ["date", "place"],
-        },}}"
-```
-
-
-
-
-
-:::
-::: {.column}
-
-```{python, eval=FALSE, echo=TRUE}
-
-def structure_biography_info(page_text):
-    try:
-        # Create a prompt for the system
-        structure_prompt = f"Task: read the schema and return RFC compliant JSON information about the Swedish individuals from the 1950 biographical dictionary 'Vem är Vem' that is provided below. Use a numeric index for each biography in your JSON output and return information about all of them, including all career information available. Keep the biographic descriptions in Swedish and remove any abbreviations based on your knowledge, e.g. 'fil. kand.' is 'filosofie kandidat', and 'Skarab. l.' is 'Skaraborgs Län'. Put years in full based on context. Put dates in dd/mm/yyyy format where possible. If there is no information for a key, leave it out. If there is no information for a required key, put NULL as the value.\nHere is the schema: {schema}.\nHere is the text: {page_text}. Go!"
-        structure_response = client.chat.completions.create(
-            model="gpt-3.5-turbo-1106",
-            response_format={"type": "json_object"},
-            messages=[
-                {
-                    "role": "system",
-                    "content": "You are an expert on Swedish biographies.",
-                },
-                {"role": "user", "content": f"{structure_prompt}"},
-            ],
-        )
-
-        structured_biography_info = json.loads(
-            structure_response.choices[0].message.content
-        )
-
-        return structured_biography_info
-
-    except Exception as e:
-        print(f"Error in structure_biography_info: {e}")
-        return None
-```
-
-
-:::
-::: 
-
-
-## Add coordinates to firms and individuals
-
-Birthplaces of individuals who studied at Royal Tehcnical Institute (KTH) in *Who is Who in Industry and Business*
-
-<div style="text-align: center">
-
-
-```{r}
-knitr::include_url("assets/kth_birthplace_map.html", height = "800")
-```
-
-</div>
+75,000 biographies in 9 volumes of *Vem är Vem?* and 2,400 firms in *Svensk Industrikalender* in a machine readable format for ~ 80 USD.
 
 # How can we `classify occupations` according to a schema?{#sec-classifying-occupations background-color="#1C9E77" visibility="uncounted"}
 
@@ -354,174 +172,56 @@ graph LR
 
 ## Two-part classification process
 
-Makes use of occupational title, e.g. "Civilingenjör, teknisk fysik" and workplace information, e.g. "Strömsnäs Järnverks A-B".
+::: {.columns}
+::: {.column}
+
+Makes use of occupational title, e.g. "Civilingenjör, teknisk fysik" and workplace information, e.g. "Strömsnäs Järnverks A-B" to classify individuals into groups.
+
+Result: HISCO code and an industry
+:::
+::: {.column}
 
 ```{python, eval=FALSE, echo=TRUE}
-#| code-line-numbers: "10-14"
 {
-  "career": [
+  "input": [
     {
-      "occupational_title": "Chemist",
-      "workplace": "Strömsnäs Järnverks A-B",
-      "industry": "Metallurgy",
-      "start_date": "1918"
+      "occupational_title": "Civilingenjör, teknisk fysik",
+      "workplace": "Strömsnäs Järnverks A-B"
     },
-    {
-      "occupational_title": "Metallurgist and Chemist",
-      "workplace": "Westinghouse Electric & Manufacturing Co.",
-      "industry": "Manufacturing",
-      "start_date": "1923"
-    },
-    {
-      "occupational_title": "Chief Metallurgist",
-      "workplace": "Laclede Steel Co.",
-      "industry": "Steel Production",
-      "start_date": "1927"
-    },
-    {
-      "occupational_title": "Furnace and Steelworks Engineer",
-      "workplace": "A-B Iggesunds Bruk",
-      "industry": "Metallurgy",
-      "start_date": "1929"
-    },
-    {
-      "occupational_title": "Site Manager",
-      "workplace": "Gunnebo Bruks Nya A-B, Varbergsverket",
-      "industry": "Metallurgy",
-      "start_date": "1931"
+  ],
+  "output": [
+    {x
+      "hisco_code": "22",
+      "industry": "Iron and steel production"
     }
-  ]
 }
 
 ```
 
 
-## Why was classification hard?
-
-### Fuzzy string matching doesn't capture semantic similarity between words
-- "chauffeur" is close to "car driver" semantically, but not close in text.
-
-### Many possible groups makes classification challenging for traditional ML models
-- HISCO schema has 1,600 unit groups.
-
-### Building one labelled classification scheme manually does not generalize easily
-- If you code all of your occupations to HISCO and then want to move to SSYK, you have to redo all of the codings or try and find a crosswalk.
-
-:::: {.columns}
-
-::: {.column width="40%"}
-I spent months doing this last year to classify occupations to HISCLASS groups, hand labelling data and optimizing a support vector machine model.
 :::
-
-::: {.column width="60%"}
-
-<div style="text-align: center">
-
-**It did not work**
-
-```{r}
-knitr::include_graphics("assets/svm.png")
-```
-</div>
-:::
-
-::::
+::: 
 
 
-## Why is classification easier now?
 
-### We make use of pre-trained large language models
-- Benefit from semantic similarity
-- Text embeddings mean we can have an arbitrary number of classes
-- Switch out classification target schema easily!
+## Results: How far do engineers move?
 
-<div style="text-align: center">
+![](assets/eee_map.png){fig-align="center" width=100%}
 
+# Engineers in electrical appliances and machinery move the furthest
 
-```{r}
-knitr::include_graphics("assets/sustainable-planning.png")
-```
+![](assets/engineer_distance.png){fig-align="center" width=100%}
 
-</div>
+# Conclusion{#sec-conclusion background-color="#1C9E77" visibility="uncounted"}
 
-## What is an embedding?
-
-![](assets/word2vec-king-queen-vectors.png){fig-align="center" width=100%}
-
-## What is an embedding?{.unnumbered}
-
-![](assets/word2vec-king-queen-composition.png){fig-align="center" width=100%}
-
-
-## Use embeddings to cluster skills
-
-
-```{r}
-#| label: fig-hisco-cluster
-#| fig-cap: "Scatter plot showing the relative similarity of occupational titles in the HISCO schema"
-
-knitr::include_graphics("assets/hisco_cluster.png")
-```
-
-## Use clusters to classify individuals into the groups
-
-
-```{r}
-#| label: fig-hisco-counts
-#| fig-cap: "Most common HISCO occupations in Vem är Vem"
-#| fig-width: 5
-#| out-width: 5in
-
-knitr::include_graphics("assets/hisco_counts.png")
-```
-
-## Use clusters to classify new skills into the groups
-
-
-```{mermaid}
-graph TB
-    A[Collect HISCO Codes<br>and Descriptions] -->|Use OpenAI API| B[Convert HISCO Titles<br>and Descriptions to Vectors]
-    C[Receive Occupational<br>Strings] -->|Use OpenAI API| D[Convert Occupational<br>Strings to Vectors]
-    B --> E[Compare Vectors in<br>Vector Space]
-    D --> E
-    E --> F[Assign HISCO Code to<br>Occupational String<br>using Cosine Distance]
-    style A fill:#2B8CBE
-    style B fill:#be5d2b
-    style C fill:#2B8CBE
-    style D fill:#be5d2b
-    style E fill:#6f6fbf
-    style F fill:#F4FA58
-
-
-```
-
-Here the HISCO descriptions are in English, as are the translated titles from my biographies in Swedish.
-
-## Cluster firms by location
-
-```{r}
-#| label: fig-map-common-types
-#| fig-cap: "Map of the geographic clusters of businesses by most common business type"
-#| fig-width: 5
-#| out-width: 5in
-
-knitr::include_graphics("assets/map_most_common_businesses.png")
-```
-
-
-## You can do it too!
-
-![](assets/code.png){fig-align="center" width=100%}
-
-[GitHub repo](https://github.com/j-jayes/who-is-who-in-industry)
-
+Bifurcated labour market in Sweden; middle-skill workers stay put, high-skill workers move to opportunity both for education and work.
 
 ## References
 
 ::: {#refs}
 :::
 
-# Appendix {#sec-appendix background-color="#1C9E77" visibility="uncounted"}
+# Appendix{#sec-appendix background-color="#d95f02"}
 
 ## How to get a text embedding?{visibility="uncounted"}
 
@@ -561,6 +261,7 @@ knitr::include_url("assets/interactive_umap_plot.html", height = "800")
 
 ```{r}
 library(gt)
+library(tidyverse)
 
 # Create a tibble with the provided data
 watchmaker_data <- tibble(
@@ -712,3 +413,353 @@ new_occupation_table %>%
 We can use a crosswalk from one schema to another as a test set, e.g. O * Net to ISCO:
 
 ![](assets/scoring_assignement.png){fig-align="center" width=100%}
+
+
+
+## Vem är Karl Lund?{visibility="uncounted"}
+
+[Lund, Karl Gustaf]{style="background-color: #b0c4de"}, [chief engineer]{style="background-color: #d2b48c"}, [born on July 22, 1893]{style="background-color: #ff8c69"}, [in Hille, Gävleborgs län]{style="background-color: #90ee90"}, Sweden, son of [clerk Ferdinand L. and Maria Andersson]{style="background-color: #9370db"}. Married in 1936 to [Sigrid Johansson]{style="background-color: #ffadc1"}. Children: [Ingvar (born 1938)]{style="background-color: #ffdead"}, [Lennart (born 1942)]{style="background-color: #ffdead"}. — Graduated from [Bergsskolan]{style="background-color: #afeeee"} in Filipstad in 1917, specialized studies at the [Royal Institute of Technology (KTH)]{style="background-color: #afeeee"} from 1920 to 1922, studied at the [Institute of Metallurgy]{style="background-color: #afeeee"} and [Stockholm University]{style="background-color: #afeeee"} in 1921-1922. Chemist at [Strömsnäs Järnverks A-B]{style="background-color: #98fb98"} in Degerfors from 1918 to 1920, metallurgist and chemist at [Westinghouse Electric & Manufacturing Co.]{style="background-color: #98fb98"} in East Pittsburgh, PA, USA, from 1923 to 1926 and 1928 to 1929, chief metallurgist at [Laclede Steel Co.]{style="background-color: #98fb98"} in Alton, Illinois, USA, in 1927, furnace and steelworks engineer at [A-B Iggesunds Bruk]{style="background-color: #98fb98"} from 1929 to 1931, site manager at [Gunnebo Bruks Nya A-B, Varbergsverket]{style="background-color: #98fb98"}, since 1931. Member of the municipal executive committee, deputy chairman of the economic department, deputy member of the board of the power plant, chairman of [Varbergs Sparbank]{style="background-color: #ffdab9"}, employer representative in the district council of the county labor board, member of the board of [Varbergs Luftskyddsförening (Varberg Air Protection Association)]{style="background-color: #ffdab9"}, secretary of [Varbergs Högerförening (Varberg Conservative Association)]{style="background-color: #ffdab9"}, chairman of the railway sick fund, and [Plant Society for Small Bird Friends]{style="background-color: #ffdab9"}. 
+
+
+## NLP challenges{visibility="uncounted"}
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+<br>
+
+- Many abbreviations and contractions
+    - DOB: "f\.\\s*(\\d{2})\\/(\\d{2})/(\\d{2})"
+    - Gävleborg County: "Gävleb. l."
+
+- Similar structure for each entry but not exactly the same information in the same order
+
+
+:::
+
+::: {.column width="50%"}
+
+<br>
+
+![](assets/Karl_Lund_crop.png){fig-align="center"}
+
+:::
+
+::::
+
+## Structure using OpenAI API 🤖{visibility="uncounted"}
+
+### Using OpenAI's GPT-3.5 chat API:
+
+We provide the system a schema to structure the record in, e.g. keys.
+
+We provide the system the Swedish text
+
+We specify the JSON response format we want
+
+
+
+<br>
+
+::: {.columns}
+::: {.column}
+
+
+```{python, eval=FALSE, echo=TRUE}
+schema = {
+    "type": "object",
+    "required": [
+        "full_name",
+        "location",
+        "occupation",
+        "birth_details",
+        "education",
+        "career",
+        "family",
+    ],
+    "properties": {
+        "full_name": {"type": "string"},
+        "location": {"type": "string"},
+        "occupation": {"type": "string"},
+        "birth_details": {
+            "type": "object",
+            "properties": {
+                "date": {"type": "string"},
+                "place": {"type": "string"},
+                "parents": {"type": "string"},
+            },
+            "required": ["date", "place"],
+        },}}"
+```
+
+
+
+
+
+:::
+::: {.column}
+
+```{python, eval=FALSE, echo=TRUE}
+
+def structure_biography_info(page_text):
+    try:
+        # Create a prompt for the system
+        structure_prompt = f"Task: read the schema and return RFC compliant JSON information about the Swedish individuals from the 1950 biographical dictionary 'Vem är Vem' that is provided below. Use a numeric index for each biography in your JSON output and return information about all of them, including all career information available. Keep the biographic descriptions in Swedish and remove any abbreviations based on your knowledge, e.g. 'fil. kand.' is 'filosofie kandidat', and 'Skarab. l.' is 'Skaraborgs Län'. Put years in full based on context. Put dates in dd/mm/yyyy format where possible. If there is no information for a key, leave it out. If there is no information for a required key, put NULL as the value.\nHere is the schema: {schema}.\nHere is the text: {page_text}. Go!"
+        structure_response = client.chat.completions.create(
+            model="gpt-3.5-turbo-1106",
+            response_format={"type": "json_object"},
+            messages=[
+                {
+                    "role": "system",
+                    "content": "You are an expert on Swedish biographies.",
+                },
+                {"role": "user", "content": f"{structure_prompt}"},
+            ],
+        )
+
+        structured_biography_info = json.loads(
+            structure_response.choices[0].message.content
+        )
+
+        return structured_biography_info
+
+    except Exception as e:
+        print(f"Error in structure_biography_info: {e}")
+        return None
+```
+
+
+:::
+::: 
+
+
+## Add coordinates to firms and individuals{visibility="uncounted"}
+
+Birthplaces of individuals who studied at Royal Tehcnical Institute (KTH) in *Who is Who in Industry and Business*
+
+<div style="text-align: center">
+
+
+```{r}
+knitr::include_url("assets/kth_birthplace_map.html", height = "800")
+```
+
+</div>
+
+
+
+## Firms across the country{visibility="uncounted"}
+
+
+```{=html}
+<div style="display: flex; justify-content: center; align-items: center;">
+    <iframe src="https://raw.githack.com/j-jayes/svensk-industrikalender/main/data/maps/all_companies_map.html" width="1400" height="700"></iframe>
+</div>
+```
+
+## Occupational info{visibility="uncounted"}
+
+
+```{python, eval=FALSE, echo=TRUE}
+#| code-line-numbers: "10-14"
+{
+  "career": [
+    {
+      "occupational_title": "Chemist",
+      "workplace": "Strömsnäs Järnverks A-B",
+      "industry": "Metallurgy",
+      "start_date": "1918"
+    },
+    {
+      "occupational_title": "Metallurgist and Chemist",
+      "workplace": "Westinghouse Electric & Manufacturing Co.",
+      "industry": "Manufacturing",
+      "start_date": "1923"
+    },
+    {
+      "occupational_title": "Chief Metallurgist",
+      "workplace": "Laclede Steel Co.",
+      "industry": "Steel Production",
+      "start_date": "1927"
+    },
+    {
+      "occupational_title": "Furnace and Steelworks Engineer",
+      "workplace": "A-B Iggesunds Bruk",
+      "industry": "Metallurgy",
+      "start_date": "1929"
+    },
+    {
+      "occupational_title": "Site Manager",
+      "workplace": "Gunnebo Bruks Nya A-B, Varbergsverket",
+      "industry": "Metallurgy",
+      "start_date": "1931"
+    }
+  ]
+}
+
+```
+
+
+## Vem är Vem?{visibility="uncounted"}
+
+```{r}
+library(tidyverse)
+theme_set(theme_light())
+
+# Create a tibble from the JSON data
+books <- tibble(
+    book_name = c("Skåne", "Stockholm", "Svealand", "The Götaland region except Skåne", "Skåne", "Norrland", "Stockholm", "The Götaland region except Skåne", "Who is who in indsutry and business?"),
+    year = c(1948, 1962, 1964, 1965, 1966, 1968, 1945, 1948, 1945),
+    pages = c(624, 1498, 945, 1203, 952, 1340, 1044, 1075, 625),
+    volume = c(1, 2, 2, 2, 2, 2, 1, 1, 3)
+)
+
+books <- books %>%
+    mutate(
+        name = str_c(book_name, " - ", year),
+        name = fct_reorder(name, pages),
+        records = pages * 8
+    ) %>%
+    mutate(volume = case_when(
+        volume == 1 ~ "1945–1950",
+        volume == 2 ~ "1962–1968",
+        TRUE ~ "Who is who in indsutry and business?"
+    )) %>%
+    select(name, records, volume)
+
+# books %>% summarise(records = sum(records))
+
+# Create the ggplot visualization
+ggplot(books, aes(x = records, y = name, fill = factor(volume))) +
+    geom_col(alpha = .8) +
+    labs(
+        x = "Number of biographies", y = "Book volume",
+        title = "Number of biographies in Vem är Vem?",
+        fill = "Edition"
+    ) +
+    scale_x_continuous(labels = scales::number_format()) +
+    scale_fill_manual(values = c("#2B8CBE", "#be5d2b", "midnightblue")) +
+    theme(plot.title.position = "plot")
+
+# ggsave("assets/who-is-who-volumes.png", width = 20, height = 20, units = "cm")
+
+```
+
+## Why was classification hard?{visibility="uncounted"}
+
+### Fuzzy string matching doesn't capture semantic similarity between words
+- "chauffeur" is close to "car driver" semantically, but not close in text.
+
+### Many possible groups makes classification challenging for traditional ML models
+- HISCO schema has 1,600 unit groups.
+
+### Building one labelled classification scheme manually does not generalize easily
+- If you code all of your occupations to HISCO and then want to move to SSYK, you have to redo all of the codings or try and find a crosswalk.
+
+:::: {.columns}
+
+::: {.column width="40%"}
+I spent months doing this last year to classify occupations to HISCLASS groups, hand labelling data and optimizing a support vector machine model.
+:::
+
+::: {.column width="60%"}
+
+<div style="text-align: center">
+
+**It did not work**
+
+```{r}
+knitr::include_graphics("assets/svm.png")
+```
+</div>
+:::
+
+::::
+
+
+## Why is classification easier now?{visibility="uncounted"}
+
+### We make use of pre-trained large language models
+- Benefit from semantic similarity
+- Text embeddings mean we can have an arbitrary number of classes
+- Switch out classification target schema easily!
+
+<div style="text-align: center">
+
+
+```{r}
+knitr::include_graphics("assets/sustainable-planning.png")
+```
+
+</div>
+
+## What is an embedding?{visibility="uncounted"}
+
+![](assets/word2vec-king-queen-vectors.png){fig-align="center" width=100%}
+
+## What is an embedding?{visibility="uncounted"}
+
+![](assets/word2vec-king-queen-composition.png){fig-align="center" width=100%}
+
+
+## Use embeddings to cluster skills{visibility="uncounted"}
+
+
+```{r}
+#| label: fig-hisco-cluster
+#| fig-cap: "Scatter plot showing the relative similarity of occupational titles in the HISCO schema"
+
+knitr::include_graphics("assets/hisco_cluster.png")
+```
+
+## Use clusters to classify individuals into the groups{visibility="uncounted"}
+
+
+```{r}
+#| label: fig-hisco-counts
+#| fig-cap: "Most common HISCO occupations in Vem är Vem"
+#| fig-width: 5
+#| out-width: 5in
+
+knitr::include_graphics("assets/hisco_counts.png")
+```
+
+## Use clusters to classify new skills into the groups{visibility="uncounted"}
+
+```{mermaid}
+graph TB
+    A[Collect HISCO Codes<br>and Descriptions] -->|Use OpenAI API| B[Convert HISCO Titles<br>and Descriptions to Vectors]
+    C[Receive Occupational<br>Strings] -->|Use OpenAI API| D[Convert Occupational<br>Strings to Vectors]
+    B --> E[Compare Vectors in<br>Vector Space]
+    D --> E
+    E --> F[Assign HISCO Code to<br>Occupational String<br>using Cosine Distance]
+    style A fill:#2B8CBE
+    style B fill:#be5d2b
+    style C fill:#2B8CBE
+    style D fill:#be5d2b
+    style E fill:#6f6fbf
+    style F fill:#F4FA58
+
+
+```
+
+Here the HISCO descriptions are in English, as are the translated titles from my biographies in Swedish.
+
+## Cluster firms by location{visibility="uncounted"}
+
+```{r}
+#| label: fig-map-common-types
+#| fig-cap: "Map of the geographic clusters of businesses by most common business type"
+#| fig-width: 5
+#| out-width: 5in
+
+knitr::include_graphics("assets/map_most_common_businesses.png")
+```
+
+
+## You can do it too!{visibility="uncounted"}
+
+![](assets/code.png){fig-align="center" width=100%}
+
+[GitHub repo](https://github.com/j-jayes/who-is-who-in-industry)

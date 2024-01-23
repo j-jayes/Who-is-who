@@ -510,14 +510,6 @@ Jonathan Jayes - Lund University
 </div>
 </div>
 </div>
-</section>
-<section id="vem-är-vem" class="slide level2">
-<h2>Vem är Vem?</h2>
-
-<img data-src="index_files/figure-revealjs/unnamed-chunk-1-1.png" width="960" class="r-stretch"></section>
-<section id="vem-är-karl-lund" class="slide level2">
-<h2>Vem är Karl Lund?</h2>
-<p><span style="background-color: #b0c4de">Lund, Karl Gustaf</span>, <span style="background-color: #d2b48c">chief engineer</span>, <span style="background-color: #ff8c69">born on July 22, 1893</span>, <span style="background-color: #90ee90">in Hille, Gävleborgs län</span>, Sweden, son of <span style="background-color: #9370db">clerk Ferdinand L. and Maria Andersson</span>. Married in 1936 to <span style="background-color: #ffadc1">Sigrid Johansson</span>. Children: <span style="background-color: #ffdead">Ingvar (born 1938)</span>, <span style="background-color: #ffdead">Lennart (born 1942)</span>. — Graduated from <span style="background-color: #afeeee">Bergsskolan</span> in Filipstad in 1917, specialized studies at the <span style="background-color: #afeeee">Royal Institute of Technology (KTH)</span> from 1920 to 1922, studied at the <span style="background-color: #afeeee">Institute of Metallurgy</span> and <span style="background-color: #afeeee">Stockholm University</span> in 1921-1922. Chemist at <span style="background-color: #98fb98">Strömsnäs Järnverks A-B</span> in Degerfors from 1918 to 1920, metallurgist and chemist at <span style="background-color: #98fb98">Westinghouse Electric &amp; Manufacturing Co.</span> in East Pittsburgh, PA, USA, from 1923 to 1926 and 1928 to 1929, chief metallurgist at <span style="background-color: #98fb98">Laclede Steel Co.</span> in Alton, Illinois, USA, in 1927, furnace and steelworks engineer at <span style="background-color: #98fb98">A-B Iggesunds Bruk</span> from 1929 to 1931, site manager at <span style="background-color: #98fb98">Gunnebo Bruks Nya A-B, Varbergsverket</span>, since 1931. Member of the municipal executive committee, deputy chairman of the economic department, deputy member of the board of the power plant, chairman of <span style="background-color: #ffdab9">Varbergs Sparbank</span>, employer representative in the district council of the county labor board, member of the board of <span style="background-color: #ffdab9">Varbergs Luftskyddsförening (Varberg Air Protection Association)</span>, secretary of <span style="background-color: #ffdab9">Varbergs Högerförening (Varberg Conservative Association)</span>, chairman of the railway sick fund, and <span style="background-color: #ffdab9">Plant Society for Small Bird Friends</span>.</p>
 </section></section>
 <section>
 <section id="sec-where" class="title-slide slide level1 center" data-background-color="#1C9E77" data-visibility="uncounted">
@@ -536,12 +528,6 @@ Jonathan Jayes - Lund University
 </div><div class="column">
 <p>The Svensk Industrikalender, published by Sveriges Industriförbund (Sweden’s Industrial Association), is a comprehensive directory of Swedish industrial firms. This calendar was issued annually from 1918 to 2000 and contains information related to Swedish industry. The 1947 edition available on the Project Runeberg website was digitized in April 2012, sourced from the Centrum för Näringslivshis- toria.</p>
 </div>
-</div>
-</section>
-<section id="firms-across-the-country" class="slide level2">
-<h2>Firms across the country</h2>
-<div style="display: flex; justify-content: center; align-items: center;">
-    <iframe src="https://raw.githack.com/j-jayes/svensk-industrikalender/main/data/maps/all_companies_map.html" width="1400" height="700"></iframe>
 </div>
 </section></section>
 <section>
@@ -593,105 +579,8 @@ Jonathan Jayes - Lund University
 </tr>
 </tbody>
 </table>
-</section>
-<section id="nlp-challenges" class="slide level2">
-<h2>NLP challenges</h2>
-<div class="columns">
-<div class="column" style="width:50%;">
 <p><br></p>
-<ul>
-<li>Many abbreviations and contractions
-<ul>
-<li>DOB: “f.\s*(\d{2})\/(\d{2})/(\d{2})”</li>
-<li>Gävleborg County: “Gävleb. l.”</li>
-</ul></li>
-<li>Similar structure for each entry but not exactly the same information in the same order</li>
-</ul>
-</div><div class="column" style="width:50%;">
-<p><br></p>
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="assets/Karl_Lund_crop.png"></p>
-</figure>
-</div>
-</div>
-</div>
-</section>
-<section id="structure-using-openai-api" class="slide level2">
-<h2>Structure using OpenAI API 🤖</h2>
-<h3 id="using-openais-gpt-3.5-chat-api">Using OpenAI’s GPT-3.5 chat API:</h3>
-<p>We provide the system a schema to structure the record in, e.g.&nbsp;keys.</p>
-<p>We provide the system the Swedish text</p>
-<p>We specify the JSON response format we want</p>
-<p><br></p>
-<div class="columns">
-<div class="column">
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a>schema <span class="op">=</span> {</span>
-<span id="cb1-2"><a href="#cb1-2"></a>    <span class="st">"type"</span>: <span class="st">"object"</span>,</span>
-<span id="cb1-3"><a href="#cb1-3"></a>    <span class="st">"required"</span>: [</span>
-<span id="cb1-4"><a href="#cb1-4"></a>        <span class="st">"full_name"</span>,</span>
-<span id="cb1-5"><a href="#cb1-5"></a>        <span class="st">"location"</span>,</span>
-<span id="cb1-6"><a href="#cb1-6"></a>        <span class="st">"occupation"</span>,</span>
-<span id="cb1-7"><a href="#cb1-7"></a>        <span class="st">"birth_details"</span>,</span>
-<span id="cb1-8"><a href="#cb1-8"></a>        <span class="st">"education"</span>,</span>
-<span id="cb1-9"><a href="#cb1-9"></a>        <span class="st">"career"</span>,</span>
-<span id="cb1-10"><a href="#cb1-10"></a>        <span class="st">"family"</span>,</span>
-<span id="cb1-11"><a href="#cb1-11"></a>    ],</span>
-<span id="cb1-12"><a href="#cb1-12"></a>    <span class="st">"properties"</span>: {</span>
-<span id="cb1-13"><a href="#cb1-13"></a>        <span class="st">"full_name"</span>: {<span class="st">"type"</span>: <span class="st">"string"</span>},</span>
-<span id="cb1-14"><a href="#cb1-14"></a>        <span class="st">"location"</span>: {<span class="st">"type"</span>: <span class="st">"string"</span>},</span>
-<span id="cb1-15"><a href="#cb1-15"></a>        <span class="st">"occupation"</span>: {<span class="st">"type"</span>: <span class="st">"string"</span>},</span>
-<span id="cb1-16"><a href="#cb1-16"></a>        <span class="st">"birth_details"</span>: {</span>
-<span id="cb1-17"><a href="#cb1-17"></a>            <span class="st">"type"</span>: <span class="st">"object"</span>,</span>
-<span id="cb1-18"><a href="#cb1-18"></a>            <span class="st">"properties"</span>: {</span>
-<span id="cb1-19"><a href="#cb1-19"></a>                <span class="st">"date"</span>: {<span class="st">"type"</span>: <span class="st">"string"</span>},</span>
-<span id="cb1-20"><a href="#cb1-20"></a>                <span class="st">"place"</span>: {<span class="st">"type"</span>: <span class="st">"string"</span>},</span>
-<span id="cb1-21"><a href="#cb1-21"></a>                <span class="st">"parents"</span>: {<span class="st">"type"</span>: <span class="st">"string"</span>},</span>
-<span id="cb1-22"><a href="#cb1-22"></a>            },</span>
-<span id="cb1-23"><a href="#cb1-23"></a>            <span class="st">"required"</span>: [<span class="st">"date"</span>, <span class="st">"place"</span>],</span>
-<span id="cb1-24"><a href="#cb1-24"></a>        },}}<span class="st">"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</div><div class="column">
-<div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="kw">def</span> structure_biography_info(page_text):</span>
-<span id="cb2-2"><a href="#cb2-2"></a>    <span class="cf">try</span>:</span>
-<span id="cb2-3"><a href="#cb2-3"></a>        <span class="co"># Create a prompt for the system</span></span>
-<span id="cb2-4"><a href="#cb2-4"></a>        structure_prompt <span class="op">=</span> <span class="ss">f"Task: read the schema and return RFC compliant JSON information about the Swedish individuals from the 1950 biographical dictionary 'Vem är Vem' that is provided below. Use a numeric index for each biography in your JSON output and return information about all of them, including all career information available. Keep the biographic descriptions in Swedish and remove any abbreviations based on your knowledge, e.g. 'fil. kand.' is 'filosofie kandidat', and 'Skarab. l.' is 'Skaraborgs Län'. Put years in full based on context. Put dates in dd/mm/yyyy format where possible. If there is no information for a key, leave it out. If there is no information for a required key, put NULL as the value.</span><span class="ch">\n</span><span class="ss">Here is the schema: </span><span class="sc">{</span>schema<span class="sc">}</span><span class="ss">.</span><span class="ch">\n</span><span class="ss">Here is the text: </span><span class="sc">{</span>page_text<span class="sc">}</span><span class="ss">. Go!"</span></span>
-<span id="cb2-5"><a href="#cb2-5"></a>        structure_response <span class="op">=</span> client.chat.completions.create(</span>
-<span id="cb2-6"><a href="#cb2-6"></a>            model<span class="op">=</span><span class="st">"gpt-3.5-turbo-1106"</span>,</span>
-<span id="cb2-7"><a href="#cb2-7"></a>            response_format<span class="op">=</span>{<span class="st">"type"</span>: <span class="st">"json_object"</span>},</span>
-<span id="cb2-8"><a href="#cb2-8"></a>            messages<span class="op">=</span>[</span>
-<span id="cb2-9"><a href="#cb2-9"></a>                {</span>
-<span id="cb2-10"><a href="#cb2-10"></a>                    <span class="st">"role"</span>: <span class="st">"system"</span>,</span>
-<span id="cb2-11"><a href="#cb2-11"></a>                    <span class="st">"content"</span>: <span class="st">"You are an expert on Swedish biographies."</span>,</span>
-<span id="cb2-12"><a href="#cb2-12"></a>                },</span>
-<span id="cb2-13"><a href="#cb2-13"></a>                {<span class="st">"role"</span>: <span class="st">"user"</span>, <span class="st">"content"</span>: <span class="ss">f"</span><span class="sc">{</span>structure_prompt<span class="sc">}</span><span class="ss">"</span>},</span>
-<span id="cb2-14"><a href="#cb2-14"></a>            ],</span>
-<span id="cb2-15"><a href="#cb2-15"></a>        )</span>
-<span id="cb2-16"><a href="#cb2-16"></a></span>
-<span id="cb2-17"><a href="#cb2-17"></a>        structured_biography_info <span class="op">=</span> json.loads(</span>
-<span id="cb2-18"><a href="#cb2-18"></a>            structure_response.choices[<span class="dv">0</span>].message.content</span>
-<span id="cb2-19"><a href="#cb2-19"></a>        )</span>
-<span id="cb2-20"><a href="#cb2-20"></a></span>
-<span id="cb2-21"><a href="#cb2-21"></a>        <span class="cf">return</span> structured_biography_info</span>
-<span id="cb2-22"><a href="#cb2-22"></a></span>
-<span id="cb2-23"><a href="#cb2-23"></a>    <span class="cf">except</span> <span class="pp">Exception</span> <span class="im">as</span> e:</span>
-<span id="cb2-24"><a href="#cb2-24"></a>        <span class="bu">print</span>(<span class="ss">f"Error in structure_biography_info: </span><span class="sc">{</span>e<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb2-25"><a href="#cb2-25"></a>        <span class="cf">return</span> <span class="va">None</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</div>
-</div>
-</section>
-<section id="add-coordinates-to-firms-and-individuals" class="slide level2">
-<h2>Add coordinates to firms and individuals</h2>
-<p>Birthplaces of individuals who studied at Royal Tehcnical Institute (KTH) in <em>Who is Who in Industry and Business</em></p>
-<div style="text-align: center">
-<div class="cell">
-<iframe src="assets/kth_birthplace_map.html" width="960" height="800" data-external="1">
-</iframe>
-</div>
-</div>
+<p>75,000 biographies in 9 volumes of <em>Vem är Vem?</em> and 2,400 firms in <em>Svensk Industrikalender</em> in a machine readable format for ~ 80 USD.</p>
 </section></section>
 <section>
 <section id="sec-classifying-occupations" class="title-slide slide level1 center" data-background-color="#1C9E77" data-visibility="uncounted">
@@ -721,137 +610,42 @@ Jonathan Jayes - Lund University
 </section>
 <section id="two-part-classification-process" class="slide level2">
 <h2>Two-part classification process</h2>
-<p>Makes use of occupational title, e.g.&nbsp;“Civilingenjör, teknisk fysik” and workplace information, e.g.&nbsp;“Strömsnäs Järnverks A-B”.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb3" data-code-line-numbers="10-14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a>{</span>
-<span id="cb3-2"><a href="#cb3-2"></a>  <span class="st">"career"</span>: [</span>
-<span id="cb3-3"><a href="#cb3-3"></a>    {</span>
-<span id="cb3-4"><a href="#cb3-4"></a>      <span class="st">"occupational_title"</span>: <span class="st">"Chemist"</span>,</span>
-<span id="cb3-5"><a href="#cb3-5"></a>      <span class="st">"workplace"</span>: <span class="st">"Strömsnäs Järnverks A-B"</span>,</span>
-<span id="cb3-6"><a href="#cb3-6"></a>      <span class="st">"industry"</span>: <span class="st">"Metallurgy"</span>,</span>
-<span id="cb3-7"><a href="#cb3-7"></a>      <span class="st">"start_date"</span>: <span class="st">"1918"</span></span>
-<span id="cb3-8"><a href="#cb3-8"></a>    },</span>
-<span id="cb3-9"><a href="#cb3-9"></a>    {</span>
-<span id="cb3-10"><a href="#cb3-10"></a>      <span class="st">"occupational_title"</span>: <span class="st">"Metallurgist and Chemist"</span>,</span>
-<span id="cb3-11"><a href="#cb3-11"></a>      <span class="st">"workplace"</span>: <span class="st">"Westinghouse Electric &amp; Manufacturing Co."</span>,</span>
-<span id="cb3-12"><a href="#cb3-12"></a>      <span class="st">"industry"</span>: <span class="st">"Manufacturing"</span>,</span>
-<span id="cb3-13"><a href="#cb3-13"></a>      <span class="st">"start_date"</span>: <span class="st">"1923"</span></span>
-<span id="cb3-14"><a href="#cb3-14"></a>    },</span>
-<span id="cb3-15"><a href="#cb3-15"></a>    {</span>
-<span id="cb3-16"><a href="#cb3-16"></a>      <span class="st">"occupational_title"</span>: <span class="st">"Chief Metallurgist"</span>,</span>
-<span id="cb3-17"><a href="#cb3-17"></a>      <span class="st">"workplace"</span>: <span class="st">"Laclede Steel Co."</span>,</span>
-<span id="cb3-18"><a href="#cb3-18"></a>      <span class="st">"industry"</span>: <span class="st">"Steel Production"</span>,</span>
-<span id="cb3-19"><a href="#cb3-19"></a>      <span class="st">"start_date"</span>: <span class="st">"1927"</span></span>
-<span id="cb3-20"><a href="#cb3-20"></a>    },</span>
-<span id="cb3-21"><a href="#cb3-21"></a>    {</span>
-<span id="cb3-22"><a href="#cb3-22"></a>      <span class="st">"occupational_title"</span>: <span class="st">"Furnace and Steelworks Engineer"</span>,</span>
-<span id="cb3-23"><a href="#cb3-23"></a>      <span class="st">"workplace"</span>: <span class="st">"A-B Iggesunds Bruk"</span>,</span>
-<span id="cb3-24"><a href="#cb3-24"></a>      <span class="st">"industry"</span>: <span class="st">"Metallurgy"</span>,</span>
-<span id="cb3-25"><a href="#cb3-25"></a>      <span class="st">"start_date"</span>: <span class="st">"1929"</span></span>
-<span id="cb3-26"><a href="#cb3-26"></a>    },</span>
-<span id="cb3-27"><a href="#cb3-27"></a>    {</span>
-<span id="cb3-28"><a href="#cb3-28"></a>      <span class="st">"occupational_title"</span>: <span class="st">"Site Manager"</span>,</span>
-<span id="cb3-29"><a href="#cb3-29"></a>      <span class="st">"workplace"</span>: <span class="st">"Gunnebo Bruks Nya A-B, Varbergsverket"</span>,</span>
-<span id="cb3-30"><a href="#cb3-30"></a>      <span class="st">"industry"</span>: <span class="st">"Metallurgy"</span>,</span>
-<span id="cb3-31"><a href="#cb3-31"></a>      <span class="st">"start_date"</span>: <span class="st">"1931"</span></span>
-<span id="cb3-32"><a href="#cb3-32"></a>    }</span>
-<span id="cb3-33"><a href="#cb3-33"></a>  ]</span>
-<span id="cb3-34"><a href="#cb3-34"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="why-was-classification-hard" class="slide level2">
-<h2>Why was classification hard?</h2>
-<h3 id="fuzzy-string-matching-doesnt-capture-semantic-similarity-between-words">Fuzzy string matching doesn’t capture semantic similarity between words</h3>
-<ul>
-<li>“chauffeur” is close to “car driver” semantically, but not close in text.</li>
-</ul>
-<h3 id="many-possible-groups-makes-classification-challenging-for-traditional-ml-models">Many possible groups makes classification challenging for traditional ML models</h3>
-<ul>
-<li>HISCO schema has 1,600 unit groups.</li>
-</ul>
-<h3 id="building-one-labelled-classification-scheme-manually-does-not-generalize-easily">Building one labelled classification scheme manually does not generalize easily</h3>
-<ul>
-<li>If you code all of your occupations to HISCO and then want to move to SSYK, you have to redo all of the codings or try and find a crosswalk.</li>
-</ul>
 <div class="columns">
-<div class="column" style="width:40%;">
-<p>I spent months doing this last year to classify occupations to HISCLASS groups, hand labelling data and optimizing a support vector machine model.</p>
-</div><div class="column" style="width:60%;">
-<div style="text-align: center">
-<p><strong>It did not work</strong></p>
+<div class="column">
+<p>Makes use of occupational title, e.g.&nbsp;“Civilingenjör, teknisk fysik” and workplace information, e.g.&nbsp;“Strömsnäs Järnverks A-B” to classify individuals into groups.</p>
+<p>Result: HISCO code and an industry</p>
+</div><div class="column">
 <div class="cell">
-<div class="cell-output-display">
-<p><img data-src="assets/svm.png" width="392"></p>
-</div>
-</div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a>{</span>
+<span id="cb1-2"><a href="#cb1-2"></a>  <span class="st">"input"</span>: [</span>
+<span id="cb1-3"><a href="#cb1-3"></a>    {</span>
+<span id="cb1-4"><a href="#cb1-4"></a>      <span class="st">"occupational_title"</span>: <span class="st">"Civilingenjör, teknisk fysik"</span>,</span>
+<span id="cb1-5"><a href="#cb1-5"></a>      <span class="st">"workplace"</span>: <span class="st">"Strömsnäs Järnverks A-B"</span></span>
+<span id="cb1-6"><a href="#cb1-6"></a>    },</span>
+<span id="cb1-7"><a href="#cb1-7"></a>  ],</span>
+<span id="cb1-8"><a href="#cb1-8"></a>  <span class="st">"output"</span>: [</span>
+<span id="cb1-9"><a href="#cb1-9"></a>    {x</span>
+<span id="cb1-10"><a href="#cb1-10"></a>      <span class="st">"hisco_code"</span>: <span class="st">"22"</span>,</span>
+<span id="cb1-11"><a href="#cb1-11"></a>      <span class="st">"industry"</span>: <span class="st">"Iron and steel production"</span></span>
+<span id="cb1-12"><a href="#cb1-12"></a>    }</span>
+<span id="cb1-13"><a href="#cb1-13"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
 </section>
-<section id="why-is-classification-easier-now" class="slide level2">
-<h2>Why is classification easier now?</h2>
-<h3 id="we-make-use-of-pre-trained-large-language-models">We make use of pre-trained large language models</h3>
-<ul>
-<li>Benefit from semantic similarity</li>
-<li>Text embeddings mean we can have an arbitrary number of classes</li>
-<li>Switch out classification target schema easily!</li>
-</ul>
-<div style="text-align: center">
-<div class="cell">
-<div class="cell-output-display">
-<p><img data-src="assets/sustainable-planning.png" width="1934"></p>
-</div>
-</div>
-</div>
-</section>
-<section id="what-is-an-embedding" class="slide level2">
-<h2>What is an embedding?</h2>
+<section id="results-how-far-do-engineers-move" class="slide level2">
+<h2>Results: How far do engineers move?</h2>
 
-<img data-src="assets/word2vec-king-queen-vectors.png" style="width:100.0%" class="r-stretch quarto-figure-center"></section>
-<section id="what-is-an-embedding-1" class="slide level2 unnumbered">
-<h2>What is an embedding?</h2>
+<img data-src="assets/eee_map.png" style="width:100.0%" class="r-stretch quarto-figure-center"></section></section>
+<section id="engineers-in-electrical-appliances-and-machinery-move-the-furthest" class="title-slide slide level1 center">
+<h1>Engineers in electrical appliances and machinery move the furthest</h1>
 
-<img data-src="assets/word2vec-king-queen-composition.png" style="width:100.0%" class="r-stretch quarto-figure-center"></section>
-<section id="use-embeddings-to-cluster-skills" class="slide level2">
-<h2>Use embeddings to cluster skills</h2>
+<img data-src="assets/engineer_distance.png" style="width:100.0%" class="r-stretch quarto-figure-center"></section>
 
-<img data-src="assets/hisco_cluster.png" width="1181" class="r-stretch quarto-figure-center"><p class="caption">Figure&nbsp;1: Scatter plot showing the relative similarity of occupational titles in the HISCO schema</p></section>
-<section id="use-clusters-to-classify-individuals-into-the-groups" class="slide level2">
-<h2>Use clusters to classify individuals into the groups</h2>
-
-<img data-src="assets/hisco_counts.png" style="width:5in" class="r-stretch quarto-figure-center"><p class="caption">Figure&nbsp;2: Most common HISCO occupations in Vem är Vem</p></section>
-<section id="use-clusters-to-classify-new-skills-into-the-groups" class="slide level2">
-<h2>Use clusters to classify new skills into the groups</h2>
-<div class="cell" data-reveal="true">
-<div class="cell-output-display">
-<div>
-<div>
-<pre class="mermaid mermaid-js">graph TB
-    A[Collect HISCO Codes&lt;br&gt;and Descriptions] --&gt;|Use OpenAI API| B[Convert HISCO Titles&lt;br&gt;and Descriptions to Vectors]
-    C[Receive Occupational&lt;br&gt;Strings] --&gt;|Use OpenAI API| D[Convert Occupational&lt;br&gt;Strings to Vectors]
-    B --&gt; E[Compare Vectors in&lt;br&gt;Vector Space]
-    D --&gt; E
-    E --&gt; F[Assign HISCO Code to&lt;br&gt;Occupational String&lt;br&gt;using Cosine Distance]
-    style A fill:#2B8CBE
-    style B fill:#be5d2b
-    style C fill:#2B8CBE
-    style D fill:#be5d2b
-    style E fill:#6f6fbf
-    style F fill:#F4FA58
-
-</pre>
-</div>
-</div>
-</div>
-</div>
-<p>Here the HISCO descriptions are in English, as are the translated titles from my biographies in Swedish.</p>
-<p>##&nbsp;Cluster firms by location</p>
-
-<img data-src="assets/map_most_common_businesses.png" style="width:5in" class="r-stretch quarto-figure-center"><p class="caption">Figure&nbsp;3: Map of the geographic clusters of businesses by most common business type</p></section>
-<section id="you-can-do-it-too" class="slide level2">
-<h2>You can do it too!</h2>
-
-<img data-src="assets/code.png" style="width:100.0%" class="r-stretch quarto-figure-center"><p><a href="https://github.com/j-jayes/who-is-who-in-industry">GitHub repo</a></p>
+<section>
+<section id="sec-conclusion" class="title-slide slide level1 center" data-background-color="#1C9E77" data-visibility="uncounted">
+<h1>Conclusion</h1>
+<p>Bifurcated labour market in Sweden; middle-skill workers stay put, high-skill workers move to opportunity both for education and work.</p>
 </section>
 <section id="references" class="slide level2 smaller scrollable">
 <h2>References</h2>
@@ -881,18 +675,18 @@ Moretti, Enrico. 2012. <em>The New Geography of Jobs</em>. Houghton Mifflin Harc
 Nekoei, Arash, and Fabian Sinn. 2020. <span>“HERSTORY the Rise of Self-Made Women.”</span> <em>SSRN Electronic Journal</em>, December. <a href="https://doi.org/10.2139/ssrn.3741332">https://doi.org/10.2139/ssrn.3741332</a>.
 </div>
 </div>
-<p>#&nbsp;Appendix {#sec-appendix background-color=“#1C9E77” visibility=“uncounted”}</p>
+<p>#&nbsp;Appendix{#sec-appendix background-color=“#d95f02”}</p>
 </section>
 <section id="how-to-get-a-text-embedding" class="slide level2" data-visibility="uncounted">
 <h2>How to get a text embedding?</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a><span class="co"># Define a function to get the text embedding</span></span>
-<span id="cb4-2"><a href="#cb4-2"></a><span class="kw">def</span> get_embedding(text, model<span class="op">=</span><span class="st">"text-embedding-ada-002"</span>):</span>
-<span id="cb4-3"><a href="#cb4-3"></a>    text <span class="op">=</span> text.replace(<span class="st">"</span><span class="ch">\n</span><span class="st">"</span>, <span class="st">" "</span>)</span>
-<span id="cb4-4"><a href="#cb4-4"></a>    <span class="cf">return</span> openai.Embedding.create(<span class="bu">input</span><span class="op">=</span>[text], model<span class="op">=</span>model)[<span class="st">'data'</span>][<span class="dv">0</span>][<span class="st">'embedding'</span>]</span>
-<span id="cb4-5"><a href="#cb4-5"></a></span>
-<span id="cb4-6"><a href="#cb4-6"></a><span class="co"># Apply the get_embedding function to your 'hisco_text' column</span></span>
-<span id="cb4-7"><a href="#cb4-7"></a>df[<span class="st">'ada_embedding'</span>] <span class="op">=</span> df[<span class="st">'hisco_text'</span>].<span class="bu">apply</span>(<span class="kw">lambda</span> x: get_embedding(x, model<span class="op">=</span><span class="st">'text-embedding-ada-002'</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="co"># Define a function to get the text embedding</span></span>
+<span id="cb2-2"><a href="#cb2-2"></a><span class="kw">def</span> get_embedding(text, model<span class="op">=</span><span class="st">"text-embedding-ada-002"</span>):</span>
+<span id="cb2-3"><a href="#cb2-3"></a>    text <span class="op">=</span> text.replace(<span class="st">"</span><span class="ch">\n</span><span class="st">"</span>, <span class="st">" "</span>)</span>
+<span id="cb2-4"><a href="#cb2-4"></a>    <span class="cf">return</span> openai.Embedding.create(<span class="bu">input</span><span class="op">=</span>[text], model<span class="op">=</span>model)[<span class="st">'data'</span>][<span class="dv">0</span>][<span class="st">'embedding'</span>]</span>
+<span id="cb2-5"><a href="#cb2-5"></a></span>
+<span id="cb2-6"><a href="#cb2-6"></a><span class="co"># Apply the get_embedding function to your 'hisco_text' column</span></span>
+<span id="cb2-7"><a href="#cb2-7"></a>df[<span class="st">'ada_embedding'</span>] <span class="op">=</span> df[<span class="st">'hisco_text'</span>].<span class="bu">apply</span>(<span class="kw">lambda</span> x: get_embedding(x, model<span class="op">=</span><span class="st">'text-embedding-ada-002'</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="assign-hiscos-example" class="slide level2" data-visibility="uncounted">
@@ -915,23 +709,23 @@ Nekoei, Arash, and Fabian Sinn. 2020. <span>“HERSTORY the Rise of Self-Made Wo
 <div class="cell">
 <div class="cell-output-display">
 
-<div id="mprnkrkvhp" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#mprnkrkvhp table {
+<div id="wxgotouzqr" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#wxgotouzqr table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#mprnkrkvhp thead, #mprnkrkvhp tbody, #mprnkrkvhp tfoot, #mprnkrkvhp tr, #mprnkrkvhp td, #mprnkrkvhp th {
+#wxgotouzqr thead, #wxgotouzqr tbody, #wxgotouzqr tfoot, #wxgotouzqr tr, #wxgotouzqr td, #wxgotouzqr th {
   border-style: none;
 }
 
-#mprnkrkvhp p {
+#wxgotouzqr p {
   margin: 0;
   padding: 0;
 }
 
-#mprnkrkvhp .gt_table {
+#wxgotouzqr .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -957,12 +751,12 @@ Nekoei, Arash, and Fabian Sinn. 2020. <span>“HERSTORY the Rise of Self-Made Wo
   border-left-color: #D3D3D3;
 }
 
-#mprnkrkvhp .gt_caption {
+#wxgotouzqr .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#mprnkrkvhp .gt_title {
+#wxgotouzqr .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -974,7 +768,7 @@ Nekoei, Arash, and Fabian Sinn. 2020. <span>“HERSTORY the Rise of Self-Made Wo
   border-bottom-width: 0;
 }
 
-#mprnkrkvhp .gt_subtitle {
+#wxgotouzqr .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -986,7 +780,7 @@ Nekoei, Arash, and Fabian Sinn. 2020. <span>“HERSTORY the Rise of Self-Made Wo
   border-top-width: 0;
 }
 
-#mprnkrkvhp .gt_heading {
+#wxgotouzqr .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -998,13 +792,13 @@ Nekoei, Arash, and Fabian Sinn. 2020. <span>“HERSTORY the Rise of Self-Made Wo
   border-right-color: #D3D3D3;
 }
 
-#mprnkrkvhp .gt_bottom_border {
+#wxgotouzqr .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#mprnkrkvhp .gt_col_headings {
+#wxgotouzqr .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1019,7 +813,7 @@ Nekoei, Arash, and Fabian Sinn. 2020. <span>“HERSTORY the Rise of Self-Made Wo
   border-right-color: #D3D3D3;
 }
 
-#mprnkrkvhp .gt_col_heading {
+#wxgotouzqr .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1039,7 +833,7 @@ Nekoei, Arash, and Fabian Sinn. 2020. <span>“HERSTORY the Rise of Self-Made Wo
   overflow-x: hidden;
 }
 
-#mprnkrkvhp .gt_column_spanner_outer {
+#wxgotouzqr .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1051,15 +845,15 @@ Nekoei, Arash, and Fabian Sinn. 2020. <span>“HERSTORY the Rise of Self-Made Wo
   padding-right: 4px;
 }
 
-#mprnkrkvhp .gt_column_spanner_outer:first-child {
+#wxgotouzqr .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#mprnkrkvhp .gt_column_spanner_outer:last-child {
+#wxgotouzqr .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#mprnkrkvhp .gt_column_spanner {
+#wxgotouzqr .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1071,11 +865,11 @@ Nekoei, Arash, and Fabian Sinn. 2020. <span>“HERSTORY the Rise of Self-Made Wo
   width: 100%;
 }
 
-#mprnkrkvhp .gt_spanner_row {
+#wxgotouzqr .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#mprnkrkvhp .gt_group_heading {
+#wxgotouzqr .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1101,7 +895,7 @@ Nekoei, Arash, and Fabian Sinn. 2020. <span>“HERSTORY the Rise of Self-Made Wo
   text-align: left;
 }
 
-#mprnkrkvhp .gt_empty_group_heading {
+#wxgotouzqr .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1116,15 +910,15 @@ Nekoei, Arash, and Fabian Sinn. 2020. <span>“HERSTORY the Rise of Self-Made Wo
   vertical-align: middle;
 }
 
-#mprnkrkvhp .gt_from_md > :first-child {
+#wxgotouzqr .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#mprnkrkvhp .gt_from_md > :last-child {
+#wxgotouzqr .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#mprnkrkvhp .gt_row {
+#wxgotouzqr .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1143,7 +937,7 @@ Nekoei, Arash, and Fabian Sinn. 2020. <span>“HERSTORY the Rise of Self-Made Wo
   overflow-x: hidden;
 }
 
-#mprnkrkvhp .gt_stub {
+#wxgotouzqr .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1156,7 +950,7 @@ Nekoei, Arash, and Fabian Sinn. 2020. <span>“HERSTORY the Rise of Self-Made Wo
   padding-right: 5px;
 }
 
-#mprnkrkvhp .gt_stub_row_group {
+#wxgotouzqr .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1170,15 +964,15 @@ Nekoei, Arash, and Fabian Sinn. 2020. <span>“HERSTORY the Rise of Self-Made Wo
   vertical-align: top;
 }
 
-#mprnkrkvhp .gt_row_group_first td {
+#wxgotouzqr .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#mprnkrkvhp .gt_row_group_first th {
+#wxgotouzqr .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#mprnkrkvhp .gt_summary_row {
+#wxgotouzqr .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1188,16 +982,16 @@ Nekoei, Arash, and Fabian Sinn. 2020. <span>“HERSTORY the Rise of Self-Made Wo
   padding-right: 5px;
 }
 
-#mprnkrkvhp .gt_first_summary_row {
+#wxgotouzqr .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#mprnkrkvhp .gt_first_summary_row.thick {
+#wxgotouzqr .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#mprnkrkvhp .gt_last_summary_row {
+#wxgotouzqr .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1207,7 +1001,7 @@ Nekoei, Arash, and Fabian Sinn. 2020. <span>“HERSTORY the Rise of Self-Made Wo
   border-bottom-color: #D3D3D3;
 }
 
-#mprnkrkvhp .gt_grand_summary_row {
+#wxgotouzqr .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1217,7 +1011,7 @@ Nekoei, Arash, and Fabian Sinn. 2020. <span>“HERSTORY the Rise of Self-Made Wo
   padding-right: 5px;
 }
 
-#mprnkrkvhp .gt_first_grand_summary_row {
+#wxgotouzqr .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1227,7 +1021,7 @@ Nekoei, Arash, and Fabian Sinn. 2020. <span>“HERSTORY the Rise of Self-Made Wo
   border-top-color: #D3D3D3;
 }
 
-#mprnkrkvhp .gt_last_grand_summary_row_top {
+#wxgotouzqr .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1237,11 +1031,11 @@ Nekoei, Arash, and Fabian Sinn. 2020. <span>“HERSTORY the Rise of Self-Made Wo
   border-bottom-color: #D3D3D3;
 }
 
-#mprnkrkvhp .gt_striped {
+#wxgotouzqr .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#mprnkrkvhp .gt_table_body {
+#wxgotouzqr .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1250,7 +1044,7 @@ Nekoei, Arash, and Fabian Sinn. 2020. <span>“HERSTORY the Rise of Self-Made Wo
   border-bottom-color: #D3D3D3;
 }
 
-#mprnkrkvhp .gt_footnotes {
+#wxgotouzqr .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1264,7 +1058,7 @@ Nekoei, Arash, and Fabian Sinn. 2020. <span>“HERSTORY the Rise of Self-Made Wo
   border-right-color: #D3D3D3;
 }
 
-#mprnkrkvhp .gt_footnote {
+#wxgotouzqr .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1273,7 +1067,7 @@ Nekoei, Arash, and Fabian Sinn. 2020. <span>“HERSTORY the Rise of Self-Made Wo
   padding-right: 5px;
 }
 
-#mprnkrkvhp .gt_sourcenotes {
+#wxgotouzqr .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1287,7 +1081,7 @@ Nekoei, Arash, and Fabian Sinn. 2020. <span>“HERSTORY the Rise of Self-Made Wo
   border-right-color: #D3D3D3;
 }
 
-#mprnkrkvhp .gt_sourcenote {
+#wxgotouzqr .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1295,63 +1089,63 @@ Nekoei, Arash, and Fabian Sinn. 2020. <span>“HERSTORY the Rise of Self-Made Wo
   padding-right: 5px;
 }
 
-#mprnkrkvhp .gt_left {
+#wxgotouzqr .gt_left {
   text-align: left;
 }
 
-#mprnkrkvhp .gt_center {
+#wxgotouzqr .gt_center {
   text-align: center;
 }
 
-#mprnkrkvhp .gt_right {
+#wxgotouzqr .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#mprnkrkvhp .gt_font_normal {
+#wxgotouzqr .gt_font_normal {
   font-weight: normal;
 }
 
-#mprnkrkvhp .gt_font_bold {
+#wxgotouzqr .gt_font_bold {
   font-weight: bold;
 }
 
-#mprnkrkvhp .gt_font_italic {
+#wxgotouzqr .gt_font_italic {
   font-style: italic;
 }
 
-#mprnkrkvhp .gt_super {
+#wxgotouzqr .gt_super {
   font-size: 65%;
 }
 
-#mprnkrkvhp .gt_footnote_marks {
+#wxgotouzqr .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#mprnkrkvhp .gt_asterisk {
+#wxgotouzqr .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#mprnkrkvhp .gt_indent_1 {
+#wxgotouzqr .gt_indent_1 {
   text-indent: 5px;
 }
 
-#mprnkrkvhp .gt_indent_2 {
+#wxgotouzqr .gt_indent_2 {
   text-indent: 10px;
 }
 
-#mprnkrkvhp .gt_indent_3 {
+#wxgotouzqr .gt_indent_3 {
   text-indent: 15px;
 }
 
-#mprnkrkvhp .gt_indent_4 {
+#wxgotouzqr .gt_indent_4 {
   text-indent: 20px;
 }
 
-#mprnkrkvhp .gt_indent_5 {
+#wxgotouzqr .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -1397,23 +1191,23 @@ Nekoei, Arash, and Fabian Sinn. 2020. <span>“HERSTORY the Rise of Self-Made Wo
 <div class="cell">
 <div class="cell-output-display">
 
-<div id="mchvsookwf" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#mchvsookwf table {
+<div id="dsmwfdaarg" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#dsmwfdaarg table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#mchvsookwf thead, #mchvsookwf tbody, #mchvsookwf tfoot, #mchvsookwf tr, #mchvsookwf td, #mchvsookwf th {
+#dsmwfdaarg thead, #dsmwfdaarg tbody, #dsmwfdaarg tfoot, #dsmwfdaarg tr, #dsmwfdaarg td, #dsmwfdaarg th {
   border-style: none;
 }
 
-#mchvsookwf p {
+#dsmwfdaarg p {
   margin: 0;
   padding: 0;
 }
 
-#mchvsookwf .gt_table {
+#dsmwfdaarg .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1439,12 +1233,12 @@ Nekoei, Arash, and Fabian Sinn. 2020. <span>“HERSTORY the Rise of Self-Made Wo
   border-left-color: #D3D3D3;
 }
 
-#mchvsookwf .gt_caption {
+#dsmwfdaarg .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#mchvsookwf .gt_title {
+#dsmwfdaarg .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1456,7 +1250,7 @@ Nekoei, Arash, and Fabian Sinn. 2020. <span>“HERSTORY the Rise of Self-Made Wo
   border-bottom-width: 0;
 }
 
-#mchvsookwf .gt_subtitle {
+#dsmwfdaarg .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1468,7 +1262,7 @@ Nekoei, Arash, and Fabian Sinn. 2020. <span>“HERSTORY the Rise of Self-Made Wo
   border-top-width: 0;
 }
 
-#mchvsookwf .gt_heading {
+#dsmwfdaarg .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1480,13 +1274,13 @@ Nekoei, Arash, and Fabian Sinn. 2020. <span>“HERSTORY the Rise of Self-Made Wo
   border-right-color: #D3D3D3;
 }
 
-#mchvsookwf .gt_bottom_border {
+#dsmwfdaarg .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#mchvsookwf .gt_col_headings {
+#dsmwfdaarg .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1501,7 +1295,7 @@ Nekoei, Arash, and Fabian Sinn. 2020. <span>“HERSTORY the Rise of Self-Made Wo
   border-right-color: #D3D3D3;
 }
 
-#mchvsookwf .gt_col_heading {
+#dsmwfdaarg .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1521,7 +1315,7 @@ Nekoei, Arash, and Fabian Sinn. 2020. <span>“HERSTORY the Rise of Self-Made Wo
   overflow-x: hidden;
 }
 
-#mchvsookwf .gt_column_spanner_outer {
+#dsmwfdaarg .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1533,15 +1327,15 @@ Nekoei, Arash, and Fabian Sinn. 2020. <span>“HERSTORY the Rise of Self-Made Wo
   padding-right: 4px;
 }
 
-#mchvsookwf .gt_column_spanner_outer:first-child {
+#dsmwfdaarg .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#mchvsookwf .gt_column_spanner_outer:last-child {
+#dsmwfdaarg .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#mchvsookwf .gt_column_spanner {
+#dsmwfdaarg .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1553,11 +1347,11 @@ Nekoei, Arash, and Fabian Sinn. 2020. <span>“HERSTORY the Rise of Self-Made Wo
   width: 100%;
 }
 
-#mchvsookwf .gt_spanner_row {
+#dsmwfdaarg .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#mchvsookwf .gt_group_heading {
+#dsmwfdaarg .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1583,7 +1377,7 @@ Nekoei, Arash, and Fabian Sinn. 2020. <span>“HERSTORY the Rise of Self-Made Wo
   text-align: left;
 }
 
-#mchvsookwf .gt_empty_group_heading {
+#dsmwfdaarg .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1598,15 +1392,15 @@ Nekoei, Arash, and Fabian Sinn. 2020. <span>“HERSTORY the Rise of Self-Made Wo
   vertical-align: middle;
 }
 
-#mchvsookwf .gt_from_md > :first-child {
+#dsmwfdaarg .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#mchvsookwf .gt_from_md > :last-child {
+#dsmwfdaarg .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#mchvsookwf .gt_row {
+#dsmwfdaarg .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1625,7 +1419,7 @@ Nekoei, Arash, and Fabian Sinn. 2020. <span>“HERSTORY the Rise of Self-Made Wo
   overflow-x: hidden;
 }
 
-#mchvsookwf .gt_stub {
+#dsmwfdaarg .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1638,7 +1432,7 @@ Nekoei, Arash, and Fabian Sinn. 2020. <span>“HERSTORY the Rise of Self-Made Wo
   padding-right: 5px;
 }
 
-#mchvsookwf .gt_stub_row_group {
+#dsmwfdaarg .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1652,15 +1446,15 @@ Nekoei, Arash, and Fabian Sinn. 2020. <span>“HERSTORY the Rise of Self-Made Wo
   vertical-align: top;
 }
 
-#mchvsookwf .gt_row_group_first td {
+#dsmwfdaarg .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#mchvsookwf .gt_row_group_first th {
+#dsmwfdaarg .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#mchvsookwf .gt_summary_row {
+#dsmwfdaarg .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1670,16 +1464,16 @@ Nekoei, Arash, and Fabian Sinn. 2020. <span>“HERSTORY the Rise of Self-Made Wo
   padding-right: 5px;
 }
 
-#mchvsookwf .gt_first_summary_row {
+#dsmwfdaarg .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#mchvsookwf .gt_first_summary_row.thick {
+#dsmwfdaarg .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#mchvsookwf .gt_last_summary_row {
+#dsmwfdaarg .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1689,7 +1483,7 @@ Nekoei, Arash, and Fabian Sinn. 2020. <span>“HERSTORY the Rise of Self-Made Wo
   border-bottom-color: #D3D3D3;
 }
 
-#mchvsookwf .gt_grand_summary_row {
+#dsmwfdaarg .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1699,7 +1493,7 @@ Nekoei, Arash, and Fabian Sinn. 2020. <span>“HERSTORY the Rise of Self-Made Wo
   padding-right: 5px;
 }
 
-#mchvsookwf .gt_first_grand_summary_row {
+#dsmwfdaarg .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1709,7 +1503,7 @@ Nekoei, Arash, and Fabian Sinn. 2020. <span>“HERSTORY the Rise of Self-Made Wo
   border-top-color: #D3D3D3;
 }
 
-#mchvsookwf .gt_last_grand_summary_row_top {
+#dsmwfdaarg .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1719,11 +1513,11 @@ Nekoei, Arash, and Fabian Sinn. 2020. <span>“HERSTORY the Rise of Self-Made Wo
   border-bottom-color: #D3D3D3;
 }
 
-#mchvsookwf .gt_striped {
+#dsmwfdaarg .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#mchvsookwf .gt_table_body {
+#dsmwfdaarg .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1732,7 +1526,7 @@ Nekoei, Arash, and Fabian Sinn. 2020. <span>“HERSTORY the Rise of Self-Made Wo
   border-bottom-color: #D3D3D3;
 }
 
-#mchvsookwf .gt_footnotes {
+#dsmwfdaarg .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1746,7 +1540,7 @@ Nekoei, Arash, and Fabian Sinn. 2020. <span>“HERSTORY the Rise of Self-Made Wo
   border-right-color: #D3D3D3;
 }
 
-#mchvsookwf .gt_footnote {
+#dsmwfdaarg .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1755,7 +1549,7 @@ Nekoei, Arash, and Fabian Sinn. 2020. <span>“HERSTORY the Rise of Self-Made Wo
   padding-right: 5px;
 }
 
-#mchvsookwf .gt_sourcenotes {
+#dsmwfdaarg .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1769,7 +1563,7 @@ Nekoei, Arash, and Fabian Sinn. 2020. <span>“HERSTORY the Rise of Self-Made Wo
   border-right-color: #D3D3D3;
 }
 
-#mchvsookwf .gt_sourcenote {
+#dsmwfdaarg .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1777,63 +1571,63 @@ Nekoei, Arash, and Fabian Sinn. 2020. <span>“HERSTORY the Rise of Self-Made Wo
   padding-right: 5px;
 }
 
-#mchvsookwf .gt_left {
+#dsmwfdaarg .gt_left {
   text-align: left;
 }
 
-#mchvsookwf .gt_center {
+#dsmwfdaarg .gt_center {
   text-align: center;
 }
 
-#mchvsookwf .gt_right {
+#dsmwfdaarg .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#mchvsookwf .gt_font_normal {
+#dsmwfdaarg .gt_font_normal {
   font-weight: normal;
 }
 
-#mchvsookwf .gt_font_bold {
+#dsmwfdaarg .gt_font_bold {
   font-weight: bold;
 }
 
-#mchvsookwf .gt_font_italic {
+#dsmwfdaarg .gt_font_italic {
   font-style: italic;
 }
 
-#mchvsookwf .gt_super {
+#dsmwfdaarg .gt_super {
   font-size: 65%;
 }
 
-#mchvsookwf .gt_footnote_marks {
+#dsmwfdaarg .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#mchvsookwf .gt_asterisk {
+#dsmwfdaarg .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#mchvsookwf .gt_indent_1 {
+#dsmwfdaarg .gt_indent_1 {
   text-indent: 5px;
 }
 
-#mchvsookwf .gt_indent_2 {
+#dsmwfdaarg .gt_indent_2 {
   text-indent: 10px;
 }
 
-#mchvsookwf .gt_indent_3 {
+#dsmwfdaarg .gt_indent_3 {
   text-indent: 15px;
 }
 
-#mchvsookwf .gt_indent_4 {
+#dsmwfdaarg .gt_indent_4 {
   text-indent: 20px;
 }
 
-#mchvsookwf .gt_indent_5 {
+#dsmwfdaarg .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -1888,23 +1682,23 @@ Nekoei, Arash, and Fabian Sinn. 2020. <span>“HERSTORY the Rise of Self-Made Wo
 <div class="cell">
 <div class="cell-output-display">
 
-<div id="ovwaotyrep" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#ovwaotyrep table {
+<div id="vgzldsazxq" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#vgzldsazxq table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#ovwaotyrep thead, #ovwaotyrep tbody, #ovwaotyrep tfoot, #ovwaotyrep tr, #ovwaotyrep td, #ovwaotyrep th {
+#vgzldsazxq thead, #vgzldsazxq tbody, #vgzldsazxq tfoot, #vgzldsazxq tr, #vgzldsazxq td, #vgzldsazxq th {
   border-style: none;
 }
 
-#ovwaotyrep p {
+#vgzldsazxq p {
   margin: 0;
   padding: 0;
 }
 
-#ovwaotyrep .gt_table {
+#vgzldsazxq .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1930,12 +1724,12 @@ Nekoei, Arash, and Fabian Sinn. 2020. <span>“HERSTORY the Rise of Self-Made Wo
   border-left-color: #D3D3D3;
 }
 
-#ovwaotyrep .gt_caption {
+#vgzldsazxq .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#ovwaotyrep .gt_title {
+#vgzldsazxq .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1947,7 +1741,7 @@ Nekoei, Arash, and Fabian Sinn. 2020. <span>“HERSTORY the Rise of Self-Made Wo
   border-bottom-width: 0;
 }
 
-#ovwaotyrep .gt_subtitle {
+#vgzldsazxq .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1959,7 +1753,7 @@ Nekoei, Arash, and Fabian Sinn. 2020. <span>“HERSTORY the Rise of Self-Made Wo
   border-top-width: 0;
 }
 
-#ovwaotyrep .gt_heading {
+#vgzldsazxq .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1971,13 +1765,13 @@ Nekoei, Arash, and Fabian Sinn. 2020. <span>“HERSTORY the Rise of Self-Made Wo
   border-right-color: #D3D3D3;
 }
 
-#ovwaotyrep .gt_bottom_border {
+#vgzldsazxq .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#ovwaotyrep .gt_col_headings {
+#vgzldsazxq .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1992,7 +1786,7 @@ Nekoei, Arash, and Fabian Sinn. 2020. <span>“HERSTORY the Rise of Self-Made Wo
   border-right-color: #D3D3D3;
 }
 
-#ovwaotyrep .gt_col_heading {
+#vgzldsazxq .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2012,7 +1806,7 @@ Nekoei, Arash, and Fabian Sinn. 2020. <span>“HERSTORY the Rise of Self-Made Wo
   overflow-x: hidden;
 }
 
-#ovwaotyrep .gt_column_spanner_outer {
+#vgzldsazxq .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2024,15 +1818,15 @@ Nekoei, Arash, and Fabian Sinn. 2020. <span>“HERSTORY the Rise of Self-Made Wo
   padding-right: 4px;
 }
 
-#ovwaotyrep .gt_column_spanner_outer:first-child {
+#vgzldsazxq .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#ovwaotyrep .gt_column_spanner_outer:last-child {
+#vgzldsazxq .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#ovwaotyrep .gt_column_spanner {
+#vgzldsazxq .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -2044,11 +1838,11 @@ Nekoei, Arash, and Fabian Sinn. 2020. <span>“HERSTORY the Rise of Self-Made Wo
   width: 100%;
 }
 
-#ovwaotyrep .gt_spanner_row {
+#vgzldsazxq .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#ovwaotyrep .gt_group_heading {
+#vgzldsazxq .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2074,7 +1868,7 @@ Nekoei, Arash, and Fabian Sinn. 2020. <span>“HERSTORY the Rise of Self-Made Wo
   text-align: left;
 }
 
-#ovwaotyrep .gt_empty_group_heading {
+#vgzldsazxq .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -2089,15 +1883,15 @@ Nekoei, Arash, and Fabian Sinn. 2020. <span>“HERSTORY the Rise of Self-Made Wo
   vertical-align: middle;
 }
 
-#ovwaotyrep .gt_from_md > :first-child {
+#vgzldsazxq .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#ovwaotyrep .gt_from_md > :last-child {
+#vgzldsazxq .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#ovwaotyrep .gt_row {
+#vgzldsazxq .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2116,7 +1910,7 @@ Nekoei, Arash, and Fabian Sinn. 2020. <span>“HERSTORY the Rise of Self-Made Wo
   overflow-x: hidden;
 }
 
-#ovwaotyrep .gt_stub {
+#vgzldsazxq .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2129,7 +1923,7 @@ Nekoei, Arash, and Fabian Sinn. 2020. <span>“HERSTORY the Rise of Self-Made Wo
   padding-right: 5px;
 }
 
-#ovwaotyrep .gt_stub_row_group {
+#vgzldsazxq .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2143,15 +1937,15 @@ Nekoei, Arash, and Fabian Sinn. 2020. <span>“HERSTORY the Rise of Self-Made Wo
   vertical-align: top;
 }
 
-#ovwaotyrep .gt_row_group_first td {
+#vgzldsazxq .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#ovwaotyrep .gt_row_group_first th {
+#vgzldsazxq .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#ovwaotyrep .gt_summary_row {
+#vgzldsazxq .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2161,16 +1955,16 @@ Nekoei, Arash, and Fabian Sinn. 2020. <span>“HERSTORY the Rise of Self-Made Wo
   padding-right: 5px;
 }
 
-#ovwaotyrep .gt_first_summary_row {
+#vgzldsazxq .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#ovwaotyrep .gt_first_summary_row.thick {
+#vgzldsazxq .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#ovwaotyrep .gt_last_summary_row {
+#vgzldsazxq .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2180,7 +1974,7 @@ Nekoei, Arash, and Fabian Sinn. 2020. <span>“HERSTORY the Rise of Self-Made Wo
   border-bottom-color: #D3D3D3;
 }
 
-#ovwaotyrep .gt_grand_summary_row {
+#vgzldsazxq .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2190,7 +1984,7 @@ Nekoei, Arash, and Fabian Sinn. 2020. <span>“HERSTORY the Rise of Self-Made Wo
   padding-right: 5px;
 }
 
-#ovwaotyrep .gt_first_grand_summary_row {
+#vgzldsazxq .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2200,7 +1994,7 @@ Nekoei, Arash, and Fabian Sinn. 2020. <span>“HERSTORY the Rise of Self-Made Wo
   border-top-color: #D3D3D3;
 }
 
-#ovwaotyrep .gt_last_grand_summary_row_top {
+#vgzldsazxq .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2210,11 +2004,11 @@ Nekoei, Arash, and Fabian Sinn. 2020. <span>“HERSTORY the Rise of Self-Made Wo
   border-bottom-color: #D3D3D3;
 }
 
-#ovwaotyrep .gt_striped {
+#vgzldsazxq .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#ovwaotyrep .gt_table_body {
+#vgzldsazxq .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2223,7 +2017,7 @@ Nekoei, Arash, and Fabian Sinn. 2020. <span>“HERSTORY the Rise of Self-Made Wo
   border-bottom-color: #D3D3D3;
 }
 
-#ovwaotyrep .gt_footnotes {
+#vgzldsazxq .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2237,7 +2031,7 @@ Nekoei, Arash, and Fabian Sinn. 2020. <span>“HERSTORY the Rise of Self-Made Wo
   border-right-color: #D3D3D3;
 }
 
-#ovwaotyrep .gt_footnote {
+#vgzldsazxq .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -2246,7 +2040,7 @@ Nekoei, Arash, and Fabian Sinn. 2020. <span>“HERSTORY the Rise of Self-Made Wo
   padding-right: 5px;
 }
 
-#ovwaotyrep .gt_sourcenotes {
+#vgzldsazxq .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2260,7 +2054,7 @@ Nekoei, Arash, and Fabian Sinn. 2020. <span>“HERSTORY the Rise of Self-Made Wo
   border-right-color: #D3D3D3;
 }
 
-#ovwaotyrep .gt_sourcenote {
+#vgzldsazxq .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -2268,63 +2062,63 @@ Nekoei, Arash, and Fabian Sinn. 2020. <span>“HERSTORY the Rise of Self-Made Wo
   padding-right: 5px;
 }
 
-#ovwaotyrep .gt_left {
+#vgzldsazxq .gt_left {
   text-align: left;
 }
 
-#ovwaotyrep .gt_center {
+#vgzldsazxq .gt_center {
   text-align: center;
 }
 
-#ovwaotyrep .gt_right {
+#vgzldsazxq .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#ovwaotyrep .gt_font_normal {
+#vgzldsazxq .gt_font_normal {
   font-weight: normal;
 }
 
-#ovwaotyrep .gt_font_bold {
+#vgzldsazxq .gt_font_bold {
   font-weight: bold;
 }
 
-#ovwaotyrep .gt_font_italic {
+#vgzldsazxq .gt_font_italic {
   font-style: italic;
 }
 
-#ovwaotyrep .gt_super {
+#vgzldsazxq .gt_super {
   font-size: 65%;
 }
 
-#ovwaotyrep .gt_footnote_marks {
+#vgzldsazxq .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#ovwaotyrep .gt_asterisk {
+#vgzldsazxq .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#ovwaotyrep .gt_indent_1 {
+#vgzldsazxq .gt_indent_1 {
   text-indent: 5px;
 }
 
-#ovwaotyrep .gt_indent_2 {
+#vgzldsazxq .gt_indent_2 {
   text-indent: 10px;
 }
 
-#ovwaotyrep .gt_indent_3 {
+#vgzldsazxq .gt_indent_3 {
   text-indent: 15px;
 }
 
-#ovwaotyrep .gt_indent_4 {
+#vgzldsazxq .gt_indent_4 {
   text-indent: 20px;
 }
 
-#ovwaotyrep .gt_indent_5 {
+#vgzldsazxq .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -2363,23 +2157,23 @@ Nekoei, Arash, and Fabian Sinn. 2020. <span>“HERSTORY the Rise of Self-Made Wo
 <div class="cell">
 <div class="cell-output-display">
 
-<div id="ezqefuqbdq" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#ezqefuqbdq table {
+<div id="ddyoqxjiem" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#ddyoqxjiem table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#ezqefuqbdq thead, #ezqefuqbdq tbody, #ezqefuqbdq tfoot, #ezqefuqbdq tr, #ezqefuqbdq td, #ezqefuqbdq th {
+#ddyoqxjiem thead, #ddyoqxjiem tbody, #ddyoqxjiem tfoot, #ddyoqxjiem tr, #ddyoqxjiem td, #ddyoqxjiem th {
   border-style: none;
 }
 
-#ezqefuqbdq p {
+#ddyoqxjiem p {
   margin: 0;
   padding: 0;
 }
 
-#ezqefuqbdq .gt_table {
+#ddyoqxjiem .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -2405,12 +2199,12 @@ Nekoei, Arash, and Fabian Sinn. 2020. <span>“HERSTORY the Rise of Self-Made Wo
   border-left-color: #D3D3D3;
 }
 
-#ezqefuqbdq .gt_caption {
+#ddyoqxjiem .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#ezqefuqbdq .gt_title {
+#ddyoqxjiem .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -2422,7 +2216,7 @@ Nekoei, Arash, and Fabian Sinn. 2020. <span>“HERSTORY the Rise of Self-Made Wo
   border-bottom-width: 0;
 }
 
-#ezqefuqbdq .gt_subtitle {
+#ddyoqxjiem .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -2434,7 +2228,7 @@ Nekoei, Arash, and Fabian Sinn. 2020. <span>“HERSTORY the Rise of Self-Made Wo
   border-top-width: 0;
 }
 
-#ezqefuqbdq .gt_heading {
+#ddyoqxjiem .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -2446,13 +2240,13 @@ Nekoei, Arash, and Fabian Sinn. 2020. <span>“HERSTORY the Rise of Self-Made Wo
   border-right-color: #D3D3D3;
 }
 
-#ezqefuqbdq .gt_bottom_border {
+#ddyoqxjiem .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#ezqefuqbdq .gt_col_headings {
+#ddyoqxjiem .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2467,7 +2261,7 @@ Nekoei, Arash, and Fabian Sinn. 2020. <span>“HERSTORY the Rise of Self-Made Wo
   border-right-color: #D3D3D3;
 }
 
-#ezqefuqbdq .gt_col_heading {
+#ddyoqxjiem .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2487,7 +2281,7 @@ Nekoei, Arash, and Fabian Sinn. 2020. <span>“HERSTORY the Rise of Self-Made Wo
   overflow-x: hidden;
 }
 
-#ezqefuqbdq .gt_column_spanner_outer {
+#ddyoqxjiem .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2499,15 +2293,15 @@ Nekoei, Arash, and Fabian Sinn. 2020. <span>“HERSTORY the Rise of Self-Made Wo
   padding-right: 4px;
 }
 
-#ezqefuqbdq .gt_column_spanner_outer:first-child {
+#ddyoqxjiem .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#ezqefuqbdq .gt_column_spanner_outer:last-child {
+#ddyoqxjiem .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#ezqefuqbdq .gt_column_spanner {
+#ddyoqxjiem .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -2519,11 +2313,11 @@ Nekoei, Arash, and Fabian Sinn. 2020. <span>“HERSTORY the Rise of Self-Made Wo
   width: 100%;
 }
 
-#ezqefuqbdq .gt_spanner_row {
+#ddyoqxjiem .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#ezqefuqbdq .gt_group_heading {
+#ddyoqxjiem .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2549,7 +2343,7 @@ Nekoei, Arash, and Fabian Sinn. 2020. <span>“HERSTORY the Rise of Self-Made Wo
   text-align: left;
 }
 
-#ezqefuqbdq .gt_empty_group_heading {
+#ddyoqxjiem .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -2564,15 +2358,15 @@ Nekoei, Arash, and Fabian Sinn. 2020. <span>“HERSTORY the Rise of Self-Made Wo
   vertical-align: middle;
 }
 
-#ezqefuqbdq .gt_from_md > :first-child {
+#ddyoqxjiem .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#ezqefuqbdq .gt_from_md > :last-child {
+#ddyoqxjiem .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#ezqefuqbdq .gt_row {
+#ddyoqxjiem .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2591,7 +2385,7 @@ Nekoei, Arash, and Fabian Sinn. 2020. <span>“HERSTORY the Rise of Self-Made Wo
   overflow-x: hidden;
 }
 
-#ezqefuqbdq .gt_stub {
+#ddyoqxjiem .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2604,7 +2398,7 @@ Nekoei, Arash, and Fabian Sinn. 2020. <span>“HERSTORY the Rise of Self-Made Wo
   padding-right: 5px;
 }
 
-#ezqefuqbdq .gt_stub_row_group {
+#ddyoqxjiem .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2618,15 +2412,15 @@ Nekoei, Arash, and Fabian Sinn. 2020. <span>“HERSTORY the Rise of Self-Made Wo
   vertical-align: top;
 }
 
-#ezqefuqbdq .gt_row_group_first td {
+#ddyoqxjiem .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#ezqefuqbdq .gt_row_group_first th {
+#ddyoqxjiem .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#ezqefuqbdq .gt_summary_row {
+#ddyoqxjiem .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2636,16 +2430,16 @@ Nekoei, Arash, and Fabian Sinn. 2020. <span>“HERSTORY the Rise of Self-Made Wo
   padding-right: 5px;
 }
 
-#ezqefuqbdq .gt_first_summary_row {
+#ddyoqxjiem .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#ezqefuqbdq .gt_first_summary_row.thick {
+#ddyoqxjiem .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#ezqefuqbdq .gt_last_summary_row {
+#ddyoqxjiem .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2655,7 +2449,7 @@ Nekoei, Arash, and Fabian Sinn. 2020. <span>“HERSTORY the Rise of Self-Made Wo
   border-bottom-color: #D3D3D3;
 }
 
-#ezqefuqbdq .gt_grand_summary_row {
+#ddyoqxjiem .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2665,7 +2459,7 @@ Nekoei, Arash, and Fabian Sinn. 2020. <span>“HERSTORY the Rise of Self-Made Wo
   padding-right: 5px;
 }
 
-#ezqefuqbdq .gt_first_grand_summary_row {
+#ddyoqxjiem .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2675,7 +2469,7 @@ Nekoei, Arash, and Fabian Sinn. 2020. <span>“HERSTORY the Rise of Self-Made Wo
   border-top-color: #D3D3D3;
 }
 
-#ezqefuqbdq .gt_last_grand_summary_row_top {
+#ddyoqxjiem .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2685,11 +2479,11 @@ Nekoei, Arash, and Fabian Sinn. 2020. <span>“HERSTORY the Rise of Self-Made Wo
   border-bottom-color: #D3D3D3;
 }
 
-#ezqefuqbdq .gt_striped {
+#ddyoqxjiem .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#ezqefuqbdq .gt_table_body {
+#ddyoqxjiem .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2698,7 +2492,7 @@ Nekoei, Arash, and Fabian Sinn. 2020. <span>“HERSTORY the Rise of Self-Made Wo
   border-bottom-color: #D3D3D3;
 }
 
-#ezqefuqbdq .gt_footnotes {
+#ddyoqxjiem .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2712,7 +2506,7 @@ Nekoei, Arash, and Fabian Sinn. 2020. <span>“HERSTORY the Rise of Self-Made Wo
   border-right-color: #D3D3D3;
 }
 
-#ezqefuqbdq .gt_footnote {
+#ddyoqxjiem .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -2721,7 +2515,7 @@ Nekoei, Arash, and Fabian Sinn. 2020. <span>“HERSTORY the Rise of Self-Made Wo
   padding-right: 5px;
 }
 
-#ezqefuqbdq .gt_sourcenotes {
+#ddyoqxjiem .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2735,7 +2529,7 @@ Nekoei, Arash, and Fabian Sinn. 2020. <span>“HERSTORY the Rise of Self-Made Wo
   border-right-color: #D3D3D3;
 }
 
-#ezqefuqbdq .gt_sourcenote {
+#ddyoqxjiem .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -2743,63 +2537,63 @@ Nekoei, Arash, and Fabian Sinn. 2020. <span>“HERSTORY the Rise of Self-Made Wo
   padding-right: 5px;
 }
 
-#ezqefuqbdq .gt_left {
+#ddyoqxjiem .gt_left {
   text-align: left;
 }
 
-#ezqefuqbdq .gt_center {
+#ddyoqxjiem .gt_center {
   text-align: center;
 }
 
-#ezqefuqbdq .gt_right {
+#ddyoqxjiem .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#ezqefuqbdq .gt_font_normal {
+#ddyoqxjiem .gt_font_normal {
   font-weight: normal;
 }
 
-#ezqefuqbdq .gt_font_bold {
+#ddyoqxjiem .gt_font_bold {
   font-weight: bold;
 }
 
-#ezqefuqbdq .gt_font_italic {
+#ddyoqxjiem .gt_font_italic {
   font-style: italic;
 }
 
-#ezqefuqbdq .gt_super {
+#ddyoqxjiem .gt_super {
   font-size: 65%;
 }
 
-#ezqefuqbdq .gt_footnote_marks {
+#ddyoqxjiem .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#ezqefuqbdq .gt_asterisk {
+#ddyoqxjiem .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#ezqefuqbdq .gt_indent_1 {
+#ddyoqxjiem .gt_indent_1 {
   text-indent: 5px;
 }
 
-#ezqefuqbdq .gt_indent_2 {
+#ddyoqxjiem .gt_indent_2 {
   text-indent: 10px;
 }
 
-#ezqefuqbdq .gt_indent_3 {
+#ddyoqxjiem .gt_indent_3 {
   text-indent: 15px;
 }
 
-#ezqefuqbdq .gt_indent_4 {
+#ddyoqxjiem .gt_indent_4 {
   text-indent: 20px;
 }
 
-#ezqefuqbdq .gt_indent_5 {
+#ddyoqxjiem .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -2837,7 +2631,253 @@ Nekoei, Arash, and Fabian Sinn. 2020. <span>“HERSTORY the Rise of Self-Made Wo
 <h2>Can we score how successful this is?</h2>
 <p>We can use a crosswalk from one schema to another as a test set, e.g.&nbsp;O * Net to ISCO:</p>
 
-<img data-src="assets/scoring_assignement.png" style="width:100.0%" class="r-stretch quarto-figure-center"><div class="footer footer-default">
+<img data-src="assets/scoring_assignement.png" style="width:100.0%" class="r-stretch quarto-figure-center"></section>
+<section id="vem-är-karl-lund" class="slide level2" data-visibility="uncounted">
+<h2>Vem är Karl Lund?</h2>
+<p><span style="background-color: #b0c4de">Lund, Karl Gustaf</span>, <span style="background-color: #d2b48c">chief engineer</span>, <span style="background-color: #ff8c69">born on July 22, 1893</span>, <span style="background-color: #90ee90">in Hille, Gävleborgs län</span>, Sweden, son of <span style="background-color: #9370db">clerk Ferdinand L. and Maria Andersson</span>. Married in 1936 to <span style="background-color: #ffadc1">Sigrid Johansson</span>. Children: <span style="background-color: #ffdead">Ingvar (born 1938)</span>, <span style="background-color: #ffdead">Lennart (born 1942)</span>. — Graduated from <span style="background-color: #afeeee">Bergsskolan</span> in Filipstad in 1917, specialized studies at the <span style="background-color: #afeeee">Royal Institute of Technology (KTH)</span> from 1920 to 1922, studied at the <span style="background-color: #afeeee">Institute of Metallurgy</span> and <span style="background-color: #afeeee">Stockholm University</span> in 1921-1922. Chemist at <span style="background-color: #98fb98">Strömsnäs Järnverks A-B</span> in Degerfors from 1918 to 1920, metallurgist and chemist at <span style="background-color: #98fb98">Westinghouse Electric &amp; Manufacturing Co.</span> in East Pittsburgh, PA, USA, from 1923 to 1926 and 1928 to 1929, chief metallurgist at <span style="background-color: #98fb98">Laclede Steel Co.</span> in Alton, Illinois, USA, in 1927, furnace and steelworks engineer at <span style="background-color: #98fb98">A-B Iggesunds Bruk</span> from 1929 to 1931, site manager at <span style="background-color: #98fb98">Gunnebo Bruks Nya A-B, Varbergsverket</span>, since 1931. Member of the municipal executive committee, deputy chairman of the economic department, deputy member of the board of the power plant, chairman of <span style="background-color: #ffdab9">Varbergs Sparbank</span>, employer representative in the district council of the county labor board, member of the board of <span style="background-color: #ffdab9">Varbergs Luftskyddsförening (Varberg Air Protection Association)</span>, secretary of <span style="background-color: #ffdab9">Varbergs Högerförening (Varberg Conservative Association)</span>, chairman of the railway sick fund, and <span style="background-color: #ffdab9">Plant Society for Small Bird Friends</span>.</p>
+</section>
+<section id="nlp-challenges" class="slide level2" data-visibility="uncounted">
+<h2>NLP challenges</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><br></p>
+<ul>
+<li>Many abbreviations and contractions
+<ul>
+<li>DOB: “f.\s*(\d{2})\/(\d{2})/(\d{2})”</li>
+<li>Gävleborg County: “Gävleb. l.”</li>
+</ul></li>
+<li>Similar structure for each entry but not exactly the same information in the same order</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<p><br></p>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="assets/Karl_Lund_crop.png"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="structure-using-openai-api" class="slide level2" data-visibility="uncounted">
+<h2>Structure using OpenAI API 🤖</h2>
+<h3 id="using-openais-gpt-3.5-chat-api">Using OpenAI’s GPT-3.5 chat API:</h3>
+<p>We provide the system a schema to structure the record in, e.g.&nbsp;keys.</p>
+<p>We provide the system the Swedish text</p>
+<p>We specify the JSON response format we want</p>
+<p><br></p>
+<div class="columns">
+<div class="column">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a>schema <span class="op">=</span> {</span>
+<span id="cb3-2"><a href="#cb3-2"></a>    <span class="st">"type"</span>: <span class="st">"object"</span>,</span>
+<span id="cb3-3"><a href="#cb3-3"></a>    <span class="st">"required"</span>: [</span>
+<span id="cb3-4"><a href="#cb3-4"></a>        <span class="st">"full_name"</span>,</span>
+<span id="cb3-5"><a href="#cb3-5"></a>        <span class="st">"location"</span>,</span>
+<span id="cb3-6"><a href="#cb3-6"></a>        <span class="st">"occupation"</span>,</span>
+<span id="cb3-7"><a href="#cb3-7"></a>        <span class="st">"birth_details"</span>,</span>
+<span id="cb3-8"><a href="#cb3-8"></a>        <span class="st">"education"</span>,</span>
+<span id="cb3-9"><a href="#cb3-9"></a>        <span class="st">"career"</span>,</span>
+<span id="cb3-10"><a href="#cb3-10"></a>        <span class="st">"family"</span>,</span>
+<span id="cb3-11"><a href="#cb3-11"></a>    ],</span>
+<span id="cb3-12"><a href="#cb3-12"></a>    <span class="st">"properties"</span>: {</span>
+<span id="cb3-13"><a href="#cb3-13"></a>        <span class="st">"full_name"</span>: {<span class="st">"type"</span>: <span class="st">"string"</span>},</span>
+<span id="cb3-14"><a href="#cb3-14"></a>        <span class="st">"location"</span>: {<span class="st">"type"</span>: <span class="st">"string"</span>},</span>
+<span id="cb3-15"><a href="#cb3-15"></a>        <span class="st">"occupation"</span>: {<span class="st">"type"</span>: <span class="st">"string"</span>},</span>
+<span id="cb3-16"><a href="#cb3-16"></a>        <span class="st">"birth_details"</span>: {</span>
+<span id="cb3-17"><a href="#cb3-17"></a>            <span class="st">"type"</span>: <span class="st">"object"</span>,</span>
+<span id="cb3-18"><a href="#cb3-18"></a>            <span class="st">"properties"</span>: {</span>
+<span id="cb3-19"><a href="#cb3-19"></a>                <span class="st">"date"</span>: {<span class="st">"type"</span>: <span class="st">"string"</span>},</span>
+<span id="cb3-20"><a href="#cb3-20"></a>                <span class="st">"place"</span>: {<span class="st">"type"</span>: <span class="st">"string"</span>},</span>
+<span id="cb3-21"><a href="#cb3-21"></a>                <span class="st">"parents"</span>: {<span class="st">"type"</span>: <span class="st">"string"</span>},</span>
+<span id="cb3-22"><a href="#cb3-22"></a>            },</span>
+<span id="cb3-23"><a href="#cb3-23"></a>            <span class="st">"required"</span>: [<span class="st">"date"</span>, <span class="st">"place"</span>],</span>
+<span id="cb3-24"><a href="#cb3-24"></a>        },}}<span class="st">"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div><div class="column">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a><span class="kw">def</span> structure_biography_info(page_text):</span>
+<span id="cb4-2"><a href="#cb4-2"></a>    <span class="cf">try</span>:</span>
+<span id="cb4-3"><a href="#cb4-3"></a>        <span class="co"># Create a prompt for the system</span></span>
+<span id="cb4-4"><a href="#cb4-4"></a>        structure_prompt <span class="op">=</span> <span class="ss">f"Task: read the schema and return RFC compliant JSON information about the Swedish individuals from the 1950 biographical dictionary 'Vem är Vem' that is provided below. Use a numeric index for each biography in your JSON output and return information about all of them, including all career information available. Keep the biographic descriptions in Swedish and remove any abbreviations based on your knowledge, e.g. 'fil. kand.' is 'filosofie kandidat', and 'Skarab. l.' is 'Skaraborgs Län'. Put years in full based on context. Put dates in dd/mm/yyyy format where possible. If there is no information for a key, leave it out. If there is no information for a required key, put NULL as the value.</span><span class="ch">\n</span><span class="ss">Here is the schema: </span><span class="sc">{</span>schema<span class="sc">}</span><span class="ss">.</span><span class="ch">\n</span><span class="ss">Here is the text: </span><span class="sc">{</span>page_text<span class="sc">}</span><span class="ss">. Go!"</span></span>
+<span id="cb4-5"><a href="#cb4-5"></a>        structure_response <span class="op">=</span> client.chat.completions.create(</span>
+<span id="cb4-6"><a href="#cb4-6"></a>            model<span class="op">=</span><span class="st">"gpt-3.5-turbo-1106"</span>,</span>
+<span id="cb4-7"><a href="#cb4-7"></a>            response_format<span class="op">=</span>{<span class="st">"type"</span>: <span class="st">"json_object"</span>},</span>
+<span id="cb4-8"><a href="#cb4-8"></a>            messages<span class="op">=</span>[</span>
+<span id="cb4-9"><a href="#cb4-9"></a>                {</span>
+<span id="cb4-10"><a href="#cb4-10"></a>                    <span class="st">"role"</span>: <span class="st">"system"</span>,</span>
+<span id="cb4-11"><a href="#cb4-11"></a>                    <span class="st">"content"</span>: <span class="st">"You are an expert on Swedish biographies."</span>,</span>
+<span id="cb4-12"><a href="#cb4-12"></a>                },</span>
+<span id="cb4-13"><a href="#cb4-13"></a>                {<span class="st">"role"</span>: <span class="st">"user"</span>, <span class="st">"content"</span>: <span class="ss">f"</span><span class="sc">{</span>structure_prompt<span class="sc">}</span><span class="ss">"</span>},</span>
+<span id="cb4-14"><a href="#cb4-14"></a>            ],</span>
+<span id="cb4-15"><a href="#cb4-15"></a>        )</span>
+<span id="cb4-16"><a href="#cb4-16"></a></span>
+<span id="cb4-17"><a href="#cb4-17"></a>        structured_biography_info <span class="op">=</span> json.loads(</span>
+<span id="cb4-18"><a href="#cb4-18"></a>            structure_response.choices[<span class="dv">0</span>].message.content</span>
+<span id="cb4-19"><a href="#cb4-19"></a>        )</span>
+<span id="cb4-20"><a href="#cb4-20"></a></span>
+<span id="cb4-21"><a href="#cb4-21"></a>        <span class="cf">return</span> structured_biography_info</span>
+<span id="cb4-22"><a href="#cb4-22"></a></span>
+<span id="cb4-23"><a href="#cb4-23"></a>    <span class="cf">except</span> <span class="pp">Exception</span> <span class="im">as</span> e:</span>
+<span id="cb4-24"><a href="#cb4-24"></a>        <span class="bu">print</span>(<span class="ss">f"Error in structure_biography_info: </span><span class="sc">{</span>e<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb4-25"><a href="#cb4-25"></a>        <span class="cf">return</span> <span class="va">None</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="add-coordinates-to-firms-and-individuals" class="slide level2" data-visibility="uncounted">
+<h2>Add coordinates to firms and individuals</h2>
+<p>Birthplaces of individuals who studied at Royal Tehcnical Institute (KTH) in <em>Who is Who in Industry and Business</em></p>
+<div style="text-align: center">
+<div class="cell">
+<iframe src="assets/kth_birthplace_map.html" width="960" height="800" data-external="1">
+</iframe>
+</div>
+</div>
+</section>
+<section id="firms-across-the-country" class="slide level2" data-visibility="uncounted">
+<h2>Firms across the country</h2>
+<div style="display: flex; justify-content: center; align-items: center;">
+    <iframe src="https://raw.githack.com/j-jayes/svensk-industrikalender/main/data/maps/all_companies_map.html" width="1400" height="700"></iframe>
+</div>
+</section>
+<section id="occupational-info" class="slide level2" data-visibility="uncounted">
+<h2>Occupational info</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5" data-code-line-numbers="10-14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a>{</span>
+<span id="cb5-2"><a href="#cb5-2"></a>  <span class="st">"career"</span>: [</span>
+<span id="cb5-3"><a href="#cb5-3"></a>    {</span>
+<span id="cb5-4"><a href="#cb5-4"></a>      <span class="st">"occupational_title"</span>: <span class="st">"Chemist"</span>,</span>
+<span id="cb5-5"><a href="#cb5-5"></a>      <span class="st">"workplace"</span>: <span class="st">"Strömsnäs Järnverks A-B"</span>,</span>
+<span id="cb5-6"><a href="#cb5-6"></a>      <span class="st">"industry"</span>: <span class="st">"Metallurgy"</span>,</span>
+<span id="cb5-7"><a href="#cb5-7"></a>      <span class="st">"start_date"</span>: <span class="st">"1918"</span></span>
+<span id="cb5-8"><a href="#cb5-8"></a>    },</span>
+<span id="cb5-9"><a href="#cb5-9"></a>    {</span>
+<span id="cb5-10"><a href="#cb5-10"></a>      <span class="st">"occupational_title"</span>: <span class="st">"Metallurgist and Chemist"</span>,</span>
+<span id="cb5-11"><a href="#cb5-11"></a>      <span class="st">"workplace"</span>: <span class="st">"Westinghouse Electric &amp; Manufacturing Co."</span>,</span>
+<span id="cb5-12"><a href="#cb5-12"></a>      <span class="st">"industry"</span>: <span class="st">"Manufacturing"</span>,</span>
+<span id="cb5-13"><a href="#cb5-13"></a>      <span class="st">"start_date"</span>: <span class="st">"1923"</span></span>
+<span id="cb5-14"><a href="#cb5-14"></a>    },</span>
+<span id="cb5-15"><a href="#cb5-15"></a>    {</span>
+<span id="cb5-16"><a href="#cb5-16"></a>      <span class="st">"occupational_title"</span>: <span class="st">"Chief Metallurgist"</span>,</span>
+<span id="cb5-17"><a href="#cb5-17"></a>      <span class="st">"workplace"</span>: <span class="st">"Laclede Steel Co."</span>,</span>
+<span id="cb5-18"><a href="#cb5-18"></a>      <span class="st">"industry"</span>: <span class="st">"Steel Production"</span>,</span>
+<span id="cb5-19"><a href="#cb5-19"></a>      <span class="st">"start_date"</span>: <span class="st">"1927"</span></span>
+<span id="cb5-20"><a href="#cb5-20"></a>    },</span>
+<span id="cb5-21"><a href="#cb5-21"></a>    {</span>
+<span id="cb5-22"><a href="#cb5-22"></a>      <span class="st">"occupational_title"</span>: <span class="st">"Furnace and Steelworks Engineer"</span>,</span>
+<span id="cb5-23"><a href="#cb5-23"></a>      <span class="st">"workplace"</span>: <span class="st">"A-B Iggesunds Bruk"</span>,</span>
+<span id="cb5-24"><a href="#cb5-24"></a>      <span class="st">"industry"</span>: <span class="st">"Metallurgy"</span>,</span>
+<span id="cb5-25"><a href="#cb5-25"></a>      <span class="st">"start_date"</span>: <span class="st">"1929"</span></span>
+<span id="cb5-26"><a href="#cb5-26"></a>    },</span>
+<span id="cb5-27"><a href="#cb5-27"></a>    {</span>
+<span id="cb5-28"><a href="#cb5-28"></a>      <span class="st">"occupational_title"</span>: <span class="st">"Site Manager"</span>,</span>
+<span id="cb5-29"><a href="#cb5-29"></a>      <span class="st">"workplace"</span>: <span class="st">"Gunnebo Bruks Nya A-B, Varbergsverket"</span>,</span>
+<span id="cb5-30"><a href="#cb5-30"></a>      <span class="st">"industry"</span>: <span class="st">"Metallurgy"</span>,</span>
+<span id="cb5-31"><a href="#cb5-31"></a>      <span class="st">"start_date"</span>: <span class="st">"1931"</span></span>
+<span id="cb5-32"><a href="#cb5-32"></a>    }</span>
+<span id="cb5-33"><a href="#cb5-33"></a>  ]</span>
+<span id="cb5-34"><a href="#cb5-34"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="vem-är-vem" class="slide level2" data-visibility="uncounted">
+<h2>Vem är Vem?</h2>
+
+<img data-src="index_files/figure-revealjs/unnamed-chunk-14-1.png" width="960" class="r-stretch"></section>
+<section id="why-was-classification-hard" class="slide level2" data-visibility="uncounted">
+<h2>Why was classification hard?</h2>
+<h3 id="fuzzy-string-matching-doesnt-capture-semantic-similarity-between-words">Fuzzy string matching doesn’t capture semantic similarity between words</h3>
+<ul>
+<li>“chauffeur” is close to “car driver” semantically, but not close in text.</li>
+</ul>
+<h3 id="many-possible-groups-makes-classification-challenging-for-traditional-ml-models">Many possible groups makes classification challenging for traditional ML models</h3>
+<ul>
+<li>HISCO schema has 1,600 unit groups.</li>
+</ul>
+<h3 id="building-one-labelled-classification-scheme-manually-does-not-generalize-easily">Building one labelled classification scheme manually does not generalize easily</h3>
+<ul>
+<li>If you code all of your occupations to HISCO and then want to move to SSYK, you have to redo all of the codings or try and find a crosswalk.</li>
+</ul>
+<div class="columns">
+<div class="column" style="width:40%;">
+<p>I spent months doing this last year to classify occupations to HISCLASS groups, hand labelling data and optimizing a support vector machine model.</p>
+</div><div class="column" style="width:60%;">
+<div style="text-align: center">
+<p><strong>It did not work</strong></p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img data-src="assets/svm.png" width="392"></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="why-is-classification-easier-now" class="slide level2" data-visibility="uncounted">
+<h2>Why is classification easier now?</h2>
+<h3 id="we-make-use-of-pre-trained-large-language-models">We make use of pre-trained large language models</h3>
+<ul>
+<li>Benefit from semantic similarity</li>
+<li>Text embeddings mean we can have an arbitrary number of classes</li>
+<li>Switch out classification target schema easily!</li>
+</ul>
+<div style="text-align: center">
+<div class="cell">
+<div class="cell-output-display">
+<p><img data-src="assets/sustainable-planning.png" width="1934"></p>
+</div>
+</div>
+</div>
+</section>
+<section id="what-is-an-embedding" class="slide level2" data-visibility="uncounted">
+<h2>What is an embedding?</h2>
+
+<img data-src="assets/word2vec-king-queen-vectors.png" style="width:100.0%" class="r-stretch quarto-figure-center"></section>
+<section id="what-is-an-embedding-1" class="slide level2" data-visibility="uncounted">
+<h2>What is an embedding?</h2>
+
+<img data-src="assets/word2vec-king-queen-composition.png" style="width:100.0%" class="r-stretch quarto-figure-center"></section>
+<section id="use-embeddings-to-cluster-skills" class="slide level2" data-visibility="uncounted">
+<h2>Use embeddings to cluster skills</h2>
+
+<img data-src="assets/hisco_cluster.png" width="1181" class="r-stretch quarto-figure-center"><p class="caption">Figure&nbsp;1: Scatter plot showing the relative similarity of occupational titles in the HISCO schema</p></section>
+<section id="use-clusters-to-classify-individuals-into-the-groups" class="slide level2" data-visibility="uncounted">
+<h2>Use clusters to classify individuals into the groups</h2>
+
+<img data-src="assets/hisco_counts.png" style="width:5in" class="r-stretch quarto-figure-center"><p class="caption">Figure&nbsp;2: Most common HISCO occupations in Vem är Vem</p></section>
+<section id="use-clusters-to-classify-new-skills-into-the-groups" class="slide level2" data-visibility="uncounted">
+<h2>Use clusters to classify new skills into the groups</h2>
+<div class="cell" data-reveal="true">
+<div class="cell-output-display">
+<div>
+<div>
+<pre class="mermaid mermaid-js">graph TB
+    A[Collect HISCO Codes&lt;br&gt;and Descriptions] --&gt;|Use OpenAI API| B[Convert HISCO Titles&lt;br&gt;and Descriptions to Vectors]
+    C[Receive Occupational&lt;br&gt;Strings] --&gt;|Use OpenAI API| D[Convert Occupational&lt;br&gt;Strings to Vectors]
+    B --&gt; E[Compare Vectors in&lt;br&gt;Vector Space]
+    D --&gt; E
+    E --&gt; F[Assign HISCO Code to&lt;br&gt;Occupational String&lt;br&gt;using Cosine Distance]
+    style A fill:#2B8CBE
+    style B fill:#be5d2b
+    style C fill:#2B8CBE
+    style D fill:#be5d2b
+    style E fill:#6f6fbf
+    style F fill:#F4FA58
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+<p>Here the HISCO descriptions are in English, as are the translated titles from my biographies in Swedish.</p>
+<p>##&nbsp;Cluster firms by location{visibility=“uncounted”}</p>
+
+<img data-src="assets/map_most_common_businesses.png" style="width:5in" class="r-stretch quarto-figure-center"><p class="caption">Figure&nbsp;3: Map of the geographic clusters of businesses by most common business type</p></section>
+<section id="you-can-do-it-too" class="slide level2" data-visibility="uncounted">
+<h2>You can do it too!</h2>
+
+<img data-src="assets/code.png" style="width:100.0%" class="r-stretch quarto-figure-center"><p><a href="https://github.com/j-jayes/who-is-who-in-industry">GitHub repo</a></p>
+<div class="footer footer-default">
 <p><a href="https://interludeone.com/content/research.html"><i class="fa-solid fa-house" aria-label="house"></i></a></p>
 </div>
 </section></section>
