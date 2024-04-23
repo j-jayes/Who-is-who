@@ -1,6 +1,7 @@
 ---
-title: "Praise the people or praise the place? Upper tail human capital in electrifying Sweden"
-subtitle: "Midway Seminar - 24-01-2024"
+title: "Conductors of Progress: Upper Tail Human Capital in Electrifying Sweden"
+subtitle: "Presentation at CAS - Senter for grunnforskning"
+date: today
 author: 
   - "Jonathan Jayes  - Lund University"
 title-slide-attributes:
@@ -11,6 +12,9 @@ title-slide-attributes:
 bibliography: bibliography.bib
 format: 
   revealjs:
+    transition: slide
+    background-transition: fade
+    transition-speed: fast
     code-overflow: wrap
     width: 1600
     height: 900
@@ -26,16 +30,6 @@ favicon: "assets/favicon.ico"
 
 ---
 
-# Research question{#sec-researchquestion background-color="#1C9E77" visibility="uncounted"}
-
-<br>
-
-How can we use new kinds of source material and new methods to find out where the skilled workers who built the Swedish electricity sector came from, and where they were trained?
-
-Answering involves:
-
-- 2 data structuring tasks
-- 2 classification tasks
 
 ## Motivation
 
@@ -56,6 +50,55 @@ Answering involves:
     - How much training did they have in the new technology? 🎓⚡️
     - Were did they get this training? 🏫🔌
 
+## Who were the early electrifiers in Sweden?{visibility="uncounted" transition="none"}
+
+![](assets/map_big_power_stations_line_1900.jpeg){fig-align="center"}
+
+## Who were the early electrifiers in Sweden?{visibility="uncounted" transition="none"}
+
+![](assets/map_big_power_stations_line_1911.jpeg){fig-align="center"}
+
+## Who were the early electrifiers in Sweden?{visibility="uncounted" transition="none"}
+
+![](assets/map_big_power_stations_line_1926.jpeg){fig-align="center"}
+
+## Who were the early electrifiers in Sweden?{#sec-tcg  transition="none"}
+
+![](assets/map_big_power_stations_line_1926_with_treated_and_control_parishes.jpeg){fig-align="center"}
+
+## What were the new jobs due to electrification?
+
+![](assets/06-job_share_plot.jpeg){fig-align="center"} 
+
+
+# Research question{#sec-researchquestion background-color="#1C9E77" visibility="uncounted"}
+
+<br>
+
+Who were the highly educated individuals that were at the forefront of the electrification of Sweden and how did they move to opportunity?
+
+
+## What I want you to take away from today as researchers
+
+<br>
+
+:::: {.columns}
+
+::: {.column width="40%"}
+1. NLP tasks that used to be very challenging / time consuming are no longer!
+
+2. Classifying occupations is now easier than ever*
+
+:::
+
+::: {.column width="10%"}
+:::
+
+::: {.column width="50%"}
+![Feel like a world champion](assets/world_champtions.jpeg){fig-align="center" width=80%}
+:::
+
+::::
 
 
 ## Related literature
@@ -91,6 +134,7 @@ Answering involves:
 
 # Who were the `innovators` or adopters?{#sec-who background-color="#1C9E77" visibility="uncounted"}
 
+
 ## Who is who?
 
 :::: {.columns}
@@ -103,7 +147,7 @@ The intention was, according to the publishers, to draw attention **to people wh
 
 - Biographies and career trajectories of ~ 75,000 individuals!
 
-- 9 of the 11 volumes are digitized by librarians in Uppsala – thank you <3
+- 8 of the 10 volumes are digitized by librarians in Uppsala – thank you <3
 
 :::
 
@@ -113,28 +157,106 @@ The intention was, according to the publishers, to draw attention **to people wh
 
 ::: {.column width="25%"}
 
-![](assets/vem_page.png){fig-align="center" width=100%}
+![](assets/vem_cover.png){fig-align="center" width=100%}
 
 :::
 
 ::::
 
+## Vem är Vem? Volumes
 
-# Where were the `firms` in which these individuals worked?{#sec-where background-color="#1C9E77" visibility="uncounted"}
+![](assets/who-is-who-volumes.png){fig-align="center" width=100%}
 
-## Swedish industrial firm catalogue of 1947
+```{r}
+#| eval: false
+library(tidyverse)
+theme_set(theme_light())
+library(ggtext)
+library(showtext)
+font_add_google("IBM Plex Mono", "ibm")
+showtext_auto(enable = TRUE)
 
-::: {.columns}
-::: {.column}
-![](assets/svensk-industrikalender_1.png){fig-align="center" width=100%}
-:::
-::: {.column}
-The Svensk Industrikalender, published by Sveriges Industriförbund (Sweden’s Industrial Association), is a comprehensive directory of Swedish industrial firms. This calendar was issued annually from 1918 to 2000 and contains information related to Swedish industry. The 1947 edition available on the Project Runeberg website was digitized in April 2012, sourced from the Centrum för Näringslivshis- toria.
-:::
-:::
+# Create a tibble from the JSON data
+books <- tibble(
+  book_name = c("Skåne", "Stockholm", "Svealand", "The Götaland region except Skåne", "Skåne", "Norrland", "Stockholm", "The Götaland region except Skåne", "Who is who in indsutry and business?"),
+  year = c(1948, 1962, 1964, 1965, 1966, 1968, 1945, 1948, 1945),
+  pages = c(624, 1498, 945, 1203, 952, 1340, 1044, 1075, 625),
+  volume = c(1, 2, 2, 2, 2, 2, 1, 1, 3)
+) 
 
+books <- books %>%
+    mutate(name = str_c(book_name, " - ", year),
+            name = fct_reorder(name, pages),
+            records = pages * 8) %>%
+            mutate(volume = case_when(
+                volume == 1 ~ "1945–1950", 
+                volume == 2 ~"1962–1968",
+                TRUE ~ "Who is who in indsutry and business?")
+            ) %>%
+    select(name, records, volume) 
+
+# books %>% summarise(records = sum(records))
+
+# Create the ggplot visualization
+ggplot(books, aes(x = records, y = name, fill = factor(volume))) +
+  geom_col(alpha = .8) +
+  labs(x = "Number of biographies", y = "Book volume",
+  title = "Number of biographies in Vem är Vem?",
+  fill = "Edition") +
+  scale_x_continuous(labels = scales::number_format()) +
+  scale_fill_manual(values = c("#2B8CBE", "#be5d2b", "midnightblue"))  +
+    theme(plot.title.position = "plot") +
+    theme(legend.position = "bottom") +
+    theme(text = element_text(family = "ibm", size = 24))
+
+ggsave("assets/who-is-who-volumes.png", width = 6, height = 4, units = "in", dpi = 300)
+```
+
+
+## Vem är Vem? Example page
+
+![](assets/vem_page.png){fig-align="center" width=100%}
+
+## Vem är Karl Lund?
+
+[Lund, Karl Gustaf]{style="background-color: #b0c4de"}, [chief engineer]{style="background-color: #d2b48c"}, [born on July 22, 1893]{style="background-color: #ff8c69"}, [in Hille, Gävle County]{style="background-color: #90ee90"}, Sweden, son of [clerk Ferdinand L. and Maria Andersson]{style="background-color: #9370db"}. Married in 1936 to [Sigrid Johansson]{style="background-color: #ffadc1"}. Children: [Ingvar (born 1938)]{style="background-color: #ffdead"}, [Lennart (born 1942)]{style="background-color: #ffdead"}. — Graduated from [Bergsskolan]{style="background-color: #afeeee"} in Filipstad in 1917, specialized studies at the [Royal Institute of Technology (KTH)]{style="background-color: #afeeee"} from 1920 to 1922, studied at the [Institute of Metallurgy]{style="background-color: #afeeee"} and [Stockholm University]{style="background-color: #afeeee"} in 1921-1922. Chemist at [Strömsnäs Järnverks A-B]{style="background-color: #98fb98"} in Degerfors from 1918 to 1920, metallurgist and chemist at [Westinghouse Electric & Manufacturing Co.]{style="background-color: #98fb98"} in East Pittsburgh, PA, USA, from 1923 to 1926 and 1928 to 1929, chief metallurgist at [Laclede Steel Co.]{style="background-color: #98fb98"} in Alton, Illinois, USA, in 1927, furnace and steelworks engineer at [A-B Iggesunds Bruk]{style="background-color: #98fb98"} from 1929 to 1931, site manager at [Gunnebo Bruks Nya A-B, Varbergsverket]{style="background-color: #98fb98"}, since 1931. Member of the municipal executive committee, deputy chairman of the economic department, deputy member of the board of the power plant, chairman of [Varbergs Sparbank]{style="background-color: #ffdab9"}, employer representative in the district council of the county labor board, member of the board of [Varbergs Luftskyddsförening (Varberg Air Protection Association)]{style="background-color: #ffdab9"}, secretary of [Varbergs Högerförening (Varberg Conservative Association)]{style="background-color: #ffdab9"}, chairman of the railway sick fund, and [Plant Society for Small Bird Friends]{style="background-color: #ffdab9"}. 
+
+## Vem är Karl Lund?
+
+Traveled to [Germany]{style="background-color: #e6e6fa"} in 1921, 1923, 1930, and 1936, [Denmark]{style="background-color: #e6e6fa"}, [Czechoslovakia]{style="background-color: #e6e6fa"} in 1921, 1922, and 1923, [Austria]{style="background-color: #e6e6fa"} in 1921, and the [USA]{style="background-color: #e6e6fa"} from 1923 to 1929. Writings: "Some fundamental factors for obtaining sharp thermal curves" (Transactions of the American Society for Steel Treating, co-authored with C. Benedicks and W. H. Dearden, 1925), "Contemporary production of saw blades, circular saws, and machine knives" (Timber Industry, 1931). Hobbies: [hunting]{style="background-color: #ffd700"} and [fishing]{style="background-color: #ffd700"}.
+
+##
+
+![](assets/tidy.jpg)
 
 # How can we `structure` the data?{#sec-structure background-color="#1C9E77" visibility="uncounted"}
+
+## NLP challenges
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+<br>
+
+- Many abbreviations and contractions
+    - DOB: "f\.\\s*(\\d{2})\\/(\\d{2})/(\\d{2})"
+    - Gävleborg County: "Gävleb. l."
+
+- Similar structure for each entry but not exactly the same information in the same order
+
+
+:::
+
+::: {.column width="50%"}
+
+<br>
+
+![](assets/Karl_Lund_crop.png){fig-align="center"}
+
+:::
+
+::::
 
 ## Data pipeline
 
@@ -150,7 +272,101 @@ The Svensk Industrikalender, published by Sveriges Industriförbund (Sweden’s 
 
 <br>
 
-75,000 biographies in 9 volumes of *Vem är Vem?* and 2,400 firms in *Svensk Industrikalender* in a machine readable format for ~ 80 USD.
+20,000 biographies in 9 volumes of *Vem är Vem?* and 2,400 firms in *Svensk Industrikalender* in a machine readable format for ~ 80 USD.
+
+
+## Output
+
+
+```{python, eval=FALSE, echo=TRUE}
+#| code-line-numbers: "6-14"
+
+{
+    "original": "Lund, Karl Gustaf, överingenjör, Varberg, f. 22/7/93 i Hille, Gävleb. 1., av brukstj :m. Ferdinand L. o. Maria Andersson. G. 36 m. Sigrid Johansson. Barn: Ingvar f. 38, Lennart 42. — Ex. v. bergssk. i Filipstad 17, spec:-stud. v. KTH (B) 20-22, stud. v. me-tallogr. inst. o. Sthlms högsk. 21-22. Kemist v. Strömsnäs Järnverks A-B, Degerfors, 18-20, metallurg o. kemist v. Westinghouse Electric & Manuf. Co., East Pittsburgh, Pa, USA, 23-26 o. 28-29, chefsmetallurg v. Laclede Steel^Co., Ahon, 111., USA, 27, hytt-o. stålv.ing. v. A-B Iggesunds Bruk 29-31, platschef v. Gunnebo Bruks Nya A-B, Varbergsverket, sed. 31. Led. av drätselkamm., v. ordf. v. ekonomi-avd., suppl. i styr. f. elverket, huv:-man i Varbergs Sparbank, arb :giv. repr. i länsarb:ndns kretsråd, led. av styr. f. Varbergs luftsk ifören., sekr. i Varbergs högerfören., ordfs i järnv. sjukkassa o. Plant :sällsk. Småfågl. Vänner. Res. t. Tyskl. 21, 2^ 23, 30 o. 36, Danm., Tjeckoslov. 21, 22, 23, Österr. 21, USA 23-29. Skr.: Some fundamental factors for obtaining sharp thermal curves (Träns. Am. Soc. for Steel Treating, tills. m. C. Benedicks o. W. H. Dearden 25), Nutida fabrikation av sågblad, sågklingor o. maskinknivar (Trävaruind. 31). Hob-bies: jakt o. fiske.",
+    "translated": "Lund, Karl Gustaf, chief engineer, Varberg, born on July 22, 1893, in Hille, Gävle County, Sweden, son of factory worker Ferdinand L. and Maria Andersson. Married in 1936 to Sigrid Johansson. Children: Ingvar (born 1938), Lennart (born 1942). — Graduated from Bergsskolan in Filipstad in 1917, specialized studies at the Royal Institute of Technology (KTH) from 1920 to 1922, studied at the Institute of Metallurgy and Stockholm University in 1921-1922. Chemist at Strömsnäs Järnverks A-B in Degerfors from 1918 to 1920.",
+    "structured": {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Karl Gustaf Lund",
+        "birthDate": "1893-07-22",
+        "birthPlace": {
+            "name": "Hille, Gävle County, Sweden",
+            "latitude": 59.916667,
+            "longitude": 15.0
+        },
+        "jobTitle": "Chief Engineer",
+        "memberOf": {
+            "@type": "Organization",
+            "name": "Swedish Technical Association"
+        },
+        "children": [
+            {
+                "@type": "Person",
+                "name": "Anita",
+                "birthDate": "1937"
+            },
+            {
+                "@type": "Person",
+                "name": "Peter",
+                "birthDate": "1942"
+            }
+        ],
+        "spouse": {
+            "@type": "Person",
+            "name": "Marianne Hammarberg",
+            "marriageDate": "1936"
+        },
+        "education": [
+            {
+                "@type": "EducationalOccupationalCredential",
+                "credentialCategory": "Vocational",
+                "issuer": {
+                    "@type": "Organization",
+                    "name": "Technical Gymnasium in Örebro"
+                },
+                "endDate": "1928"
+            },
+            {
+                "@type": "EducationalOccupationalCredential",
+                "credentialCategory": "Degree",
+                "issuer": {
+                    "@type": "Organization",
+                    "name": "KTH"
+                },
+                "endDate": "1934"
+            }
+        ],
+        "worksFor": {
+            "@type": "Organization",
+            "name": "Telegraph station in Norrköping",
+            "startDate": "1946"
+        },
+        "hasOccupation": [
+            {
+                "@type": "Occupation",
+                "name": "Engineering assistant",
+                "employer": {
+                    "@type": "Organization",
+                    "name": "Telegraph station in Nässjö"
+                },
+                "startDate": "1935",
+                "endDate": "1935"
+            },
+            {
+                "@type": "Occupation",
+                "name": "Line engineer",
+                "employer": {
+                    "@type": "Organization",
+                    "name": "Telegraph station in Norrköping"
+                },
+                "startDate": "1946"
+            }
+        ]
+    }
+}
+```
+
+
 
 # How can we `classify occupations` according to a schema?{#sec-classifying-occupations background-color="#1C9E77" visibility="uncounted"}
 
@@ -171,7 +387,7 @@ graph LR
 
 ```
 
-## Two-part classification process
+## Two-part classification process for engineers
 
 ::: {.columns}
 ::: {.column}
@@ -191,7 +407,7 @@ Result: HISCO code and an industry
     },
   ],
   "output": [
-    {x
+    {
       "hisco_code": "22",
       "industry": "Iron and steel production"
     }
@@ -203,26 +419,100 @@ Result: HISCO code and an industry
 :::
 ::: 
 
+## Assign HISCOs: codes projected from 1536 dimensions to 2 with UMAP
+
+```{r}
+knitr::include_url("assets/interactive_umap_plot.html", height = "800")
+```
+
+## Results: What are the most common occupations?
+
+![](assets/hisco_counts.png){fig-align="center" width=100%}
+
+# Where were the `individuals` from?{#sec-where background-color="#1C9E77" visibility="uncounted"}
+
+## Where do they come from? Norway edition
+
+```{r}
+library(mapview)
+library(tidyverse)
+
+df_sf <- read_rds("assets/individual_occupations_institution_geocoded_distances.rds")
+
+df_sf = df_sf %>% 
+    mutate(
+        narrow_occupation = case_when(
+            str_detect(hisco_occupation, "Engineer") ~ "Engineer",
+            str_detect(hisco_occupation, "Doctor") ~ "Doctor",
+            str_detect(hisco_occupation, "General Managers") ~ "General Manager",
+            str_detect(hisco_occupation, "Ministers") ~ "Minister",
+            str_detect(hisco_occupation, "Dentist") ~ "Dentist",
+            TRUE ~ "Other"
+        ),
+        narrow_occupation = fct_relevel(narrow_occupation, "Other")
+    )  %>% 
+    filter(str_detect(birth_place, "Norge|Norway"),
+    !str_detect(full_name, "Mannerbeck|Halvorsen"))
+
+mapview(df_sf, zcol = "narrow_occupation", legend = TRUE, legend.pos = "bottomright", legend.title = "Birthplaces", legend.cex = 0.8, legend.mar = 5, legend.ncol = 1)
+```
 
 
-## Results: How far do engineers move?
+## Are engineers immigrants, or from very rural areas more than others?
 
-![](assets/eee_map.png){fig-align="center" width=100%}
+- Just `3.6% of engineers were born outside of Sweden`, not significantly different from other occupations.
 
-# Engineers in electrical appliances and machinery move the furthest
+- Of Swedish born, priests come from places with low population density. 
+
+- No statistical differences in population density between the birthplaces of doctors, general managers, dentists, and engineers.
+
+## Engineers are born in parishes with early access to electricity
+
+![](assets/occupation_early_access.png){fig-align="center" width=100%}
+
+## Where did engineers study?
+
+![](assets/top_institutions.png){fig-align="center" width=100%}
+
+<!-- ::: aside
+Unsurpisingly, the Royal Institute of Technology (KTH) is the most common institution for engineers to study at, followed by Chalmers University of Technology.
+::: -->
+
+## Did engineers get advanced degrees?
+
+![](assets/hisco_degree.png){fig-align="center" width=100%}
+
+## Engineers in `electrical appliances and machinery` move the furthest from birthplace to study
 
 ![](assets/engineer_distance.png){fig-align="center" width=100%}
 
-# Conclusion{#sec-conclusion background-color="#1C9E77" visibility="uncounted"}
+## Engineers in `electrical appliances and machinery` live further from their birthplace than other occupations
+
+![](assets/distances_comparison.png){fig-align="center" width=80%}
+
+::: aside
+The median worker in Sweden in 1930 lived only 24km from their place of birth
+:::
+
+## Engineers live further from their birthplace than other occupations
+
+![](assets/distance_moved_birth_to_current.png){fig-align="center" width=100%}
+
+# Conclusion{#sec-conclusion background-color="#1C9E77"}
 
 Bifurcated labour market in Sweden; middle-skill workers stay put, high-skill workers move to opportunity both for education and work.
+
+# What to do next{#sec-conclusion background-color="#1C9E77"}
+
+- Intergenerational mobility: did engineers' parents have similar jobs to doctors, dentists, businessmen?
 
 ## References
 
 ::: {#refs}
 :::
 
-# Appendix{#sec-appendix background-color="#d95f02"}
+
+# Appendix{#sec-appendix background-color="#d95f02"}
 
 ## How to get a text embedding?{visibility="uncounted"}
 

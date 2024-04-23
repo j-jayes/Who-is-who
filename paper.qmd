@@ -11,6 +11,13 @@ author:
         name: Lund University Economic History Department
 abstract: |
   This paper explores the transformative role of Artificial Intelligence in economic history research, through the examination of the skilled workforce in Sweden's electricity sector during the mid-20th century. By ingesting and analyzing two unique data sources—a set of biographical dictionaries and an industrial catalogue—the study investigates the origins and trajectories of high-skilled workers in electricity-related occupations in Sweden. Contrary to previous assumptions that local talent predominantly drove the technological advancements, the findings reveal a bifurcated labor market. Highly educated and skilled professionals, crucial in overseeing and advancing the electricity sector, frequently migrated for education and career opportunities, often traveling significant distances from their birthplaces. In contrast, local talent primarily occupied the burgeoning middle-skilled roles within the sector.
+
+  New abstract. 
+  
+  This paper investigates the origins and career trajectories of high-skilled workers in electricity-related occupations in Sweden during the mid-20th century. By ingesting and analyzing two unique data sources – a set of biographical dictionaries and an industrial catalogue – I ask where these workers came from, what and where they studied, and how international experience impacted their career paths.
+
+  Jayes, Enflo and Molinder (2024) find that medium-skilled electricity-related jobs were filled by workers who were born near to these jobs. However, descriptive statistics about these high-skilled workers reveal a bifurcated labor market. Highly educated and skilled professionals, crucial in overseeing and advancing the electricity sector, frequently migrated for education and career opportunities, often traveling significant distances from their birthplaces to a small set of higher education institutions in Sweden and abroad. After their studies, Swedish engineers moved to opportunity, ending up on average ten times further from their birthplace than the median worker in 1930. Tentative findings on international experience show that engineers worked abroad at higher rates than comparable occupations, far more than doctors or dentists.
+
 date: 12 January, 2024
 thanks: |
   Thank you to seminar participants at the Copenhagen Business School Department of Strategy and Innovation PhD Seminar  and the HEDG Group at the University of Southern Denmark for valuable feedback on this work.
