@@ -143,3 +143,53 @@ This is the guy we tell our story around:
         }
     }
 }
+
+
+
+### Industrial Catalogue
+
+The *Svensk Industrikalender*, published by Sveriges Industriförbund (Sweden's Industrial Association), is a comprehensive directory of Swedish industrial firms. This calendar was issued annually from 1918 to 2000 and contains information related to Swedish industry. The 1947 edition available on the *Project Runeberg* website was digitized in April 2012, sourced from the Centrum för Näringslivshistoria. The calendar is believed to be under catalog protection but not copyright .
+
+It includes detailed information such as company names, locations, nature of businesses, products, contact details, share capital, number of employees, production values, establishment years, and key personnel including managing directors and board members. This source is valuable for studying the economic and industrial environment of post-war Sweden, providing insights into corporate structures, industry distribution, and business trends of that period. 
+
+A representative page is shown in @fig-industry-calender.
+
+<br>
+
+```{r}
+#| label: fig-industry-calender
+#| fig-cap: "A page of the industry catalogue from 1947"
+#| fig-width: 6
+#| out-width: 6in
+
+
+knitr::include_graphics("assets/svensk-industrikalender_1.png")
+```
+
+The common fields listed for each company entry in the catalogue are as follows:
+
+1. **Company Name**: The name of the company is listed at the beginning of each entry, with an asterisk indicating membership of Sveriges Industriförbundet.
+
+2. **Location/Town**: The town or location of the company, which in this case is *Arboga*.
+
+3. **Description of Business**: A brief description of the company's main activities or products is provided.
+
+4. **Products or Services Offered**: Specific items or services the company provides, such as types of machinery, tools, or materials.
+
+5. **Contact Information**: This typically includes:
+   - **Telegraph Address**: Listed as "Telegr.-adr." indicating the address to which telegraphs are to be sent.
+   - **Telephone Number**: Listed as "Telefon" followed by the number.
+   - **Postal Code**: Mentioned as "Postgiro" or "Postiro" with corresponding numbers.
+   - **Bank Account**: Sometimes a bank account number or similar financial information is included.
+
+6. **Management and Key Personnel**: Names and titles of important figures in the company, such as the director (*Verkst. dir.*, board members, or founders.
+
+7. **Financial Information**: Information about the financial aspect of the company, such as capital invested (*Akt.-kap.*) or turnover (*Tillv.-värde*).
+
+8. **Establishment Details**: This includes the year of establishment and sometimes the history or lineage of the company's ownership or major changes.
+
+9. **Address**: The full postal address, which may include a street name or a postbox number, indicated as *Postgiro*.
+
+This type of catalogue was commonly used for business-to-business interactions and can be considered an early form of networking resource, allowing companies to find suppliers, customers, and partners.
+
+I use the industry calendar to uncover geographic clusters of firms that produced goods related to electricity for sale to consumers or to other businesses. I use these geographic clusters to understand the migration patterns among engineers in Sweden.
