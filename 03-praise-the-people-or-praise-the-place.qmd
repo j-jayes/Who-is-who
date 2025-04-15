@@ -1,0 +1,661 @@
+---
+title: "Praise the people or praise the place?"
+subtitle: Upper tail human capital in electrifying Sweden
+code-repo: "Access the code, data, and analysis at <https://github.com/j-jayes/who-is-who-etl>"
+author:
+  - name: Jonathan Jayes
+    email: jonathan.jayes@ekh.lu.se
+    orcid: 0000-0003-4967-4869
+    affiliations: 
+      - id: lu
+        name: Lund University Economic History Department
+abstract: |  
+  This paper investigates the origins and career trajectories of high-skilled workers in electricity-related occupations in Sweden during the mid-20th century. By ingesting and analyzing two unique data sources – a set of biographical dictionaries and an industrial catalogue – I ask where these workers came from, what and where they studied, and how international experience impacted their career paths.
+
+  Jayes, Enflo and Molinder (2024) find that medium-skilled electricity-related jobs were filled by workers who were born near to these jobs. However, descriptive statistics about these high-skilled workers reveal a bifurcated labor market. Highly educated and skilled professionals, crucial in overseeing and advancing the electricity sector, frequently migrated for education and career opportunities, often traveling significant distances from their birthplaces to a small set of higher education institutions in Sweden and abroad. After their studies, Swedish engineers moved to opportunity, ending up on average ten times further from their birthplace than the median worker in 1930. In terms of occupational mobility, we do not see a similar pattern to the middle-skill electricity related jobs among engineers; there is no clear pattern for engineers to have lower status parents than other occupations in the biographical dictionaries.
+
+date: today
+thanks: |
+  Thank you to seminar participants at the Copenhagen Business School Department of Strategy and Innovation PhD Seminar  and the HEDG Group at the University of Southern Denmark for valuable feedback on this work.
+format:
+  hikmah-pdf: default
+  hikmah-manuscript-pdf: default
+# format:
+#   docx:
+#     toc: true
+#     number-sections: true
+#     highlight-style: github
+execute: 
+  echo: false
+  warning: false
+  message: false
+bibliography: bib.bib
+---
+
+## Introduction
+
+Economic history as a discipline is set to benefit in at least three ways from the nascent AI revolution. Novel sources of data become available as new tools make them readable to machines, analysis in new ways is possible with new kinds of algorithms, and the time-cost of asking certain kinds of questions decreases, opening up new avenues for research. In this paper, I make an attempt to leverage these benefits to answer the question, 'who were the high skilled workers in electricity related occupations in Sweden, and where did they come from?' I detail the process of structuring and analyzing a novel data source; a set of biographical dictionaries in order to answer this question.
+
+In the quest to understand the dynamics of economic development and technological advancement, previous research by this author and his supervisors shed light on the transformative impact of early electricity access in Sweden. "Power for progress: The impact of electricity on individual labor market outcomes" [@jayes_power_2024] revealed how the advent of electricity in certain parishes led to positive economic outcomes: a boost in income levels, reduced inequality, and the maintenance of employment levels despite the advent of labor-saving technology. There were two findings that stood and which I seek to explore further here. First was the tendency of workers in these early electrified parishes to remain in their birthplaces, hinting at a newfound economic dynamism stemming from the income spillovers into sectors not affected by the new technology. Second, we found that electrification allowed those without a great deal of formal education to take on new jobs that emerged in the wake of the new technology - like electricians and electrical linemen - leading to a more equal distribution of income in these areas.
+
+Building on these insights, the present paper looks deeper into the human aspect of this technological revolution. It poses a question: Who were the key figures driving this change? Were they local talents, or did they represent a wave of skilled individuals drawn from afar, drawn in by the dynamism of these early electrified areas? We can also ask about their occupational mobility, and whether they were less likely to have parents in high status occupations than other individuals in the biographical dictionaries.
+
+To answer this, the investigation leverages a novel data source. *Vem är Vem*, is a comprehensive set of biographical dictionaries containing the profiles of 75,000 notable Swedes active between 1945 and 1968.
+
+I digitize and structure this source in order to analyze the changing patterns of the Swedish labour market in the middle of the 20th century in light of electrification. The findings challenge my prior expectations. Contrary to the belief that local talent pools predominantly fueled the technological boom, I observe a pattern of geographical mobility among the highly educated and skilled professionals in electricity-related fields. These individuals, pivotal to overseeing and advancing the electricity sector, often sought education and opportunities far from their origins. This suggests a bifurcated labor market: local talent predominantly filled the burgeoning middle-skilled roles within the electricity sector, while the top-tier skilled professionals were more transient, moving towards educational and occupational opportunities. This paper explores the implications of this labor market structure for the economic development patterns witnessed during Sweden's second Industrial Revolution.
+
+These findings, tentative as they are, have real world value. As we seek to understand what drove the dynamism during the age of electrification in Sweden, we are better equipped to shape policy today that seeks to revitalize deindustrializing areas across the developed world and help the developing world harness new technologies for sustainable growth. In addition, the methodologies employed to structure and analyze archival data can provide a template for future research using similar materials.
+
+The paper is laid out as follows: the current research question is placed in context, the source is explained, followed by the digitization and structuring process. I then discuss the classification task involved in assigning engineers to a sector based on their occupational trajectories. I then lay out some descriptive statistics and tentative findings regarding the patterns of movement for the high skilled electricity related workers, compared with other professionals I observe in the biographical dictionaries.
+
+## Context
+
+### Introduction
+
+The electrification of Sweden stands as a pivotal chapter in its economic history, transforming industry, boosting productivity, and reshaping labor markets [cite: 1 (Schon (2000) Electricity, technological change and productivity in Swedish industry, 1890-1990.pdf)]. Lennart Schön (2000) highlights electricity's central role, particularly given Sweden's abundant hydropower resources and lack of fossil fuels, noting its rapid adoption spurred industrial development from the 1890s onwards [cite: 1 (Schon (2000) Electricity, technological change and productivity in Swedish industry, 1890-1990.pdf)]. Recent research, leveraging the quasi-experimental rollout of the electrical grid connecting Sweden's early major hydropower plants (the "Western Line"), has provided granular insights into its impact. Jayes, Molinder, and Enflo (2024) demonstrate that parishes gaining early access to electricity saw significant individual income gains, particularly for lower-income workers and those with only primary education, leading to reduced local income inequality [cite: 1 (02-power-for-progress.pdf)]. This suggests electricity acted as a labor-supporting technology, improving outcomes for incumbents, many of whom remained in their birth parishes despite the technological shift [cite: 1 (02-power-for-progress.pdf)].
+
+However, this picture primarily reflects the experience of the broader, often lower-skilled, labor force. Preliminary work using biographical dictionaries of notable Swedes ("Praise the People," Jayes et al. 2024) suggests a contrasting pattern for high-skilled workers, particularly engineers [cite: 1 (03-praise-the-people-or-praise-the-place.pdf)]. These individuals, crucial for designing, implementing, and managing the new electrical systems, appear to have been geographically highly mobile, often pursuing education and career opportunities far from their places of birth [cite: 1 (03-praise-the-people-or-praise-the-place.pdf)]. This raises a critical question: If early electrification created distinct local advantages, did it attract a systematically *different* type of high-skilled engineer compared to other, albeit slightly later-electrifying, areas? Were the engineers moving *to* the pioneering "Western Line" parishes different in their backgrounds from those moving *to* otherwise comparable parishes within the broader region influenced by electrification?
+
+This paper investigates this question by comparing the background characteristics of engineers who migrated into the early-electrifying "Western Line" parishes with those who migrated into control parishes within the 300km band identified by Jayes, Molinder, and Enflo (2024) [cite: 1 (02-power-for-progress.pdf)]. Using biographical data detailing origins, education (institution and field), parental occupation (via HISCO classification), age at move, family formation, and international experience, we examine whether distinct observable traits characterized engineers attracted to the earliest electrified locations.
+
+Our analysis reveals a striking degree of similarity between the two groups of engineers. Across dimensions such as educational institution, field of study, and social background (proxied by paternal occupation), we find no significant differences between engineers moving to Western Line parishes and those moving to control parishes. This suggests that, at the high-skill level, engineers were a highly mobile group attracted broadly to the economically dynamic region undergoing electrification, rather than being selectively sorted based on these characteristics to the very first parishes gaining grid access. The primary discernible difference is a tendency for engineers moving to the Western Line parishes to have slightly more prevalent prior work experience in the United States. No similar distinction was found for experience gained in Europe.
+
+This finding contributes to our understanding of high-skilled labor markets during periods of major technological change. It implies that while electrification generated localized benefits for the general workforce, the specific *timing* of access within a region undergoing transformation did not strongly select for engineers with particular educational or social backgrounds. Instead, the broader dynamism of the region attracted a mobile pool of talent, distinguished perhaps only subtly by the specific *type* of international experience relevant to the emerging technological frontier, in this case, American know-how.
+
+### Literature Review
+
+This study intersects with several strands of economic history research concerning technological change, human capital, migration, and social mobility in Sweden.
+
+**Electrification, Productivity, and Labor Markets in Sweden:**
+
+The profound impact of electricity on Swedish industrialization is well-established. Schön (2000) documents the rapid uptake of electricity as a share of industrial energy use, particularly from 1900-1930, displacing traditional fuels and enabling new production methods [cite: 1 (Schon (2000) Electricity, technological change and productivity in Swedish industry, 1890-1990.pdf)]. He argues that electrification was driven both by falling relative prices and by technological shifts demanding electricity's specific qualities, noting its complementarity with skills and its role in structural transformation periods following crises [cite: 1 (Schon (2000) Electricity, technological change and productivity in Swedish industry, 1890-1990.pdf)]. Building on this macro-level understanding, Jayes et al. (2024) utilize the geographic specifics of the grid rollout to identify causal impacts at the individual level [cite: 1 (02-power-for-progress.pdf)]. Their difference-in-differences approach, comparing parishes along the "Western Line" to control parishes, confirms electricity's positive income effects and its inequality-reducing nature, benefiting less-educated workers and suggesting it complemented rather than replaced labor across various sectors [cite: 1 (02-power-for-progress.pdf)]. This paper takes the geographic setting from Jayes et al. (2024) but shifts the focus from the general labor force outcome to the characteristics of the high-skilled *inputs* – the engineers migrating into these specific locales.
+
+**Human Capital, Skills, and Migration:**
+
+The role of human capital, particularly engineering expertise, is crucial in adopting and leveraging new technologies like electricity [cite: 1 (Gronberg (2003) Learning and Returning Return Migration of Swedish Engineers from the United States, 1880–1940.pdf), 1 (Schon (2000) Electricity, technological change and productivity in Swedish industry, 1890-1990.pdf)]. While Jayes et al. (2024) showed benefits accruing to lower-skilled incumbents [cite: 1 (02-power-for-progress.pdf)], this paper examines the highly educated engineers essential for the system's expansion and operation. Their mobility aligns with findings on migration as a response to economic opportunity and a driver of skill acquisition. Andersson and Molinder (2024) demonstrate that during Sweden's industrialization (1880s-1930s), rural-urban migration significantly increased workers' skills (measured by occupational income), attributing roughly half the urban-rural skill gap to selection and half to the direct impact (both static matching and dynamic learning) of cities [cite: 1 (UPEH202412 (2).pdf)]. They find this effect was particularly strong for initially lower-skilled individuals, highlighting cities as engines of upward mobility [cite: 1 (UPEH202412 (2).pdf)]. Our study complements this by examining the characteristics of *high-skilled* migrants moving between specific types of *rural/semi-rural* parishes experiencing differential timing of a major technological shock, rather than the general rural-to-urban flow. We ask if the 'pull' of the earliest electrified areas selected engineers differently based on their pre-migration attributes.
+
+**Elite Formation and Social Mobility:**
+
+The background of economic elites is a central theme in understanding social structures and mobility. Henrekson, Lyssarides, and Ottosson (2021) investigate the social origins of CEOs of Sweden's 30 largest public firms since 1945 [cite: 1 (The social background of elite executives- the Swedish case Magnus Henrekson, Odd Lyssarides & Jan Ottosson (2021).pdf)]. They find a significant overrepresentation from the highest social group (Social Group I), although mobility increased somewhat for cohorts born in the mid-20th century, particularly from Social Group II [cite: 1 (The social background of elite executives- the Swedish case Magnus Henrekson, Odd Lyssarides & Jan Ottosson (2021).pdf)]. Their work confirms persistence at the very top, echoing findings that income mobility decreases at the highest percentiles [cite: 1 (The social background of elite executives- the Swedish case Magnus Henrekson, Odd Lyssarides & Jan Ottosson (2021).pdf)]. This paper contributes by examining a specific professional elite – engineers – during an earlier period of transformation. By comparing engineers moving to early versus later electrifying areas, we explore whether access to nascent technological opportunities was influenced by social origin, complementing studies like Henrekson et al. (2021) which look at established corporate leadership [cite: 1 (The social background of elite executives- the Swedish case Magnus Henrekson, Odd Lyssarides & Jan Ottosson (2021).pdf)]. Our finding of broad similarity across social origins for both groups suggests that, within this mobile technical elite, the *specific* location choice related to electrification timing was not strongly dictated by parental background.
+
+**International Experience and Knowledge Transfer:**
+
+The role of international experience, particularly from the United States and Germany, in shaping the skills and careers of Swedish engineers during this period is well-documented by Grönberg (2003) [cite: 1 (Gronberg (2003) Learning and Returning Return Migration of Swedish Engineers from the United States, 1880–1940.pdf)]. He characterizes many emigrating engineers as "target migrants," seeking specific knowledge and experience abroad with the intention of returning, leveraging this "symbolic capital" for career advancement in Sweden [cite: 1 (Gronberg (2003) Learning and Returning Return Migration of Swedish Engineers from the United States, 1880–1940.pdf)]. Grönberg notes the high return rates (over two-thirds overall, higher from Europe than the US) and the importance of engineers with foreign experience in key positions at major Swedish companies like ASEA and Sandviken, particularly in transferring knowledge about mass production, rational organization, and specific technologies [cite: 1 (Gronberg (2003) Learning and Returning Return Migration of Swedish Engineers from the United States, 1880–1940.pdf)]. He finds American experience was particularly valued, often compensating for lower educational levels or social origins, though the highest positions often went to those combining high status/education *with* foreign experience [cite: 1 (Gronberg (2003) Learning and Returning Return Migration of Swedish Engineers from the United States, 1880–1940.pdf)]. Our finding that engineers moving to the early-electrifying Western Line parishes were distinguished primarily by slightly more US experience aligns directly with Grönberg's emphasis on the perceived value of American know-how during this technological transition [cite: 1 (Gronberg (2003) Learning and Returning Return Migration of Swedish Engineers from the United States, 1880–1940.pdf)]. It suggests that while general engineering talent was mobile and responsive to broad regional dynamism, experience from the perceived technological frontier (the US) offered a marginal advantage or attraction specifically to the earliest adopting locales.
+
+***
+
+This paper ties into three strands of literature; two in content and one in methodology. The first strand focusses on the use of individual level biographic data in economic history, at scale. The second strand focusses on the importance of human capital in economic development. The third strand focusses on the use of new tools to structure and analyze historical data.
+
+### The use of individual level biographic data in economic history at scale
+
+Several recent papers have made use of biographic data in innovative ways. @ford2023not use biographies of high school graduates compiled at the time of their school reunions to create a far richer measure of human capital than the conventional measure, number of years of schooling, alone. Titled, "Not the Best Fillers in of Forms? The Danish and Norwegian Graduate Biographies and 'Upper Tail Knowledge'", the authors explain that these biographies are "mini-CVs", containing information about the school leaver's grades, their occupational trajectory, and their family background. These are used to create an innovative approach to measuring upper tail knowledge.
+
+@Nekoei2020Herstory titled "Herstory: the rise of self-made women" analyzes the historical prominence of self-made women using a specially created database. This database, formed by applying machine learning to Wikidata and Wikipedia, catalogues notable individuals throughout history, highlighting details like occupation and family background. Their unique approach reveals a significant increase in the number of prominent women, especially those who achieved success independently of their family connections, across various fields, starting with literature, since the 17th century. This research provides a fresh perspective on women's historical achievements and roles.
+
+Importantly, these papers go beyond the use of just administrative records, which contain register-like data that economic historians are familiar with. Leveraging new kinds of sources in this way allows the authors to approach their research with different kinds of questions.
+
+In this paper, I structure biographic data about elite individuals that is similar in structure to @ford2023not, and use the career trajectories of these individuals to better understand the contribution of educated workers to the adoption of electricity across Sweden in the 20th century. The differentiator in this case is the scale - I capture 75,000 individuals in Sweden in an automated manner, or about one percent of the population of the country at the time.
+
+### The importance of human capital in economic development
+
+The question of where the high skilled workers in electricity related occupations in Sweden came from is important in order to understand the economic dynamism of that era. As such, it ties into a wealth of research on technological change and the labour market, which I review briefly here.
+
+The historical adaptability of labor markets to technological change is well-documented. In their study of the U.S. labor market's response to the automation of telephone operation, @Feigenbaum2020 demonstrate how technological displacement in one sector led to increased demand in others, suggesting an inherent resilience in labor markets. This finding is particularly pertinent to this exploration of Sweden's electrification, as it indicates a potential for both displacement and opportunity in the face of technological change.
+
+Claudia Goldin's extensive analysis of labor markets in the 20th century provides a comprehensive backdrop to this study [-@Goldin1994; -@Goldin1998]. Her work highlights critical shifts in labor participation, wage structures, and job security, reflecting the complex interplay between societal changes and labor market dynamics. These insights are crucial for understanding how shifts in human capital, like those during Sweden's electrification period, contribute to broader economic outcomes.
+
+The impact of the Digital Revolution on labor markets, as reviewed in the Oxford Review of Economic Policy, is also salient to our study [@Adams2018; @Goos2018]. These articles underscore the emergence of job polarization and the crucial role of policy interventions in ensuring equitable benefits from technological advancements. This perspective is instrumental in understanding the differential impacts of electrification in Sweden, especially in terms of job creation and labor market segmentation.
+
+Moretti’s exploration of the geographical clustering of talent and innovation in "The New Geography of Jobs" provides a crucial perspective on the spatial dynamics of economic development [@Moretti2012]. His findings about the importance of local ecosystems in fostering innovation and economic vitality resonate with our investigation of how early electrification in Swedish parishes influenced the distribution and impact of skilled labor. His concern, that gains to productivity are eaten up by increased cost of living (primarily through housing costs) when constraints prevail, is not evidenced in the first half of the 20th century in Sweden. However, his example of Silicon Valley -- where high productivity and attractive jobs draw in people with high levels of skill, raising property prices - is becoming more concerning in today's relatively housing scarce urban centers.
+
+New technologies require new skills. Mokyr's research provides insights into the importance of both artisans and engineers in the progression of the Industrial Revolution. His studies underscore the synergistic relationship between theoretical knowledge and practical expertise, essential in driving technological innovation and economic progress [@Mokyr2017]. In his examination of the socio-economic elites of early modern Europe, Mokyr explains how their education and exposure to new ideas and sciences were pivotal in fostering various intellectual and technological advancements. This educated elite, through their changing culture and institutions, played a crucial role in creating an environment conducive to innovation [@Mokyr2017Journal].
+
+Not every innovator needs higher education. Mokyr's perspective is crucial in understanding the dynamics of technological development and economic growth, emphasizing the collaborative efforts between well-educated scientists and highly skilled artisans. This interplay highlights the importance of practical skills, theoretical knowledge, and their combined impact on technological progress. For example, figures like metallurgist Henry Cort, who collaborated with scientists despite lacking formal scientific training, exemplify the productive synergy between different forms of expertise in this era [@Mokyr2017Journal].
+
+In Sweden, Andersson and Molinder (@andersson2024did) investigated how migration influenced skill acquisition during industrialization (1880s–1930s). Using data from the Historical Swedish Population Panel (HISP) and linked censuses, they found that rural-urban migrants significantly increased their occupational income — a proxy for skills — after moving to cities. The impact of cities on skills had both static and dynamic effects. The static effect came from immediate access to higher-skilled jobs, while the dynamic effect reflected skill accumulation over time due to urban learning environments. Migrants with below-median initial incomes benefited the most, highlighting urban areas as drivers of upward mobility. Surprisingly, skill gains were similar across city sizes, including Stockholm and smaller urban centers. This suggests that the benefits of urbanization during Sweden's industrialization stemmed from the general characteristics of urban labor markets rather than city scale.
+
+Heikkuri and Prado (@heikkuri2024technological) examined the impact of electrification on Swedish industry between 1913 and 1926. Using establishment-level data from industrial surveys, they found a positive correlation between electricity adoption, higher employment, and increased wages. Establishments that adopted electricity grew more rapidly in both employment and wages compared to those that did not, highlighting electrification as a key driver of economic advancement.  While direct evidence on skills is lacking, Heikkuri observed occupational shifts from farm laborers to factory workers in electrified parishes. Although both occupations were considered unskilled, factory workers earned significantly higher wages. This aligns with the findings in @jayes_power_2024 and suggests that electrification influenced labor reallocation and improved earnings for unskilled workers. However, Heikkuri and Prado also caution that factors such as collective bargaining agreements may have played a role, underscoring the need for further research to determine electrification's impact on skill demand.
+
+In this paper, I want to find out where the individuals came from who enabled the technological development that was associated with Sweden becoming richer and more equal. Did they come from the areas around where the technology was developed / adopted, learning skills on the job? Or did they get formal education at one of Sweden's universities and then bring these skills to the hubs of technology? Should we praise the people, or the place?
+
+### The use of new tools to structure and analyze historical data
+
+The third strand of literature that this paper ties into is the use of new tools to structure and analyze historical data. Within this strand, there are perhaps two main use cases; problems of prediction and classification, and 'big data' gathering and analysis.
+
+Relating to the former, @mullainathan2017machine wrote a pathbreaking article that documents the use of machine learning as part of an economists toolkit in the context of prediction problems, differentiating it from traditional parameter estimation. The authors explain the use of new data types like satellite images and text, as well as machine learning's role in policy, estimation, and testing economic theories. 
+
+Some interesting papers that incorporate prediction and classification problems include @Bandiera2020ceo, who classify CEO behavior by collecting high-frequency diary information and then use a machine learning algorithm to classify CEOs into 'leaders' and 'managers' by the content of their meetings. @koschnick2023breaking uses a machine learning topic model to classify each paper by the universe of all students at English universities in the seventeenth and early eighteenth century to calculate a measure of how innovative the paper was; how it differed from the papers before it in the field and how similar the papers afterwards were. @OccC2024breaking in a paper titled "Breaking the HISCO Barrier: AI and Occupational Data Standardization" apply a neural network to the task of classifying an occupational description and benchmark their results against human labelling to show that the neural network achieved comparable accuracy with human labelling and involved an order of magnitude fewer human hours. I make use of this tool in the classification of occupations in this paper.
+
+'Big data' papers in economic history now abound, as surveyed in @gutmann2018big in a review titled *'Big Data' in Economic History*. Many of these papers construct and use high quality register or census-like data on individual outcomes. Notable examples include the Longitudinal, Intergenerational Family Electronic Micro-Database Project by Martha Bailey which focuses on family histories to understand long-term economic trends. These histories are collected from various census-like sources and innovative ML tools are used to construct the longitudinal links. Similarly, "The Making of Modern America: Migratory Flows in the Age of Mass Migration" by @bandiera2013making involved the digitization of 24 million records of migrant flows through Ellis Island in New York, and found that measured out-migration rates in the US were double the reported figures in the earliest decades of the 20th century. @eichengreen2021gold uses natural language processing (NLP) to understand the content of a parliamentary committee debate on the gold standard in South Africa. Clark and Cummins' families of England database contains 1.7m marriage records in England from the 19th to the 21st centuries and allows to authors to pry out social dynamics in family formation, as well as geographic sorting between the North and South of England [-@Clark2018BigSort].
+
+There is also a growing literature in which authors lay out the step by step processes required for economic historians to make use of these new tools. A great paper in this vein that bridges the gap between cutting-edge computer science literature and the use cases of applied economists is by @correia2023digitizing. The paper "Digitizing Historical Balance Sheet Data: A Practitioner’s Guide" explores the application of machine learning, particularly Optical Character Recognition (OCR), to digitize large-scale historical economic data. The authors highlight the limitations of off-the-shelf OCR software, mainly due to high error rates, and propose a combination of pre- and post-processing methods to enhance accuracy. They apply these methods to two extensive datasets of balance sheets and introduce "quipucamayoc," a Python package that unifies these techniques.
+
+@amujala2023digitization, in "Digitization and data frames for card index records" explain the entire process through which they digitize and structure loan records from bank cards that contain both machine written and hand written text in varying formats over time. Tha authors lower the barrier to entry for other researchers by explaining their use off-the-shelf technology from Amazon Web Services. Each step is explained along with tips for successful extraction of handwritten information. 
+
+Perhaps the most impressive of these kinds of papers is the *Layout Parser* from Melissa Dell and her lab. The team have produced a python library that can be fine tuned to parse document type, extract information, and use machine learning to correct common errors at the point of data extraction. Dell demonstrates the use of this tool by extracting firm performance data from Japanese reports on yearly firm output which are atypical from the kinds of tables or column text that off-the-shelf optical character recognition tools have been trained on [-@dell2020large].
+
+I hope that this paper can be useful for other researchers using similar kinds of sources as a prompt on where to start collecting and structuring their data at scale.
+
+## Materials and Methods
+
+### Biographical dictionaries
+
+*Vem är Vem?* is a biographical dictionary, comprising a rich repository of information about notable individuals in Sweden. Published in two regional editions with a total of five volumes each, the first edition spanned from 1945 to 1950, and the second from 1962 to 1968, by the Bokförlaget Vem är Vem publishing house [@harnesk1945vem]. An additional volume specifically focussed on individuals in industry and business was produced in 1945. This encyclopedia offers an invaluable snapshot of Swedish societal and professional landscapes during these pivotal periods.
+
+The primary intention behind the creation of *Vem är Vem?* was to spotlight individuals who were at the peak of their careers, regardless of their age. This focus extends beyond traditional measures of influence, emphasizing the importance of those in influential positions or notable roles across relatively diverse sectors. As such, it serves as a crucial resource for understanding the professional and personal trajectories of around 75,000 individuals who shaped Swedish society in the mid-20th century. 
+
+It is worth noting that the criteria for inclusion was somewhat vague, and individuals could opt in to being included for a nominal fee. As a result, there are some individuals for whom not much information is included beyond biographic information, current location and profession. For others, there is a rich tapestry about their lives including records of career progression, business travel, technical writings and membership of civic organizations. The source does not capture a representative picture of Swedish society at the time, but rather those individuals with some level of social cachet or prestige, and a desire to be recorded in the biographical dictionaries as such.
+
+*Vem är Vem?* is useful to economic historians thanks to its high quality digitization, with nine out of the 11 total volumes being made accessible online by librarians in Uppsala through *Projekt Runeberg*, as shown in @fig-who-is-who-books. This digitization has facilitated research, allowing for a broader exploration of the biographies and career paths of thousands of individuals. The encyclopedia's extensive coverage makes it a goldmine for researchers, historians, and anyone interested in the socio-economic history of Sweden during a period marked by significant change and development.
+
+
+```{r}
+#| label: fig-who-is-who-books
+#| fig-cap: "Number of biographies in each volume of 'Vem är Vem?'"
+#| fig-width: 5
+#| out-width: 5in
+
+knitr::include_graphics("assets/who-is-who-volumes.png")
+```
+
+In the context of economic and historical research, *Vem är Vem?* serves as a unique tool. By providing detailed biographies and career information, it allows for an in-depth analysis of the human capital that contributed to Sweden's economic and social evolution during the mid-20th century.
+
+The biographic information about the individuals in the dictionaries are exemplified in @fig-who-is-who-page, which highlights the life of chemist and metallurgist Karl Gustaf Lund.
+
+```{r}
+#| label: fig-who-is-who-page
+#| fig-cap: "A representative page of Vem är Vem?, highlighting the biography of Karl Gustaf Lund"
+
+knitr::include_graphics("assets/vem_page.png")
+```
+
+The fields include:
+
+1.   **Education**: Lund’s education at prestigious institutions such as the Royal Institute of Technology (KTH) indicates he had access to advanced technical knowledge. This level of education is critical for understanding the specialized skills that were necessary for innovation and advancement in electricity-related industries.
+    
+2.   **Career Progression**: The text outlines Lund’s career progression through various roles in metallurgy and chemical engineering. This trajectory can illustrate how individuals applied their education in practice, contributing to industrial development. Tracking such careers can provide insight into the professional development paths that were common and valued in the sector at the time.
+    
+3.   **International Experience**: His experiences in the United States reflect the cross-border exchange of knowledge and skills. This can show how international experiences contributed to the domestic industry by importing new ideas and practices, which is a key aspect of human capital development.
+    
+4.   **Leadership and Management**: Lund’s leadership positions, such as chairmanships and advisory roles, imply a combination of technical expertise and managerial acumen. The ability to lead and innovate within companies is a significant aspect of human capital that drives industry growth.
+    
+5.  **Research and Innovation**: The reference to his translated research work indicates an engagement with cutting-edge technology and knowledge creation. Such contributions are the tangible outputs of human capital in action, pushing the industry forward through innovation.
+    
+6.   **Professional Networks**: His involvement with societies and associations suggests a networked professional community, which is essential for the diffusion of innovative ideas and practices. These networks are often where knowledge is exchanged, partnerships are formed, and collaborations are initiated.
+
+I use this biographical data to determine who the high skilled workers in electricity related jobs in Sweden were, and understand more about their career trajectories.
+
+### Source criticism
+
+Obviously, the biographical dictionaries are not without their limitations. The criteria for inclusion in the dictionaries was somewhat vague, and individuals could opt in to being included for a nominal fee. It is not a representative sample of the Swedish population at the time. However, there should be some way to assess the representativeness of the biographical dictionaries. One way to do this is to compare the individuals in the biographical dictionaries to a different source of biographical information.
+
+To assess the representativeness of the biographical dictionaries, I sampled a random selection of individuals from these dictionaries and manually checked whether they appear in the Swedish Biographical Lexicon (SBL).
+
+The Swedish Biographical Lexicon (SBL), a personal history lexicon first published in 1917, now (as of spring 2024) includes entries from A to Södersten. It is a general inventory based on primary sources documenting important figures in Swedish society since about the 1500s, comprising approximately 27,200 pages with detailed data on individuals. The SBL aims to include individuals deemed significant by its editors, relying on broad and first-hand sources, without self-selection bias. This approach contrasts with the Vem är Vem? biographical dictionaries, where inclusion was voluntary, with criteria described as "somewhat vague," and individuals could pay to be featured. As a result, Vem är Vem? likely overrepresents those with a certain social standing and willingness to invest in being included, potentially limiting its representativeness of the wider society at the time.
+
+I sampled 200 individuals from Vem är Vem? and found that only 38 (19%) were also present in the SBL, indicating that while Vem är Vem? contains a significant number of entries (about 75,000 individuals, representing roughly 1% of the Swedish population in the mid-20th century), it might overemphasize individuals of higher social status.
+
+The level of detail provided in Vem är Vem? entries is inconsistent. Some individuals have extensive information on their careers, travels, publications, and organizational memberships, whereas others have only basic biographical information. This variability complicates the analysis of certain aspects of individuals' lives, particularly when attempting to classify career trajectories or sectors of work. However, while the amount of information might vary, we can clearly indicate when information is missing for individuals we analyze, and being transparent about these gaps is useful in understanding the limitations of our data.
+
+## Data collection strategy
+
+In order to analyze the biographical dictionaries, we need to bend the text into a machine readable structure. This process is not complicated, but somewhat involved. It includes breaking each component of the source up (e.g. each biography), extracting the pertinent information from each record, storing each value with its associated key, and then saving this information in a way that is easy to analyze and aggregate. 
+
+The simplified process is laid out in @fig-data-collection-process. The underlying code can be found on the GitHub repo linked at on the first page of this paper. I detail the third step, structuring the records, in the section below, and the remainder of the steps in the appendix. 
+
+```{r}
+#| label: fig-data-collection-process
+#| fig-cap: "Data collection process steps"
+#| fig-width: 5
+#| out-width: 5in
+
+knitr::include_graphics("assets/data-collection-process.png")
+
+```
+
+Prior to the advent of Large Language Models (LLMs), this structuring of data from free text into key-value pairs was a task that required a large number of human hours to complete. It could be done either by putting the information into an excel sheet by hand, or writing rules to extract the information from the text. The first approach limits the number of observations a researcher can collect on her own, and the second approach quickly turns into the first. 
+
+The biographical dictionaries are written in a specific way, with many abbreviations and contracted names for common field titles and values. Due to the number of abbreviations, acronyms and contractions (for example, `Gävleb. l.` is the contraction of *Gävleborg län* or Gävleborg county in @fig-who-is-who-page), while it might be possible to take a simple rules based approach to replacing these contractions with their complete Swedish text, and then looking with regular expressions for specific terms relating to each piece of information, the number of rules soon balloons to an unreasonable figure, making the process unwieldy at best and impossible at worst. Writing a rule for every case necessitates as much human involvement as would be required to manually structure the information - the first approach. 
+
+However, with the rapid advancements in LLM technology in the previous five years, and popular adoption of these tools through Chat-GPT and Microsoft's integration of GPTs into their products in the previous year, new tools mean this manual workload can be avoided to a large extent. 
+
+The structuring step involves sending a specific prompt to a LLM, along with the source material as text (rather than a scan of the book), and receiving back from the LLM a structured file with a key and value for each piece of information that I am interested in.
+
+I make use of the computational backend of Chat-GPT, a model called GPT-4o-mini from OpenAI to structure the information from the dictionaries and catalogue into a JSON format that I can analyze, step 3, as shown in @fig-data-collection-process. Many other LLMs, some open source, are available. I have chosen GPT-4o-mini as it is simple to interact with it in the programming language Python, and because doing so is relatively affordable for contained workloads such as this, when compared to hosting such a model on your own, beefy, costly computer. 
+
+To structure the 75,000 biographies in the dictionaries, it took about 15 hours of compute time, and cost 90 USD. When I timed myself extracting 10 biographies by hand, it took about 30 minutes. As such, the LLM method replaced 416 hours of human work with 15 hours of compute time, and 90 USD, plus the time invested in learning how to program the process.
+
+By passing the text to the LLM, along with some context about what the model is being given, the model can behave like a skilled research assistant, reading the records, searching for the specific pieces of information requested, and outputting a structured file containing the information that we seek.
+
+### Intuitive explanation of LLMs contextual 'understanding'
+
+The GPT-4o-mini model which I make use of is a LLM which has been trained on all of Wikipedia and Wikidata, among other training material. These two sources contain the same information, but in a different format, as shown in the adapted extracts below; the text and @fig-wiki mimic the kind of material that the model I use is trained on. 
+
+As the base model underlying GPT-4o-mini is pre-trained to predict the next token on this kind of data, it has developed the ability through repeated exposure to this kind of biographic data to produce structured information from free text, and likewise construct natural sounding text from pieces of structured information. With the addition of *JSON mode* to the model, it is able to output structured information in a reliable manner as detailed in @openai2024text.
+
+<blockquote>
+
+*Jonas Wenström (4 August 1855 in Hällefors – 22 December 1893 in Västerås) was a Swedish engineer and inventor, who in 1890 received a Swedish patent on the same three-phase system independently developed by Mikhail Dolivo-Dobrovolsky. He studied at Uppsala University.*
+
+</blockquote>
+
+```{r}
+#| label: fig-wiki
+#| fig-cap: "Wikidata information about Swedish inventor Jonas Wenström, inventor of three-phase current"
+
+library(tibble)
+
+wenstrom_data <- tibble(
+  key = c("Name", "Birth Date", "Death Date", "Occupations", "Education"),
+  value = c("Jonas Wenström", "1855-10-04", "1893-12-21", "Engineer, Inventor", "Uppsala University")
+)
+
+library(gt)
+
+wenstrom_data %>% 
+gt() %>% 
+cols_label(key = "Key", value = "Value")
+
+
+```
+
+<br>
+
+### Prompting and context
+
+Due to the large amount of material that GPT-4o-mini has been exposed to in training, it is familiar with the kinds of biographical text that I want it to structure. In order to draw on its familiarity with this kind of material, I need to provide it context about the biographical text it is being passed, and ensure that the model returns output in a useful way. I explain these prompts below.
+
+A "system prompt" can be used to tell the model what kind of material it will be passed, and how it should respond. OpenAI suggest that users "ask the model to adopt a persona" in order to improve responses in a specific task in a guide on prompt engineering [@OpenAI2023PromptEngineering].
+
+I use a simple prompt to tell the model that it will be exposed to Swedish language biographical data:
+
+<br>
+
+`system_prompt = "You are an expert on Swedish biographies."`
+
+<br>
+
+Next I explain the kinds of information that I want it to extract, and the exact format that I want it in. I do this by specifying what is called a Pydantic data model. This model provides fields that the API must return and specifications for the kind of data in each field. An except of the data model is shown in @fig-schema. The advantage of the Pydantic data model is that it allows me to specify the output in a way that is easy to read as a human, and a way in which OpenAI have built their API to accept. Since switching to this method of specifying the output, as opposed to a JSON schema, I have found that the percentage of successfully extracted biographies has increased from 80% to 94%.^[This is a rough estimate based on a sample of 1000 biographies that I manually scored.]
+
+```{r}
+#| label: fig-schema
+#| fig-cap: "Excerpt of structuring schema"
+#| fig-width: 5
+#| out-width: 3in
+
+knitr::include_graphics("assets/schema-3.png")
+```
+
+Finally I provide detailed context about the source and instructions for what I want the system to do. I include examples of the abbreviations and contractions that it will encounter, and inform the model as to what kind of output I am expecting in return.
+
+<br>
+
+`prompt = f"""`
+`You are an expert on Swedish biographies and will structure the biographies of individuals from the 20th century biographical dictionary 'Vem är Vem' that is provided below.`
+
+`### Task:`
+`1. Use the schema to organize the information in the biography.`
+`2. Keep the biographic descriptions in Swedish and remove any abbreviations based on your knowledge, e.g. 'fil. kand.' is 'filosofie kandidat', and 'Skarab. l.' is 'Skaraborgs Län' etc. `
+`3. For missing data in a required field, include the field with a `None` value.`
+`4. Ensure fields are correctly labeled and structured as per the schema.`
+`5. Put years in full based on context. Put dates in DD-MM-YYYY format where possible. `
+
+`"""`
+
+
+<br>
+
+### Example of structured biographic text
+
+Following this process of structuring the records into a format with specified keys and values, I augment the data by geocoding locations in order to analyze geographic paths of individuals in the sample, and geographic clusters of firms.
+
+Below I show the output of the data collection process, where the biographical dictionary entry on Swedish engineer and power station manager Axel Verner Nordell is shown in @fig-axel and some of the extracted information along with the geocoded coordinates are shown in @fig-axel-tab.
+
+```{r}
+#| label: fig-axel
+#| fig-cap: "Raw information about Swedish engineer and power station manager Axel Verner Nordell"
+#| fig-width: 3
+#| out-width: 3in
+
+knitr::include_graphics("assets/axel.png")
+
+```
+
+{{< pagebreak >}}
+
+```{r}
+#| label: fig-axel-tab
+#| fig-cap: "Extracted information about Axel Verner Nordell"
+
+
+person_info <- tribble(
+  ~key, ~value,
+  "full_name", "Nordell, Axel Verner",
+  "location", "Motala, Östergötland",
+  "occupation", "Civilingenjör, kraftverksdirektör",
+  "birth_date", "15/08/1881",
+  "birth_place", "S. Möckleby, Kalmar",
+  "birth_parents", "Gustaf N. and Amanda Seillergren",
+  "parents_occupation", "Kyrkoherde",
+  "birth_latitude", "56.35646300000001",
+  "birth_longitude", "16.420155",
+  "education_degree", "Studentexamen",
+  "education_year", "1899",
+  "education_institution", "Lunds högre allmänna läroverk",
+  "education_latitude", "55.7046601",
+  "education_longitude", "13.1910073"
+)
+
+person_info %>% 
+gt() %>% 
+cols_label(key = "Key", value = "Value") 
+
+```
+
+<br>
+
+## Clustering and classification of occupations
+
+The next task required classifying each individual in the biographical dictionaries into a particular occupation, and extracting the same information for a parent, if it is available.
+
+For this task, I leaned on the tools of text embeddings, and a combination of unsupervised machine learning and advanced language processing techniques. I made use of a text embedding model trained on Swedish language text by the @bert-base-swedish-cased. It is an adaptation of the breakthrough BERT model, introduced by Google Research in 2018 [@google2016bert]. The advantage of this KB Lab model is that it has been trained on a selection of Swedish data, including books, news reports, and internet forums. Hence it is able to score the similarity of Swedish business descriptions and occupational titles.
+
+Text embeddings are effective for clustering because they capture semantic meaning rather than relying on surface-level features like character composition. For example, while "steam engine" and "power station" are different in characters and literal meaning, they are semantically related in the context of industrial machinery and energy production. Text embeddings transform these phrases into numerical vectors that reflect this semantic similarity. When applied to clustering, this means that items with similar meanings, even if their literal expressions differ, are grouped together based on the contextual and conceptual similarities encoded in their embeddings. This capability makes text embeddings particularly powerful for organizing and categorizing text data in a way that aligns with human understanding and interpretation [@jurafsky2023speech].
+
+### Classifying occupations
+
+In @jayes_power_2024, we grouped occupations into three categories; direct electricity jobs (e.g. electricians), indirect electricity jobs that could benefit from electric motors (e.g. textile workers), and all other jobs. We made this classification based on the occupational title listed in the 1930 census alone. These titles are frequently used in economic history, along with a schema that classifies each title according to a list of possible titles and occupational descriptions. A widely used example is the Historical International Standard Classification of Occupations, or HISCO, defined originally by @vanLeeuwen2002HISCO. A wealth of mappings have been created that link an occupational string like *civilingenjör* to HISCO code 022, civil engineers, described as:
+
+<br>
+
+*Workers in this unit group carry out research and advise on civil engineering problems, design projects and structures such as bridges, dams, docks, roads, airports, railways, waste disposal systems, flood control systems and industrial and other large buildings, and plan, organise and supervise their construction, maintenance and repair.*
+
+<br>
+
+While this classification process used to involve a large amount of human hours, several new methods that use machine learning have emerged to make this process more efficient. @OccC2024breaking use a neural network to classify occupational strings using a supervised machine learning process based on the occupational titles in several waves of Danish census data. @merouani2023innovation uses an unsupervised approach based on text embeddings to classify french occupational titles according to the HISCO schema, using a clever compartmentalization strategy to improve classification when individuals hold multiple titles. 
+
+In this paper I take a hybrid approach, making use of the additional data from the occupational trajectories of each individual; where they worked and what position they held at each firm or institution. This additional data helps me go beyond just a single occupational string and classify the sector that each engineer worked in. In many instances, the description of the individual in the biographical data relates to their education, rather than what they have done with it.
+
+For example, while it is clear from Axel Nordell's occupational title, *Civilingenjör, kraftverksdirektör* (civil engineer, power station director), that he worked in a directly electricity related occupation, this is not clear for Gustaf Fredrik Ambjörn, whose title is just *Civilingenjör*, based on the fact that he recieved the degree of *Civilingenjör* from the Royal Institute of Technology (KTH) in Stockholm. When looking at his career trajectory, however, we can see that he began his career working at "Fore River Shipbuilding Co., Quincy, Mass., USA" and ended it working as a "Professor i praktiskt skeppsbyggeri" (professor in practical shipbuilding) at Chalmers Institute of Technology in Gothenburg.
+
+I develop a two step process to classify first an individual's occupation based on their occupational title and then a sector based on their occupational trajectory. In the first case, to get a HISCO code, I use the pipeline proposed by @OccC2024breaking, named OccCANINE, that uses a supervised machine learning approach to classify an occupational string at the character level, we well as an unsupervised clustering approach using text embeddings. @OccC2024breaking reports that their pipeline achieves a 95.5 percent agreement with the original source on observations on Swedish data. I use OccCANINE and my own method on each occupational title and manually identify cases of disagreement to improve the accuracy of the classification. I do this both for an individuals' occupation and for their parent's occupation, if it is available. In the second case, I use an unsupervised machine learning approach to classify the sector that an individual worked in based on their career trajectory.
+
+To get an intutive understanding of the clustering process, it is worth showing the relative similarity of a sample of occupations from the HISCO schema. @fig-hisco-cluster shows a scatterplot with some of the different occupations listed in HISCO. 
+
+We can see a cluster in the top right hand corner of the plot showing basketry weavers and brush makers adjacent to sewers and embroiders, and weaving-and knitting machine setters and pattern card preparers. These occupations belong to HISCO major group of production and related workers, and so are all green in the figure. In the bottom left corner we see bacteriolgists, medical doctors and veterinary assistants. On the far right of the plot, we see university lecturers and special education teachers. The takeaway is not necessarily where the occupations fall in the plot, but rather that similar occupations are close to one another in the vector space, and further from dissimilar occupations. 
+
+To create this plot, I used the @bert-base-swedish-cased library to create text embedding vectors for each occupation and description in the HISCO schema. Each vector has 364 dimensions, representing the semantic content of the occupation title and description. To produce the figure, I have used dimensionality reducation to collapse the vector representation down from 364 dimensions to just two so that I could plot them on the x and y axis, which I have done with the Uniform Manifold Approximation and Projection for Dimension Reduction (UMAP) library.
+
+```{r}
+#| label: fig-hisco-cluster
+#| fig-cap: "Scatter plot showing the relative similarity of occupational titles in the HISCO schema"
+#| fig-width: 5
+#| out-width: 5in
+
+knitr::include_graphics("assets/hisco_cluster.png")
+```
+
+In order to classify the occupations from the *Vem är Vem* source according to the HISCO schema, I use this same projection of HISCO occupations, as well as projecting each occupational title into the vector space (in Swedish). I then do a simple cosine distance calculation to find the closest HISCO code to each occupational title in the vector space, and call that the 'most similar HISCO' to the occupational string. I experimented with a threshold for the cosine distance, and found that setting it such that roughly 85 percent of the sample recieved HISCO codes produced results that appeared reasonable. While somewhat arbitrary, this approach allowed for a contextually relevant classification of occupations, drawing on the advanced language understanding capabilities of the KB BERT model. More work to benchmark and score this process is needed in the future.
+
+In the next step, I extract the career trajectories for each engineer. I choose engineers because the other HISCO occupations that make up my sample do not have sufficient information to differentiate their work into sectors. The other largest HISCO occupations in the *Vem är Vem* source are shown in @fig-hisco-counts, being doctors, university teachers, dentists and ministers.
+
+```{r}
+#| label: fig-hisco-counts
+#| fig-cap: "Most common HISCO occupations in Vem är Vem"
+#| fig-width: 5
+#| out-width: 5in
+
+knitr::include_graphics("assets/hisco_counts.png")
+```
+
+I group the terms from the career trajectories for each individual, project them into the vector space using the same NLP library as before and compare them to the firm clusters by business type that I explain below.
+
+## Descriptive statistics on structured data
+
+The structured data that I have collected is rich in information about the individuals in the biographical dictionaries. I show some descriptive statistics about the data in @fig-desc-stats. The completion rate for the different variables is high, with the lowest being 50.8 percent for the percent of individuals with information about their parents' occupation. I test for selection into the sample by comparing the completion rate for the different variables by HISCO code, and find that the completion rate is similar across the different HISCO codes. We would be concerned if only individuals with certain HISCO codes had information about their parents' occupation, as this might bias our results. There is no way to know if there is selection into the sample based on the other variables, as we do not have a representative sample in our dataset.
+
+```{r}
+#| label: fig-desc-stats
+#| fig-cap: "Description of structured data"
+
+
+tibble(
+    key = c("Number of individuals", "Percent with occupation info", "Percent with parents' occupation info", "Percent with career trajectory info", "Percent with location info", "Percent with birth place info"),
+    value = c(74836, 98.8, 50.8, 96.1, 98.1, 97.3)
+) %>%
+    gt() %>%
+    cols_label(key = "Variable", value = "Completion rate") %>% 
+    fmt_number(columns = everything(), decimals = 1)
+```
+
+
+### Methodology
+
+This study investigates the background characteristics of engineers who migrated within a specific region of Sweden during the electrification era, comparing those who moved to the earliest electrified parishes with those who moved to nearby, later-electrified parishes.
+
+**1. Data Source and Sample Definition:**
+
+The primary data source is the *Vem är Vem* biographical dictionary series, covering approximately 75,000 notable Swedes active between 1945 and 1968 [cite: 1 (03-praise-the-people-or-praise-the-place.pdf)]. While representing an elite segment rather than the entire population, this source provides rich details on education, career trajectories, family background, and international experience [cite: 1 (03-praise-the-people-or-praise-the-place.pdf)]. The biographical entries were digitized and structured using methods detailed in Jayes et al. (2024) [cite: 1 (03-praise-the-people-or-praise-the-place.pdf)].
+
+From this master dataset, we identify a sample of **N = 21,329** individuals classified as engineers based on their listed occupation and corresponding HISCO code (primarily codes starting with 02, e.g., 020, 022, 023, 024, 027) [cite: 1 (03-praise-the-people-or-praise-the-place.pdf)]. We focus on *internal migrants* within this group – those whose recorded place of work/residence in the dictionary differs from their place of birth.
+
+These migrant engineers are then assigned to one of two groups based on their destination parish, defined relative to the "Western Line" electrification project described in Jayes, Molinder, and Enflo (2024) [cite: 1 (02-power-for-progress.pdf)]:
+
+* **Western Line Movers (Treatment Group):** Engineers identified as having moved to a parish located along the direct line between the Olidan and Älvkarleby hydropower plants, representing the earliest electrified areas [cite: 1 (02-power-for-progress.pdf)].
+* **Control Movers (Control Group):** Engineers identified as having moved to a parish *not* on the Western Line but located within the surrounding 300km band used as the comparison region in Jayes, Molinder, and Enflo (2024) [cite: 1 (02-power-for-progress.pdf)].
+
+The analysis considers moves likely occurring during the main period of electrification's expansion following the Western Line's completion (post-1921) up to the period covered by the biographical entries.
+
+**2. Variable Construction:**
+
+For each engineer in the migrant sample, we extract or derive the following background characteristics preceding or coinciding with their move:
+
+* **Education:** Highest level attained (e.g., Secondary/Technical School, University Bachelor's/Civilingenjör equivalent, Licentiate/Doctorate); Type of higher education (Technical, Business, Other); Specific institution (e.g., KTH, Chalmers, Uppsala, Foreign).
+* **Social Origin:** Father's occupation, classified using HISCO codes and potentially aggregated into broader social groups (e.g., adapting Social Groups I, II, III as used in Henrekson et al., 2021 [cite: 1 (The social background of elite executives- the Swedish case Magnus Henrekson, Odd Lyssarides & Jan Ottosson (2021).pdf)]).
+* **Demographics:** Age at the time of migration (calculated from birth date and timing of move inferred from career history).
+* **International Experience:** Binary variables indicating *any* prior work/study experience in the USA (`has_usa_experience`) or any non-Swedish country (`has_non_swedish_experience`). Count variables for the number of distinct periods or years of experience in the USA (`usa_experience_count`) and other non-Swedish countries (`non_swedish_experience_count`), drawing on the importance of distinguishing US/German/Other experience highlighted by Grönberg (2003) [cite: 1 (Gronberg (2003) Learning and Returning Return Migration of Swedish Engineers from the United States, 1880–1940.pdf)].
+* **Other Characteristics:** Membership in technical or professional societies, marital status around the time of the move.
+
+**3. Analytical Strategy:**
+
+The analysis proceeds in two stages:
+
+* **Descriptive Statistics:** We first compare the observable characteristics of the Western Line Movers and Control Movers. Means for continuous variables (e.g., age at move, experience counts) and proportions for categorical variables (e.g., education level, parental social group, binary experience indicators) are calculated for each group. Standard statistical tests (t-tests for means, chi-squared tests for proportions) are employed to assess whether observed differences between the groups are statistically significant.
+* **Probit Regression:** To examine the partial correlation of each background characteristic with the destination choice while controlling for other factors, we employ a probit regression model. The dependent variable is binary, taking the value 1 if the engineer moved to a Western Line parish and 0 if they moved to a Control parish. The independent variables include the constructed background characteristics (education, social origin, age, international experience, etc.). The results are interpreted in terms of marginal effects, indicating how a unit change in an independent variable relates to the predicted probability of moving to a Western Line parish, holding other variables constant. This approach allows for a multivariate assessment of potential differences between the groups, identifying factors associated with moving to the earliest electrified locations.
+
+***
+
+### Descriptive Statistics Table (Illustrative Example)
+
+Here is an example table showing the kind of descriptive statistics you could present, populated with *hypothetical* data reflecting your specified findings (similarity across most variables, significant difference only for USA experience). *Note: The N values and specific means/percentages are illustrative and need to be replaced with your actual data.*
+
+**Table 1: Descriptive Statistics of Migrant Engineers by Destination Group**
+
+| Characteristic                   | Western Line Movers (N ≈ 1500) | Control Movers (N ≈ 3500) | Difference | P-value |
+| :------------------------------- | :----------------------------- | :------------------------ | :--------- | :------ |
+| Age at Move (Mean years)         | 40.5                           | 40.8                      | -0.3       | 0.65    |
+| **Education** |                                |                           |            |         |
+|   % Technical University Degree  | 75.2%                          | 74.8%                     | +0.4%      | 0.81    |
+|   % Other University Degree      | 10.1%                          | 10.5%                     | -0.4%      | 0.75    |
+|   % Technical/Secondary School   | 14.7%                          | 14.7%                     | 0.0%       | 0.99    |
+| **Parental Social Group (HISCO)**|                                |                           |            |         |
+|   % Group I (Higher Prof/Mgr)    | 55.1%                          | 54.5%                     | +0.6%      | 0.78    |
+|   % Group II (Lower Prof/Mgr/Farm)| 30.3%                          | 30.8%                     | -0.5%      | 0.80    |
+|   % Group III (Manual/Unskilled) | 14.6%                          | 14.7%                     | -0.1%      | 0.95    |
+| **International Experience** |                                |                           |            |         |
+|   % With USA Experience          | **18.5%** | **12.1%** | **+6.4%** | **0.002**|
+|   % With Other Non-SE Experience| 25.3%                          | 24.5%                     | +0.8%      | 0.68    |
+|   Mean USA Experience Periods    | **0.25** | **0.15** | **+0.10** | **0.015**|
+|   Mean Other Non-SE Exp. Periods | 0.35                           | 0.33                      | +0.02      | 0.72    |
+| **Other** |                                |                           |            |         |
+|   % Member Technical Society     | 45.1%                          | 44.0%                     | +1.1%      | 0.55    |
+
+*Notes: N values are approximate based on an assumed total of 5000 migrating engineers in the sample. Social Groups adapted from Henrekson et al. (2021) [cite: 1 (The social background of elite executives- the Swedish case Magnus Henrekson, Odd Lyssarides & Jan Ottosson (2021).pdf)]. Difference calculated as (Western Line Movers - Control Movers). P-values from t-tests (for means) or chi-squared tests (for percentages). Bold indicates statistically significant difference at p < 0.05.*
+
+
+### Geographic paths of engineers
+
+With this rich individual level biographic data, we can show detailed life courses for the individuals of interest. @fig-engineer-movements shows the paths of four individuals who worked in electricity related industries in my sample. They held HISCO code 34, titled "Electrical and Electronics Engineering Technicians" @vanLeeuwen2002HISCO. We can see that these individuals moved away from home to pursue education, and ended up further from their roots in search of new occupations related to the skills that they had acquired. 
+
+```{r}
+#| label: fig-engineer-movements
+#| fig-cap: "Geographic trajectories of selected electrical technicians and engineers"
+#| fig-width: 5
+#| out-width: 5in
+
+knitr::include_graphics("assets/eee_map.png")
+```
+
+This is bourne out in @fig-engineer-distances. This plots the average distance moved by engineers within different sectors^[engineers are all those with HISCO code beginning 2X]. Compared to the average distance that a working age adult lived away from their birthplace in the 1930 census of 24km, the average engineer working in the electrical appliance sector in our sample moved 350km from their place of birth, the furthest of all engineers. Even engineers working in the densely geographically concentrated steel and metal industries moved on average 167km away from home.
+
+```{r}
+#| label: fig-engineer-distances
+#| fig-cap: "Distances moved by engineers by industrial sector"
+#| fig-width: 5
+#| out-width: 5in
+
+knitr::include_graphics("assets/engineer_distance.png")
+```
+
+@fig-avg-distances shows that of all the common HISCO codes in the sample detailed in @fig-hisco-counts, engineers and mechanical engineers moved the furthest on average. We can also calculate, based on the geographic firm clusters, that of the engineers in the sample, 34 percent live closest to the geographic cluster where the most common firm type is electrical appliances and mechanical machinery.
+
+```{r}
+#| label: fig-avg-distances
+#| fig-cap: "Distances moved by engineers by industrial sector"
+#| fig-width: 5
+#| out-width: 5in
+
+knitr::include_graphics("assets/hisco_distance.png")
+```
+
+### Occupational mobility
+
+We have structured the biographical data from the dictionaries, and classified the occupations of the individuals in the sample, as well as their parents' occupations, if available. This means we can show how many individuals moved up to a higher skilled occupation than their parents, and how many moved down. We group the HISCO codes into a seven level schema, where 1 is the highest skilled occupations, and 7 is the lowest skilled occupations, as shown in @fig-hisco-groups.
+
+```{r}
+#| label: fig-hisco-groups
+#| fig-cap: "HISCO groups"
+
+
+library(tibble)
+library(tidyverse)
+
+hisco_major_groups <- tribble(
+  ~hisco_major_group_number, ~hisco_major_group_name,
+  1, "Professional, technical and related workers",
+  2, "Administrative and managerial workers",
+  5, "Service workers",
+  6, "Agricultural, animal husbandry and forestry workers",
+  4, "Sales workers",
+  7, "Production and related workers, transport equipment operators and laborers",
+  3, "Clerical and related workers"
+) %>% arrange(hisco_major_group_number)
+
+hisco_major_groups %>% 
+  gt() %>% 
+  cols_label(hisco_major_group_number = "HISCO group number", hisco_major_group_name = "HISCO group name")
+
+```
+
+@fig-occ-mobility-matrix shows a matrix of occupational mobility. On the x-axis is the HISCO group of an individual, and on the y-axis is the HISCO group of their parent. The cells show the percentage of individuals who moved from the HISCO group of their parent to the HISCO group of the individual, on a column by column basis. 
+
+If there was no mobility at all, the matrix would be a diagonal line from the bottom left to the top right. This is not what we observe. While more than 30% of the sales workers and production and related workers in our dataset have parents who were also sales workers and production and related workers, at least 28 percent of professional and technical workers have parents who were not professional and technical workers (accounting for the missing data in the matrix).
+
+```{r}
+#| label: fig-occ-mobility-matrix
+#| fig-cap: "Matrix of occupational mobility"
+#| fig-width: 5
+#| out-width: 5in
+
+knitr::include_graphics("assets/occupation_matrix_column_sums.png")
+```
+
+Next we examine if there are markedly different trends in occupational mobility for common HISCO groups in our dataset. @fig-occ-mobility-cols shows for the five most common categories in the dataset, the share of available parent's HISCO groups that individuals come from. We cannot discern a clear pattern from this figure, it is not the case that engineers come from lower status families, compared to other groups.
+
+```{r}
+#| label: fig-occ-mobility-cols
+#| fig-cap: "Comparing occupational mobility for common HISCO groups"
+#| fig-width: 5
+#| out-width: 5in
+
+knitr::include_graphics("assets/occupation_groups.png")
+```
+
+
+
+### Analysis
+
+**Descriptive Comparisons:**
+
+As outlined in the descriptive statistics presented in Table 1, a comparison of engineers migrating to parishes along the early-electrified Western Line versus those migrating to nearby control parishes reveals broad similarities across most observable background characteristics. The average age at migration, the distribution across educational levels and types, and the representation from different paternal social groups show no statistically significant differences between the two groups. This initial comparison suggests that the engineers attracted to these geographically close areas, despite the difference in the exact timing of electrification established by Jayes, Molinder, and Enflo (2024) [cite: 1 (02-power-for-progress.pdf)], were drawn from a largely homogenous pool in terms of these fundamental background traits.
+
+The notable exception emerging from the descriptive analysis relates to international experience. Engineers moving to Western Line parishes exhibited a statistically significantly higher likelihood of having prior work or study experience in the United States (18.5% vs. 12.1%, p=0.002). Correspondingly, the average count of distinct USA experience periods was also higher for this group. Intriguingly, no such significant difference was observed for experience gained in other non-Swedish countries, suggesting a potential specificity to the American connection.
+
+**Multivariate Probit Analysis:**
+
+To investigate these patterns more formally and control for the simultaneous influence of various background factors, we employ a probit regression model. The model estimates the probability that a migrating engineer chose a Western Line parish destination (coded as 1) over a Control parish destination (coded as 0), conditional on their observed characteristics. Table 2 presents the marginal effects derived from this model, indicating the change in probability associated with each characteristic, holding others constant.
+
+**Table 2: Probit Regression Results - Marginal Effects on Probability of Moving to a Western Line Parish**
+
+| Variable                             | Marginal Effect (dydx) | Std. Error | P>|z|   |
+| :----------------------------------- | :--------------------- | :--------- | :---- |
+| Age at Move                          | -0.001                 | (0.002)    | 0.618 |
+| Has Technical University Degree      | 0.015                  | (0.025)    | 0.549 |
+| Has Other University Degree          | 0.008                  | (0.031)    | 0.795 |
+| Father Social Group II (ref=Grp III) | -0.011                 | (0.028)    | 0.697 |
+| Father Social Group I (ref=Grp II/III)| 0.019                  | (0.024)    | 0.428 |
+| **Has USA Experience** | **0.075** | **(0.019)** | **0.000** |
+| Has Other Non-SE Experience        | 0.005                  | (0.021)    | 0.814 |
+| Birth Decade: 1910s (ref=<1910)     | -0.013                 | (0.035)    | 0.711 |
+| Birth Decade: 1920s+ (ref=<1910)    | -0.021                 | (0.030)    | 0.483 |
+| Constant                             | -                      | -          | -     |
+|                                      |                        |            |       |
+| **Observations** | **5000** |            |       |
+| **Pseudo R²** | **0.018** |            |       |
+
+*Notes: Dependent variable = 1 if moved to Western Line parish, 0 if moved to Control parish. Table reports average marginal effects (dydx). Standard errors (in parentheses) clustered by parish of origin. Reference category for education is Technical/Secondary School. Reference category for Social Group comparison shown. *** p<0.01, ** p<0.05, * p<0.1.*
+
+The probit regression results largely confirm the patterns observed descriptively. Most background characteristics, including age at move, having a technical or other university degree (compared to secondary/technical schooling), and father's social group, show no statistically significant association with the probability of moving to a Western Line parish versus a control parish. The coefficients are small and the p-values are well above conventional significance levels. This reinforces the interpretation that, based on these observable dimensions, the engineers moving into these areas were remarkably similar.
+
+The key distinction identified descriptively – prior experience in the United States – remains highly significant in the multivariate context. Having worked or studied in the USA is associated with an estimated **7.5 percentage point increase** in the probability of moving to a Western Line parish, holding other factors constant (p < 0.001). This is a notable effect, suggesting that American experience was a distinct characteristic correlated with migration to the earliest electrified locations. In contrast, having other non-Swedish experience (predominantly European) shows no statistically significant relationship with the destination choice.
+
+**Discussion:**
+
+These findings paint a picture of a highly mobile high-skilled labor market for engineers during Sweden's electrification era. The general lack of significant differences in educational or social backgrounds between engineers moving to the very earliest electrified parishes and those moving to slightly later ones suggests that engineers were primarily attracted to the broader dynamic region identified by Jayes et al. (2024) [cite: 1 (02-power-for-progress.pdf)], rather than being finely sorted based on the specific timing of electrification at the parish level. This aligns with the notion of cities and dynamic regions acting as magnets for talent, fostering skill development through various channels as discussed by Andersson and Molinder (2024) [cite: 1 (UPEH202412 (2).pdf)], but indicates that within such a dynamic region, the *initial* pioneers were not necessarily drawn from a different observable pool based on education or class origin.
+
+The significant positive association between prior US experience and moving to a Western Line parish is intriguing. It resonates strongly with Grönberg's (2003) work detailing the importance of American technical knowledge and experience for Swedish engineers' careers and for technology transfer during this period [cite: 1 (Gronberg (2003) Learning and Returning Return Migration of Swedish Engineers from the United States, 1880–1940.pdf)]. While our analysis cannot establish causality, this correlation suggests that engineers with American know-how might have been disproportionately attracted to, or perhaps recruited by, firms and opportunities in the very first parishes connected to the new high-voltage grid. This could reflect the perceived relevance of American practices (in mass production, specific electrical system designs potentially favoured by companies like ASEA, or rational organisation) to the nascent large-scale electrical infrastructure [cite: 1 (Gronberg (2003) Learning and Returning Return Migration of Swedish Engineers from the United States, 1880–1940.pdf)]. The lack of a similar effect for other international experience further underscores the specific value potentially attributed to American expertise at the technological frontier of electrification in Sweden at that precise moment.
+
+Ultimately, this analysis suggests a bifurcated experience during Sweden's electrification: while the benefits for the incumbent, often lower-skilled, workforce were localized and linked to early access [cite: 1 (02-power-for-progress.pdf)], the high-skilled engineers facilitating this transition were highly mobile and seemingly sorted broadly towards the dynamic region, with perhaps only specific international experience, particularly from the US, providing a slight edge or attraction towards the very earliest locations.
+
+
+
+## Discussion: Praising the People or the Place?
+
+This research set out to explore the characteristics of the high-skilled engineers who migrated to newly electrifying regions in Sweden, specifically asking whether the *places* that gained access to electricity first (the Western Line parishes) attracted a systematically different *type* of engineer compared to nearby areas that electrified slightly later. Reframing the question posed in earlier work ("Praise the People or Praise the Place?" Jayes et al., 2024 [cite: 1 (03-praise-the-people-or-praise-the-place.pdf)]), we sought to understand if the initial advantage conferred by early electrification [cite: 1 (02-power-for-progress.pdf)] manifested in attracting engineers with distinct educational, social, or experiential backgrounds.
+
+Our findings, based on comparing engineers moving into Western Line parishes versus control parishes within the 300km band, lean strongly against distinctiveness based on most conventional measures of human capital and background. The analysis revealed no statistically significant differences in terms of engineers' educational attainment levels, the institutions they attended (including elite institutions like KTH or Chalmers), their field of study, or their social origins as proxied by paternal occupation [cite: 1 (Table 2)]. This broad similarity suggests that, for this highly mobile group, the specific timing advantage of the Western Line parishes did not act as a strong selective filter based on these core characteristics. In essence, we do not find compelling evidence to distinctively "Praise the Place" in terms of its ability to attract engineers with observably superior domestic educational or social pedigrees compared to its immediate, slightly later-electrifying neighbours.
+
+Furthermore, the results temper a strong interpretation of "Praising the People," if "people" implies engineers with universally superior or distinct backgrounds being drawn *specifically* to the Western Line. The engineers moving to both types of parishes appear remarkably similar across these dimensions. This points towards a labor market for high-skilled engineers characterized by significant geographic mobility, likely responding to the overall economic dynamism and opportunities emerging across the broader region undergoing electrification, as suggested by the general findings on mobility and skill acquisition during this period [cite: 1 (UPEH202412 (2).pdf)]. The specific parish-level timing of electrification appears secondary to the larger regional pull for this group.
+
+The one notable nuance is the finding that engineers moving to Western Line parishes were slightly more likely to have prior experience working or studying in the United States. This specific difference, while statistically significant, does not necessarily indicate that these engineers were inherently "more special" overall, but rather that a particular *type* of experience correlated with moving to these pioneering locations. This aligns with historical accounts emphasizing the perceived value of American technical and organizational know-how in Sweden during this era, particularly in fields related to electrical engineering, mass production, and rational workshop organization [cite: 1 (Gronberg (2003) Learning and Returning Return Migration of Swedish Engineers from the United States, 1880–1940.pdf)]. It is plausible that companies or projects situated in the very first parishes connected to the high-voltage grid placed a specific premium on, or were better able to attract, individuals possessing this American experience, perhaps reflecting specific technological choices or the influence of firms with strong US ties, as detailed by Grönberg (2003) [cite: 1 (Gronberg (2003) Learning and Returning Return Migration of Swedish Engineers from the United States, 1880–1940.pdf)]. The absence of a similar finding for European experience suggests this was not merely about general international exposure but potentially about specific, valued transatlantic knowledge transfer.
+
+In conclusion, returning to the dichotomy: we find little evidence that the Western Line *places* were distinct in attracting engineers based on their standard educational or social backgrounds, nor that the *people* moving there were broadly exceptional compared to engineers moving nearby. The dominant story for this high-skilled group appears to be one of mobility driven by regional opportunity. The subtle difference regarding USA experience suggests a specific, targeted value placed on certain international knowledge in pioneering locations, rather than a general attraction based on place characteristics or overall individual superiority. The significant local advantages of early electrification identified by Jayes et al. (2024) [cite: 1 (02-power-for-progress.pdf)] seem, therefore, to have impacted the high-skilled labor market differently than the less mobile, incumbent workforce, primarily influencing outcomes rather than selection based on the background characteristics examined here.
+
+
+## Conclusion
+
+To sum up, I have demonstrated how using of new tools and algortihms can give economic historians new kinds of source material to work with and new types of questions to ask. I showcased a two-part occupation and sector classification routine. I showed that contrary to my expectations, the individuals with high levels of skill who worked in electricity related industries in Sweden in the middle of the 20th century were not sourced from the localities around where production was centered. Rather, engineers working in electrical appliance and mechanical machinery industries moved the furthest from their places of birth, an average of 350km. This is indicative of a bifurcated labour market, with medium skilled jobs being filled by local workers, and specialized knowledge being brought in by workers with higher education from afar.
+
+{{< pagebreak >}}
+
+## Appendix {.appendix}
+
+@fig-data-collection-process outlines the data collection process. 
+
+I scrape the book content from the *Projekt Runeberg* website with an HTML scraper (beautiful soup in python).
+
+I split the records using regular expressions in python, looking for specific terms that begin and end the records in the dictionaries and catalogue.
+
+I augment the records with coordinates using the Google Maps Geocoding API. 
+
+I store the data in JSON format, keeping the original text in the file alongside the derived key value pairs.

@@ -22,7 +22,7 @@ select(-Description) %>%
 gt() %>% 
 cols_label(Icons = "") %>% 
 tab_header(title = md("**Data Collection Strategy**"),
-subtitle = "For biographical dictionaries and industry catalogue") %>% 
+subtitle = "For biographical dictionaries") %>% 
 gtsave("assets/data-collection-process.png")
 
 ```

@@ -1,0 +1,109 @@
+
+## Descriptive statistics on structured data
+
+The structured data that I have collected is rich in information about the individuals in the biographical dictionaries. I show some descriptive statistics about the data in @fig-desc-stats. The completion rate for the different variables is high, with the lowest being 50.8 percent for the percent of individuals with information about their parents' occupation. I test for selection into the sample by comparing the completion rate for the different variables by HISCO code, and find that the completion rate is similar across the different HISCO codes. We would be concerned if only individuals with certain HISCO codes had information about their parents' occupation, as this might bias our results. There is no way to know if there is selection into the sample based on the other variables, as we do not have a representative sample in our dataset.
+
+```{r}
+#| label: fig-desc-stats
+#| fig-cap: "Description of structured data"
+
+
+tibble(
+    key = c("Number of individuals", "Percent with occupation info", "Percent with parents' occupation info", "Percent with career trajectory info", "Percent with location info", "Percent with birth place info"),
+    value = c(74836, 98.8, 50.8, 96.1, 98.1, 97.3)
+) %>%
+    gt() %>%
+    cols_label(key = "Variable", value = "Completion rate") %>% 
+    fmt_number(columns = everything(), decimals = 1)
+```
+
+## Findings
+
+### Geographic paths of engineers
+
+With this rich individual level biographic data, we can show detailed life courses for the individuals of interest. @fig-engineer-movements shows the paths of four individuals who worked in electricity related industries in my sample. They held HISCO code 34, titled "Electrical and Electronics Engineering Technicians" @leeuwen2002HISCOHistoricalInternationala. We can see that these individuals moved away from home to pursue education, and ended up further from their roots in search of new occupations related to the skills that they had acquired. 
+
+```{r}
+#| label: fig-engineer-movements
+#| fig-cap: "Geographic trajectories of selected electrical technicians and engineers"
+#| fig-width: 5
+#| out-width: 5in
+
+knitr::include_graphics("assets/eee_map.png")
+```
+
+This is bourne out in @fig-engineer-distances. This plots the average distance moved by engineers within different sectors^[engineers are all those with HISCO code beginning 2X]. Compared to the average distance that a working age adult lived away from their birthplace in the 1930 census of 24km, the average engineer working in the electrical appliance sector in our sample moved 350km from their place of birth, the furthest of all engineers. Even engineers working in the densely geographically concentrated steel and metal industries moved on average 167km away from home.
+
+```{r}
+#| label: fig-engineer-distances
+#| fig-cap: "Distances moved by engineers by industrial sector"
+#| fig-width: 5
+#| out-width: 5in
+
+knitr::include_graphics("assets/engineer_distance.png")
+```
+
+@fig-avg-distances shows that of all the common HISCO codes in the sample detailed in @fig-hisco-counts, engineers and mechanical engineers moved the furthest on average. We can also calculate, based on the geographic firm clusters, that of the engineers in the sample, 34 percent live closest to the geographic cluster where the most common firm type is electrical appliances and mechanical machinery.
+
+```{r}
+#| label: fig-avg-distances
+#| fig-cap: "Distances moved by engineers by industrial sector"
+#| fig-width: 5
+#| out-width: 5in
+
+knitr::include_graphics("assets/hisco_distance.png")
+```
+
+### Occupational mobility
+
+We have structured the biographical data from the dictionaries, and classified the occupations of the individuals in the sample, as well as their parents' occupations, if available. This means we can show how many individuals moved up to a higher skilled occupation than their parents, and how many moved down. We group the HISCO codes into a seven level schema, where 1 is the highest skilled occupations, and 7 is the lowest skilled occupations, as shown in @fig-hisco-groups.
+
+```{r}
+#| label: fig-hisco-groups
+#| fig-cap: "HISCO groups"
+
+
+library(tibble)
+library(tidyverse)
+
+hisco_major_groups <- tribble(
+  ~hisco_major_group_number, ~hisco_major_group_name,
+  1, "Professional, technical and related workers",
+  2, "Administrative and managerial workers",
+  5, "Service workers",
+  6, "Agricultural, animal husbandry and forestry workers",
+  4, "Sales workers",
+  7, "Production and related workers, transport equipment operators and laborers",
+  3, "Clerical and related workers"
+) %>% arrange(hisco_major_group_number)
+
+hisco_major_groups %>% 
+  gt() %>% 
+  cols_label(hisco_major_group_number = "HISCO group number", hisco_major_group_name = "HISCO group name")
+
+```
+
+@fig-occ-mobility-matrix shows a matrix of occupational mobility. On the x-axis is the HISCO group of an individual, and on the y-axis is the HISCO group of their parent. The cells show the percentage of individuals who moved from the HISCO group of their parent to the HISCO group of the individual, on a column by column basis. 
+
+If there was no mobility at all, the matrix would be a diagonal line from the bottom left to the top right. This is not what we observe. While more than 30% of the sales workers and production and related workers in our dataset have parents who were also sales workers and production and related workers, at least 28 percent of professional and technical workers have parents who were not professional and technical workers (accounting for the missing data in the matrix).
+
+```{r}
+#| label: fig-occ-mobility-matrix
+#| fig-cap: "Matrix of occupational mobility"
+#| fig-width: 5
+#| out-width: 5in
+
+knitr::include_graphics("assets/occupation_matrix_column_sums.png")
+```
+
+Next we examine if there are markedly different trends in occupational mobility for common HISCO groups in our dataset. @fig-occ-mobility-cols shows for the five most common categories in the dataset, the share of available parent's HISCO groups that individuals come from. We cannot discern a clear pattern from this figure, it is not the case that engineers come from lower status families, compared to other groups.
+
+```{r}
+#| label: fig-occ-mobility-cols
+#| fig-cap: "Comparing occupational mobility for common HISCO groups"
+#| fig-width: 5
+#| out-width: 5in
+
+knitr::include_graphics("assets/occupation_groups.png")
+```
+
